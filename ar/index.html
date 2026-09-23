@@ -274,6 +274,10 @@ ul.ortak li::before{content:"—"; color:var(--accent); flex:none}
 .note p{margin:0; font-size:15px; color:var(--muted); line-height:1.6}
 .note p+p{margin-top:10px}
 .small{font-size:13px; color:var(--faint); margin-top:14px; max-width:72ch; line-height:1.55}
+.seri-basligi{font-family:var(--f-mono); font-size:11px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--muted); margin:38px 0 16px; padding-bottom:10px;
+  border-bottom:1px solid var(--line); font-weight:600}
+.seri-basligi:first-of-type{margin-top:4px}
 ul.liste{list-style:none; margin:0; padding:0; max-width:74ch; border-top:1px solid var(--line)}
 ul.liste li{padding:15px 0 15px 26px; border-bottom:1px solid var(--line); position:relative;
   color:var(--muted); font-size:15px; line-height:1.55}
@@ -389,7 +393,7 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
   <div class="wrap topin">
     <a class="brand" href="index.html"><span class="brand-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"  role="img" aria-label="NARION"><mask id="mi" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100"><rect width="100" height="100" fill="#fff"/><g stroke="#000" stroke-width="9" fill="none" stroke-linecap="round"><path d="M50.00 0.00 L50.00 21.00"/><path d="M50.00 21.00 A35 35 0 0 0 28.45 22.42"/><path d="M6.70 75.00 L24.89 64.50"/><path d="M24.89 64.50 A35 35 0 0 0 36.89 82.45"/><path d="M93.30 75.00 L75.11 64.50"/><path d="M75.11 64.50 A35 35 0 0 0 84.66 45.13"/></g></mask><g mask="url(#mi)"><circle cx="50" cy="50" r="35" fill="none" stroke="currentColor" stroke-width="15"/></g></svg></span>
       <span class="brand-txt"><b>NARION</b><span>Almita Group</span></span></a>
-    <nav class="main" aria-label="القائمة"><a href="index.html" aria-current="page">الرئيسية</a><span class="nav-grup"><a href="index.html#modeller" aria-haspopup="true">الطُرز</a><span class="nav-alt"><a href="narion-koza.html">KOZA</a><a href="narion-ladin.html">LADİN</a><a href="narion-manolya.html">MANOLYA</a><span class="alt-baslik">برنامج الإنتاج</span><a href="narion-servi.html">SERVİ</a><a href="narion-prizma.html">PRİZMA</a><a href="narion-ocak.html">OCAK</a><a href="narion-fener.html">FENER</a><a href="narion-nomad.html">NOMAD</a><a class="alt-ayrac" href="karsilastirma.html">المقارنة</a></span></span><a href="teknoloji.html">التقنية</a><a href="yedek-parca.html">قطع الغيار</a><a href="distributorluk.html">التوزيع</a><a href="on-kayit.html">التسجيل المسبق</a><a href="hakkinda.html">عن المشروع</a></nav>
+    <nav class="main" aria-label="القائمة"><a href="index.html" aria-current="page">الرئيسية</a><span class="nav-grup"><a href="index.html#modeller" aria-haspopup="true">الطُرز</a><span class="nav-alt"><a href="narion-koza.html">KOZA</a><a href="narion-ladin.html">LADİN</a><a href="narion-manolya.html">MANOLYA</a><span class="alt-baslik">برنامج الإنتاج</span><a href="narion-servi.html">SERVİ</a><a href="narion-prizma.html">PRİZMA</a><a href="narion-ocak.html">OCAK</a><a href="narion-fener.html">FENER</a><a href="narion-nomad.html">NOMAD</a><a href="narion-aura.html">AURA</a><a href="narion-monolit.html">MONOLİT</a><a href="narion-inci.html">İNCİ</a><a href="narion-yalin.html">YALIN</a><a href="narion-zeytin.html">ZEYTİN</a><a href="narion-ardic.html">ARDIÇ</a><a href="narion-kemer.html">KEMER</a><a href="narion-yorunge.html">YÖRÜNGE</a><a href="narion-cakil.html">ÇAKIL</a><a class="alt-ayrac" href="karsilastirma.html">المقارنة</a></span></span><a href="teknoloji.html">التقنية</a><a href="yedek-parca.html">قطع الغيار</a><a href="distributorluk.html">التوزيع</a><a href="on-kayit.html">التسجيل المسبق</a><a href="hakkinda.html">عن المشروع</a></nav>
     <div class="langs" role="navigation" aria-label="اللغة"><a href="../tr/index.html" hreflang="tr" lang="tr">tr</a><a href="../en/index.html" hreflang="en" lang="en">en</a><a href="../ar/index.html" hreflang="ar" lang="ar" aria-current="true">ar</a><a href="../ru/index.html" hreflang="ru" lang="ru">ru</a></div>
   </div>
 </header>
@@ -445,8 +449,48 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
 
 <section id="yol-haritasi"><div class="wrap">
   <div class="shead"><span class="num">02</span><h2>برنامج الإنتاج — طُرز نصنعها حسب الطلب</h2>
-    <p>نفتتح الخط بثلاثة من التصاميم الثمانية. والخمسة الباقية ضمن برنامج الإنتاج: تدخل الإنتاج عند الطلب، وتُحدَّد أبعادها وتجهيزها مع العميل في مرحلة العيّنة.</p></div>
-  <div class="models"><a class="mcard" href="narion-servi.html">
+    <p>نفتتح الخط بثلاثة من سبعة عشر تصميماً. والأربعة عشر الباقية ضمن برنامج الإنتاج: تدخل الإنتاج عند الطلب، وتُحدَّد أبعادها وتجهيزها مع العميل في مرحلة العيّنة. أربع سلاسل، ومعيار حربة واحد، وقطع غيار مشتركة.</p></div>
+  <h3 class="seri-basligi">السلسلة الحديثة</h3><div class="models"><a class="mcard" href="narion-zeytin.html">
+  <div class="fig"><figure class="sh "><img src="../gorsel/model-narion-zeytin.webp" alt="NARION ZEYTİN — زيتين" width="700" height="1050" loading='lazy' decoding='async'></figure></div>
+  <div class="body">
+    <span class="code">NARION ZEYTİN</span>
+    <span class="name">زيتين</span>
+    <span class="who">للمقاهي والمنازل. جناحا جوز يحتضنان قارورة كروية، وجسم مضغوط.</span>
+    <span class="foot"><span>السلسلة الحديثة</span><span class="ar" aria-hidden="true">&rarr;</span></span>
+  </div>
+</a><a class="mcard" href="narion-ardic.html">
+  <div class="fig"><figure class="sh "><img src="../gorsel/model-narion-ardic.webp" alt="NARION ARDIÇ — أرديتش" width="700" height="1050" loading='lazy' decoding='async'></figure></div>
+  <div class="body">
+    <span class="code">NARION ARDIÇ</span>
+    <span class="name">أرديتش</span>
+    <span class="who">للمنزل والمساحات الصغيرة. جسم منخفض بغن ميتال، وبجانبيه لوحا جوز.</span>
+    <span class="foot"><span>السلسلة الحديثة</span><span class="ar" aria-hidden="true">&rarr;</span></span>
+  </div>
+</a><a class="mcard" href="narion-kemer.html">
+  <div class="fig"><figure class="sh "><img src="../gorsel/model-narion-kemer.webp" alt="NARION KEMER — كمر" width="700" height="1050" loading='lazy' decoding='async'></figure></div>
+  <div class="body">
+    <span class="code">NARION KEMER</span>
+    <span class="name">كمر</span>
+    <span class="who">للمقاهي والخدمة الكثيفة. قفص فولاذي مقوّس، وقارورة عريضة مسطّحة.</span>
+    <span class="foot"><span>السلسلة الحديثة</span><span class="ar" aria-hidden="true">&rarr;</span></span>
+  </div>
+</a><a class="mcard" href="narion-yorunge.html">
+  <div class="fig"><figure class="sh "><img src="../gorsel/model-narion-yorunge.webp" alt="NARION YÖRÜNGE — يورونغه" width="700" height="1050" loading='lazy' decoding='async'></figure></div>
+  <div class="body">
+    <span class="code">NARION YÖRÜNGE</span>
+    <span class="name">يورونغه</span>
+    <span class="who">للصالات والعرض. إطار حلقي يحيط بالجسم، وقارورة أسطوانية.</span>
+    <span class="foot"><span>السلسلة الحديثة</span><span class="ar" aria-hidden="true">&rarr;</span></span>
+  </div>
+</a><a class="mcard" href="narion-cakil.html">
+  <div class="fig"><figure class="sh "><img src="../gorsel/model-narion-cakil.webp" alt="NARION ÇAKIL — تشاكيل" width="700" height="1050" loading='lazy' decoding='async'></figure></div>
+  <div class="body">
+    <span class="code">NARION ÇAKIL</span>
+    <span class="name">تشاكيل</span>
+    <span class="who">للمنزل والاستخدام الخارجي. جسم كتلة واحدة على هيئة حجر، ونافذة ماء بيضوية.</span>
+    <span class="foot"><span>السلسلة الحديثة</span><span class="ar" aria-hidden="true">&rarr;</span></span>
+  </div>
+</a></div><h3 class="seri-basligi">السلسلة الكلاسيكية</h3><div class="models"><a class="mcard" href="narion-servi.html">
   <div class="fig"><figure class="sh "><img src="../gorsel/model-narion-servi.webp" alt="NARION SERVİ — سِرفي" width="760" height="1132" loading='lazy' decoding='async'></figure></div>
   <div class="body">
     <span class="code">NARION SERVİ</span>
@@ -454,7 +498,39 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
     <span class="who">للمنزل والمساحات الصغيرة. أنحف جسم في السلسلة وأقلّها شغلاً للمكان.</span>
     <span class="foot"><span>السلسلة الكلاسيكية</span><span class="ar" aria-hidden="true">&rarr;</span></span>
   </div>
-</a><a class="mcard" href="narion-prizma.html">
+</a><a class="mcard" href="narion-yalin.html">
+  <div class="fig"><figure class="sh "><img src="../gorsel/model-narion-yalin.webp" alt="NARION YALIN — يالين" width="700" height="1050" loading='lazy' decoding='async'></figure></div>
+  <div class="body">
+    <span class="code">NARION YALIN</span>
+    <span class="name">يالين</span>
+    <span class="who">للصالات والمساحات الكلاسيكية. عمود جوز مخروط طويل، وقارورة كريستال مضلّعة.</span>
+    <span class="foot"><span>السلسلة الكلاسيكية</span><span class="ar" aria-hidden="true">&rarr;</span></span>
+  </div>
+</a></div><h3 class="seri-basligi">سلسلة بريستيج</h3><div class="models"><a class="mcard" href="narion-aura.html">
+  <div class="fig"><figure class="sh "><img src="../gorsel/model-narion-aura.webp" alt="NARION AURA — أورا" width="700" height="1050" loading='lazy' decoding='async'></figure></div>
+  <div class="body">
+    <span class="code">NARION AURA</span>
+    <span class="name">أورا</span>
+    <span class="who">لردهات الفنادق وصالات الشريحة العليا. قارورة على شكل قطرة بين جناحين نحاسيين.</span>
+    <span class="foot"><span>سلسلة بريستيج</span><span class="ar" aria-hidden="true">&rarr;</span></span>
+  </div>
+</a><a class="mcard" href="narion-monolit.html">
+  <div class="fig"><figure class="sh "><img src="../gorsel/model-narion-monolit.webp" alt="NARION MONOLİT — مونوليت" width="700" height="1050" loading='lazy' decoding='async'></figure></div>
+  <div class="body">
+    <span class="code">NARION MONOLİT</span>
+    <span class="name">مونوليت</span>
+    <span class="who">للمساحات ذات الخط المعماري. قارورة موشورية، عمود أسود، قاعدة رخامية.</span>
+    <span class="foot"><span>سلسلة بريستيج</span><span class="ar" aria-hidden="true">&rarr;</span></span>
+  </div>
+</a><a class="mcard" href="narion-inci.html">
+  <div class="fig"><figure class="sh "><img src="../gorsel/model-narion-inci.webp" alt="NARION İNCİ — إنجي" width="700" height="1050" loading='lazy' decoding='async'></figure></div>
+  <div class="body">
+    <span class="code">NARION İNCİ</span>
+    <span class="name">إنجي</span>
+    <span class="who">للمنزل والفنادق البوتيكية. جسم سيراميك بيضوي كريمي، ونافذة ماء بإطار نحاسي.</span>
+    <span class="foot"><span>سلسلة بريستيج</span><span class="ar" aria-hidden="true">&rarr;</span></span>
+  </div>
+</a></div><h3 class="seri-basligi">سلسلة التقنية</h3><div class="models"><a class="mcard" href="narion-prizma.html">
   <div class="fig"><figure class="sh "><img src="../gorsel/model-narion-prizma.webp" alt="NARION PRİZMA — بريزما" width="760" height="1132" loading='lazy' decoding='async'></figure></div>
   <div class="body">
     <span class="code">NARION PRİZMA</span>
@@ -557,7 +633,7 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
         <p>جميع البيانات الفنية من المراجعة R0 وتُحدَّث مع تحقّق السلسلة التجريبية.</p>
         <p class="kunye">Postane Mah. Rauf Orbay Cad., Kemal Sunal Sok. No: 29, Tuzla / İstanbul<br>VKN 0551569402</p>
       </div>
-      <div><h4>الطُرز</h4><a href="narion-koza.html">KOZA</a><a href="narion-ladin.html">LADİN</a><a href="narion-manolya.html">MANOLYA</a><a href="narion-servi.html">SERVİ</a><a href="narion-prizma.html">PRİZMA</a><a href="narion-ocak.html">OCAK</a><a href="narion-fener.html">FENER</a><a href="narion-nomad.html">NOMAD</a><a href="karsilastirma.html">المقارنة</a></div>
+      <div><h4>الطُرز</h4><a href="narion-koza.html">KOZA</a><a href="narion-ladin.html">LADİN</a><a href="narion-manolya.html">MANOLYA</a><a href="narion-servi.html">SERVİ</a><a href="narion-prizma.html">PRİZMA</a><a href="narion-ocak.html">OCAK</a><a href="narion-fener.html">FENER</a><a href="narion-nomad.html">NOMAD</a><a href="narion-aura.html">AURA</a><a href="narion-monolit.html">MONOLİT</a><a href="narion-inci.html">İNCİ</a><a href="narion-yalin.html">YALIN</a><a href="narion-zeytin.html">ZEYTİN</a><a href="narion-ardic.html">ARDIÇ</a><a href="narion-kemer.html">KEMER</a><a href="narion-yorunge.html">YÖRÜNGE</a><a href="narion-cakil.html">ÇAKIL</a><a href="karsilastirma.html">المقارنة</a></div>
       <div><h4>القائمة</h4><a href="index.html">الرئيسية</a><a href="teknoloji.html">التقنية</a><a href="yedek-parca.html">قطع الغيار</a><a href="distributorluk.html">التوزيع</a><a href="on-kayit.html">التسجيل المسبق</a><a href="hakkinda.html">عن المشروع</a></div>
       <div><h4>التواصل</h4><a href="mailto:info@narionhookah.com">info@narionhookah.com</a><a href="tel:+908508881679">+90 850 888 1679</a></div>
     </div>
