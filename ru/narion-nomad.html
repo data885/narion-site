@@ -303,6 +303,10 @@ html[dir="rtl"] .btnbox:hover .ar{transform:scaleX(-1) translateX(4px)}
   font-family:var(--f-mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase;
   font-weight:600; margin-top:22px}
 .btnbox:hover{background:var(--accent); color:#fff}
+/* e-posta ve alan adı: uppercase YAPILMAZ.
+   Türkçe sayfada lang="tr" olduğu için tarayıcı i→İ dönüşümü uygular ve
+   info@… adresi İNFO@NARİONHOOKAH.COM olur; tıklanabilir adres bozulmuş görünür. */
+.btnbox.eposta,.btn.eposta{text-transform:none; letter-spacing:.02em; font-size:13px}
 
 /* ---------- pazar kartı ---------- */
 .markets{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
@@ -385,31 +389,31 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
   <div class="wrap topin">
     <a class="brand" href="index.html"><span class="brand-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"  role="img" aria-label="NARION"><mask id="mi" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100"><rect width="100" height="100" fill="#fff"/><g stroke="#000" stroke-width="9" fill="none" stroke-linecap="round"><path d="M50.00 0.00 L50.00 21.00"/><path d="M50.00 21.00 A35 35 0 0 0 28.45 22.42"/><path d="M6.70 75.00 L24.89 64.50"/><path d="M24.89 64.50 A35 35 0 0 0 36.89 82.45"/><path d="M93.30 75.00 L75.11 64.50"/><path d="M75.11 64.50 A35 35 0 0 0 84.66 45.13"/></g></mask><g mask="url(#mi)"><circle cx="50" cy="50" r="35" fill="none" stroke="currentColor" stroke-width="15"/></g></svg></span>
       <span class="brand-txt"><b>NARION</b><span>Almita Group</span></span></a>
-    <nav class="main" aria-label="Меню"><a href="index.html">Главная</a><span class="nav-grup"><a href="index.html#modeller" aria-current="page" aria-haspopup="true">Модели</a><span class="nav-alt"><a href="narion-koza.html">KOZA</a><a href="narion-kaval.html">KAVAL</a><a href="narion-cinar.html">CINAR</a><span class="alt-baslik">Дорожная карта</span><a href="narion-servi.html">SERVI</a><a href="narion-prizma.html">PRIZMA</a><a href="narion-ocak.html">OCAK</a><a href="narion-fener.html">FENER</a><a href="narion-nomad.html" aria-current="page">NOMAD</a><a class="alt-ayrac" href="karsilastirma.html">Сравнение</a></span></span><a href="teknoloji.html">Технология</a><a href="yedek-parca.html">Запчасти</a><a href="distributorluk.html">Дистрибуция</a><a href="on-kayit.html">Предзапись</a><a href="hakkinda.html">О проекте</a></nav>
+    <nav class="main" aria-label="Меню"><a href="index.html">Главная</a><span class="nav-grup"><a href="index.html#modeller" aria-current="page" aria-haspopup="true">Модели</a><span class="nav-alt"><a href="narion-koza.html">KOZA</a><a href="narion-ladin.html">LADİN</a><a href="narion-manolya.html">MANOLYA</a><span class="alt-baslik">Дорожная карта</span><a href="narion-servi.html">SERVİ</a><a href="narion-prizma.html">PRİZMA</a><a href="narion-ocak.html">OCAK</a><a href="narion-fener.html">FENER</a><a href="narion-nomad.html" aria-current="page">NOMAD</a><a class="alt-ayrac" href="karsilastirma.html">Сравнение</a></span></span><a href="teknoloji.html">Технология</a><a href="yedek-parca.html">Запчасти</a><a href="distributorluk.html">Дистрибуция</a><a href="on-kayit.html">Предзапись</a><a href="hakkinda.html">О проекте</a></nav>
     <div class="langs" role="navigation" aria-label="Язык"><a href="../tr/narion-nomad.html" hreflang="tr" lang="tr">tr</a><a href="../en/narion-nomad.html" hreflang="en" lang="en">en</a><a href="../ar/narion-nomad.html" hreflang="ar" lang="ar">ar</a><a href="../ru/narion-nomad.html" hreflang="ru" lang="ru" aria-current="true">ru</a></div>
   </div>
 </header>
 <div class="status">
   <div class="wrap">
-    <b>Стадия разработки</b>
-    <p>NARION находится на стадии T0 — чертежи и образец с ЧПУ. Серийное производство ещё не начато; размеры, материалы и показатели на этом сайте являются проектными решениями, а не подтверждёнными результатами полевых испытаний.</p>
+    <b>Подготовка к производству</b>
+    <p>NARION производит Almita Group на собственной линии — не на подряде и не по импорту. Первая серия сейчас в подготовке к производству: чертежи готовы, идёт этап ЧПУ-образцов. Размеры и целевые показатели на сайте — наши производственные решения; проверенные результаты испытаний будут опубликованы на тех же страницах по мере их получения.</p>
   </div>
 </div>
 <main id="main">
 
 <div class="hero"><div class="wrap">
   <div>
-    <span class="eyebrow">NARION NOMAD · Модель дорожной карты</span>
+    <span class="eyebrow">NARION NOMAD · Серия Technology</span>
     <h1>исследование дорожного кальяна в жёстком кейсе</h1>
     <p class="lede">NARION NOMAD — единственный дорожный комплект серии: корпус, чаша, шланг и мундштуки укладываются в жёсткий кейс. Отправной точкой было не оставить в дороге ничего бьющегося — колба и корпус металлические. Размеры кейса и соответствие ручной клади пока не проверены; до проверки это не заявляется.</p>
     <a class="btnbox" href="distributorluk.html">Дистрибуция / запрос образца <span class="ar" aria-hidden="true">&rarr;</span></a>
   </div>
-  <div class="herofig"><figure class="sh "><img src="../gorsel/model-narion-nomad.webp" alt="NARION NOMAD — Номад" width="760" height="1132" fetchpriority='high' decoding='async'><figcaption><b>Концепт-рендер</b><span>NARION NOMAD — дорожный комплект в жёстком кейсе, четыре мундштука и металлическая колба.</span></figcaption></figure></div>
+  <div class="herofig"><figure class="sh "><img src="../gorsel/model-narion-nomad.webp" alt="NARION NOMAD — Номад" width="760" height="1132" fetchpriority='high' decoding='async'><figcaption><b>Дизайн-визуализация</b><span>NARION NOMAD — дорожный комплект в жёстком кейсе, четыре мундштука и металлическая колба.</span></figcaption></figure></div>
 </div></div>
 
 <section><div class="wrap">
   <div class="note"><span class="k">Модель дорожной карты</span>
-    <p>Эта модель находится на стадии дизайна. Первая серия начинается с KOZA, KAVAL и ÇINAR; модели отсюда ставятся в очередь по мере спроса. Размеры, вес и цена не публикуются до выпуска пилотной серии.</p></div>
+    <p>Эта модель находится на стадии дизайна. Первая серия начинается с KOZA, LADİN и MANOLYA; модели отсюда ставятся в очередь по мере спроса. Размеры, вес и цена не публикуются до выпуска пилотной серии.</p></div>
 </div></section>
 
 <section><div class="wrap">
@@ -418,7 +422,7 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
     <div><dl class="specs"><div><dt>Форма корпуса</dt><dd>Разборный дорожный комплект</dd></div><div><dt>Направление по материалу</dt><dd>Матовый чёрный алюминий</dd></div><div><dt>Место под логотип кафе</dt><dd>Опорная пластина и кейс</dd></div><div><dt>Целевое применение</dt><dd>Разборный дорожный комплект</dd></div></dl></div>
     <div class="rows" style="border-top:none"><div class="row"><h3>Нет стекла, которое бьётся</h3><p>Колба и корпус металлические. Детали, которые чаще всего ломаются в дороге, убраны из конструкции.</p></div><div class="row"><h3>У каждой детали своё гнездо</h3><p>В кейсе у каждой части собственное углубление; недостающая деталь видна до того, как закроется крышка.</p></div><div class="row"><h3>Четыре мундштука</h3><p>В комплекте четыре мундштука — при общем использовании каждый ставит свой.</p></div></div>
   </div>
-  <div class="note"><span class="k">Серия чёрного корпуса</span><p>Серия чёрного корпуса — отдельное дизайн-исследование. Документ о направлении дизайна NARION требует, чтобы в первой серии подсветка не применялась; будут ли продолжены световые эксперименты этой серии и, если да, выделятся ли они в отдельную продуктовую линейку — пока не решено.</p></div>
+  <div class="note"><span class="k">Серия Technology</span><p>Серия Technology — третий язык дизайна NARION: матовый чёрный корпус, инженерная детализация и подсветка. Это не отдельный бренд — все три серии используют один и тот же байонетный стандарт, одни уплотнения и одну логику запчастей. Подсветка принадлежит языку именно этой серии; в сериях Modern и Classic она не применяется.</p></div>
 </div></section>
 
 <section><div class="wrap">
@@ -438,19 +442,19 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
     <span class="who">Для кафе и домашнего использования верхнего сегмента. Логотип кафе на ореховой панели, внутри неё окно уровня воды.</span>
     <span class="foot"><span>Смотреть модель</span><span class="ar" aria-hidden="true">&rarr;</span></span>
   </div>
-</a><a class="mcard" href="narion-kaval.html">
-  <div class="fig"><figure class="sh "><img src="../gorsel/model-narion-kaval.webp" alt="NARION KAVAL — Кавал" width="760" height="1132" loading='lazy' decoding='async'></figure></div>
+</a><a class="mcard" href="narion-ladin.html">
+  <div class="fig"><figure class="sh "><img src="../gorsel/model-narion-ladin.webp" alt="NARION LADİN — Ладин" width="760" height="1132" loading='lazy' decoding='async'></figure></div>
   <div class="body">
-    <span class="code">NARION KAVAL</span>
-    <span class="name">Кавал</span>
+    <span class="code">NARION LADİN</span>
+    <span class="name">Ладин</span>
     <span class="who">Для кафе и лаунж-залов. Стройный вертикальный корпус, ореховая панель «ёлочкой».</span>
     <span class="foot"><span>Смотреть модель</span><span class="ar" aria-hidden="true">&rarr;</span></span>
   </div>
-</a><a class="mcard" href="narion-cinar.html">
-  <div class="fig"><figure class="sh "><img src="../gorsel/model-narion-cinar.webp" alt="NARION CINAR — Чинар" width="760" height="1132" loading='lazy' decoding='async'></figure></div>
+</a><a class="mcard" href="narion-manolya.html">
+  <div class="fig"><figure class="sh "><img src="../gorsel/model-narion-manolya.webp" alt="NARION MANOLYA — Манолья" width="760" height="1132" loading='lazy' decoding='async'></figure></div>
   <div class="body">
-    <span class="code">NARION CINAR</span>
-    <span class="name">Чинар</span>
+    <span class="code">NARION MANOLYA</span>
+    <span class="name">Манолья</span>
     <span class="who">Для дома и гостей. Традиционный силуэт, покрытие PVD, деревянная шейка.</span>
     <span class="foot"><span>Смотреть модель</span><span class="ar" aria-hidden="true">&rarr;</span></span>
   </div>
@@ -460,20 +464,20 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
 <section><div class="wrap">
   <div class="shead"><span class="num">04</span><h2>Другие модели дорожной карты</h2></div>
   <div class="models"><a class="mcard" href="narion-servi.html">
-  <div class="fig"><figure class="sh "><img src="../gorsel/model-narion-servi.webp" alt="NARION SERVI — Серви" width="760" height="1132" loading='lazy' decoding='async'></figure></div>
+  <div class="fig"><figure class="sh "><img src="../gorsel/model-narion-servi.webp" alt="NARION SERVİ — Серви" width="760" height="1132" loading='lazy' decoding='async'></figure></div>
   <div class="body">
-    <span class="code">NARION SERVI</span>
+    <span class="code">NARION SERVİ</span>
     <span class="name">Серви</span>
     <span class="who">Для дома и небольших помещений. Самый тонкий корпус серии, занимает меньше всего места.</span>
-    <span class="foot"><span>Серия классического силуэта</span><span class="ar" aria-hidden="true">&rarr;</span></span>
+    <span class="foot"><span>Серия Classic</span><span class="ar" aria-hidden="true">&rarr;</span></span>
   </div>
 </a><a class="mcard" href="narion-prizma.html">
-  <div class="fig"><figure class="sh "><img src="../gorsel/model-narion-prizma.webp" alt="NARION PRIZMA — Призма" width="760" height="1132" loading='lazy' decoding='async'></figure></div>
+  <div class="fig"><figure class="sh "><img src="../gorsel/model-narion-prizma.webp" alt="NARION PRİZMA — Призма" width="760" height="1132" loading='lazy' decoding='async'></figure></div>
   <div class="body">
-    <span class="code">NARION PRIZMA</span>
+    <span class="code">NARION PRİZMA</span>
     <span class="name">Призма</span>
     <span class="who">Дизайн-исследование для лаунжей и ночных заведений. Шестигранное основание, матовый чёрный корпус.</span>
-    <span class="foot"><span>Серия чёрного корпуса</span><span class="ar" aria-hidden="true">&rarr;</span></span>
+    <span class="foot"><span>Серия Technology</span><span class="ar" aria-hidden="true">&rarr;</span></span>
   </div>
 </a><a class="mcard" href="narion-ocak.html">
   <div class="fig"><figure class="sh "><img src="../gorsel/model-narion-ocak.webp" alt="NARION OCAK — Оджак" width="760" height="1132" loading='lazy' decoding='async'></figure></div>
@@ -481,7 +485,7 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
     <span class="code">NARION OCAK</span>
     <span class="name">Оджак</span>
     <span class="who">Дизайн-исследование для кафе и интенсивной подачи. Кальян садится в базовую станцию.</span>
-    <span class="foot"><span>Серия чёрного корпуса</span><span class="ar" aria-hidden="true">&rarr;</span></span>
+    <span class="foot"><span>Серия Technology</span><span class="ar" aria-hidden="true">&rarr;</span></span>
   </div>
 </a><a class="mcard" href="narion-fener.html">
   <div class="fig"><figure class="sh "><img src="../gorsel/model-narion-fener.webp" alt="NARION FENER — Фенер" width="760" height="1132" loading='lazy' decoding='async'></figure></div>
@@ -489,10 +493,10 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
     <span class="code">NARION FENER</span>
     <span class="name">Фенер</span>
     <span class="who">Дизайн-исследование для лаунжей. Минималистичная чёрная башня с тонкой световой полосой.</span>
-    <span class="foot"><span>Серия чёрного корпуса</span><span class="ar" aria-hidden="true">&rarr;</span></span>
+    <span class="foot"><span>Серия Technology</span><span class="ar" aria-hidden="true">&rarr;</span></span>
   </div>
 </a></div>
-  <p class="small">Продукт ещё не произведён; изображения визуализируют проектную концепцию и не являются фотографиями изделия.</p>
+  <p class="small">Изображения — предпроизводственные дизайн-визуализации. Они будут заменены фотографиями изделия, как только первая серия сойдёт с линии.</p>
 </div></section>
 
 <section><div class="wrap">
@@ -513,15 +517,15 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
     <div class="cols">
       <div>
         <h4>NARION</h4>
-        <p>Все технические данные относятся к ревизии R0 и могут измениться после проверки на контрактном производстве.</p>
+        <p>Все технические данные относятся к ревизии R0 и обновляются по мере проверки на пилотной серии.</p>
         <p class="kunye">Postane Mah. Rauf Orbay Cad., Kemal Sunal Sok. No: 29, Tuzla / İstanbul<br>VKN 0551569402</p>
       </div>
-      <div><h4>Модели</h4><a href="narion-koza.html">KOZA</a><a href="narion-kaval.html">KAVAL</a><a href="narion-cinar.html">CINAR</a><a href="narion-servi.html">SERVI</a><a href="narion-prizma.html">PRIZMA</a><a href="narion-ocak.html">OCAK</a><a href="narion-fener.html">FENER</a><a href="narion-nomad.html">NOMAD</a><a href="karsilastirma.html">Сравнение</a></div>
+      <div><h4>Модели</h4><a href="narion-koza.html">KOZA</a><a href="narion-ladin.html">LADİN</a><a href="narion-manolya.html">MANOLYA</a><a href="narion-servi.html">SERVİ</a><a href="narion-prizma.html">PRİZMA</a><a href="narion-ocak.html">OCAK</a><a href="narion-fener.html">FENER</a><a href="narion-nomad.html">NOMAD</a><a href="karsilastirma.html">Сравнение</a></div>
       <div><h4>Меню</h4><a href="index.html">Главная</a><a href="teknoloji.html">Технология</a><a href="yedek-parca.html">Запчасти</a><a href="distributorluk.html">Дистрибуция</a><a href="on-kayit.html">Предзапись</a><a href="hakkinda.html">О проекте</a></div>
       <div><h4>Контакты</h4><a href="mailto:info@narionhookah.com">info@narionhookah.com</a><a href="tel:+908508881679">+90 850 888 1679</a></div>
     </div>
     <div class="fine">
-      <span>Almita Group · Разработка продукта · R0 · 09.2026</span>
+      <span>Almita Group · Производство · R0 · 09.2026</span>
       <span>Сайт не использует файлы cookie и не отслеживает посетителей; шрифты загружаются с нашего сервера.</span>
     </div>
   </div>

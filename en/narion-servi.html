@@ -303,6 +303,10 @@ html[dir="rtl"] .btnbox:hover .ar{transform:scaleX(-1) translateX(4px)}
   font-family:var(--f-mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase;
   font-weight:600; margin-top:22px}
 .btnbox:hover{background:var(--accent); color:#fff}
+/* e-posta ve alan adı: uppercase YAPILMAZ.
+   Türkçe sayfada lang="tr" olduğu için tarayıcı i→İ dönüşümü uygular ve
+   info@… adresi İNFO@NARİONHOOKAH.COM olur; tıklanabilir adres bozulmuş görünür. */
+.btnbox.eposta,.btn.eposta{text-transform:none; letter-spacing:.02em; font-size:13px}
 
 /* ---------- pazar kartı ---------- */
 .markets{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
@@ -385,31 +389,31 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
   <div class="wrap topin">
     <a class="brand" href="index.html"><span class="brand-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"  role="img" aria-label="NARION"><mask id="mi" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100"><rect width="100" height="100" fill="#fff"/><g stroke="#000" stroke-width="9" fill="none" stroke-linecap="round"><path d="M50.00 0.00 L50.00 21.00"/><path d="M50.00 21.00 A35 35 0 0 0 28.45 22.42"/><path d="M6.70 75.00 L24.89 64.50"/><path d="M24.89 64.50 A35 35 0 0 0 36.89 82.45"/><path d="M93.30 75.00 L75.11 64.50"/><path d="M75.11 64.50 A35 35 0 0 0 84.66 45.13"/></g></mask><g mask="url(#mi)"><circle cx="50" cy="50" r="35" fill="none" stroke="currentColor" stroke-width="15"/></g></svg></span>
       <span class="brand-txt"><b>NARION</b><span>Almita Group</span></span></a>
-    <nav class="main" aria-label="Menu"><a href="index.html">Home</a><span class="nav-grup"><a href="index.html#modeller" aria-current="page" aria-haspopup="true">Models</a><span class="nav-alt"><a href="narion-koza.html">KOZA</a><a href="narion-kaval.html">KAVAL</a><a href="narion-cinar.html">CINAR</a><span class="alt-baslik">Roadmap</span><a href="narion-servi.html" aria-current="page">SERVI</a><a href="narion-prizma.html">PRIZMA</a><a href="narion-ocak.html">OCAK</a><a href="narion-fener.html">FENER</a><a href="narion-nomad.html">NOMAD</a><a class="alt-ayrac" href="karsilastirma.html">Comparison</a></span></span><a href="teknoloji.html">Technology</a><a href="yedek-parca.html">Spare parts</a><a href="distributorluk.html">Distribution</a><a href="on-kayit.html">Pre-register</a><a href="hakkinda.html">About</a></nav>
+    <nav class="main" aria-label="Menu"><a href="index.html">Home</a><span class="nav-grup"><a href="index.html#modeller" aria-current="page" aria-haspopup="true">Models</a><span class="nav-alt"><a href="narion-koza.html">KOZA</a><a href="narion-ladin.html">LADİN</a><a href="narion-manolya.html">MANOLYA</a><span class="alt-baslik">Roadmap</span><a href="narion-servi.html" aria-current="page">SERVİ</a><a href="narion-prizma.html">PRİZMA</a><a href="narion-ocak.html">OCAK</a><a href="narion-fener.html">FENER</a><a href="narion-nomad.html">NOMAD</a><a class="alt-ayrac" href="karsilastirma.html">Comparison</a></span></span><a href="teknoloji.html">Technology</a><a href="yedek-parca.html">Spare parts</a><a href="distributorluk.html">Distribution</a><a href="on-kayit.html">Pre-register</a><a href="hakkinda.html">About</a></nav>
     <div class="langs" role="navigation" aria-label="Language"><a href="../tr/narion-servi.html" hreflang="tr" lang="tr">tr</a><a href="../en/narion-servi.html" hreflang="en" lang="en" aria-current="true">en</a><a href="../ar/narion-servi.html" hreflang="ar" lang="ar">ar</a><a href="../ru/narion-servi.html" hreflang="ru" lang="ru">ru</a></div>
   </div>
 </header>
 <div class="status">
   <div class="wrap">
-    <b>Development stage</b>
-    <p>NARION is currently at T0 — technical drawings and CNC prototype. The product is not in series production yet; the dimensions, materials and performance figures on this site are design decisions, not verified field results.</p>
+    <b>Preparing for production</b>
+    <p>NARION is manufactured by Almita Group on our own line — not outsourced, not imported. The first run is in production preparation: drawings are done, CNC sampling is under way. The dimensions and performance figures on this site are our production decisions; verified test results will be published on the same pages as they come in.</p>
   </div>
 </div>
 <main id="main">
 
 <div class="hero"><div class="wrap">
   <div>
-    <span class="eyebrow">NARION SERVI · Roadmap model</span>
+    <span class="eyebrow">NARION SERVİ · Classic series</span>
     <h1>Slim-Bodied Wooden Hookah For Home Use</h1>
     <p class="lede">NARION SERVI is the slimmest model in the range. The turned wooden body rises as a single piece; the bottle beneath it has a narrow base and occupies a small circle on the table. It is a design study that keeps the classic hookah silhouette while cutting its volume — for the user who wants the traditional form but has no room for a large body.</p>
     <a class="btnbox" href="distributorluk.html">Distribution / sample request <span class="ar" aria-hidden="true">&rarr;</span></a>
   </div>
-  <div class="herofig"><figure class="sh "><img src="../gorsel/model-narion-servi.webp" alt="NARION SERVI — Servi" width="760" height="1132" fetchpriority='high' decoding='async'><figcaption><b>Concept render</b><span>NARION SERVI — slim turned wooden body, narrow-based bottle.</span></figcaption></figure></div>
+  <div class="herofig"><figure class="sh "><img src="../gorsel/model-narion-servi.webp" alt="NARION SERVİ — Servi" width="760" height="1132" fetchpriority='high' decoding='async'><figcaption><b>Design render</b><span>NARION SERVI — slim turned wooden body, narrow-based bottle.</span></figcaption></figure></div>
 </div></div>
 
 <section><div class="wrap">
   <div class="note"><span class="k">Roadmap model</span>
-    <p>This model is at design stage. The first run starts with KOZA, KAVAL and ÇINAR; the models here are queued as demand comes in. Dimensions, weight and price are not published before a pilot run is built.</p></div>
+    <p>This model is at design stage. The first run starts with KOZA, LADİN and MANOLYA; the models here are queued as demand comes in. Dimensions, weight and price are not published before a pilot run is built.</p></div>
 </div></section>
 
 <section><div class="wrap">
@@ -418,7 +422,7 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
     <div><dl class="specs"><div><dt>Body form</dt><dd>Slim and tall, classic silhouette</dd></div><div><dt>Material direction</dt><dd>Turned walnut + stainless steel</dd></div><div><dt>Café logo area</dt><dd>Charcoal tray</dd></div><div><dt>Intended use</dt><dd>Home, small spaces</dd></div></dl></div>
     <div class="rows" style="border-top:none"><div class="row"><h3>Takes little room</h3><p>Narrow base, slim body: proportionate on a side table, a balcony or a small dining table.</p></div><div class="row"><h3>Familiar silhouette</h3><p>It does not break the traditional hookah form. What it is reads at a glance; no explanation needed.</p></div><div class="row"><h3>Logo area on the tray</h3><p>The café logo is laser-engraved onto the charcoal tray — the surface most visible during service.</p></div></div>
   </div>
-  <div class="note"><span class="k">Classic silhouette series</span><p>The classic silhouette series reinterprets the traditional hookah form in steel and wood. Its first member, ÇINAR, is going into production.</p></div>
+  <div class="note"><span class="k">Classic series</span><p>The Classic series reinterprets the traditional hookah silhouette in steel and wood. This is the form that reads as familiar across the Gulf and Türkiye.</p></div>
 </div></section>
 
 <section><div class="wrap">
@@ -438,19 +442,19 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
     <span class="who">For cafés and upper-segment home use. Café logo on the walnut panel, water-level window inside it.</span>
     <span class="foot"><span>View model</span><span class="ar" aria-hidden="true">&rarr;</span></span>
   </div>
-</a><a class="mcard" href="narion-kaval.html">
-  <div class="fig"><figure class="sh "><img src="../gorsel/model-narion-kaval.webp" alt="NARION KAVAL — Kaval" width="760" height="1132" loading='lazy' decoding='async'></figure></div>
+</a><a class="mcard" href="narion-ladin.html">
+  <div class="fig"><figure class="sh "><img src="../gorsel/model-narion-ladin.webp" alt="NARION LADİN — Ladin" width="760" height="1132" loading='lazy' decoding='async'></figure></div>
   <div class="body">
-    <span class="code">NARION KAVAL</span>
-    <span class="name">Kaval</span>
+    <span class="code">NARION LADİN</span>
+    <span class="name">Ladin</span>
     <span class="who">For cafés and lounges. Upright slim body, herringbone walnut panel.</span>
     <span class="foot"><span>View model</span><span class="ar" aria-hidden="true">&rarr;</span></span>
   </div>
-</a><a class="mcard" href="narion-cinar.html">
-  <div class="fig"><figure class="sh "><img src="../gorsel/model-narion-cinar.webp" alt="NARION CINAR — Cinar" width="760" height="1132" loading='lazy' decoding='async'></figure></div>
+</a><a class="mcard" href="narion-manolya.html">
+  <div class="fig"><figure class="sh "><img src="../gorsel/model-narion-manolya.webp" alt="NARION MANOLYA — Manolya" width="760" height="1132" loading='lazy' decoding='async'></figure></div>
   <div class="body">
-    <span class="code">NARION CINAR</span>
-    <span class="name">Cinar</span>
+    <span class="code">NARION MANOLYA</span>
+    <span class="name">Manolya</span>
     <span class="who">For home and guests. Traditional silhouette, PVD coating, wooden neck.</span>
     <span class="foot"><span>View model</span><span class="ar" aria-hidden="true">&rarr;</span></span>
   </div>
@@ -460,12 +464,12 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
 <section><div class="wrap">
   <div class="shead"><span class="num">04</span><h2>Other models on the roadmap</h2></div>
   <div class="models"><a class="mcard" href="narion-prizma.html">
-  <div class="fig"><figure class="sh "><img src="../gorsel/model-narion-prizma.webp" alt="NARION PRIZMA — Prizma" width="760" height="1132" loading='lazy' decoding='async'></figure></div>
+  <div class="fig"><figure class="sh "><img src="../gorsel/model-narion-prizma.webp" alt="NARION PRİZMA — Prizma" width="760" height="1132" loading='lazy' decoding='async'></figure></div>
   <div class="body">
-    <span class="code">NARION PRIZMA</span>
+    <span class="code">NARION PRİZMA</span>
     <span class="name">Prizma</span>
     <span class="who">A design study for lounges and late-night venues. Hexagonal base, matte black body.</span>
-    <span class="foot"><span>Black body series</span><span class="ar" aria-hidden="true">&rarr;</span></span>
+    <span class="foot"><span>Technology series</span><span class="ar" aria-hidden="true">&rarr;</span></span>
   </div>
 </a><a class="mcard" href="narion-ocak.html">
   <div class="fig"><figure class="sh "><img src="../gorsel/model-narion-ocak.webp" alt="NARION OCAK — Ocak" width="760" height="1132" loading='lazy' decoding='async'></figure></div>
@@ -473,7 +477,7 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
     <span class="code">NARION OCAK</span>
     <span class="name">Ocak</span>
     <span class="who">A design study for cafés and heavy service. A base station the hookah sits in.</span>
-    <span class="foot"><span>Black body series</span><span class="ar" aria-hidden="true">&rarr;</span></span>
+    <span class="foot"><span>Technology series</span><span class="ar" aria-hidden="true">&rarr;</span></span>
   </div>
 </a><a class="mcard" href="narion-fener.html">
   <div class="fig"><figure class="sh "><img src="../gorsel/model-narion-fener.webp" alt="NARION FENER — Fener" width="760" height="1132" loading='lazy' decoding='async'></figure></div>
@@ -481,7 +485,7 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
     <span class="code">NARION FENER</span>
     <span class="name">Fener</span>
     <span class="who">A design study for lounges. A minimal black tower with a thin light band on the body.</span>
-    <span class="foot"><span>Black body series</span><span class="ar" aria-hidden="true">&rarr;</span></span>
+    <span class="foot"><span>Technology series</span><span class="ar" aria-hidden="true">&rarr;</span></span>
   </div>
 </a><a class="mcard" href="narion-nomad.html">
   <div class="fig"><figure class="sh "><img src="../gorsel/model-narion-nomad.webp" alt="NARION NOMAD — Nomad" width="760" height="1132" loading='lazy' decoding='async'></figure></div>
@@ -489,10 +493,10 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
     <span class="code">NARION NOMAD</span>
     <span class="name">Nomad</span>
     <span class="who">A design study for travel and outdoor use. A hard-case set that breaks down into parts.</span>
-    <span class="foot"><span>Black body series</span><span class="ar" aria-hidden="true">&rarr;</span></span>
+    <span class="foot"><span>Technology series</span><span class="ar" aria-hidden="true">&rarr;</span></span>
   </div>
 </a></div>
-  <p class="small">The product is not manufactured yet; these images visualise the design concept and are not product photographs.</p>
+  <p class="small">These images are pre-production design renders. They will be replaced with product photographs once the first run comes off the line.</p>
 </div></section>
 
 <section><div class="wrap">
@@ -513,15 +517,15 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
     <div class="cols">
       <div>
         <h4>NARION</h4>
-        <p>All technical data is from revision R0 and may change after contract-manufacturing validation.</p>
+        <p>All technical data is from revision R0 and is updated as the pilot run validates it.</p>
         <p class="kunye">Postane Mah. Rauf Orbay Cad., Kemal Sunal Sok. No: 29, Tuzla / İstanbul<br>VKN 0551569402</p>
       </div>
-      <div><h4>Models</h4><a href="narion-koza.html">KOZA</a><a href="narion-kaval.html">KAVAL</a><a href="narion-cinar.html">CINAR</a><a href="narion-servi.html">SERVI</a><a href="narion-prizma.html">PRIZMA</a><a href="narion-ocak.html">OCAK</a><a href="narion-fener.html">FENER</a><a href="narion-nomad.html">NOMAD</a><a href="karsilastirma.html">Comparison</a></div>
+      <div><h4>Models</h4><a href="narion-koza.html">KOZA</a><a href="narion-ladin.html">LADİN</a><a href="narion-manolya.html">MANOLYA</a><a href="narion-servi.html">SERVİ</a><a href="narion-prizma.html">PRİZMA</a><a href="narion-ocak.html">OCAK</a><a href="narion-fener.html">FENER</a><a href="narion-nomad.html">NOMAD</a><a href="karsilastirma.html">Comparison</a></div>
       <div><h4>Menu</h4><a href="index.html">Home</a><a href="teknoloji.html">Technology</a><a href="yedek-parca.html">Spare parts</a><a href="distributorluk.html">Distribution</a><a href="on-kayit.html">Pre-register</a><a href="hakkinda.html">About</a></div>
       <div><h4>Contact</h4><a href="mailto:info@narionhookah.com">info@narionhookah.com</a><a href="tel:+908508881679">+90 850 888 1679</a></div>
     </div>
     <div class="fine">
-      <span>Almita Group · Product Development · R0 · 09.2026</span>
+      <span>Almita Group · Manufacturing · R0 · 09.2026</span>
       <span>This site uses no cookies and no visitor tracking; fonts are served from our own server.</span>
     </div>
   </div>

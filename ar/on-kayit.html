@@ -303,6 +303,10 @@ html[dir="rtl"] .btnbox:hover .ar{transform:scaleX(-1) translateX(4px)}
   font-family:var(--f-mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase;
   font-weight:600; margin-top:22px}
 .btnbox:hover{background:var(--accent); color:#fff}
+/* e-posta ve alan adı: uppercase YAPILMAZ.
+   Türkçe sayfada lang="tr" olduğu için tarayıcı i→İ dönüşümü uygular ve
+   info@… adresi İNFO@NARİONHOOKAH.COM olur; tıklanabilir adres bozulmuş görünür. */
+.btnbox.eposta,.btn.eposta{text-transform:none; letter-spacing:.02em; font-size:13px}
 
 /* ---------- pazar kartı ---------- */
 .markets{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
@@ -385,14 +389,14 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
   <div class="wrap topin">
     <a class="brand" href="index.html"><span class="brand-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"  role="img" aria-label="NARION"><mask id="mi" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100"><rect width="100" height="100" fill="#fff"/><g stroke="#000" stroke-width="9" fill="none" stroke-linecap="round"><path d="M50.00 0.00 L50.00 21.00"/><path d="M50.00 21.00 A35 35 0 0 0 28.45 22.42"/><path d="M6.70 75.00 L24.89 64.50"/><path d="M24.89 64.50 A35 35 0 0 0 36.89 82.45"/><path d="M93.30 75.00 L75.11 64.50"/><path d="M75.11 64.50 A35 35 0 0 0 84.66 45.13"/></g></mask><g mask="url(#mi)"><circle cx="50" cy="50" r="35" fill="none" stroke="currentColor" stroke-width="15"/></g></svg></span>
       <span class="brand-txt"><b>NARION</b><span>Almita Group</span></span></a>
-    <nav class="main" aria-label="القائمة"><a href="index.html">الرئيسية</a><span class="nav-grup"><a href="index.html#modeller" aria-haspopup="true">الطُرز</a><span class="nav-alt"><a href="narion-koza.html">KOZA</a><a href="narion-kaval.html">KAVAL</a><a href="narion-cinar.html">CINAR</a><span class="alt-baslik">خارطة الطريق</span><a href="narion-servi.html">SERVI</a><a href="narion-prizma.html">PRIZMA</a><a href="narion-ocak.html">OCAK</a><a href="narion-fener.html">FENER</a><a href="narion-nomad.html">NOMAD</a><a class="alt-ayrac" href="karsilastirma.html">المقارنة</a></span></span><a href="teknoloji.html">التقنية</a><a href="yedek-parca.html">قطع الغيار</a><a href="distributorluk.html">التوزيع</a><a href="on-kayit.html" aria-current="page">التسجيل المسبق</a><a href="hakkinda.html">عن المشروع</a></nav>
+    <nav class="main" aria-label="القائمة"><a href="index.html">الرئيسية</a><span class="nav-grup"><a href="index.html#modeller" aria-haspopup="true">الطُرز</a><span class="nav-alt"><a href="narion-koza.html">KOZA</a><a href="narion-ladin.html">LADİN</a><a href="narion-manolya.html">MANOLYA</a><span class="alt-baslik">خارطة الطريق</span><a href="narion-servi.html">SERVİ</a><a href="narion-prizma.html">PRİZMA</a><a href="narion-ocak.html">OCAK</a><a href="narion-fener.html">FENER</a><a href="narion-nomad.html">NOMAD</a><a class="alt-ayrac" href="karsilastirma.html">المقارنة</a></span></span><a href="teknoloji.html">التقنية</a><a href="yedek-parca.html">قطع الغيار</a><a href="distributorluk.html">التوزيع</a><a href="on-kayit.html" aria-current="page">التسجيل المسبق</a><a href="hakkinda.html">عن المشروع</a></nav>
     <div class="langs" role="navigation" aria-label="اللغة"><a href="../tr/on-kayit.html" hreflang="tr" lang="tr">tr</a><a href="../en/on-kayit.html" hreflang="en" lang="en">en</a><a href="../ar/on-kayit.html" hreflang="ar" lang="ar" aria-current="true">ar</a><a href="../ru/on-kayit.html" hreflang="ru" lang="ru">ru</a></div>
   </div>
 </header>
 <div class="status">
   <div class="wrap">
-    <b>مرحلة التطوير</b>
-    <p>‏NARION حالياً في المرحلة T0 — الرسومات الفنية وعيّنة التصنيع بالتحكم الرقمي. المنتج ليس في الإنتاج التسلسلي بعد؛ والأبعاد والمواد وأرقام الأداء الواردة في هذا الموقع قرارات تصميمية، لا نتائج ميدانية مُثبتة.</p>
+    <b>تحضير للإنتاج</b>
+    <p>‏NARION تُنتجها Almita Group على خطّها الخاص — لا بالتصنيع لدى الغير ولا بالاستيراد. السلسلة الأولى الآن في مرحلة التحضير للإنتاج: الرسومات الفنية جاهزة، ومرحلة عيّنات الـ CNC جارية. الأبعاد وأهداف الأداء على هذا الموقع قرارات إنتاجية لدينا؛ وستُنشر نتائج الاختبارات المتحقَّقة في الصفحات نفسها فور ورودها.</p>
   </div>
 </div>
 <main id="main">
@@ -402,27 +406,27 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
     <span class="eyebrow">للمستخدم</span>
     <h1>ليس
 معروضاً للبيع بعد</h1>
-    <p class="lede">الأصدق أن نقولها من البداية: NARION ليس في الإنتاج. وعندما تجهز السلسلة الأولى البالغة 500 وحدة يصل إشعار واحد لكل من في القائمة. لا نشرة دورية، ولا يُشارَك عنوانك مع أي طرف ثالث.</p>
-    <a class="btnbox" href="mailto:info@narionhookah.com?subject=%E2%80%8FNARION%20%E2%80%94%20%D8%A7%D9%84%D8%AA%D8%B3%D8%AC%D9%8A%D9%84%20%D8%A7%D9%84%D9%85%D8%B3%D8%A8%D9%82">انضم إلى قائمة التسجيل المسبق <span class="ar" aria-hidden="true">&rarr;</span></a>
+    <p class="lede">الأصدق أن نقولها من البداية: السلسلة الأولى لم تنزل من الخط بعد. وعند اكتمال أول 500 قطعة يصل كل مَن في القائمة إشعار واحد من المصنّع. لا توجد نشرة دورية، ولا يُشارَك عنوانكم مع أي طرف ثالث.</p>
+    <a class="btnbox eposta" href="mailto:info@narionhookah.com?subject=%E2%80%8FNARION%20%E2%80%94%20%D8%A7%D9%84%D8%AA%D8%B3%D8%AC%D9%8A%D9%84%20%D8%A7%D9%84%D9%85%D8%B3%D8%A8%D9%82">انضم إلى قائمة التسجيل المسبق <span class="ar" aria-hidden="true">&rarr;</span></a>
   </div>
-  <div class="herofig"><figure class="sh "><img src="../gorsel/panel-detay.webp" alt="ماذا ستحصل عليه" width="345" height="584" fetchpriority='high' decoding='async'><figcaption><b>صورة تصوّرية</b><span>لوح الجوز — السطح الذي يُحفر عليه شعار المقهى.</span></figcaption></figure></div>
+  <div class="herofig"><figure class="sh "><img src="../gorsel/panel-detay.webp" alt="ماذا ستحصل عليه" width="345" height="584" fetchpriority='high' decoding='async'><figcaption><b>صورة تصميم</b><span>لوح الجوز — السطح الذي يُحفر عليه شعار المقهى.</span></figcaption></figure></div>
 </div></div>
 
 <section><div class="wrap">
   <div class="shead"><span class="num">01</span><h2>ماذا ستحصل عليه</h2></div>
-  <div class="prose"><p>أحد الطُرز الثلاثة بحزمة سطحه الخاصة. تضم العلبة الجهاز وخرطوماً ورأساً وطقم إحكام FKM وورقة فنية تحمل مقاومة السحب المقاسة. ‏KOZA وKAVAL بلوح الجوز، وCINAR بعنق خشبي.</p></div>
+  <div class="prose"><p>أحد الطُرز الثلاثة بحزمة سطحه الخاصة. تضم العلبة الجهاز وخرطوماً ورأساً وطقم إحكام FKM وورقة فنية تحمل مقاومة السحب المقاسة. ‏KOZA وLADİN بلوح الجوز، وMANOLYA بعنق خشبي.</p></div>
 </div></section>
 
 <section><div class="wrap">
   <div class="shead"><span class="num">02</span><h2>النطاق السعري المستهدف</h2>
-    <p>ما يلي نطاق R0 المستهدف، لا سعر الإطلاق. وسيُحدَّث بعد استقرار عروض التصنيع المتعاقد والشحن والجمارك.</p></div>
-  <div class="grid g3"><div class="cell"><span class="k">NARION KOZA</span><h3>كوزا</h3><p style="font-family:var(--f-mono);font-size:22px;color:var(--ink)">265 $</p><span class="spec">للمقاهي والاستخدام المنزلي في الشريحة العليا. شعار المقهى على لوح الجوز، وبداخله نافذة منسوب الماء.</span></div><div class="cell"><span class="k">NARION KAVAL</span><h3>كاوال</h3><p style="font-family:var(--f-mono);font-size:22px;color:var(--ink)">245 $</p><span class="spec">للمقاهي والصالات. جسم نحيل قائم، لوح جوز بنقش عظمة السمكة.</span></div><div class="cell"><span class="k">NARION CINAR</span><h3>تشينار</h3><p style="font-family:var(--f-mono);font-size:22px;color:var(--ink)">280 $</p><span class="spec">للمنزل والضيافة. صورة ظلية تقليدية، طلاء PVD، عنق خشبي.</span></div></div>
+    <p>ما يلي نطاق R0 المستهدف، لا سعر الإطلاق. وسيُحدَّث بعد استقرار تكلفة الإنتاج والشحن والجمارك.</p></div>
+  <div class="grid g3"><div class="cell"><span class="k">NARION KOZA</span><h3>كوزا</h3><p style="font-family:var(--f-mono);font-size:22px;color:var(--ink)">265 $</p><span class="spec">للمقاهي والاستخدام المنزلي في الشريحة العليا. شعار المقهى على لوح الجوز، وبداخله نافذة منسوب الماء.</span></div><div class="cell"><span class="k">NARION LADİN</span><h3>لادين</h3><p style="font-family:var(--f-mono);font-size:22px;color:var(--ink)">245 $</p><span class="spec">للمقاهي والصالات. جسم نحيل قائم، لوح جوز بنقش عظمة السمكة.</span></div><div class="cell"><span class="k">NARION MANOLYA</span><h3>مانوليا</h3><p style="font-family:var(--f-mono);font-size:22px;color:var(--ink)">280 $</p><span class="spec">للمنزل والضيافة. صورة ظلية تقليدية، طلاء PVD، عنق خشبي.</span></div></div>
 </div></section>
 
 <section><div class="wrap">
   <div class="shead"><span class="num">03</span><h2>سجّل في القائمة</h2></div>
   <div class="prose"><p>رسالة بريد تكفي. وقد جهّزنا سطر الموضوع؛ وإذا ذكرت الطراز الذي يهمّك ودولتك، أريناك حزمة السطح الخاصة بذلك السوق حين تجهز.</p></div>
-  <a class="btnbox" href="mailto:info@narionhookah.com?subject=%E2%80%8FNARION%20%E2%80%94%20%D8%A7%D9%84%D8%AA%D8%B3%D8%AC%D9%8A%D9%84%20%D8%A7%D9%84%D9%85%D8%B3%D8%A8%D9%82">info@narionhookah.com <span class="ar" aria-hidden="true">&rarr;</span></a>
+  <a class="btnbox eposta" href="mailto:info@narionhookah.com?subject=%E2%80%8FNARION%20%E2%80%94%20%D8%A7%D9%84%D8%AA%D8%B3%D8%AC%D9%8A%D9%84%20%D8%A7%D9%84%D9%85%D8%B3%D8%A8%D9%82">info@narionhookah.com <span class="ar" aria-hidden="true">&rarr;</span></a>
   <div class="note"><span class="k">ماذا يحدث لعنوانك</span>
     <p>يُحفظ فقط لإشعار السلسلة الأولى، ولا يُشارَك مع أي طرف ثالث، وللخروج من القائمة بعدها تكفي رسالة إلى العنوان نفسه. ولا توجد في هذا الموقع ملفات تعريف ارتباط ولا تتبّع للزوّار.</p></div>
 </div></section>
@@ -432,15 +436,15 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
     <div class="cols">
       <div>
         <h4>NARION</h4>
-        <p>جميع البيانات الفنية من المراجعة R0 وقد تتغيّر بعد التحقق لدى مصنع التصنيع المتعاقد.</p>
+        <p>جميع البيانات الفنية من المراجعة R0 وتُحدَّث مع تحقّق السلسلة التجريبية.</p>
         <p class="kunye">Postane Mah. Rauf Orbay Cad., Kemal Sunal Sok. No: 29, Tuzla / İstanbul<br>VKN 0551569402</p>
       </div>
-      <div><h4>الطُرز</h4><a href="narion-koza.html">KOZA</a><a href="narion-kaval.html">KAVAL</a><a href="narion-cinar.html">CINAR</a><a href="narion-servi.html">SERVI</a><a href="narion-prizma.html">PRIZMA</a><a href="narion-ocak.html">OCAK</a><a href="narion-fener.html">FENER</a><a href="narion-nomad.html">NOMAD</a><a href="karsilastirma.html">المقارنة</a></div>
+      <div><h4>الطُرز</h4><a href="narion-koza.html">KOZA</a><a href="narion-ladin.html">LADİN</a><a href="narion-manolya.html">MANOLYA</a><a href="narion-servi.html">SERVİ</a><a href="narion-prizma.html">PRİZMA</a><a href="narion-ocak.html">OCAK</a><a href="narion-fener.html">FENER</a><a href="narion-nomad.html">NOMAD</a><a href="karsilastirma.html">المقارنة</a></div>
       <div><h4>القائمة</h4><a href="index.html">الرئيسية</a><a href="teknoloji.html">التقنية</a><a href="yedek-parca.html">قطع الغيار</a><a href="distributorluk.html">التوزيع</a><a href="on-kayit.html">التسجيل المسبق</a><a href="hakkinda.html">عن المشروع</a></div>
       <div><h4>التواصل</h4><a href="mailto:info@narionhookah.com">info@narionhookah.com</a><a href="tel:+908508881679">+90 850 888 1679</a></div>
     </div>
     <div class="fine">
-      <span>‏Almita Group · تطوير المنتج · R0 · 09.2026</span>
+      <span>‏Almita Group · التصنيع · R0 · 09.2026</span>
       <span>هذا الموقع لا يستخدم ملفات تعريف الارتباط ولا يتتبّع الزوّار؛ وخطوطه تُحمَّل من خادمنا.</span>
     </div>
   </div>

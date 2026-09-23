@@ -303,6 +303,10 @@ html[dir="rtl"] .btnbox:hover .ar{transform:scaleX(-1) translateX(4px)}
   font-family:var(--f-mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase;
   font-weight:600; margin-top:22px}
 .btnbox:hover{background:var(--accent); color:#fff}
+/* e-posta ve alan adı: uppercase YAPILMAZ.
+   Türkçe sayfada lang="tr" olduğu için tarayıcı i→İ dönüşümü uygular ve
+   info@… adresi İNFO@NARİONHOOKAH.COM olur; tıklanabilir adres bozulmuş görünür. */
+.btnbox.eposta,.btn.eposta{text-transform:none; letter-spacing:.02em; font-size:13px}
 
 /* ---------- pazar kartı ---------- */
 .markets{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
@@ -385,14 +389,14 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
   <div class="wrap topin">
     <a class="brand" href="index.html"><span class="brand-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"  role="img" aria-label="NARION"><mask id="mi" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100"><rect width="100" height="100" fill="#fff"/><g stroke="#000" stroke-width="9" fill="none" stroke-linecap="round"><path d="M50.00 0.00 L50.00 21.00"/><path d="M50.00 21.00 A35 35 0 0 0 28.45 22.42"/><path d="M6.70 75.00 L24.89 64.50"/><path d="M24.89 64.50 A35 35 0 0 0 36.89 82.45"/><path d="M93.30 75.00 L75.11 64.50"/><path d="M75.11 64.50 A35 35 0 0 0 84.66 45.13"/></g></mask><g mask="url(#mi)"><circle cx="50" cy="50" r="35" fill="none" stroke="currentColor" stroke-width="15"/></g></svg></span>
       <span class="brand-txt"><b>NARION</b><span>Almita Group</span></span></a>
-    <nav class="main" aria-label="Меню"><a href="index.html">Главная</a><span class="nav-grup"><a href="index.html#modeller" aria-haspopup="true">Модели</a><span class="nav-alt"><a href="narion-koza.html">KOZA</a><a href="narion-kaval.html">KAVAL</a><a href="narion-cinar.html">CINAR</a><span class="alt-baslik">Дорожная карта</span><a href="narion-servi.html">SERVI</a><a href="narion-prizma.html">PRIZMA</a><a href="narion-ocak.html">OCAK</a><a href="narion-fener.html">FENER</a><a href="narion-nomad.html">NOMAD</a><a class="alt-ayrac" href="karsilastirma.html">Сравнение</a></span></span><a href="teknoloji.html">Технология</a><a href="yedek-parca.html">Запчасти</a><a href="distributorluk.html" aria-current="page">Дистрибуция</a><a href="on-kayit.html">Предзапись</a><a href="hakkinda.html">О проекте</a></nav>
+    <nav class="main" aria-label="Меню"><a href="index.html">Главная</a><span class="nav-grup"><a href="index.html#modeller" aria-haspopup="true">Модели</a><span class="nav-alt"><a href="narion-koza.html">KOZA</a><a href="narion-ladin.html">LADİN</a><a href="narion-manolya.html">MANOLYA</a><span class="alt-baslik">Дорожная карта</span><a href="narion-servi.html">SERVİ</a><a href="narion-prizma.html">PRİZMA</a><a href="narion-ocak.html">OCAK</a><a href="narion-fener.html">FENER</a><a href="narion-nomad.html">NOMAD</a><a class="alt-ayrac" href="karsilastirma.html">Сравнение</a></span></span><a href="teknoloji.html">Технология</a><a href="yedek-parca.html">Запчасти</a><a href="distributorluk.html" aria-current="page">Дистрибуция</a><a href="on-kayit.html">Предзапись</a><a href="hakkinda.html">О проекте</a></nav>
     <div class="langs" role="navigation" aria-label="Язык"><a href="../tr/distributorluk.html" hreflang="tr" lang="tr">tr</a><a href="../en/distributorluk.html" hreflang="en" lang="en">en</a><a href="../ar/distributorluk.html" hreflang="ar" lang="ar">ar</a><a href="../ru/distributorluk.html" hreflang="ru" lang="ru" aria-current="true">ru</a></div>
   </div>
 </header>
 <div class="status">
   <div class="wrap">
-    <b>Стадия разработки</b>
-    <p>NARION находится на стадии T0 — чертежи и образец с ЧПУ. Серийное производство ещё не начато; размеры, материалы и показатели на этом сайте являются проектными решениями, а не подтверждёнными результатами полевых испытаний.</p>
+    <b>Подготовка к производству</b>
+    <p>NARION производит Almita Group на собственной линии — не на подряде и не по импорту. Первая серия сейчас в подготовке к производству: чертежи готовы, идёт этап ЧПУ-образцов. Размеры и целевые показатели на сайте — наши производственные решения; проверенные результаты испытаний будут опубликованы на тех же страницах по мере их получения.</p>
   </div>
 </div>
 <main id="main">
@@ -402,10 +406,10 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
     <span class="eyebrow">B2B</span>
     <h1>Первая серия
 500 штук</h1>
-    <p class="lede">Предлагаемое распределение: 250 KOZA, 150 KAVAL, 100 CINAR. Флагманская модель выходит первой; её полевая репутация тянет продажи домашней модели. На этом этапе мы ищем региональных дистрибьюторов и пилотные заведения.</p>
-    <a class="btnbox" href="mailto:info@narionhookah.com?subject=NARION%20%E2%80%94%20%D0%B4%D0%B8%D1%81%D1%82%D1%80%D0%B8%D0%B1%D1%83%D1%86%D0%B8%D1%8F%20/%20%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81%20%D0%BE%D0%B1%D1%80%D0%B0%D0%B7%D1%86%D0%B0">Написать нам <span class="ar" aria-hidden="true">&rarr;</span></a>
+    <p class="lede">Предлагаемое распределение: 250 KOZA, 150 LADİN, 100 MANOLYA. Флагман выходит первым; опыт в зале вытягивает продажи домашней модели. Вы работаете напрямую с производителем — без посредника, импортёра и лицензионной прослойки. На этом этапе мы ищем региональных дистрибьюторов и пилотные кафе.</p>
+    <a class="btnbox eposta" href="mailto:info@narionhookah.com?subject=NARION%20%E2%80%94%20%D0%B4%D0%B8%D1%81%D1%82%D1%80%D0%B8%D0%B1%D1%83%D1%86%D0%B8%D1%8F%20/%20%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81%20%D0%BE%D0%B1%D1%80%D0%B0%D0%B7%D1%86%D0%B0">Написать нам <span class="ar" aria-hidden="true">&rarr;</span></a>
   </div>
-  <div class="herofig"><figure class="sh "><img src="../gorsel/model-narion-cinar.webp" alt="Рыночные пакеты" width="760" height="1132" fetchpriority='high' decoding='async'><figcaption><b>Концепт-рендер</b><span>NARION CINAR — традиционный силуэт, покрытие PVD, деревянная шейка.</span></figcaption></figure></div>
+  <div class="herofig"><figure class="sh "><img src="../gorsel/model-narion-manolya.webp" alt="Рыночные пакеты" width="760" height="1132" fetchpriority='high' decoding='async'><figcaption><b>Дизайн-визуализация</b><span>NARION MANOLYA — традиционный силуэт, покрытие PVD, деревянная шейка.</span></figcaption></figure></div>
 </div></div>
 
 <section><div class="wrap">
@@ -421,7 +425,7 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
       <div><dt>Покрытие</dt><dd>PVD шампань</dd></div>
       <div><dt>Промежуточное кольцо</dt><dd>Латунь</dd></div>
       <div><dt>Колба</dt><dd>Tritan, прозрачная</dd></div>
-      <div><dt>Приоритетная модель</dt><dd>KOZA · CINAR</dd></div>
+      <div><dt>Приоритетная модель</dt><dd>KOZA · MANOLYA</dd></div>
       <div><dt>Подача</dt><dd>Подарочная коробка</dd></div>
     </dl>
   </div>
@@ -435,7 +439,7 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
       <div><dt>Покрытие</dt><dd>Матовый чёрный PVD</dd></div>
       <div><dt>Промежуточное кольцо</dt><dd>Орех</dd></div>
       <div><dt>Колба</dt><dd>Tritan, прозрачная</dd></div>
-      <div><dt>Приоритетная модель</dt><dd>KOZA · KAVAL</dd></div>
+      <div><dt>Приоритетная модель</dt><dd>KOZA · LADİN</dd></div>
       <div><dt>Подача</dt><dd>Коробка + кафе</dd></div>
     </dl>
   </div>
@@ -449,7 +453,7 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
       <div><dt>Покрытие</dt><dd>PVD gun metal</dd></div>
       <div><dt>Промежуточное кольцо</dt><dd>Нет — цельный металл</dd></div>
       <div><dt>Колба</dt><dd>Tritan, прозрачная</dd></div>
-      <div><dt>Приоритетная модель</dt><dd>KAVAL · KOZA</dd></div>
+      <div><dt>Приоритетная модель</dt><dd>LADİN · KOZA</dd></div>
       <div><dt>Подача</dt><dd>Акцент на техописание</dd></div>
     </dl>
   </div>
@@ -459,7 +463,7 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
 <section><div class="wrap">
   <div class="shead"><span class="num">02</span><h2>План производства</h2>
     <p>График ниже используется для планирования поставок в переговорах с дистрибьюторами. Сроки — проектные цели, уточняются после договора с производством.</p></div>
-  <div class="road"><div class="step"><span class="id">T0</span><div><h3>Чертежи и образец</h3><p>Завершаются полные чертежи и простановка размеров трёх моделей; выходят первые образцы.</p></div><span class="when">3-4 нед.<em class="st-suruyor">В работе</em></span></div><div class="step"><span class="id">T1</span><div><h3>Проверка функций и ревизия</h3><p>Измерение сопротивления тяги, герметичность, ощущение байонета, эргономическая ревизия.</p></div><span class="when">2-3 нед.<em class="">Ожидает</em></span></div><div class="step"><span class="id">T2</span><div><h3>Пилотная серия и полевые испытания</h3><p>Выпускается 50 штук, на этой партии проходит полный протокол испытаний. Пилот в кафе: 60 дней в 5 заведениях.</p></div><span class="when">6-8 нед.<em class="">Ожидает</em></span></div><div class="step"><span class="id">T3</span><div><h3>Сертификация</h3><p>G-Mark для Залива, EAC для России / ЕАЭС, отчёты по пищевому контакту. Идёт параллельно с пилотом.</p></div><span class="when">4-6 нед.<em class="">Ожидает</em></span></div><div class="step"><span class="id">T4</span><div><h3>Первая серия — 500 штук</h3><p>250 KOZA, 150 KAVAL, 100 CINAR. Флагманская модель выходит первой.</p></div><span class="when">5-7 нед.<em class="">Ожидает</em></span></div></div>
+  <div class="road"><div class="step"><span class="id">T0</span><div><h3>Чертежи и образец</h3><p>Завершаются полные чертежи и простановка размеров трёх моделей; выходят первые образцы.</p></div><span class="when">3-4 нед.<em class="st-suruyor">В работе</em></span></div><div class="step"><span class="id">T1</span><div><h3>Проверка функций и ревизия</h3><p>Измерение сопротивления тяги, герметичность, ощущение байонета, эргономическая ревизия.</p></div><span class="when">2-3 нед.<em class="">Ожидает</em></span></div><div class="step"><span class="id">T2</span><div><h3>Пилотная серия и полевые испытания</h3><p>Выпускается 50 штук, на этой партии проходит полный протокол испытаний. Пилот в кафе: 60 дней в 5 заведениях.</p></div><span class="when">6-8 нед.<em class="">Ожидает</em></span></div><div class="step"><span class="id">T3</span><div><h3>Сертификация</h3><p>G-Mark для Залива, EAC для России / ЕАЭС, отчёты по пищевому контакту. Идёт параллельно с пилотом.</p></div><span class="when">4-6 нед.<em class="">Ожидает</em></span></div><div class="step"><span class="id">T4</span><div><h3>Первая серия — 500 штук</h3><p>250 KOZA, 150 LADİN, 100 MANOLYA. Флагманская модель выходит первой.</p></div><span class="when">5-7 нед.<em class="">Ожидает</em></span></div></div>
   <p class="small">T0 → T4 суммарно около 5–7 месяцев при параллельной сертификации.</p>
 </div></section>
 
@@ -471,7 +475,7 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
 <section><div class="wrap">
   <div class="shead"><span class="num">04</span><h2>Запрос образца и дилерского прайса</h2></div>
   <div class="prose"><p>Дилерский прайс, объёмные ступени и техническое описание предоставляются по запросу после подписания соглашения о конфиденциальности. Если вы укажете название компании, страну, канал (HoReCa / розница / онлайн) и ожидаемый годовой объём, условия придут уже с первым ответом.</p></div>
-  <a class="btnbox" href="mailto:info@narionhookah.com?subject=NARION%20%E2%80%94%20%D0%B4%D0%B8%D1%81%D1%82%D1%80%D0%B8%D0%B1%D1%83%D1%86%D0%B8%D1%8F%20/%20%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81%20%D0%BE%D0%B1%D1%80%D0%B0%D0%B7%D1%86%D0%B0">info@narionhookah.com <span class="ar" aria-hidden="true">&rarr;</span></a>
+  <a class="btnbox eposta" href="mailto:info@narionhookah.com?subject=NARION%20%E2%80%94%20%D0%B4%D0%B8%D1%81%D1%82%D1%80%D0%B8%D0%B1%D1%83%D1%86%D0%B8%D1%8F%20/%20%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81%20%D0%BE%D0%B1%D1%80%D0%B0%D0%B7%D1%86%D0%B0">info@narionhookah.com <span class="ar" aria-hidden="true">&rarr;</span></a>
 </div></section>
 
 <section><div class="wrap">
@@ -484,15 +488,15 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
     <div class="cols">
       <div>
         <h4>NARION</h4>
-        <p>Все технические данные относятся к ревизии R0 и могут измениться после проверки на контрактном производстве.</p>
+        <p>Все технические данные относятся к ревизии R0 и обновляются по мере проверки на пилотной серии.</p>
         <p class="kunye">Postane Mah. Rauf Orbay Cad., Kemal Sunal Sok. No: 29, Tuzla / İstanbul<br>VKN 0551569402</p>
       </div>
-      <div><h4>Модели</h4><a href="narion-koza.html">KOZA</a><a href="narion-kaval.html">KAVAL</a><a href="narion-cinar.html">CINAR</a><a href="narion-servi.html">SERVI</a><a href="narion-prizma.html">PRIZMA</a><a href="narion-ocak.html">OCAK</a><a href="narion-fener.html">FENER</a><a href="narion-nomad.html">NOMAD</a><a href="karsilastirma.html">Сравнение</a></div>
+      <div><h4>Модели</h4><a href="narion-koza.html">KOZA</a><a href="narion-ladin.html">LADİN</a><a href="narion-manolya.html">MANOLYA</a><a href="narion-servi.html">SERVİ</a><a href="narion-prizma.html">PRİZMA</a><a href="narion-ocak.html">OCAK</a><a href="narion-fener.html">FENER</a><a href="narion-nomad.html">NOMAD</a><a href="karsilastirma.html">Сравнение</a></div>
       <div><h4>Меню</h4><a href="index.html">Главная</a><a href="teknoloji.html">Технология</a><a href="yedek-parca.html">Запчасти</a><a href="distributorluk.html">Дистрибуция</a><a href="on-kayit.html">Предзапись</a><a href="hakkinda.html">О проекте</a></div>
       <div><h4>Контакты</h4><a href="mailto:info@narionhookah.com">info@narionhookah.com</a><a href="tel:+908508881679">+90 850 888 1679</a></div>
     </div>
     <div class="fine">
-      <span>Almita Group · Разработка продукта · R0 · 09.2026</span>
+      <span>Almita Group · Производство · R0 · 09.2026</span>
       <span>Сайт не использует файлы cookie и не отслеживает посетителей; шрифты загружаются с нашего сервера.</span>
     </div>
   </div>

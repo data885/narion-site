@@ -303,6 +303,10 @@ html[dir="rtl"] .btnbox:hover .ar{transform:scaleX(-1) translateX(4px)}
   font-family:var(--f-mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase;
   font-weight:600; margin-top:22px}
 .btnbox:hover{background:var(--accent); color:#fff}
+/* e-posta ve alan adı: uppercase YAPILMAZ.
+   Türkçe sayfada lang="tr" olduğu için tarayıcı i→İ dönüşümü uygular ve
+   info@… adresi İNFO@NARİONHOOKAH.COM olur; tıklanabilir adres bozulmuş görünür. */
+.btnbox.eposta,.btn.eposta{text-transform:none; letter-spacing:.02em; font-size:13px}
 
 /* ---------- pazar kartı ---------- */
 .markets{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
@@ -385,14 +389,14 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
   <div class="wrap topin">
     <a class="brand" href="index.html"><span class="brand-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"  role="img" aria-label="NARION"><mask id="mi" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100"><rect width="100" height="100" fill="#fff"/><g stroke="#000" stroke-width="9" fill="none" stroke-linecap="round"><path d="M50.00 0.00 L50.00 21.00"/><path d="M50.00 21.00 A35 35 0 0 0 28.45 22.42"/><path d="M6.70 75.00 L24.89 64.50"/><path d="M24.89 64.50 A35 35 0 0 0 36.89 82.45"/><path d="M93.30 75.00 L75.11 64.50"/><path d="M75.11 64.50 A35 35 0 0 0 84.66 45.13"/></g></mask><g mask="url(#mi)"><circle cx="50" cy="50" r="35" fill="none" stroke="currentColor" stroke-width="15"/></g></svg></span>
       <span class="brand-txt"><b>NARION</b><span>Almita Group</span></span></a>
-    <nav class="main" aria-label="Меню"><a href="index.html">Главная</a><span class="nav-grup"><a href="index.html#modeller" aria-haspopup="true">Модели</a><span class="nav-alt"><a href="narion-koza.html">KOZA</a><a href="narion-kaval.html">KAVAL</a><a href="narion-cinar.html">CINAR</a><span class="alt-baslik">Дорожная карта</span><a href="narion-servi.html">SERVI</a><a href="narion-prizma.html">PRIZMA</a><a href="narion-ocak.html">OCAK</a><a href="narion-fener.html">FENER</a><a href="narion-nomad.html">NOMAD</a><a class="alt-ayrac" href="karsilastirma.html">Сравнение</a></span></span><a href="teknoloji.html">Технология</a><a href="yedek-parca.html">Запчасти</a><a href="distributorluk.html">Дистрибуция</a><a href="on-kayit.html" aria-current="page">Предзапись</a><a href="hakkinda.html">О проекте</a></nav>
+    <nav class="main" aria-label="Меню"><a href="index.html">Главная</a><span class="nav-grup"><a href="index.html#modeller" aria-haspopup="true">Модели</a><span class="nav-alt"><a href="narion-koza.html">KOZA</a><a href="narion-ladin.html">LADİN</a><a href="narion-manolya.html">MANOLYA</a><span class="alt-baslik">Дорожная карта</span><a href="narion-servi.html">SERVİ</a><a href="narion-prizma.html">PRİZMA</a><a href="narion-ocak.html">OCAK</a><a href="narion-fener.html">FENER</a><a href="narion-nomad.html">NOMAD</a><a class="alt-ayrac" href="karsilastirma.html">Сравнение</a></span></span><a href="teknoloji.html">Технология</a><a href="yedek-parca.html">Запчасти</a><a href="distributorluk.html">Дистрибуция</a><a href="on-kayit.html" aria-current="page">Предзапись</a><a href="hakkinda.html">О проекте</a></nav>
     <div class="langs" role="navigation" aria-label="Язык"><a href="../tr/on-kayit.html" hreflang="tr" lang="tr">tr</a><a href="../en/on-kayit.html" hreflang="en" lang="en">en</a><a href="../ar/on-kayit.html" hreflang="ar" lang="ar">ar</a><a href="../ru/on-kayit.html" hreflang="ru" lang="ru" aria-current="true">ru</a></div>
   </div>
 </header>
 <div class="status">
   <div class="wrap">
-    <b>Стадия разработки</b>
-    <p>NARION находится на стадии T0 — чертежи и образец с ЧПУ. Серийное производство ещё не начато; размеры, материалы и показатели на этом сайте являются проектными решениями, а не подтверждёнными результатами полевых испытаний.</p>
+    <b>Подготовка к производству</b>
+    <p>NARION производит Almita Group на собственной линии — не на подряде и не по импорту. Первая серия сейчас в подготовке к производству: чертежи готовы, идёт этап ЧПУ-образцов. Размеры и целевые показатели на сайте — наши производственные решения; проверенные результаты испытаний будут опубликованы на тех же страницах по мере их получения.</p>
   </div>
 </div>
 <main id="main">
@@ -402,27 +406,27 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
     <span class="eyebrow">Для пользователя</span>
     <h1>Ещё
 не в продаже</h1>
-    <p class="lede">Честнее сказать сразу: NARION не в производстве. Когда первая серия в 500 штук будет готова, всем в листе придёт одно уведомление. Регулярной рассылки нет, адрес третьим лицам не передаётся.</p>
-    <a class="btnbox" href="mailto:info@narionhookah.com?subject=NARION%20%E2%80%94%20%D0%BF%D1%80%D0%B5%D0%B4%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D1%8C">Записаться в лист ожидания <span class="ar" aria-hidden="true">&rarr;</span></a>
+    <p class="lede">Честнее сказать сразу: первая серия ещё не сошла с линии. Когда первые 500 штук будут готовы, всем из списка придёт одно уведомление от производителя. Регулярной рассылки нет, ваш адрес третьим лицам не передаётся.</p>
+    <a class="btnbox eposta" href="mailto:info@narionhookah.com?subject=NARION%20%E2%80%94%20%D0%BF%D1%80%D0%B5%D0%B4%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D1%8C">Записаться в лист ожидания <span class="ar" aria-hidden="true">&rarr;</span></a>
   </div>
-  <div class="herofig"><figure class="sh "><img src="../gorsel/panel-detay.webp" alt="Что вы получите" width="345" height="584" fetchpriority='high' decoding='async'><figcaption><b>Концепт-рендер</b><span>Ореховая панель — поверхность, на которую наносится логотип кафе.</span></figcaption></figure></div>
+  <div class="herofig"><figure class="sh "><img src="../gorsel/panel-detay.webp" alt="Что вы получите" width="345" height="584" fetchpriority='high' decoding='async'><figcaption><b>Дизайн-визуализация</b><span>Ореховая панель — поверхность, на которую наносится логотип кафе.</span></figcaption></figure></div>
 </div></div>
 
 <section><div class="wrap">
   <div class="shead"><span class="num">01</span><h2>Что вы получите</h2></div>
-  <div class="prose"><p>Одну из трёх моделей с её поверхностным пакетом. В коробке — аппарат, шланг, чаша, комплект уплотнений FKM и техническое описание с измеренным сопротивлением тяги. У KOZA и KAVAL ореховая панель, у CINAR деревянная шейка.</p></div>
+  <div class="prose"><p>Одну из трёх моделей с её поверхностным пакетом. В коробке — аппарат, шланг, чаша, комплект уплотнений FKM и техническое описание с измеренным сопротивлением тяги. У KOZA и LADİN ореховая панель, у MANOLYA деревянная шейка.</p></div>
 </div></section>
 
 <section><div class="wrap">
   <div class="shead"><span class="num">02</span><h2>Целевой ценовой диапазон</h2>
-    <p>Ниже — целевой диапазон R0, а не цена запуска. Он будет уточнён после получения предложений контрактного производства, логистики и таможни.</p></div>
-  <div class="grid g3"><div class="cell"><span class="k">NARION KOZA</span><h3>Коза</h3><p style="font-family:var(--f-mono);font-size:22px;color:var(--ink)">265 $</p><span class="spec">Для кафе и домашнего использования верхнего сегмента. Логотип кафе на ореховой панели, внутри неё окно уровня воды.</span></div><div class="cell"><span class="k">NARION KAVAL</span><h3>Кавал</h3><p style="font-family:var(--f-mono);font-size:22px;color:var(--ink)">245 $</p><span class="spec">Для кафе и лаунж-залов. Стройный вертикальный корпус, ореховая панель «ёлочкой».</span></div><div class="cell"><span class="k">NARION CINAR</span><h3>Чинар</h3><p style="font-family:var(--f-mono);font-size:22px;color:var(--ink)">280 $</p><span class="spec">Для дома и гостей. Традиционный силуэт, покрытие PVD, деревянная шейка.</span></div></div>
+    <p>Ниже — целевой диапазон R0, а не цена запуска. Он будет уточнён после того, как определятся себестоимость производства, логистика и таможня.</p></div>
+  <div class="grid g3"><div class="cell"><span class="k">NARION KOZA</span><h3>Коза</h3><p style="font-family:var(--f-mono);font-size:22px;color:var(--ink)">265 $</p><span class="spec">Для кафе и домашнего использования верхнего сегмента. Логотип кафе на ореховой панели, внутри неё окно уровня воды.</span></div><div class="cell"><span class="k">NARION LADİN</span><h3>Ладин</h3><p style="font-family:var(--f-mono);font-size:22px;color:var(--ink)">245 $</p><span class="spec">Для кафе и лаунж-залов. Стройный вертикальный корпус, ореховая панель «ёлочкой».</span></div><div class="cell"><span class="k">NARION MANOLYA</span><h3>Манолья</h3><p style="font-family:var(--f-mono);font-size:22px;color:var(--ink)">280 $</p><span class="spec">Для дома и гостей. Традиционный силуэт, покрытие PVD, деревянная шейка.</span></div></div>
 </div></section>
 
 <section><div class="wrap">
   <div class="shead"><span class="num">03</span><h2>Записаться</h2></div>
   <div class="prose"><p>Достаточно письма. Тема уже заполнена; если укажете интересующую модель и свою страну, мы покажем вам поверхностный пакет этого рынка, как только он будет готов.</p></div>
-  <a class="btnbox" href="mailto:info@narionhookah.com?subject=NARION%20%E2%80%94%20%D0%BF%D1%80%D0%B5%D0%B4%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D1%8C">info@narionhookah.com <span class="ar" aria-hidden="true">&rarr;</span></a>
+  <a class="btnbox eposta" href="mailto:info@narionhookah.com?subject=NARION%20%E2%80%94%20%D0%BF%D1%80%D0%B5%D0%B4%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D1%8C">info@narionhookah.com <span class="ar" aria-hidden="true">&rarr;</span></a>
   <div class="note"><span class="k">Что будет с вашим адресом</span>
     <p>Он хранится только для уведомления о первой серии, не передаётся третьим лицам, и чтобы выйти из списка потом, достаточно написать на тот же адрес. На сайте нет файлов cookie и отслеживания посетителей.</p></div>
 </div></section>
@@ -432,15 +436,15 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
     <div class="cols">
       <div>
         <h4>NARION</h4>
-        <p>Все технические данные относятся к ревизии R0 и могут измениться после проверки на контрактном производстве.</p>
+        <p>Все технические данные относятся к ревизии R0 и обновляются по мере проверки на пилотной серии.</p>
         <p class="kunye">Postane Mah. Rauf Orbay Cad., Kemal Sunal Sok. No: 29, Tuzla / İstanbul<br>VKN 0551569402</p>
       </div>
-      <div><h4>Модели</h4><a href="narion-koza.html">KOZA</a><a href="narion-kaval.html">KAVAL</a><a href="narion-cinar.html">CINAR</a><a href="narion-servi.html">SERVI</a><a href="narion-prizma.html">PRIZMA</a><a href="narion-ocak.html">OCAK</a><a href="narion-fener.html">FENER</a><a href="narion-nomad.html">NOMAD</a><a href="karsilastirma.html">Сравнение</a></div>
+      <div><h4>Модели</h4><a href="narion-koza.html">KOZA</a><a href="narion-ladin.html">LADİN</a><a href="narion-manolya.html">MANOLYA</a><a href="narion-servi.html">SERVİ</a><a href="narion-prizma.html">PRİZMA</a><a href="narion-ocak.html">OCAK</a><a href="narion-fener.html">FENER</a><a href="narion-nomad.html">NOMAD</a><a href="karsilastirma.html">Сравнение</a></div>
       <div><h4>Меню</h4><a href="index.html">Главная</a><a href="teknoloji.html">Технология</a><a href="yedek-parca.html">Запчасти</a><a href="distributorluk.html">Дистрибуция</a><a href="on-kayit.html">Предзапись</a><a href="hakkinda.html">О проекте</a></div>
       <div><h4>Контакты</h4><a href="mailto:info@narionhookah.com">info@narionhookah.com</a><a href="tel:+908508881679">+90 850 888 1679</a></div>
     </div>
     <div class="fine">
-      <span>Almita Group · Разработка продукта · R0 · 09.2026</span>
+      <span>Almita Group · Производство · R0 · 09.2026</span>
       <span>Сайт не использует файлы cookie и не отслеживает посетителей; шрифты загружаются с нашего сервера.</span>
     </div>
   </div>

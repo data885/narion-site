@@ -303,6 +303,10 @@ html[dir="rtl"] .btnbox:hover .ar{transform:scaleX(-1) translateX(4px)}
   font-family:var(--f-mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase;
   font-weight:600; margin-top:22px}
 .btnbox:hover{background:var(--accent); color:#fff}
+/* e-posta ve alan adı: uppercase YAPILMAZ.
+   Türkçe sayfada lang="tr" olduğu için tarayıcı i→İ dönüşümü uygular ve
+   info@… adresi İNFO@NARİONHOOKAH.COM olur; tıklanabilir adres bozulmuş görünür. */
+.btnbox.eposta,.btn.eposta{text-transform:none; letter-spacing:.02em; font-size:13px}
 
 /* ---------- pazar kartı ---------- */
 .markets{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
@@ -385,27 +389,27 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
   <div class="wrap topin">
     <a class="brand" href="index.html"><span class="brand-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"  role="img" aria-label="NARION"><mask id="mi" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100"><rect width="100" height="100" fill="#fff"/><g stroke="#000" stroke-width="9" fill="none" stroke-linecap="round"><path d="M50.00 0.00 L50.00 21.00"/><path d="M50.00 21.00 A35 35 0 0 0 28.45 22.42"/><path d="M6.70 75.00 L24.89 64.50"/><path d="M24.89 64.50 A35 35 0 0 0 36.89 82.45"/><path d="M93.30 75.00 L75.11 64.50"/><path d="M75.11 64.50 A35 35 0 0 0 84.66 45.13"/></g></mask><g mask="url(#mi)"><circle cx="50" cy="50" r="35" fill="none" stroke="currentColor" stroke-width="15"/></g></svg></span>
       <span class="brand-txt"><b>NARION</b><span>Almita Group</span></span></a>
-    <nav class="main" aria-label="Menü"><a href="index.html" aria-current="page">Ana sayfa</a><span class="nav-grup"><a href="index.html#modeller" aria-haspopup="true">Modeller</a><span class="nav-alt"><a href="narion-koza.html">KOZA</a><a href="narion-kaval.html">KAVAL</a><a href="narion-cinar.html">CINAR</a><span class="alt-baslik">Yol haritası</span><a href="narion-servi.html">SERVI</a><a href="narion-prizma.html">PRIZMA</a><a href="narion-ocak.html">OCAK</a><a href="narion-fener.html">FENER</a><a href="narion-nomad.html">NOMAD</a><a class="alt-ayrac" href="karsilastirma.html">Karşılaştırma</a></span></span><a href="teknoloji.html">Teknoloji</a><a href="yedek-parca.html">Yedek parça</a><a href="distributorluk.html">Distribütörlük</a><a href="on-kayit.html">Ön kayıt</a><a href="hakkinda.html">Hakkında</a></nav>
+    <nav class="main" aria-label="Menü"><a href="index.html" aria-current="page">Ana sayfa</a><span class="nav-grup"><a href="index.html#modeller" aria-haspopup="true">Modeller</a><span class="nav-alt"><a href="narion-koza.html">KOZA</a><a href="narion-ladin.html">LADİN</a><a href="narion-manolya.html">MANOLYA</a><span class="alt-baslik">Yol haritası</span><a href="narion-servi.html">SERVİ</a><a href="narion-prizma.html">PRİZMA</a><a href="narion-ocak.html">OCAK</a><a href="narion-fener.html">FENER</a><a href="narion-nomad.html">NOMAD</a><a class="alt-ayrac" href="karsilastirma.html">Karşılaştırma</a></span></span><a href="teknoloji.html">Teknoloji</a><a href="yedek-parca.html">Yedek parça</a><a href="distributorluk.html">Distribütörlük</a><a href="on-kayit.html">Ön kayıt</a><a href="hakkinda.html">Hakkında</a></nav>
     <div class="langs" role="navigation" aria-label="Dil"><a href="../tr/index.html" hreflang="tr" lang="tr" aria-current="true">tr</a><a href="../en/index.html" hreflang="en" lang="en">en</a><a href="../ar/index.html" hreflang="ar" lang="ar">ar</a><a href="../ru/index.html" hreflang="ru" lang="ru">ru</a></div>
   </div>
 </header>
 <div class="status">
   <div class="wrap">
-    <b>Geliştirme aşaması</b>
-    <p>NARION şu anda T0 — teknik resim ve CNC numunesi aşamasındadır. Ürün henüz seri üretimde değildir; bu sitedeki ölçüler, malzemeler ve performans hedefleri tasarım kararlarıdır, doğrulanmış saha sonuçları değildir.</p>
+    <b>Üretim hazırlığı</b>
+    <p>NARION'u Almita Group kendi hattında üretir — fason değil, ithalat değil. İlk seri şu anda üretim hazırlığındadır: teknik resim tamam, CNC numune aşaması sürüyor. Sitedeki ölçü ve performans hedefleri üretim kararlarımızdır; doğrulanmış test sonuçları alındıkça aynı sayfalarda yayımlanır.</p>
   </div>
 </div>
 <main id="main">
 
 <div class="hero wide"><div class="wrap">
   <div>
-    <span class="eyebrow">Almita Group · Ürün Geliştirme</span>
+    <span class="eyebrow">Almita Group · Tuzla / İstanbul üretimi</span>
     <h1>En kolay
 kırılan parçaları
 geliştirdik</h1>
-    <p class="lede">NARION, cam şişe ve kil lüle olmadan tasarlanmış üç modelli bir nargile ailesidir. Üç model tek bir bayonet bağlantı standardını paylaşır: kafenin yedek şişesiyle evin yedek şişesi aynı parçadır.</p>
+    <p class="lede">NARION'u tasarlayan da üreten de biziz. Cam şişe ve kil lüle olmadan kurgulandı; üç model tek bir bayonet bağlantı standardını paylaşır — kafenin yedek şişesiyle evin yedek şişesi aynı parçadır. Kalıp, üretim ve yedek parça tek çatı altında.</p>
   </div>
-  <div class="herofig"><figure class="sh "><img src="../gorsel/hero-koza.webp" alt="Üç model, tek mimari" width="784" height="887" fetchpriority='high' decoding='async'><figcaption><b>Konsept görseli</b><span>NARION KOZA — kapsül gövde, ceviz panel ve su seviyesi penceresi.</span></figcaption></figure></div>
+  <div class="herofig"><figure class="sh "><img src="../gorsel/hero-koza.webp" alt="Üç model, tek mimari" width="784" height="887" fetchpriority='high' decoding='async'><figcaption><b>Tasarım görseli</b><span>NARION KOZA — kapsül gövde, ceviz panel ve su seviyesi penceresi.</span></figcaption></figure></div>
 </div></div>
 
 <section id="modeller"><div class="wrap">
@@ -419,44 +423,44 @@ geliştirdik</h1>
     <span class="who">Kafe ve üst segment ev için. Ceviz panelde kafe logosu, panel içinde su seviyesi penceresi.</span>
     <span class="foot"><span>Modeli incele</span><span class="ar" aria-hidden="true">&rarr;</span></span>
   </div>
-</a><a class="mcard" href="narion-kaval.html">
-  <div class="fig"><figure class="sh "><img src="../gorsel/model-narion-kaval.webp" alt="NARION KAVAL — Kaval" width="760" height="1132" loading='lazy' decoding='async'></figure></div>
+</a><a class="mcard" href="narion-ladin.html">
+  <div class="fig"><figure class="sh "><img src="../gorsel/model-narion-ladin.webp" alt="NARION LADİN — Ladin" width="760" height="1132" loading='lazy' decoding='async'></figure></div>
   <div class="body">
-    <span class="code">NARION KAVAL</span>
-    <span class="name">Kaval</span>
+    <span class="code">NARION LADİN</span>
+    <span class="name">Ladin</span>
     <span class="who">Kafe ve lounge için. Dik ve ince gövde, balıksırtı desenli ceviz panel.</span>
     <span class="foot"><span>Modeli incele</span><span class="ar" aria-hidden="true">&rarr;</span></span>
   </div>
-</a><a class="mcard" href="narion-cinar.html">
-  <div class="fig"><figure class="sh "><img src="../gorsel/model-narion-cinar.webp" alt="NARION CINAR — Çınar" width="760" height="1132" loading='lazy' decoding='async'></figure></div>
+</a><a class="mcard" href="narion-manolya.html">
+  <div class="fig"><figure class="sh "><img src="../gorsel/model-narion-manolya.webp" alt="NARION MANOLYA — Manolya" width="760" height="1132" loading='lazy' decoding='async'></figure></div>
   <div class="body">
-    <span class="code">NARION CINAR</span>
-    <span class="name">Çınar</span>
+    <span class="code">NARION MANOLYA</span>
+    <span class="name">Manolya</span>
     <span class="who">Ev ve misafir kullanımı için. Geleneksel siluet, PVD kaplama, ahşap boyun.</span>
     <span class="foot"><span>Modeli incele</span><span class="ar" aria-hidden="true">&rarr;</span></span>
   </div>
 </a></div>
-  <p class="small">Ürün henüz üretilmedi; görseller tasarım konseptinin görselleştirmesidir, ürün fotoğrafı değildir.</p>
+  <p class="small">Görseller üretim öncesi tasarım görselleştirmeleridir. İlk seri hattan indiğinde ürün fotoğraflarıyla değiştirilecektir.</p>
 </div></section>
 
 <section id="yol-haritasi"><div class="wrap">
   <div class="shead"><span class="num">02</span><h2>Yol haritası — geliştirme aşamasındaki modeller</h2>
     <p>Sekiz tasarımın üçü ilk seriye alındı. Kalan beş model tasarım aşamasında; talep ve distribütör geri bildirimi sıralamayı belirleyecek. Bu modellerde ölçü ve fiyat, pilot seri üretilmeden yayımlanmaz.</p></div>
   <div class="models"><a class="mcard" href="narion-servi.html">
-  <div class="fig"><figure class="sh "><img src="../gorsel/model-narion-servi.webp" alt="NARION SERVI — Servi" width="760" height="1132" loading='lazy' decoding='async'></figure></div>
+  <div class="fig"><figure class="sh "><img src="../gorsel/model-narion-servi.webp" alt="NARION SERVİ — Servi" width="760" height="1132" loading='lazy' decoding='async'></figure></div>
   <div class="body">
-    <span class="code">NARION SERVI</span>
+    <span class="code">NARION SERVİ</span>
     <span class="name">Servi</span>
     <span class="who">Ev ve küçük mekân için. Ailenin en ince, en az yer kaplayan gövdesi.</span>
-    <span class="foot"><span>Klasik siluet serisi</span><span class="ar" aria-hidden="true">&rarr;</span></span>
+    <span class="foot"><span>Klasik seri</span><span class="ar" aria-hidden="true">&rarr;</span></span>
   </div>
 </a><a class="mcard" href="narion-prizma.html">
-  <div class="fig"><figure class="sh "><img src="../gorsel/model-narion-prizma.webp" alt="NARION PRIZMA — Prizma" width="760" height="1132" loading='lazy' decoding='async'></figure></div>
+  <div class="fig"><figure class="sh "><img src="../gorsel/model-narion-prizma.webp" alt="NARION PRİZMA — Prizma" width="760" height="1132" loading='lazy' decoding='async'></figure></div>
   <div class="body">
-    <span class="code">NARION PRIZMA</span>
+    <span class="code">NARION PRİZMA</span>
     <span class="name">Prizma</span>
     <span class="who">Lounge ve gece mekânı için tasarım çalışması. Altıgen taban, mat siyah gövde.</span>
-    <span class="foot"><span>Siyah gövde serisi</span><span class="ar" aria-hidden="true">&rarr;</span></span>
+    <span class="foot"><span>Teknoloji serisi</span><span class="ar" aria-hidden="true">&rarr;</span></span>
   </div>
 </a><a class="mcard" href="narion-ocak.html">
   <div class="fig"><figure class="sh "><img src="../gorsel/model-narion-ocak.webp" alt="NARION OCAK — Ocak" width="760" height="1132" loading='lazy' decoding='async'></figure></div>
@@ -464,7 +468,7 @@ geliştirdik</h1>
     <span class="code">NARION OCAK</span>
     <span class="name">Ocak</span>
     <span class="who">Kafe ve yoğun servis için tasarım çalışması. Nargilenin oturduğu taban istasyonu.</span>
-    <span class="foot"><span>Siyah gövde serisi</span><span class="ar" aria-hidden="true">&rarr;</span></span>
+    <span class="foot"><span>Teknoloji serisi</span><span class="ar" aria-hidden="true">&rarr;</span></span>
   </div>
 </a><a class="mcard" href="narion-fener.html">
   <div class="fig"><figure class="sh "><img src="../gorsel/model-narion-fener.webp" alt="NARION FENER — Fener" width="760" height="1132" loading='lazy' decoding='async'></figure></div>
@@ -472,7 +476,7 @@ geliştirdik</h1>
     <span class="code">NARION FENER</span>
     <span class="name">Fener</span>
     <span class="who">Lounge için tasarım çalışması. Minimal siyah kule, gövdede ince ışık bandı.</span>
-    <span class="foot"><span>Siyah gövde serisi</span><span class="ar" aria-hidden="true">&rarr;</span></span>
+    <span class="foot"><span>Teknoloji serisi</span><span class="ar" aria-hidden="true">&rarr;</span></span>
   </div>
 </a><a class="mcard" href="narion-nomad.html">
   <div class="fig"><figure class="sh "><img src="../gorsel/model-narion-nomad.webp" alt="NARION NOMAD — Nomad" width="760" height="1132" loading='lazy' decoding='async'></figure></div>
@@ -480,7 +484,7 @@ geliştirdik</h1>
     <span class="code">NARION NOMAD</span>
     <span class="name">Nomad</span>
     <span class="who">Seyahat ve dış mekân için tasarım çalışması. Sert kutulu, parçalarına ayrılan set.</span>
-    <span class="foot"><span>Siyah gövde serisi</span><span class="ar" aria-hidden="true">&rarr;</span></span>
+    <span class="foot"><span>Teknoloji serisi</span><span class="ar" aria-hidden="true">&rarr;</span></span>
   </div>
 </a></div>
 </div></section>
@@ -503,7 +507,7 @@ geliştirdik</h1>
     <dl class="specs">
       <div><dt>Kaplama</dt><dd>PVD şampanya</dd></div>
       <div><dt>Ara halka</dt><dd>Pirinç</dd></div>
-      <div><dt>Öncelikli model</dt><dd>KOZA · CINAR</dd></div>
+      <div><dt>Öncelikli model</dt><dd>KOZA · MANOLYA</dd></div>
     </dl>
   </div>
 </article><article class="market">
@@ -514,7 +518,7 @@ geliştirdik</h1>
     <dl class="specs">
       <div><dt>Kaplama</dt><dd>Mat siyah PVD</dd></div>
       <div><dt>Ara halka</dt><dd>Ceviz</dd></div>
-      <div><dt>Öncelikli model</dt><dd>KOZA · KAVAL</dd></div>
+      <div><dt>Öncelikli model</dt><dd>KOZA · LADİN</dd></div>
     </dl>
   </div>
 </article><article class="market">
@@ -525,7 +529,7 @@ geliştirdik</h1>
     <dl class="specs">
       <div><dt>Kaplama</dt><dd>Gun metal PVD</dd></div>
       <div><dt>Ara halka</dt><dd>Yok — tam metal</dd></div>
-      <div><dt>Öncelikli model</dt><dd>KAVAL · KOZA</dd></div>
+      <div><dt>Öncelikli model</dt><dd>LADİN · KOZA</dd></div>
     </dl>
   </div>
 </article></div>
@@ -550,15 +554,15 @@ geliştirdik</h1>
     <div class="cols">
       <div>
         <h4>NARION</h4>
-        <p>Tüm teknik veriler R0 revizyonundandır ve fason doğrulamasıyla değişebilir.</p>
+        <p>Tüm teknik veriler R0 revizyonundandır; pilot seri doğrulamasıyla güncellenir.</p>
         <p class="kunye">Postane Mah. Rauf Orbay Cad., Kemal Sunal Sok. No: 29, Tuzla / İstanbul<br>VKN 0551569402</p>
       </div>
-      <div><h4>Modeller</h4><a href="narion-koza.html">KOZA</a><a href="narion-kaval.html">KAVAL</a><a href="narion-cinar.html">CINAR</a><a href="narion-servi.html">SERVI</a><a href="narion-prizma.html">PRIZMA</a><a href="narion-ocak.html">OCAK</a><a href="narion-fener.html">FENER</a><a href="narion-nomad.html">NOMAD</a><a href="karsilastirma.html">Karşılaştırma</a></div>
+      <div><h4>Modeller</h4><a href="narion-koza.html">KOZA</a><a href="narion-ladin.html">LADİN</a><a href="narion-manolya.html">MANOLYA</a><a href="narion-servi.html">SERVİ</a><a href="narion-prizma.html">PRİZMA</a><a href="narion-ocak.html">OCAK</a><a href="narion-fener.html">FENER</a><a href="narion-nomad.html">NOMAD</a><a href="karsilastirma.html">Karşılaştırma</a></div>
       <div><h4>Menü</h4><a href="index.html">Ana sayfa</a><a href="teknoloji.html">Teknoloji</a><a href="yedek-parca.html">Yedek parça</a><a href="distributorluk.html">Distribütörlük</a><a href="on-kayit.html">Ön kayıt</a><a href="hakkinda.html">Hakkında</a></div>
       <div><h4>İletişim</h4><a href="mailto:info@narionhookah.com">info@narionhookah.com</a><a href="tel:+908508881679">+90 850 888 1679</a></div>
     </div>
     <div class="fine">
-      <span>Almita Group · Ürün Geliştirme · R0 · 09.2026</span>
+      <span>Almita Group · İmalat · R0 · 09.2026</span>
       <span>Bu site çerez kullanmaz, ziyaretçi takibi yapmaz; yazı tipleri kendi sunucumuzdan yüklenir.</span>
     </div>
   </div>

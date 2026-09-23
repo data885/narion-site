@@ -300,6 +300,10 @@ html[dir="rtl"] .btnbox:hover .ar{transform:scaleX(-1) translateX(4px)}
   font-family:var(--f-mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase;
   font-weight:600; margin-top:22px}
 .btnbox:hover{background:var(--accent); color:#fff}
+/* e-posta ve alan adı: uppercase YAPILMAZ.
+   Türkçe sayfada lang="tr" olduğu için tarayıcı i→İ dönüşümü uygular ve
+   info@… adresi İNFO@NARİONHOOKAH.COM olur; tıklanabilir adres bozulmuş görünür. */
+.btnbox.eposta,.btn.eposta{text-transform:none; letter-spacing:.02em; font-size:13px}
 
 /* ---------- pazar kartı ---------- */
 .markets{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
@@ -382,14 +386,14 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
   <div class="wrap topin">
     <a class="brand" href="index.html"><span class="brand-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"  role="img" aria-label="NARION"><mask id="mi" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100"><rect width="100" height="100" fill="#fff"/><g stroke="#000" stroke-width="9" fill="none" stroke-linecap="round"><path d="M50.00 0.00 L50.00 21.00"/><path d="M50.00 21.00 A35 35 0 0 0 28.45 22.42"/><path d="M6.70 75.00 L24.89 64.50"/><path d="M24.89 64.50 A35 35 0 0 0 36.89 82.45"/><path d="M93.30 75.00 L75.11 64.50"/><path d="M75.11 64.50 A35 35 0 0 0 84.66 45.13"/></g></mask><g mask="url(#mi)"><circle cx="50" cy="50" r="35" fill="none" stroke="currentColor" stroke-width="15"/></g></svg></span>
       <span class="brand-txt"><b>NARION</b><span>Almita Group</span></span></a>
-    <nav class="main" aria-label="Menu"><a href="index.html">Home</a><span class="nav-grup"><a href="index.html#modeller" aria-haspopup="true">Models</a><span class="nav-alt"><a href="narion-koza.html">KOZA</a><a href="narion-kaval.html">KAVAL</a><a href="narion-cinar.html">CINAR</a><span class="alt-baslik">Roadmap</span><a href="narion-servi.html">SERVI</a><a href="narion-prizma.html">PRIZMA</a><a href="narion-ocak.html">OCAK</a><a href="narion-fener.html">FENER</a><a href="narion-nomad.html">NOMAD</a><a class="alt-ayrac" href="karsilastirma.html" aria-current="page">Comparison</a></span></span><a href="teknoloji.html">Technology</a><a href="yedek-parca.html">Spare parts</a><a href="distributorluk.html">Distribution</a><a href="on-kayit.html">Pre-register</a><a href="hakkinda.html">About</a></nav>
+    <nav class="main" aria-label="Menu"><a href="index.html">Home</a><span class="nav-grup"><a href="index.html#modeller" aria-haspopup="true">Models</a><span class="nav-alt"><a href="narion-koza.html">KOZA</a><a href="narion-ladin.html">LADİN</a><a href="narion-manolya.html">MANOLYA</a><span class="alt-baslik">Roadmap</span><a href="narion-servi.html">SERVİ</a><a href="narion-prizma.html">PRİZMA</a><a href="narion-ocak.html">OCAK</a><a href="narion-fener.html">FENER</a><a href="narion-nomad.html">NOMAD</a><a class="alt-ayrac" href="karsilastirma.html" aria-current="page">Comparison</a></span></span><a href="teknoloji.html">Technology</a><a href="yedek-parca.html">Spare parts</a><a href="distributorluk.html">Distribution</a><a href="on-kayit.html">Pre-register</a><a href="hakkinda.html">About</a></nav>
     <div class="langs" role="navigation" aria-label="Language"><a href="../tr/karsilastirma.html" hreflang="tr" lang="tr">tr</a><a href="../en/karsilastirma.html" hreflang="en" lang="en" aria-current="true">en</a><a href="../ar/karsilastirma.html" hreflang="ar" lang="ar">ar</a><a href="../ru/karsilastirma.html" hreflang="ru" lang="ru">ru</a></div>
   </div>
 </header>
 <div class="status">
   <div class="wrap">
-    <b>Development stage</b>
-    <p>NARION is currently at T0 — technical drawings and CNC prototype. The product is not in series production yet; the dimensions, materials and performance figures on this site are design decisions, not verified field results.</p>
+    <b>Preparing for production</b>
+    <p>NARION is manufactured by Almita Group on our own line — not outsourced, not imported. The first run is in production preparation: drawings are done, CNC sampling is under way. The dimensions and performance figures on this site are our production decisions; verified test results will be published on the same pages as they come in.</p>
   </div>
 </div>
 <main id="main">
@@ -401,21 +405,21 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
 fits you</h1>
     <p class="lede">The three models share the same bayonet standard and the same spare parts; they differ in body form and finish. Your usage decides the choice.</p>
   </div>
-  <div class="herofig"><figure class="sh "><img src="../gorsel/model-narion-kaval.webp" alt="Side by side" width="760" height="1132" fetchpriority='high' decoding='async'><figcaption><b>Concept render</b><span>NARION KAVAL — upright body, herringbone walnut panel.</span></figcaption></figure></div>
+  <div class="herofig"><figure class="sh "><img src="../gorsel/model-narion-ladin.webp" alt="Side by side" width="760" height="1132" fetchpriority='high' decoding='async'><figcaption><b>Design render</b><span>NARION LADİN — upright body, herringbone walnut panel.</span></figcaption></figure></div>
 </div></div>
 
 <section><div class="wrap">
   <div class="shead"><span class="num">01</span><h2>Side by side</h2>
     <p>Values are R0 design targets; they will be updated with measured values after the pilot series (T2).</p></div>
   <div class="tw"><table class="kiyas">
-    <thead><tr><td></td><th><a href="narion-koza.html">NARION KOZA</a><span>Koza</span></th><th><a href="narion-kaval.html">NARION KAVAL</a><span>Kaval</span></th><th><a href="narion-cinar.html">NARION CINAR</a><span>Cinar</span></th></tr></thead>
+    <thead><tr><td></td><th><a href="narion-koza.html">NARION KOZA</a><span>Koza</span></th><th><a href="narion-ladin.html">NARION LADİN</a><span>Ladin</span></th><th><a href="narion-manolya.html">NARION MANOLYA</a><span>Manolya</span></th></tr></thead>
     <tbody><tr><th scope="row">Use</th><td>Café and home</td><td>Café and lounge</td><td>Home and guests</td></tr><tr><th scope="row">Height</th><td>420 mm</td><td>580 mm</td><td>620 mm</td></tr><tr><th scope="row">Body diameter</th><td>Ø150 mm</td><td>Ø120 mm</td><td>Ø150 mm</td></tr><tr><th scope="row">Base diameter</th><td>Ø130 mm</td><td>Ø120 mm</td><td>Ø180 mm</td></tr><tr><th scope="row">Weight</th><td>2,40 kg</td><td>2,20 kg</td><td>2,60 kg</td></tr><tr><th scope="row">Water volume</th><td>1,2 L</td><td>1,0 L</td><td>1,4 L</td></tr><tr><th scope="row">Body material</th><td>304 stainless</td><td>304 stainless</td><td>316L stainless</td></tr><tr><th scope="row">Finish</th><td>Bead-blast + brushed</td><td>Bead-blast + brushed</td><td>PVD coating</td></tr><tr><th scope="row">Bowl material</th><td>Cordierite technical ceramic</td><td>Cordierite technical ceramic</td><td>Cordierite technical ceramic</td></tr><tr><th scope="row">Wooden panel</th><td>With water-level window</td><td>Herringbone pattern</td><td>—</td></tr><tr><th scope="row">Café logo area</th><td>Yes</td><td>Yes</td><td>Yes</td></tr><tr><th scope="row">Daily use</th><td>40+ servings</td><td>40+ servings</td><td>1-3 servings</td></tr><tr><th scope="row">Dishwasher</th><td>Yes</td><td>Yes</td><td>Yes</td></tr><tr><th scope="row">Spare parts</th><td>Shared across all three</td><td>Shared across all three</td><td>Shared across all three</td></tr><tr><th scope="row">Target retail</th><td>$265</td><td>$245</td><td>$280</td></tr></tbody>
   </table></div>
 </div></section>
 
 <section><div class="wrap">
   <div class="shead"><span class="num">02</span><h2>How to choose</h2></div>
-  <div class="grid g3"><div class="cell"><span class="k">01</span><h3>If you want it to carry your own logo</h3><p>KOZA or KAVAL. Laser-engraved into the walnut panel; since the panel is a separate part, no custom body is needed.</p></div><div class="cell"><span class="k">02</span><h3>If it will run in busy service</h3><p>KOZA. Compact body, wide base, tool-free strip-down; it takes little room on the counter.</p></div><div class="cell"><span class="k">03</span><h3>If you expect the traditional form</h3><p>CINAR. Familiar silhouette, PVD coating, wooden neck — mechanically identical to the rest of the range.</p></div></div>
+  <div class="grid g3"><div class="cell"><span class="k">01</span><h3>If you want it to carry your own logo</h3><p>KOZA or LADİN. Laser-engraved into the walnut panel; since the panel is a separate part, no custom body is needed.</p></div><div class="cell"><span class="k">02</span><h3>If it will run in busy service</h3><p>KOZA. Compact body, wide base, tool-free strip-down; it takes little room on the counter.</p></div><div class="cell"><span class="k">03</span><h3>If you expect the traditional form</h3><p>MANOLYA. Familiar silhouette, PVD coating, wooden neck — mechanically identical to the rest of the range.</p></div></div>
 </div></section>
 
 <section><div class="wrap">
@@ -429,15 +433,15 @@ fits you</h1>
     <div class="cols">
       <div>
         <h4>NARION</h4>
-        <p>All technical data is from revision R0 and may change after contract-manufacturing validation.</p>
+        <p>All technical data is from revision R0 and is updated as the pilot run validates it.</p>
         <p class="kunye">Postane Mah. Rauf Orbay Cad., Kemal Sunal Sok. No: 29, Tuzla / İstanbul<br>VKN 0551569402</p>
       </div>
-      <div><h4>Models</h4><a href="narion-koza.html">KOZA</a><a href="narion-kaval.html">KAVAL</a><a href="narion-cinar.html">CINAR</a><a href="narion-servi.html">SERVI</a><a href="narion-prizma.html">PRIZMA</a><a href="narion-ocak.html">OCAK</a><a href="narion-fener.html">FENER</a><a href="narion-nomad.html">NOMAD</a><a href="karsilastirma.html">Comparison</a></div>
+      <div><h4>Models</h4><a href="narion-koza.html">KOZA</a><a href="narion-ladin.html">LADİN</a><a href="narion-manolya.html">MANOLYA</a><a href="narion-servi.html">SERVİ</a><a href="narion-prizma.html">PRİZMA</a><a href="narion-ocak.html">OCAK</a><a href="narion-fener.html">FENER</a><a href="narion-nomad.html">NOMAD</a><a href="karsilastirma.html">Comparison</a></div>
       <div><h4>Menu</h4><a href="index.html">Home</a><a href="teknoloji.html">Technology</a><a href="yedek-parca.html">Spare parts</a><a href="distributorluk.html">Distribution</a><a href="on-kayit.html">Pre-register</a><a href="hakkinda.html">About</a></div>
       <div><h4>Contact</h4><a href="mailto:info@narionhookah.com">info@narionhookah.com</a><a href="tel:+908508881679">+90 850 888 1679</a></div>
     </div>
     <div class="fine">
-      <span>Almita Group · Product Development · R0 · 09.2026</span>
+      <span>Almita Group · Manufacturing · R0 · 09.2026</span>
       <span>This site uses no cookies and no visitor tracking; fonts are served from our own server.</span>
     </div>
   </div>
