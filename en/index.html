@@ -92,6 +92,9 @@ nav.main a[aria-current]{box-shadow:0 2px 0 var(--accent)}
 .nav-grup:hover .nav-alt,.nav-grup:focus-within .nav-alt{display:flex}
 .nav-alt a{padding:8px 16px; font-size:13.5px; white-space:nowrap}
 .nav-alt a:hover{background:var(--surface-2); color:var(--ink)}
+.nav-alt .alt-baslik{padding:9px 16px 4px; font-size:10.5px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--muted-2,#9a9a9a); border-top:1px solid var(--line);
+  margin-top:5px}
 .nav-alt a.alt-ayrac{border-top:1px solid var(--line); margin-top:5px;
   padding-top:11px; color:var(--accent)}
 @media(max-width:900px){
@@ -271,6 +274,12 @@ ul.ortak li::before{content:"—"; color:var(--accent); flex:none}
 .note p{margin:0; font-size:15px; color:var(--muted); line-height:1.6}
 .note p+p{margin-top:10px}
 .small{font-size:13px; color:var(--faint); margin-top:14px; max-width:72ch; line-height:1.55}
+ul.liste{list-style:none; margin:0; padding:0; max-width:74ch; border-top:1px solid var(--line)}
+ul.liste li{padding:15px 0 15px 26px; border-bottom:1px solid var(--line); position:relative;
+  color:var(--muted); font-size:15px; line-height:1.55}
+ul.liste li::before{content:""; position:absolute; inset-inline-start:0; top:23px; width:9px;
+  height:1px; background:var(--accent)}
+[dir=rtl] ul.liste li{padding:15px 26px 15px 0}
 
 /* ---------- kapı (çift CTA) ---------- */
 .doors{display:grid; grid-template-columns:repeat(2,1fr); gap:20px}
@@ -376,7 +385,7 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
   <div class="wrap topin">
     <a class="brand" href="index.html"><span class="brand-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"  role="img" aria-label="NARION"><mask id="mi" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100"><rect width="100" height="100" fill="#fff"/><g stroke="#000" stroke-width="9" fill="none" stroke-linecap="round"><path d="M50.00 0.00 L50.00 21.00"/><path d="M50.00 21.00 A35 35 0 0 0 28.45 22.42"/><path d="M6.70 75.00 L24.89 64.50"/><path d="M24.89 64.50 A35 35 0 0 0 36.89 82.45"/><path d="M93.30 75.00 L75.11 64.50"/><path d="M75.11 64.50 A35 35 0 0 0 84.66 45.13"/></g></mask><g mask="url(#mi)"><circle cx="50" cy="50" r="35" fill="none" stroke="currentColor" stroke-width="15"/></g></svg></span>
       <span class="brand-txt"><b>NARION</b><span>Almita Group</span></span></a>
-    <nav class="main" aria-label="Menu"><a href="index.html" aria-current="page">Home</a><span class="nav-grup"><a href="index.html#modeller" aria-haspopup="true">Models</a><span class="nav-alt"><a href="narion-koza.html">KOZA</a><a href="narion-kaval.html">KAVAL</a><a href="narion-cinar.html">CINAR</a><a class="alt-ayrac" href="karsilastirma.html">Comparison</a></span></span><a href="teknoloji.html">Technology</a><a href="yedek-parca.html">Spare parts</a><a href="distributorluk.html">Distribution</a><a href="on-kayit.html">Pre-register</a><a href="hakkinda.html">About</a></nav>
+    <nav class="main" aria-label="Menu"><a href="index.html" aria-current="page">Home</a><span class="nav-grup"><a href="index.html#modeller" aria-haspopup="true">Models</a><span class="nav-alt"><a href="narion-koza.html">KOZA</a><a href="narion-kaval.html">KAVAL</a><a href="narion-cinar.html">CINAR</a><span class="alt-baslik">Roadmap</span><a href="narion-servi.html">SERVI</a><a href="narion-prizma.html">PRIZMA</a><a href="narion-ocak.html">OCAK</a><a href="narion-fener.html">FENER</a><a href="narion-nomad.html">NOMAD</a><a class="alt-ayrac" href="karsilastirma.html">Comparison</a></span></span><a href="teknoloji.html">Technology</a><a href="yedek-parca.html">Spare parts</a><a href="distributorluk.html">Distribution</a><a href="on-kayit.html">Pre-register</a><a href="hakkinda.html">About</a></nav>
     <div class="langs" role="navigation" aria-label="Language"><a href="../tr/index.html" hreflang="tr" lang="tr">tr</a><a href="../en/index.html" hreflang="en" lang="en" aria-current="true">en</a><a href="../ar/index.html" hreflang="ar" lang="ar">ar</a><a href="../ru/index.html" hreflang="ru" lang="ru">ru</a></div>
   </div>
 </header>
@@ -430,15 +439,61 @@ break most easily</h1>
   <p class="small">The product is not manufactured yet; these images visualise the design concept and are not product photographs.</p>
 </div></section>
 
+<section id="yol-haritasi"><div class="wrap">
+  <div class="shead"><span class="num">02</span><h2>Roadmap — models in development</h2>
+    <p>Three of eight designs were taken into the first run. The remaining five are at design stage; demand and distributor feedback will set the order. For these models, dimensions and prices are not published before a pilot run is built.</p></div>
+  <div class="models"><a class="mcard" href="narion-servi.html">
+  <div class="fig"><figure class="sh "><img src="../gorsel/model-narion-servi.webp" alt="NARION SERVI — Servi" width="760" height="1132" loading='lazy' decoding='async'></figure></div>
+  <div class="body">
+    <span class="code">NARION SERVI</span>
+    <span class="name">Servi</span>
+    <span class="who">For homes and small spaces. The slimmest body in the range, the one that takes up least room.</span>
+    <span class="foot"><span>Classic silhouette series</span><span class="ar" aria-hidden="true">&rarr;</span></span>
+  </div>
+</a><a class="mcard" href="narion-prizma.html">
+  <div class="fig"><figure class="sh "><img src="../gorsel/model-narion-prizma.webp" alt="NARION PRIZMA — Prizma" width="760" height="1132" loading='lazy' decoding='async'></figure></div>
+  <div class="body">
+    <span class="code">NARION PRIZMA</span>
+    <span class="name">Prizma</span>
+    <span class="who">A design study for lounges and late-night venues. Hexagonal base, matte black body.</span>
+    <span class="foot"><span>Black body series</span><span class="ar" aria-hidden="true">&rarr;</span></span>
+  </div>
+</a><a class="mcard" href="narion-ocak.html">
+  <div class="fig"><figure class="sh "><img src="../gorsel/model-narion-ocak.webp" alt="NARION OCAK — Ocak" width="760" height="1132" loading='lazy' decoding='async'></figure></div>
+  <div class="body">
+    <span class="code">NARION OCAK</span>
+    <span class="name">Ocak</span>
+    <span class="who">A design study for cafés and heavy service. A base station the hookah sits in.</span>
+    <span class="foot"><span>Black body series</span><span class="ar" aria-hidden="true">&rarr;</span></span>
+  </div>
+</a><a class="mcard" href="narion-fener.html">
+  <div class="fig"><figure class="sh "><img src="../gorsel/model-narion-fener.webp" alt="NARION FENER — Fener" width="760" height="1132" loading='lazy' decoding='async'></figure></div>
+  <div class="body">
+    <span class="code">NARION FENER</span>
+    <span class="name">Fener</span>
+    <span class="who">A design study for lounges. A minimal black tower with a thin light band on the body.</span>
+    <span class="foot"><span>Black body series</span><span class="ar" aria-hidden="true">&rarr;</span></span>
+  </div>
+</a><a class="mcard" href="narion-nomad.html">
+  <div class="fig"><figure class="sh "><img src="../gorsel/model-narion-nomad.webp" alt="NARION NOMAD — Nomad" width="760" height="1132" loading='lazy' decoding='async'></figure></div>
+  <div class="body">
+    <span class="code">NARION NOMAD</span>
+    <span class="name">Nomad</span>
+    <span class="who">A design study for travel and outdoor use. A hard-case set that breaks down into parts.</span>
+    <span class="foot"><span>Black body series</span><span class="ar" aria-hidden="true">&rarr;</span></span>
+  </div>
+</a></div>
+</div></section>
+
 <section><div class="wrap">
-  <div class="shead"><span class="num">02</span><h2>Four decisions</h2>
+  <div class="shead"><span class="num">03</span><h2>Four decisions</h2>
     <p>Three parts break most easily on a hookah: the bottle, the bowl and the hose tip. Each was eliminated separately.</p></div>
   <div class="grid g2"><div class="cell"><span class="k">01</span><h3>Tritan bottle</h3><p>The only sensible way to combine the clarity of glass with impact resistance. BPA-free, survives 70 °C dishwasher cycles, arrives with food-contact certification.</p></div><div class="cell"><span class="k">02</span><h3>Bayonet connection</h3><p>No threads between body and bottle or body and bowl. Three channels, locking in a quarter turn. Fitted one-handed, with no risk of stripping a thread.</p></div><div class="cell"><span class="k">03</span><h3>Monoblock stem</h3><p>Body and stem are machined as a single part. With no weld and no threaded joint, the classic leak point does not exist.</p></div><div class="cell"><span class="k">04</span><h3>Tool-free strip-down</h3><p>Seven parts, no tools, all dishwasher safe. Target strip-down time for café staff is 40 seconds.</p></div></div>
   <a class="btnbox" href="teknoloji.html">Read the technical file <span class="ar" aria-hidden="true">&rarr;</span></a>
 </div></section>
 
 <section><div class="wrap">
-  <div class="shead"><span class="num">03</span><h2>Same mechanics, three market languages</h2>
+  <div class="shead"><span class="num">04</span><h2>Same mechanics, three market languages</h2>
     <p>Body geometry and all mechanics stay fixed; only the machining of the outer sleeve and the intermediate ring change. The pattern is laser cut — a real perforated texture, not a print.</p></div>
   <div class="markets"><article class="market">
   <div class="pat"><svg viewBox="0 0 240 150" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><pattern id="p_mashrabiya" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M20,4 L28,12 L36,20 L28,28 L20,36 L12,28 L4,20 L12,12 Z" fill="none" stroke="currentColor" stroke-width="1.1" stroke-opacity=".75"/><path d="M20,12 L28,20 L20,28 L12,20 Z" fill="currentColor" fill-opacity=".18"/><path d="M0,0 L8,8 M40,0 L32,8 M0,40 L8,32 M40,40 L32,32" stroke="currentColor" stroke-width=".9" stroke-opacity=".45" fill="none"/></pattern></defs><rect width="240" height="150" fill="url(#p_mashrabiya)"/><line x1="0" y1="26" x2="240" y2="26" stroke="currentColor" stroke-opacity=".3"/><line x1="0" y1="124" x2="240" y2="124" stroke="currentColor" stroke-opacity=".3"/></svg></div>
@@ -477,7 +532,7 @@ break most easily</h1>
 </div></section>
 
 <section><div class="wrap">
-  <div class="shead"><span class="num">04</span><h2>Two kinds of interest, two doors</h2></div>
+  <div class="shead"><span class="num">05</span><h2>Two kinds of interest, two doors</h2></div>
   <div class="doors">
     <div class="door lead">
       <h3>Distributor, café chain, wholesaler</h3><p>For market packages, first-series timing, samples and dealer terms, go to the distribution page. The dealer price list is shared on request.</p>
@@ -498,7 +553,7 @@ break most easily</h1>
         <p>All technical data is from revision R0 and may change after contract-manufacturing validation.</p>
         <p class="kunye">Postane Mah. Rauf Orbay Cad., Kemal Sunal Sok. No: 29, Tuzla / İstanbul<br>VKN 0551569402</p>
       </div>
-      <div><h4>Models</h4><a href="narion-koza.html">KOZA</a><a href="narion-kaval.html">KAVAL</a><a href="narion-cinar.html">CINAR</a><a href="karsilastirma.html">Comparison</a></div>
+      <div><h4>Models</h4><a href="narion-koza.html">KOZA</a><a href="narion-kaval.html">KAVAL</a><a href="narion-cinar.html">CINAR</a><a href="narion-servi.html">SERVI</a><a href="narion-prizma.html">PRIZMA</a><a href="narion-ocak.html">OCAK</a><a href="narion-fener.html">FENER</a><a href="narion-nomad.html">NOMAD</a><a href="karsilastirma.html">Comparison</a></div>
       <div><h4>Menu</h4><a href="index.html">Home</a><a href="teknoloji.html">Technology</a><a href="yedek-parca.html">Spare parts</a><a href="distributorluk.html">Distribution</a><a href="on-kayit.html">Pre-register</a><a href="hakkinda.html">About</a></div>
       <div><h4>Contact</h4><a href="mailto:info@narionhookah.com">info@narionhookah.com</a><a href="tel:+908508881679">+90 850 888 1679</a></div>
     </div>

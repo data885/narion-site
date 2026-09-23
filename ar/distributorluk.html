@@ -92,6 +92,9 @@ nav.main a[aria-current]{box-shadow:0 2px 0 var(--accent)}
 .nav-grup:hover .nav-alt,.nav-grup:focus-within .nav-alt{display:flex}
 .nav-alt a{padding:8px 16px; font-size:13.5px; white-space:nowrap}
 .nav-alt a:hover{background:var(--surface-2); color:var(--ink)}
+.nav-alt .alt-baslik{padding:9px 16px 4px; font-size:10.5px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--muted-2,#9a9a9a); border-top:1px solid var(--line);
+  margin-top:5px}
 .nav-alt a.alt-ayrac{border-top:1px solid var(--line); margin-top:5px;
   padding-top:11px; color:var(--accent)}
 @media(max-width:900px){
@@ -271,6 +274,12 @@ ul.ortak li::before{content:"—"; color:var(--accent); flex:none}
 .note p{margin:0; font-size:15px; color:var(--muted); line-height:1.6}
 .note p+p{margin-top:10px}
 .small{font-size:13px; color:var(--faint); margin-top:14px; max-width:72ch; line-height:1.55}
+ul.liste{list-style:none; margin:0; padding:0; max-width:74ch; border-top:1px solid var(--line)}
+ul.liste li{padding:15px 0 15px 26px; border-bottom:1px solid var(--line); position:relative;
+  color:var(--muted); font-size:15px; line-height:1.55}
+ul.liste li::before{content:""; position:absolute; inset-inline-start:0; top:23px; width:9px;
+  height:1px; background:var(--accent)}
+[dir=rtl] ul.liste li{padding:15px 26px 15px 0}
 
 /* ---------- kapı (çift CTA) ---------- */
 .doors{display:grid; grid-template-columns:repeat(2,1fr); gap:20px}
@@ -376,7 +385,7 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
   <div class="wrap topin">
     <a class="brand" href="index.html"><span class="brand-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"  role="img" aria-label="NARION"><mask id="mi" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100"><rect width="100" height="100" fill="#fff"/><g stroke="#000" stroke-width="9" fill="none" stroke-linecap="round"><path d="M50.00 0.00 L50.00 21.00"/><path d="M50.00 21.00 A35 35 0 0 0 28.45 22.42"/><path d="M6.70 75.00 L24.89 64.50"/><path d="M24.89 64.50 A35 35 0 0 0 36.89 82.45"/><path d="M93.30 75.00 L75.11 64.50"/><path d="M75.11 64.50 A35 35 0 0 0 84.66 45.13"/></g></mask><g mask="url(#mi)"><circle cx="50" cy="50" r="35" fill="none" stroke="currentColor" stroke-width="15"/></g></svg></span>
       <span class="brand-txt"><b>NARION</b><span>Almita Group</span></span></a>
-    <nav class="main" aria-label="القائمة"><a href="index.html">الرئيسية</a><span class="nav-grup"><a href="index.html#modeller" aria-haspopup="true">الطُرز</a><span class="nav-alt"><a href="narion-koza.html">KOZA</a><a href="narion-kaval.html">KAVAL</a><a href="narion-cinar.html">CINAR</a><a class="alt-ayrac" href="karsilastirma.html">المقارنة</a></span></span><a href="teknoloji.html">التقنية</a><a href="yedek-parca.html">قطع الغيار</a><a href="distributorluk.html" aria-current="page">التوزيع</a><a href="on-kayit.html">التسجيل المسبق</a><a href="hakkinda.html">عن المشروع</a></nav>
+    <nav class="main" aria-label="القائمة"><a href="index.html">الرئيسية</a><span class="nav-grup"><a href="index.html#modeller" aria-haspopup="true">الطُرز</a><span class="nav-alt"><a href="narion-koza.html">KOZA</a><a href="narion-kaval.html">KAVAL</a><a href="narion-cinar.html">CINAR</a><span class="alt-baslik">خارطة الطريق</span><a href="narion-servi.html">SERVI</a><a href="narion-prizma.html">PRIZMA</a><a href="narion-ocak.html">OCAK</a><a href="narion-fener.html">FENER</a><a href="narion-nomad.html">NOMAD</a><a class="alt-ayrac" href="karsilastirma.html">المقارنة</a></span></span><a href="teknoloji.html">التقنية</a><a href="yedek-parca.html">قطع الغيار</a><a href="distributorluk.html" aria-current="page">التوزيع</a><a href="on-kayit.html">التسجيل المسبق</a><a href="hakkinda.html">عن المشروع</a></nav>
     <div class="langs" role="navigation" aria-label="اللغة"><a href="../tr/distributorluk.html" hreflang="tr" lang="tr">tr</a><a href="../en/distributorluk.html" hreflang="en" lang="en">en</a><a href="../ar/distributorluk.html" hreflang="ar" lang="ar" aria-current="true">ar</a><a href="../ru/distributorluk.html" hreflang="ru" lang="ru">ru</a></div>
   </div>
 </header>
@@ -478,7 +487,7 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
         <p>جميع البيانات الفنية من المراجعة R0 وقد تتغيّر بعد التحقق لدى مصنع التصنيع المتعاقد.</p>
         <p class="kunye">Postane Mah. Rauf Orbay Cad., Kemal Sunal Sok. No: 29, Tuzla / İstanbul<br>VKN 0551569402</p>
       </div>
-      <div><h4>الطُرز</h4><a href="narion-koza.html">KOZA</a><a href="narion-kaval.html">KAVAL</a><a href="narion-cinar.html">CINAR</a><a href="karsilastirma.html">المقارنة</a></div>
+      <div><h4>الطُرز</h4><a href="narion-koza.html">KOZA</a><a href="narion-kaval.html">KAVAL</a><a href="narion-cinar.html">CINAR</a><a href="narion-servi.html">SERVI</a><a href="narion-prizma.html">PRIZMA</a><a href="narion-ocak.html">OCAK</a><a href="narion-fener.html">FENER</a><a href="narion-nomad.html">NOMAD</a><a href="karsilastirma.html">المقارنة</a></div>
       <div><h4>القائمة</h4><a href="index.html">الرئيسية</a><a href="teknoloji.html">التقنية</a><a href="yedek-parca.html">قطع الغيار</a><a href="distributorluk.html">التوزيع</a><a href="on-kayit.html">التسجيل المسبق</a><a href="hakkinda.html">عن المشروع</a></div>
       <div><h4>التواصل</h4><a href="mailto:info@narionhookah.com">info@narionhookah.com</a><a href="tel:+908508881679">+90 850 888 1679</a></div>
     </div>
