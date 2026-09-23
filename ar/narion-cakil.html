@@ -195,18 +195,25 @@ html[dir="rtl"] .cell .spec{text-align:right}
 @media(max-width:880px){.g3{grid-template-columns:1fr}.g2{grid-template-columns:1fr}}
 
 /* ---------- model kartı ---------- */
-.models{display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:8px}
-@media(max-width:880px){.models{grid-template-columns:1fr}}
+/* Kart genisligi ~240-300 px arasinda tutulur; kolon sayisini tarayici secer.
+   Sabit 3 kolon, genis ekranda karti buyutup gorsel kutusunu da buyutuyordu. */
+.models{display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+  gap:20px; margin-top:8px}
+@media(max-width:560px){.models{grid-template-columns:1fr}}
 .mcard{border:1px solid var(--line); background:var(--surface); display:flex; flex-direction:column;
   text-decoration:none; color:inherit; transition:border-color .15s, background .15s}
 .mcard:hover{border-color:var(--accent); background:var(--surface-2)}
 .mcard .fig{border-bottom:1px solid var(--line); overflow:hidden; background:var(--surface-2)}
 .mcard .fig figure.sh,.mcard .fig img{width:100%; display:block}
-.mcard .fig img{height:300px; object-fit:cover; object-position:center 38%;
+/* Gorsel kutusunun orani = render'larin orani (2/3).
+   Onceden kutu 346x300 (yatay) idi, gorsel ise dikey: cover yuzunden
+   urunun yalnizca ince bir yatay seridi goruluyordu. Ayni oran = tam urun,
+   kirpma da yok, kenarlarda bosluk da yok. */
+.mcard .fig img{aspect-ratio:2/3; height:auto; object-fit:cover; object-position:center;
   transition:transform .5s cubic-bezier(.2,.7,.3,1)}
 .mcard:hover .fig img{transform:scale(1.035)}
 .mcard .fig svg{height:168px; width:auto; margin:26px auto 14px; display:block}
-@media(max-width:880px){.mcard .fig img{height:340px}}
+
 .mcard .body{padding:20px 22px 22px; display:flex; flex-direction:column; gap:6px; flex:1}
 .mcard .code{font-family:var(--f-mono); font-size:11.5px; letter-spacing:.11em; color:var(--accent)}
 .mcard .name{font-size:21px; font-weight:600; letter-spacing:-.016em}
