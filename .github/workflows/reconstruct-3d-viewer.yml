@@ -1,0 +1,45 @@
+name: reconstruct-3d-viewer
+on:
+  workflow_dispatch:
+  push:
+    branches: [feat/3d-studio-materials]
+    paths:
+      - 'gorsel/3d/uc-boyut-viewer.js.b64.p**'
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/3d-studio-materials
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Decode b64 parts into viewer.js
+        run: |
+          set -euo pipefail
+          cd gorsel/3d
+          for i in $(seq -w 0 7); do
+            test -f "uc-boyut-viewer.js.b64.p$i"
+          done
+          cat uc-boyut-viewer.js.b64.p00 uc-boyut-viewer.js.b64.p01 \
+              uc-boyut-viewer.js.b64.p02 uc-boyut-viewer.js.b64.p03 \
+              uc-boyut-viewer.js.b64.p04 uc-boyut-viewer.js.b64.p05 \
+              uc-boyut-viewer.js.b64.p06 uc-boyut-viewer.js.b64.p07 \
+            | tr -d '\n\r\t ' | base64 -d > uc-boyut-viewer.js
+          head -c 20 uc-boyut-viewer.js | grep -q '^(function'
+          wc -c uc-boyut-viewer.js
+          # sanity: decoded must match expected size ~29k
+          test $(wc -c < uc-boyut-viewer.js) -gt 20000
+      - name: Commit viewer.js if changed
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add gorsel/3d/uc-boyut-viewer.js
+          if git diff --cached --quiet; then
+            echo "No change"
+          else
+            git commit -m "Rebuild uc-boyut-viewer.js from b64 parts (studio HDRI + PBR)"
+            git push origin HEAD:feat/3d-studio-materials
+          fi
