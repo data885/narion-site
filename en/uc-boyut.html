@@ -517,7 +517,7 @@ before you hold it</h1>
 <section><div class="wrap">
   <div class="v3-bar">
     <div class="v3-grp"><span class="v3-lab">Model</span><div class="picks"><button type="button" class="pick" data-model="narion-koza" aria-pressed="true">NARION KOZA</button><button type="button" class="pick" data-model="narion-ladin" aria-pressed="false">NARION LADİN</button><button type="button" class="pick" data-model="narion-manolya" aria-pressed="false">NARION MANOLYA</button></div></div>
-    <div class="v3-grp"><span class="v3-lab">Finish</span><div class="picks"><button type="button" class="pick sw" data-kaplama="firca" aria-pressed="true"><i style="background:#ccd2d6"></i>Brushed stainless</button><button type="button" class="pick sw" data-kaplama="sampanya" aria-pressed="false"><i style="background:#e0c79c"></i>Champagne PVD</button><button type="button" class="pick sw" data-kaplama="siyah" aria-pressed="false"><i style="background:#3d4145"></i>Matte black PVD</button><button type="button" class="pick sw" data-kaplama="gun" aria-pressed="false"><i style="background:#69737a"></i>Gun metal</button></div></div>
+    <div class="v3-grp"><span class="v3-lab">Finish</span><div class="picks"><button type="button" class="pick sw" data-kaplama="firca" aria-pressed="true"><i style="background:#c2c8cc"></i>Brushed stainless</button><button type="button" class="pick sw" data-kaplama="sampanya" aria-pressed="false"><i style="background:#d8bb8a"></i>Champagne PVD</button><button type="button" class="pick sw" data-kaplama="siyah" aria-pressed="false"><i style="background:#33373a"></i>Matte black PVD</button><button type="button" class="pick sw" data-kaplama="gun" aria-pressed="false"><i style="background:#5c666d"></i>Gun metal</button></div></div>
   </div>
   <div class="v3-wrap">
     <div id="sahne" class="v3-stage" role="img" aria-label="NARION three-dimensional product view — drag to rotate"></div>
@@ -535,7 +535,7 @@ before you hold it</h1>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
 (function(){
-  var K = [["firca", "#ccd2d6", 0.45, 0.26], ["sampanya", "#e0c79c", 0.5, 0.2], ["siyah", "#3d4145", 0.4, 0.42], ["gun", "#69737a", 0.48, 0.28]], MODELLER = [{"id": "narion-koza", "ad": "NARION KOZA", "taban": 130.0, "sise": 150.0, "siseH": 143, "bilezik": 78.0, "saft": 45.0, "saftH": 168, "tabla": 232, "lule": 85.0, "panel": true}, {"id": "narion-ladin", "ad": "NARION LAD\u0130N", "taban": 120.0, "sise": 120.0, "siseH": 197, "bilezik": 78.0, "saft": 45.0, "saftH": 232, "tabla": 186, "lule": 85.0, "panel": true}, {"id": "narion-manolya", "ad": "NARION MANOLYA", "taban": 180.0, "sise": 150.0, "siseH": 211, "bilezik": 78.0, "saft": 45.0, "saftH": 248, "tabla": 232, "lule": 85.0, "panel": false}];
+  var K = [["firca", "#c2c8cc", 0.88, 0.3], ["sampanya", "#d8bb8a", 0.92, 0.22], ["siyah", "#33373a", 0.8, 0.44], ["gun", "#5c666d", 0.9, 0.3]], MODELLER = [{"id": "narion-koza", "ad": "NARION KOZA", "taban": 130.0, "sise": 150.0, "siseH": 143, "bilezik": 78.0, "saft": 45.0, "saftH": 168, "tabla": 232, "lule": 85.0, "panel": true, "siluet": [[0.0, 0.0], [0.4, 0.0], [0.47, 0.03], [0.5, 0.09], [0.5, 0.66], [0.48, 0.76], [0.4, 0.87], [0.28, 0.95], [0.23, 1.0]]}, {"id": "narion-ladin", "ad": "NARION LAD\u0130N", "taban": 120.0, "sise": 120.0, "siseH": 197, "bilezik": 78.0, "saft": 45.0, "saftH": 232, "tabla": 186, "lule": 85.0, "panel": true, "siluet": [[0.0, 0.0], [0.36, 0.0], [0.42, 0.04], [0.44, 0.1], [0.44, 0.72], [0.42, 0.82], [0.34, 0.92], [0.24, 1.0]]}, {"id": "narion-manolya", "ad": "NARION MANOLYA", "taban": 180.0, "sise": 150.0, "siseH": 211, "bilezik": 78.0, "saft": 45.0, "saftH": 248, "tabla": 232, "lule": 85.0, "panel": false, "siluet": [[0.0, 0.0], [0.3, 0.0], [0.38, 0.06], [0.47, 0.2], [0.5, 0.36], [0.48, 0.52], [0.4, 0.68], [0.3, 0.84], [0.24, 0.93], [0.22, 1.0]]}];
   var kap = K[0], mid = MODELLER[0].id;
   var el = document.getElementById('sahne');
   if (!el || typeof THREE === 'undefined') return;
@@ -543,13 +543,45 @@ before you hold it</h1>
   var ren = new THREE.WebGLRenderer({antialias:true, alpha:true});
   ren.setPixelRatio(Math.min(devicePixelRatio, 2));
   ren.setSize(el.clientWidth, el.clientHeight);
+  ren.outputEncoding = THREE.sRGBEncoding;
+  ren.toneMapping = THREE.ACESFilmicToneMapping;   // metalin parlak ucları yanmasın
+  ren.toneMappingExposure = 1.05;
   el.appendChild(ren.domElement);
 
   var sah = new THREE.Scene();
   var kam = new THREE.PerspectiveCamera(38, el.clientWidth/el.clientHeight, 1, 4000);
 
   // isik: bir ana kaynak + karsi dolgu + ust hemisphere
-  sah.add(new THREE.HemisphereLight(0xffffff, 0x50565c, 1.05));
+  // --- stüdyo ortam haritası ---
+  // envMap olmadan metalness yüksek yüzey siyaha düşer; burada eşdikdörtgen bir
+  // tuval dokusu üretip yansıma kaynağı olarak veriyoruz: üstte tavan ışığı,
+  // yanlarda iki softbox, altta koyu zemin.
+  function ortam(){
+    var c2 = document.createElement('canvas'); c2.width = 1024; c2.height = 512;
+    var g2 = c2.getContext('2d');
+    var gr = g2.createLinearGradient(0, 0, 0, 512);
+    gr.addColorStop(0.00, '#ffffff'); gr.addColorStop(0.32, '#dfe4e8');
+    gr.addColorStop(0.55, '#9aa3ab'); gr.addColorStop(0.80, '#4a5158');
+    gr.addColorStop(1.00, '#23282c');
+    g2.fillStyle = gr; g2.fillRect(0, 0, 1024, 512);
+    // iki softbox
+    [[210, 150], [700, 170]].forEach(function(s){
+      var rg = g2.createRadialGradient(s[0], s[1], 10, s[0], s[1], 190);
+      rg.addColorStop(0, 'rgba(255,255,255,0.95)');
+      rg.addColorStop(1, 'rgba(255,255,255,0)');
+      g2.fillStyle = rg; g2.fillRect(s[0]-200, s[1]-200, 400, 400);
+    });
+    var tex = new THREE.CanvasTexture(c2);
+    tex.mapping = THREE.EquirectangularReflectionMapping;
+    tex.encoding = THREE.sRGBEncoding;
+    var pm = new THREE.PMREMGenerator(ren);
+    var env = pm.fromEquirectangular(tex).texture;
+    pm.dispose(); tex.dispose();
+    return env;
+  }
+  sah.environment = ortam();
+
+  sah.add(new THREE.HemisphereLight(0xffffff, 0x50565c, 0.55));
   var l1 = new THREE.DirectionalLight(0xffffff, 2.1); l1.position.set(320, 480, 380); sah.add(l1);
   var l2 = new THREE.DirectionalLight(0xffffff, 0.85); l2.position.set(-360, 180, -220); sah.add(l2);
   var l3 = new THREE.DirectionalLight(0xdfe7ec, 0.6); l3.position.set(0, -260, 160); sah.add(l3);
@@ -574,25 +606,47 @@ before you hold it</h1>
     m.position.y = y; grup.add(m); return m;
   }
 
+  // siluet profilinden gövde: her model kendi formunda döner
+  function lathe(profil, cap, h, mat, y0){
+    var pts = profil.map(function(p){ return new THREE.Vector2(Math.max(0.001, p[0]*cap), p[1]*h); });
+    var m = new THREE.Mesh(new THREE.LatheGeometry(pts, 80), mat);
+    m.position.y = y0; grup.add(m); return m;
+  }
+
+  // zemin gölgesi: ürünü havada asılı olmaktan çıkarır
+  function golge(yaricap, y0){
+    var cg = document.createElement('canvas'); cg.width = cg.height = 256;
+    var g3 = cg.getContext('2d');
+    var rg = g3.createRadialGradient(128, 128, 3, 128, 128, 126);
+    rg.addColorStop(0, 'rgba(18,24,28,0.50)');
+    rg.addColorStop(0.5, 'rgba(18,24,28,0.20)');
+    rg.addColorStop(1, 'rgba(18,24,28,0)');
+    g3.fillStyle = rg; g3.fillRect(0, 0, 256, 256);
+    var m = new THREE.Mesh(
+      new THREE.PlaneGeometry(yaricap*2.8, yaricap*2.8),
+      new THREE.MeshBasicMaterial({map: new THREE.CanvasTexture(cg), transparent: true, depthWrite: false}));
+    m.rotation.x = -Math.PI/2; m.position.y = y0; grup.add(m); return m;
+  }
+
   function kur(){
     while(grup.children.length) grup.remove(grup.children[0]);
     var M = MODELLER.filter(function(x){return x.id===mid;})[0];
     var y = 0;
     // taban agirligi
     sil(M.taban/2, M.taban/2, 20, metal(), y+10); y += 20;
-    // sise: alt pah + govde + omuz
-    sil(M.sise/2-6, M.sise/2, 14, cam(), y+7); y += 14;
-    var gH = M.siseH - 40;
-    sil(M.sise/2, M.sise/2, gH, cam(), y+gH/2);
-    // su seviyesi — sisenin alt yarisi
-    sil(M.sise/2-2, M.sise/2-2, gH*0.42, su(), y+gH*0.21);
-    // monoblok downstem: sisenin icine iner, ucunda difuzor.
-    // urunun imzasi bu — seffaf sisede gorunmesi gerekiyor.
-    var dsH = gH + 30;
-    sil(9.5, 9.5, dsH, metal(), y+16+dsH/2, 32);
-    sil(11, 9.5, 22, metal(), y+16, 32);
-    y += gH;
-    sil(M.bilezik/2, M.sise/2, 26, cam(), y+13); y += 26;
+    // sise: modelin kendi siluetinden tek parca
+    var sH = M.siseH;
+    lathe(M.siluet, M.sise, sH, cam(), y);
+    // su: siluetin alt kirkta biri degil, alt bolumu, hafif iceriden
+    var suProfil = M.siluet.filter(function(p){ return p[1] <= 0.40; })
+                            .map(function(p){ return [p[0]*0.97, p[1]]; });
+    suProfil.push([suProfil[suProfil.length-1][0], 0.40]);
+    lathe(suProfil, M.sise, sH, su(), y+1);
+    // monoblok downstem: sisenin icine iner. seffaf govdede gorunmesi gerekiyor,
+    // bayonetle birlikte urunun imzasi bu.
+    sil(9.5, 9.5, sH*0.86, metal(), y + sH*0.50, 36);
+    sil(11.5, 9.5, 20, metal(), y + sH*0.10, 36);
+    y += sH;
     // bayonet bilezigi — urunun imzasi
     var bz = sil(M.bilezik/2+8, M.bilezik/2+8, 21, metal(), y+10.5); y += 21;
     // bilezikteki uc kanal
@@ -629,15 +683,16 @@ before you hold it</h1>
     sil(M.saft/2-3, M.saft/2-3, 16, metal(), y+8); y += 16;
     sil(M.lule/2, M.lule/2-16, 52, seramik(), y+26); y += 52;
 
+    golge(M.tabla*0.62, 1);
     grup.position.y = -y/2;
-    var uzak = Math.max(y*2.35, M.tabla*3.4);
+    var uzak = Math.max(y*1.95, M.tabla*2.9);
     kam.position.set(uzak*0.55, uzak*0.20, uzak*0.80);
     kam.lookAt(0, 0, 0);
     hedefUzak = uzak;
   }
 
   // --- yorunge kontrolu (elle) ---
-  var donY = 0.5, donX = 0.12, basili = false, sx = 0, sy = 0, hedefUzak = 900;
+  var donY = 0.62, donX = 0.10, basili = false, sx = 0, sy = 0, hedefUzak = 900;
   function ac(e){ basili = true; sx = (e.touches?e.touches[0]:e).clientX; sy = (e.touches?e.touches[0]:e).clientY; }
   function kapat(){ basili = false; }
   function hareket(e){
