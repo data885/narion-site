@@ -25,7 +25,8 @@ jobs:
               if not parts:
                   print('no texture parts', name)
                   continue
-              data = ''.join(p.read_text().strip() for p in parts)
+              # Remove ALL whitespace so wrapped uploads still assemble correctly
+              data = ''.join(''.join(p.read_text().split()) for p in parts)
               (root / name).write_text(data)
               print('texture', name, len(data), 'from', len(parts), 'parts')
           PY
