@@ -1,0 +1,84 @@
+name: reconstruct-3d-viewer
+on:
+  workflow_dispatch:
+  push:
+    branches: [feat/3d-studio-materials]
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/3d-studio-materials
+          fetch-depth: 0
+      - name: Decode viewer.js and locale HTML from b64 parts (or inject boot into main HTML)
+        run: |
+          set -euo pipefail
+          python3 <<'PY'
+          import base64, glob, re, subprocess
+          from pathlib import Path
+
+          def decode_parts(pattern, dest, min_parts=1):
+              parts = sorted(glob.glob(pattern))
+              if len(parts) < min_parts:
+                  print('skip decode', dest, 'parts', len(parts), '<', min_parts)
+                  return False
+              data = ''.join(Path(p).read_text().strip() for p in parts)
+              try:
+                  raw = base64.b64decode(data, validate=False)
+              except Exception as e:
+                  print('b64 fail', dest, e)
+                  return False
+              if dest.endswith('.html') and len(raw) < 20000:
+                  print('skip small html', dest, len(raw))
+                  return False
+              Path(dest).write_bytes(raw)
+              print('wrote', dest, len(raw), 'from', len(parts), 'parts')
+              return True
+
+          decode_parts('gorsel/3d/uc-boyut-viewer.js.b64.p*', 'gorsel/3d/uc-boyut-viewer.js', min_parts=8)
+          data = Path('gorsel/3d/uc-boyut-viewer.js').read_bytes()
+          assert data.startswith(b'(function'), data[:40]
+          assert len(data) > 20000, len(data)
+
+          SCRIPTS = (
+              '<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>\n'
+              '<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/RGBELoader.js"></script>\n'
+              '<script src="../gorsel/3d/uc-boyut-viewer-boot.js"></script>'
+          )
+          pat = re.compile(
+              r'<script src="https://cdnjs\.cloudflare\.com/ajax/libs/three\.js/r128/three\.min\.js"></script>\s*<script>[\s\S]*?</script>',
+              re.M,
+          )
+
+          subprocess.run(['git', 'fetch', 'origin', 'main'], check=False)
+          for loc in ['tr', 'en', 'ar', 'ru']:
+              dest = f'{loc}/uc-boyut.html'
+              if decode_parts(f'{loc}/uc-boyut.html.b64.p*', dest, min_parts=10):
+                  continue
+              try:
+                  html = subprocess.check_output(['git', 'show', f'origin/main:{loc}/uc-boyut.html'], text=True)
+              except Exception as e:
+                  print('no main html', loc, e)
+                  continue
+              html2, n = pat.subn(SCRIPTS, html, count=1)
+              if n != 1 or 'uc-boyut-viewer-boot' not in html2:
+                  print('inject failed', loc, n)
+                  continue
+              Path(dest).write_text(html2)
+              print('injected boot into', dest, len(html2))
+          PY
+      - name: Commit rebuilt artifacts
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add gorsel/3d/uc-boyut-viewer.js tr/uc-boyut.html en/uc-boyut.html ar/uc-boyut.html ru/uc-boyut.html || true
+          if git diff --cached --quiet; then
+            echo "No change"
+          else
+            git commit -m "Rebuild viewer.js + locale HTML (b64 or main+boot inject)"
+            git push
+          fi
