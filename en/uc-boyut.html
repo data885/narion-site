@@ -598,6 +598,10 @@ before you hold it</h1>
     transparent:true, opacity:0.30, side:THREE.DoubleSide,
     clearcoat:1.0, clearcoatRoughness:0.02, envMapIntensity:1.15,
     depthWrite:false }); }
+  function kesmeCam(){ var m = cam();
+    m.flatShading = true; m.envMapIntensity = 2.6; m.opacity = 0.36;
+    m.clearcoatRoughness = 0.015; m.roughness = 0.02;
+    return m; }
   function su(){ return new THREE.MeshPhysicalMaterial({
     color:0x44778c, metalness:0.0, roughness:0.10,
     transparent:true, opacity:0.80,
@@ -896,11 +900,21 @@ before you hold it</h1>
     var cH = Y*0.305, cCap = M.taban*0.90;
     var koni = [[0.00,0.00],[0.94,0.00],[1.00,0.045],[0.97,0.13],
                 [0.82,0.40],[0.64,0.68],[0.52,0.90],[0.49,1.00]];
-    var camF = cam(); camF.flatShading = true;
-    lathe2(koni, cCap, cH, camF, y, 1, 0, Math.PI*2, 16);
+    var FASET = 12;   // renderdaki dusey panel sayisi
+    lathe2(koni, cCap, cH, kesmeCam(), y, 1, 0, Math.PI*2, FASET);
+    // faset sinirlarindaki keskin kenar: cam kadar segmentli ince metal tel
+    var kenarMat = new THREE.MeshStandardMaterial(
+      {color:0xdfe6ea, metalness:0.55, roughness:0.18, envMapIntensity:1.6});
+    toplu(kenarMat, function(){
+      for(var f=0; f<FASET; f++){
+        var a = f*Math.PI*2/FASET;
+        lathe2(koni, cCap, cH, kenarMat, y, 1.004, a-0.012, 0.024, 2);
+      }
+    });
+    // su da ayni faset sayisinda olmali, yoksa camin disina tasiyor
     var suP = dilim(koni, 0, 0.40);
     suP.unshift([0.02, 0.0]); suP.push([0.02, 0.40]);
-    lathe2(suP, cCap, cH, su(), y+1, 0.95, 0, Math.PI*2, 16);
+    lathe2(suP, cCap, cH, su(), y+1, 0.95, 0, Math.PI*2, FASET);
     sil(6.5, 6.5, cH*0.72, metal(), y + cH*0.38, 32);
     y += cH;
     // bilezikli metal boyun — ince kanallar, spool gibi yayvan degil
