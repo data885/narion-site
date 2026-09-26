@@ -418,9 +418,12 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
 .pick:hover{border-color:var(--line-strong,var(--line));color:var(--ink)}
 .pick[aria-pressed="true"]{border-color:var(--accent);color:var(--accent)}
 .pick.sw i{width:13px;height:13px;display:block;border:1px solid rgba(128,128,128,.4)}
-.v3-stage{width:100%;aspect-ratio:1/1;max-height:660px;background:
+.v3-stage{position:relative;width:100%;aspect-ratio:1/1;max-height:660px;background:
   radial-gradient(ellipse at 50% 34%,#424b52 0%,#2b3238 46%,#191d21 100%);
   border:1px solid var(--line);touch-action:none;cursor:grab;overflow:hidden}
+/* vinyet: kadrajı fotografik yapar, urunu merkeze toplar */
+.v3-stage::after{content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse at 50% 42%,transparent 38%,rgba(0,0,0,.28) 78%,rgba(0,0,0,.52) 100%)}
 .v3-stage:active{cursor:grabbing}
 .v3-stage canvas{display:block;width:100%;height:100%}
 @media(max-width:600px){.v3-stage{aspect-ratio:3/4}}
@@ -429,11 +432,20 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
 
 
 .v3-wrap{position:relative}
-.v3-zoom{position:absolute;right:12px;bottom:12px;display:flex;flex-direction:column;gap:6px}
+.v3-zoom{position:absolute;right:12px;bottom:12px;z-index:2;display:flex;flex-direction:column;gap:6px}
 .v3-zoom button{width:34px;height:34px;font-size:17px;line-height:1;cursor:pointer;
   background:var(--surface);color:var(--muted);border:1px solid var(--line);font-family:var(--f-mono)}
 .v3-zoom button:hover{border-color:var(--accent);color:var(--accent)}
 @media print{.v3-zoom{display:none}}
+.v3-alt{display:flex;align-items:center;justify-content:space-between;gap:16px;
+  flex-wrap:wrap;margin-top:10px}
+.v3-alt p{margin:0}
+.v3-dl{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;
+  text-transform:uppercase;padding:9px 15px;cursor:pointer;background:none;
+  border:1px solid var(--line);color:var(--ink)}
+.v3-dl:hover{border-color:var(--accent);color:var(--accent)}
+.v3-dl[disabled]{opacity:.5;cursor:default}
+@media print{.v3-dl{display:none}}
 
 
 /* --- kafe hesaplayicisi --- */
@@ -526,7 +538,10 @@ before you hold it</h1>
       <button type="button" id="z-out" aria-label="Zoom out">&minus;</button>
     </div>
   </div>
-  <p class="small">Drag to rotate · use the buttons to zoom</p>
+  <div class="v3-alt">
+    <p class="small">Drag to rotate · use the buttons to zoom</p>
+    <button type="button" id="v3-indir" class="v3-dl" title="Download this configuration as a high-resolution PNG">Download image</button>
+  </div>
   <div class="note"><span class="k">Where the dimensions come from</span><p>Body diameter, base size and overall height are the values in our production specification. The three channels on the bayonet collar sit in their real positions — that geometry is what locks the joint in a quarter turn.</p></div>
   <div class="ctarow" style="margin-top:26px">
     <a class="btnbox" href="distributorluk.html">Distribution / sample request <span class="ar" aria-hidden="true">&rarr;</span></a>
@@ -546,6 +561,8 @@ before you hold it</h1>
   ren.outputEncoding = THREE.sRGBEncoding;
   ren.toneMapping = THREE.ACESFilmicToneMapping;   // metalin parlak ucları yanmasın
   ren.toneMappingExposure = 0.92;
+  ren.shadowMap.enabled = true;
+  ren.shadowMap.type = THREE.PCFSoftShadowMap;
   el.appendChild(ren.domElement);
 
   var sah = new THREE.Scene();
@@ -560,17 +577,30 @@ before you hold it</h1>
     var c2 = document.createElement('canvas'); c2.width = 1024; c2.height = 512;
     var g2 = c2.getContext('2d');
     var gr = g2.createLinearGradient(0, 0, 0, 512);
-    gr.addColorStop(0.00, '#f2f5f7'); gr.addColorStop(0.32, '#c3cad0');
-    gr.addColorStop(0.55, '#79838c'); gr.addColorStop(0.80, '#333a41');
-    gr.addColorStop(1.00, '#15191c');
+    gr.addColorStop(0.00, '#eef2f5'); gr.addColorStop(0.30, '#b9c1c8');
+    gr.addColorStop(0.55, '#7b848c');
+    gr.addColorStop(0.58, '#434b52');   // ufuk cizgisi: silindirik metalde
+    gr.addColorStop(0.82, '#2a3035');   // yatay ayrim cizgisi olusturur
+    gr.addColorStop(1.00, '#171b1e');
     g2.fillStyle = gr; g2.fillRect(0, 0, 1024, 512);
-    // iki softbox
-    [[210, 150], [700, 170]].forEach(function(s){
-      var rg = g2.createRadialGradient(s[0], s[1], 10, s[0], s[1], 190);
-      rg.addColorStop(0, 'rgba(255,255,255,0.95)');
-      rg.addColorStop(1, 'rgba(255,255,255,0)');
-      g2.fillStyle = rg; g2.fillRect(s[0]-200, s[1]-200, 400, 400);
-    });
+    // Softbox'lar YUVARLAK degil DIKDORTGEN olmali: silindirik metalde
+    // uzun dikey parlama seridi birakiyorlar, urun render'inin imzasi bu.
+    function softbox(x, y, w, h, guc){
+      var ad = 26, i;
+      for(i = ad; i >= 0; i--){
+        var k = i/ad, yum = 1 - k;
+        g2.fillStyle = 'rgba(255,255,255,' + (guc*0.055*yum*yum) + ')';
+        g2.fillRect(x - w/2 - k*w*0.7, y - h/2 - k*h*0.5,
+                    w + k*w*1.4, h + k*h*1.0);
+      }
+      g2.fillStyle = 'rgba(255,255,255,' + guc + ')';
+      g2.fillRect(x - w/2, y - h/2, w, h);
+    }
+    softbox(215, 150, 150, 210, 0.98);   // ana isik, sol ust
+    softbox(690, 175, 105, 170, 0.72);   // karsi dolgu, sag
+    softbox(455, 105,  60, 100, 0.40);   // ust kenar isigi
+    // arka kenar isigi: siluetin kenarina ince parlak hat
+    softbox(950, 235, 34, 260, 0.55);
     var tex = new THREE.CanvasTexture(c2);
     tex.mapping = THREE.EquirectangularReflectionMapping;
     tex.encoding = THREE.sRGBEncoding;
@@ -582,20 +612,49 @@ before you hold it</h1>
   sah.environment = ortam();
 
   sah.add(new THREE.HemisphereLight(0xffffff, 0x2a2f34, 0.18));
-  var l1 = new THREE.DirectionalLight(0xffffff, 0.70); l1.position.set(320, 480, 380); sah.add(l1);
+  var l1 = new THREE.DirectionalLight(0xffffff, 0.70); l1.position.set(320, 480, 380);
+  l1.castShadow = true; l1.shadow.mapSize.set(2048, 2048); l1.shadow.bias = -0.0012;
+  l1.shadow.radius = 3; sah.add(l1);
   var l2 = new THREE.DirectionalLight(0xffffff, 0.30); l2.position.set(-360, 180, -220); sah.add(l2);
   var l3 = new THREE.DirectionalLight(0xdfe7ec, 0.16); l3.position.set(0, -260, 160); sah.add(l3);
 
   var grup = new THREE.Group(); sah.add(grup);
 
-  function metal(){ return new THREE.MeshStandardMaterial({
-    color:new THREE.Color(kap[1]), metalness:kap[2], roughness:kap[3] }); }
+  // Firçalı paslanmaz duz puruzlulukla plastik gibi duruyor. Gercek yuzeyde
+  // firça izleri tek yonlu; dikey ince seritlerden bir roughnessMap bunu
+  // taklit ediyor ve yansimalar o yonde uzuyor.
+  var _firca = null;
+  function fircaDoku(){
+    if(_firca) return _firca;
+    var c = document.createElement('canvas'); c.width = 1024; c.height = 16;
+    var x = c.getContext('2d');
+    x.fillStyle = '#7a7a7a'; x.fillRect(0, 0, 1024, 16);
+    // Cizgiler cok ince olursa ekranda ortalanip duz griye doner; gorunur
+    // kalmasi icin sayica az ve genis olmali.
+    for(var i=0;i<260;i++){
+      var v = 122 + (Math.random()-0.5)*126;
+      x.fillStyle = 'rgb('+(v|0)+','+(v|0)+','+(v|0)+')';
+      x.fillRect(Math.random()*1024, 0, 1.5 + Math.random()*5.5, 16);
+    }
+    var tx = new THREE.CanvasTexture(c);
+    tx.wrapS = tx.wrapT = THREE.RepeatWrapping; tx.repeat.set(1, 1);
+    tx.anisotropy = ren.capabilities.getMaxAnisotropy();
+    _firca = tx; return tx;
+  }
+  function metal(){
+    var m = new THREE.MeshStandardMaterial({
+      color:new THREE.Color(kap[1]), metalness:kap[2], roughness:kap[3] });
+    if (kap[0] === 'firca' || kap[0] === 'gun'){
+      m.roughnessMap = fircaDoku();
+    }
+    return m;
+  }
   // cam: DoubleSide sart — ic duvar gorunmezse sise hacimsiz kalir ve
   // "hayalet" gibi gorunur. clearcoat + yuksek envMapIntensity kenarlarda
   // yansimayi getiriyor; gercek camda sisenin belli olmasini saglayan sey bu.
   function cam(){ return new THREE.MeshPhysicalMaterial({
-    color:0xdceef5, metalness:0.0, roughness:0.035,
-    transparent:true, opacity:0.30, side:THREE.DoubleSide,
+    color:0xcfe4ee, metalness:0.0, roughness:0.025,
+    transparent:true, opacity:0.22, side:THREE.DoubleSide,
     clearcoat:1.0, clearcoatRoughness:0.02, envMapIntensity:1.15,
     depthWrite:false }); }
   function kesmeCam(){ var m = cam();
@@ -613,20 +672,22 @@ before you hold it</h1>
     var c = document.createElement('canvas'); c.width = 512; c.height = 512;
     var x = c.getContext('2d');
     x.fillStyle = '#6b4a33'; x.fillRect(0,0,512,512);
-    for(var i=0;i<170;i++){
-      var yy = Math.random()*512, k = 0.5+Math.random()*2.4;
+    // Damar DIKEY olmali. Yatay cizilince uzun panelde oluklu sac gibi
+    // bantlar olusuyordu; ceviz kaplamada gren uzun eksen boyunca gider.
+    for(var i=0;i<190;i++){
+      var xx0 = Math.random()*512, k = 0.5+Math.random()*2.6;
       var koyu = Math.random() < 0.45;
-      x.strokeStyle = koyu ? 'rgba(48,30,19,'+(0.10+Math.random()*0.30)+')'
-                           : 'rgba(150,110,76,'+(0.06+Math.random()*0.18)+')';
-      x.lineWidth = k; x.beginPath(); x.moveTo(0, yy);
-      for(var xx=0; xx<=512; xx+=32){
-        x.lineTo(xx, yy + Math.sin((xx+yy)*0.012)*7 + (Math.random()-0.5)*3);
+      x.strokeStyle = koyu ? 'rgba(46,29,18,'+(0.10+Math.random()*0.32)+')'
+                           : 'rgba(154,113,78,'+(0.06+Math.random()*0.20)+')';
+      x.lineWidth = k; x.beginPath(); x.moveTo(xx0, 0);
+      for(var yy=0; yy<=512; yy+=28){
+        x.lineTo(xx0 + Math.sin((yy+xx0)*0.010)*9 + (Math.random()-0.5)*2.5, yy);
       }
       x.stroke();
     }
     var t2 = new THREE.CanvasTexture(c);
     t2.encoding = THREE.sRGBEncoding;
-    t2.wrapS = t2.wrapT = THREE.RepeatWrapping; t2.repeat.set(1, 2.2);
+    t2.wrapS = t2.wrapT = THREE.RepeatWrapping; t2.repeat.set(2.4, 1);
     _ahDoku = t2; return t2;
   }
   function ahsap(){ return new THREE.MeshStandardMaterial({
@@ -649,19 +710,65 @@ before you hold it</h1>
     m.position.y = y0; grup.add(m); return m;
   }
 
-  // zemin gölgesi: ürünü havada asılı olmaktan çıkarır
-  function golge(yaricap, y0){
+  // Zemin: cilali yuzey + gercek yumusak golge + ayna yansimasi.
+  // Sahte radyal golge lekesi urunu yere oturtmuyordu; render'larda urun
+  // masaya degiyor ve altinda kendi yansimasi var, "3B widget" hissini
+  // kiran sey bu.
+  var zeminler = [], yansima = null;
+  function zeminKur(zf, genislik){
+    zeminler.forEach(function(o){ sah.remove(o); }); zeminler = [];
+    var R = genislik*5.0;
+    // 1) yuzey — yansimayi yutar. Duz opak kare, havada duran bir cam
+    // levha gibi gorunuyordu; kenarlara sonen radyal alfa ile sinirsiz
+    // bir zemin izlenimi veriyor.
+    var zc = document.createElement('canvas'); zc.width = zc.height = 512;
+    var zx = zc.getContext('2d');
+    var zg = zx.createRadialGradient(256, 256, 20, 256, 256, 252);
+    zg.addColorStop(0.00, 'rgba(20,24,27,0.90)');
+    zg.addColorStop(0.45, 'rgba(20,24,27,0.72)');
+    zg.addColorStop(0.78, 'rgba(20,24,27,0.26)');
+    zg.addColorStop(1.00, 'rgba(20,24,27,0)');
+    zx.fillStyle = zg; zx.fillRect(0, 0, 512, 512);
+    var yuzey = new THREE.Mesh(new THREE.PlaneGeometry(R, R),
+      new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(zc),
+        transparent:true, depthWrite:false}));
+    yuzey.rotation.x = -Math.PI/2; yuzey.position.y = zf + 0.4;
+    yuzey.renderOrder = 1;
+    // 2) golge alicisi
+    var gol = new THREE.Mesh(new THREE.PlaneGeometry(R, R),
+      new THREE.ShadowMaterial({opacity:0.46}));
+    gol.rotation.x = -Math.PI/2; gol.position.y = zf + 0.8;
+    gol.receiveShadow = true; gol.renderOrder = 2;
+    // 3) temas karartmasi — golge haritasinin yakalayamadigi dip karanligi
     var cg = document.createElement('canvas'); cg.width = cg.height = 256;
     var g3 = cg.getContext('2d');
-    var rg = g3.createRadialGradient(128, 128, 3, 128, 128, 126);
-    rg.addColorStop(0, 'rgba(8,11,13,0.62)');
-    rg.addColorStop(0.5, 'rgba(8,11,13,0.26)');
-    rg.addColorStop(1, 'rgba(8,11,13,0)');
+    var rg = g3.createRadialGradient(128, 128, 2, 128, 128, 124);
+    rg.addColorStop(0, 'rgba(4,6,7,0.70)');
+    rg.addColorStop(0.42, 'rgba(4,6,7,0.24)');
+    rg.addColorStop(1, 'rgba(4,6,7,0)');
     g3.fillStyle = rg; g3.fillRect(0, 0, 256, 256);
-    var m = new THREE.Mesh(
-      new THREE.PlaneGeometry(yaricap*2.8, yaricap*2.8),
-      new THREE.MeshBasicMaterial({map: new THREE.CanvasTexture(cg), transparent: true, depthWrite: false}));
-    m.rotation.x = -Math.PI/2; m.position.y = y0; grup.add(m); return m;
+    var tem = new THREE.Mesh(new THREE.PlaneGeometry(genislik*1.9, genislik*1.9),
+      new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(cg),
+        transparent:true, depthWrite:false}));
+    tem.rotation.x = -Math.PI/2; tem.position.y = zf + 1.2; tem.renderOrder = 3;
+    [yuzey, gol, tem].forEach(function(o){ sah.add(o); zeminler.push(o); });
+  }
+  // Ayna yansimasi: grubun y ekseninde ters kopyasi. Normaller donduğu
+  // icin DoubleSide sart; zemin yuzeyi ustune bindigi icin sonmus duruyor.
+  function yansimaKur(){
+    if (yansima){ sah.remove(yansima); yansima = null; }
+    yansima = grup.clone(true);
+    yansima.traverse(function(o){
+      if(!o.isMesh) return;
+      var m = o.material.clone();
+      m.side = THREE.DoubleSide; m.transparent = true;
+      m.opacity = (o.material.transparent ? o.material.opacity : 1) * 0.34;
+      m.depthWrite = false;
+      o.material = m; o.castShadow = false; o.receiveShadow = false;
+      o.renderOrder = 0;
+    });
+    yansima.scale.y = -1;
+    sah.add(yansima);
   }
 
   // lathe'e phi araligi: govdenin bir yayini bosaltip yerine ceviz panel
@@ -790,7 +897,7 @@ before you hold it</h1>
   }
   // ic astar: pencereden bakinca bos beyazlik degil koyu hazne gorunsun
   function icAstar(){ return new THREE.MeshStandardMaterial({
-    color:0x24292d, metalness:0.30, roughness:0.68, side:THREE.BackSide }); }
+    color:0x15191c, metalness:0.22, roughness:0.75, side:THREE.BackSide }); }
 
   function metal2(){ var m = metal(); m.side = THREE.DoubleSide; return m; }
 
@@ -956,8 +1063,19 @@ before you hold it</h1>
     else if (M.id === 'narion-manolya') toplam = kurManolya(M);
     else                                toplam = kurKoza(M);
     var genis = Math.max(M.taban, M.sise);
-    golge(genis*0.80, 1);
     grup.position.y = -toplam/2;
+    grup.traverse(function(o){
+      if(!o.isMesh) return;
+      o.castShadow = true; o.receiveShadow = true;
+    });
+    zeminKur(-toplam/2, genis);
+    yansimaKur();
+    // golge kamerasi modeli tam kapsasin, yoksa golge kirpiliyor
+    var kap2 = Math.max(toplam, genis*3)*0.85;
+    l1.shadow.camera.left = -kap2; l1.shadow.camera.right = kap2;
+    l1.shadow.camera.top = kap2;   l1.shadow.camera.bottom = -kap2;
+    l1.shadow.camera.near = 1;     l1.shadow.camera.far = kap2*7;
+    l1.shadow.camera.updateProjectionMatrix();
     var uzak = Math.max(toplam*1.85, genis*7.2);
     kam.position.set(uzak*0.50, uzak*0.17, uzak*0.85);
     kam.lookAt(0, 0, 0);
@@ -966,15 +1084,15 @@ before you hold it</h1>
 
   // --- yorunge kontrolu (elle) ---
   var donY = 0.72, donX = 0.16, basili = false, sx = 0, sy = 0, hedefUzak = 900;
-  function ac(e){ basili = true; sx = (e.touches?e.touches[0]:e).clientX; sy = (e.touches?e.touches[0]:e).clientY; }
-  function kapat(){ basili = false; }
+  function ac(e){ basili = true; isaretle(); sx = (e.touches?e.touches[0]:e).clientX; sy = (e.touches?e.touches[0]:e).clientY; }
+  function kapat(){ if(basili) isaretle(); basili = false; }
   function hareket(e){
     if(!basili) return;
     var t = e.touches?e.touches[0]:e;
     donY += (t.clientX - sx) * 0.009;
     donX += (t.clientY - sy) * 0.006;
     donX = Math.max(-0.75, Math.min(0.95, donX));
-    sx = t.clientX; sy = t.clientY;
+    sx = t.clientX; sy = t.clientY; isaretle();
     if(e.touches) e.preventDefault();
   }
   ren.domElement.addEventListener('mousedown', ac);
@@ -987,16 +1105,34 @@ before you hold it</h1>
   ren.domElement.addEventListener('wheel', function(e){
     if(!e.ctrlKey && !e.metaKey) return;
     hedefUzak = Math.max(260, Math.min(2200, hedefUzak + e.deltaY*0.6));
-    e.preventDefault();
+    isaretle(); e.preventDefault();
   }, {passive:false});
   // yakinlastirma dugmeleri — tekerleksiz de calissin
   var zi = document.getElementById('z-in'), zo = document.getElementById('z-out');
-  if(zi) zi.addEventListener('click', function(){ hedefUzak = Math.max(260, hedefUzak-180); });
-  if(zo) zo.addEventListener('click', function(){ hedefUzak = Math.min(2200, hedefUzak+180); });
+  if(zi) zi.addEventListener('click', function(){ hedefUzak = Math.max(260, hedefUzak-180); isaretle(); });
+  if(zo) zo.addEventListener('click', function(){ hedefUzak = Math.min(2200, hedefUzak+180); isaretle(); });
 
-  function dongu(){
-    requestAnimationFrame(dongu);
-    if(!basili) donY += 0.0022;
+  // --- kalite kademesi -----------------------------------------------------
+  // Surekli donen bir sahne hep "3B widget" gibi gorunuyor. Urun cekimi
+  // hissi icin: acilista tek bir yumusak tarama, sonra kahraman acida durus,
+  // ve hareket bitince YUKSEK COZUNURLUKLU bir bitmis render gecisi.
+  // Boyle olunca ziyaretcinin gordugu duragan kare, gercek zamanli bir
+  // cerceve degil, supersample edilmis bir goruntu oluyor.
+  var HIZLI = Math.min(devicePixelRatio, 1.75);
+  var BITMIS = Math.min(devicePixelRatio * 2, 3);
+  var kirli = true, yuksek = false, sonHareket = 0;
+  var acilisT = performance.now(), acilisVar = true, donY0 = donY - 0.62;
+
+  function oranla(o){
+    ren.setPixelRatio(o);
+    ren.setSize(el.clientWidth, el.clientHeight);
+    kam.aspect = el.clientWidth/el.clientHeight; kam.updateProjectionMatrix();
+  }
+  function isaretle(){
+    kirli = true; sonHareket = performance.now(); acilisVar = false;
+    if (yuksek){ yuksek = false; oranla(HIZLI); }
+  }
+  function ciz(){
     var r = hedefUzak;
     kam.position.x = Math.sin(donY)*Math.cos(donX)*r;
     kam.position.z = Math.cos(donY)*Math.cos(donX)*r;
@@ -1005,9 +1141,26 @@ before you hold it</h1>
     ren.render(sah, kam);
   }
 
+  function dongu(){
+    requestAnimationFrame(dongu);
+    var simdi = performance.now();
+    if (acilisVar){
+      var p = Math.min(1, (simdi - acilisT)/2400);
+      var e2 = 1 - Math.pow(1 - p, 3);           // ease-out: hizli basla, yumusak dur
+      donY = donY0 + 0.62*e2;
+      kirli = true;
+      if (p >= 1){ acilisVar = false; sonHareket = simdi; }
+    }
+    if (basili) kirli = true;
+    if (kirli){ kirli = false; ciz(); sonHareket = simdi; return; }
+    // 380 ms hareketsizlik -> bitmis render
+    if (!yuksek && simdi - sonHareket > 380){
+      yuksek = true; oranla(BITMIS); ciz();
+    }
+  }
+
   addEventListener('resize', function(){
-    ren.setSize(el.clientWidth, el.clientHeight);
-    kam.aspect = el.clientWidth/el.clientHeight; kam.updateProjectionMatrix();
+    oranla(yuksek ? BITMIS : HIZLI); isaretle();
   });
 
   // secim dugmeleri
@@ -1015,18 +1168,38 @@ before you hold it</h1>
     b.addEventListener('click', function(){
       mid = b.dataset.model;
       document.querySelectorAll('[data-model]').forEach(function(x){x.setAttribute('aria-pressed', x===b);});
-      kur();
+      kur(); isaretle();
     });
   });
   document.querySelectorAll('[data-kaplama]').forEach(function(b){
     b.addEventListener('click', function(){
       kap = K.filter(function(x){return x[0]===b.dataset.kaplama;})[0];
       document.querySelectorAll('[data-kaplama]').forEach(function(x){x.setAttribute('aria-pressed', x===b);});
-      kur();
+      kur(); isaretle();
     });
   });
 
-  kur(); dongu();
+  // Konfigüratörün somut ciktisi: secilen model + kaplama, bitmis render
+  // kalitesinde PNG. Dagitimciya gonderilecek gorsel bu.
+  var dlb = document.getElementById('v3-indir');
+  if (dlb) dlb.addEventListener('click', function(){
+    var onceki = ren.getPixelRatio();
+    dlb.disabled = true;
+    try {
+      // uzun kenari 3000 px'i asmasin — mobilde tuval tahsisi basarisiz olur
+      var enb = Math.max(el.clientWidth, el.clientHeight);
+      oranla(Math.min(devicePixelRatio * 3, 4, 3000 / enb));
+      ciz();
+      var a = document.createElement('a');
+      a.href = ren.domElement.toDataURL('image/png');
+      a.download = 'narion-' + mid.replace('narion-', '') + '-' + kap[0] + '.png';
+      a.click();
+    } finally {
+      oranla(onceki); ciz(); dlb.disabled = false;
+    }
+  });
+
+  oranla(HIZLI); kur(); dongu();
 })();
 </script>
 </main>

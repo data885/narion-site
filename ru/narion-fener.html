@@ -421,9 +421,12 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
 .pick:hover{border-color:var(--line-strong,var(--line));color:var(--ink)}
 .pick[aria-pressed="true"]{border-color:var(--accent);color:var(--accent)}
 .pick.sw i{width:13px;height:13px;display:block;border:1px solid rgba(128,128,128,.4)}
-.v3-stage{width:100%;aspect-ratio:1/1;max-height:660px;background:
+.v3-stage{position:relative;width:100%;aspect-ratio:1/1;max-height:660px;background:
   radial-gradient(ellipse at 50% 34%,#424b52 0%,#2b3238 46%,#191d21 100%);
   border:1px solid var(--line);touch-action:none;cursor:grab;overflow:hidden}
+/* vinyet: kadrajı fotografik yapar, urunu merkeze toplar */
+.v3-stage::after{content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse at 50% 42%,transparent 38%,rgba(0,0,0,.28) 78%,rgba(0,0,0,.52) 100%)}
 .v3-stage:active{cursor:grabbing}
 .v3-stage canvas{display:block;width:100%;height:100%}
 @media(max-width:600px){.v3-stage{aspect-ratio:3/4}}
@@ -432,11 +435,20 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
 
 
 .v3-wrap{position:relative}
-.v3-zoom{position:absolute;right:12px;bottom:12px;display:flex;flex-direction:column;gap:6px}
+.v3-zoom{position:absolute;right:12px;bottom:12px;z-index:2;display:flex;flex-direction:column;gap:6px}
 .v3-zoom button{width:34px;height:34px;font-size:17px;line-height:1;cursor:pointer;
   background:var(--surface);color:var(--muted);border:1px solid var(--line);font-family:var(--f-mono)}
 .v3-zoom button:hover{border-color:var(--accent);color:var(--accent)}
 @media print{.v3-zoom{display:none}}
+.v3-alt{display:flex;align-items:center;justify-content:space-between;gap:16px;
+  flex-wrap:wrap;margin-top:10px}
+.v3-alt p{margin:0}
+.v3-dl{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;
+  text-transform:uppercase;padding:9px 15px;cursor:pointer;background:none;
+  border:1px solid var(--line);color:var(--ink)}
+.v3-dl:hover{border-color:var(--accent);color:var(--accent)}
+.v3-dl[disabled]{opacity:.5;cursor:default}
+@media print{.v3-dl{display:none}}
 
 
 /* --- kafe hesaplayicisi --- */
