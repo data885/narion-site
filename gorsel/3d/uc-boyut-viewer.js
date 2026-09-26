@@ -300,7 +300,49 @@ envMapIntensity: 0.38
 });
 }
 function seramik(){ return new THREE.MeshStandardMaterial({
-color:0xb9a795, metalness:0.0, roughness:0.62 }); }
+color:0xc6a888, metalness:0.02, roughness:0.66, envMapIntensity:0.42 }); }
+function seramikIc(){ return new THREE.MeshStandardMaterial({
+color:0x7a5f48, metalness:0.0, roughness:0.82, envMapIntensity:0.25,
+side:THREE.BackSide }); }
+var luleTakili = true;
+function ekleLule(M, seatY){
+// Kil/seramik lüle: bayonet kafanın üstüne oturur. Takılı = flush, çıkık = hafif
+// yükseltilmiş + eğik — bağlantı noktasını göstermek için.
+var H = M.lule * 0.74, cap = M.lule;
+var g = new THREE.Group();
+var clay = seramik(), clayIn = seramikIc();
+var dis = [
+[0.00,0.00],[0.26,0.00],[0.28,0.05],[0.29,0.18],[0.34,0.28],
+[0.52,0.40],[0.78,0.55],[0.94,0.70],[1.00,0.82],[0.98,0.90],
+[0.90,0.97],[0.82,1.00]
+];
+var pts = dis.map(function(p){
+return new THREE.Vector2(Math.max(0.001, p[0]*cap*0.5), p[1]*H); });
+g.add(new THREE.Mesh(new THREE.LatheGeometry(pts, 72), clay));
+var ic = [
+[0.00,0.22],[0.22,0.22],[0.24,0.30],[0.38,0.48],[0.58,0.68],
+[0.70,0.84],[0.74,0.94],[0.70,0.99]
+];
+var ptsI = ic.map(function(p){
+return new THREE.Vector2(Math.max(0.001, p[0]*cap*0.5), p[1]*H); });
+g.add(new THREE.Mesh(new THREE.LatheGeometry(ptsI, 56), clayIn));
+// Kauçuk conta — bayonet oturma halkası
+var conta = new THREE.Mesh(
+new THREE.TorusGeometry(cap*0.145, 2.4, 10, 36), silikon());
+conta.rotation.x = Math.PI/2; conta.position.y = 3.2; g.add(conta);
+// Metal bilezik üst kenarda ince halka (lüle boynu)
+var bilezik = new THREE.Mesh(
+new THREE.TorusGeometry(cap*0.148, 1.5, 8, 40), metal());
+bilezik.rotation.x = Math.PI/2; bilezik.position.y = H*0.20; g.add(bilezik);
+if (luleTakili){
+g.position.y = seatY - 1.5;
+} else {
+g.position.set(10, seatY + 36, 4);
+g.rotation.z = 0.16; g.rotation.x = 0.05;
+}
+grup.add(g);
+return H + (luleTakili ? 0 : 36);
+}
 function silikon(){ return new THREE.MeshStandardMaterial({
 color:0x15181a, metalness:0.05, roughness:0.88, envMapIntensity:0.35 }); }
 function sil(r1, r2, h, mat, y, seg){
@@ -603,7 +645,8 @@ var toplam;
 if (M.id === 'narion-ladin')        toplam = kurLadin(M);
 else if (M.id === 'narion-manolya') toplam = kurManolya(M);
 else                                toplam = kurKoza(M);
-var genis = Math.max(M.taban, M.sise);
+toplam += ekleLule(M, toplam);
+var genis = Math.max(M.taban, M.sise, M.lule);
 grup.position.y = -toplam/2;
 grup.traverse(function(o){
 if(!o.isMesh) return;
@@ -697,6 +740,13 @@ document.querySelectorAll('[data-kaplama]').forEach(function(b){
 b.addEventListener('click', function(){
 kap = K.filter(function(x){return x[0]===b.dataset.kaplama;})[0];
 document.querySelectorAll('[data-kaplama]').forEach(function(x){x.setAttribute('aria-pressed', x===b);});
+kur(); isaretle();
+});
+});
+document.querySelectorAll('[data-lule]').forEach(function(b){
+b.addEventListener('click', function(){
+luleTakili = b.dataset.lule === 'takili';
+document.querySelectorAll('[data-lule]').forEach(function(x){x.setAttribute('aria-pressed', x===b);});
 kur(); isaretle();
 });
 });
