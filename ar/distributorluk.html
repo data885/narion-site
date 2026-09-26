@@ -464,6 +464,30 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
 .htop .v{font-family:var(--f-display);font-size:27px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.1}
 @media print{.hesap input{border:none;border-bottom:1px dashed var(--line)}}
 
+
+/* --- kafe logosu onizleme --- */
+.lgrid{display:grid;grid-template-columns:1fr 250px;gap:22px;margin-top:20px;align-items:start}
+@media(max-width:820px){.lgrid{grid-template-columns:1fr}}
+#lg-tuval{width:100%;height:auto;display:block;border:1px solid var(--line);background:var(--surface-2,#eee)}
+.lg-sag{display:flex;flex-direction:column;gap:14px}
+.lg-yukle{display:block;cursor:pointer}
+.lg-yukle input{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}
+.lg-yukle span{display:block;text-align:center;font-family:var(--f-mono);font-size:12px;
+  letter-spacing:.05em;padding:13px 16px;border:1px dashed var(--line-strong,var(--line));
+  background:var(--surface);color:var(--muted);transition:border-color .15s,color .15s}
+.lg-yukle:hover span{border-color:var(--accent);color:var(--accent)}
+.lg-yukle input:focus-visible+span{outline:2px solid var(--accent);outline-offset:2px}
+.lg-uyari{font-size:12.5px;color:#a33636;margin:0}
+.lg-kaydir{display:flex;flex-direction:column;gap:6px}
+.lg-kaydir span{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--faint)}
+.lg-kaydir input[type=range]{width:100%;accent-color:var(--accent)}
+.lg-sag .btnbox{border:1px solid var(--line);cursor:pointer;font-family:var(--f-mono);
+  font-size:12px;text-align:center;background:var(--surface)}
+.lg-sag .btnbox:disabled{opacity:.42;cursor:not-allowed}
+.lg-gizlilik{font-size:11.5px;color:var(--faint);line-height:1.5;margin:0}
+@media print{.lgrid{display:none}}
+
 </style>
 </head>
 <body>
@@ -578,7 +602,33 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
 </div></section>
 
 <section><div class="wrap">
-  <div class="shead"><span class="num">04</span><h2>عمَّن نبحث</h2></div>
+  <div class="shead"><span class="num">04</span><h2>شعار المقهى على اللوح</h2>
+    <p>في KOZA وLADİN يُنقش الشعار بالليزر على لوح جوزي منفصل، لا على الهيكل. اللوح قطعة غيار: يُخزَّن اللوح الحامل للشعار وحده ويبقى الهيكل قياسياً. ارفع شعارك وشاهد كيف يبدو النقش.</p></div>
+  
+<div class="lgrid">
+  <div class="lg-sol">
+    <canvas id="lg-tuval" width="760" height="300" role="img"
+            aria-label="معاينة نقش شعار المقهى على لوح جوزي"></canvas>
+    <p class="small">المعاينة استرشادية؛ النقش الفعلي بعمق 0.3–0.5 مم وتختلف النتيجة قليلاً بحسب عروق الخشب.</p>
+  </div>
+  <div class="lg-sag">
+    <label class="lg-yukle">
+      <input type="file" id="lg-dosya" accept="image/png,image/jpeg,image/svg+xml,image/webp">
+      <span>اختر ملف الشعار</span>
+    </label>
+    <p id="lg-uyari" hidden class="lg-uyari">ملفات الصور فقط (PNG، JPG، SVG، WebP).</p>
+    <label class="lg-kaydir"><span>الحجم</span>
+      <input type="range" id="lg-olcek" min="20" max="85" value="52"></label>
+    <label class="lg-kaydir"><span>عمق النقش</span>
+      <input type="range" id="lg-derin" min="20" max="100" value="60"></label>
+    <button type="button" id="lg-indir" class="btnbox" disabled>تنزيل المعاينة</button>
+    <p class="lg-gizlilik">ملفك لا يُرسَل إلى أي مكان — تتم معالجته داخل متصفحك.</p>
+  </div>
+</div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="shead"><span class="num">05</span><h2>عمَّن نبحث</h2></div>
   <div class="grid g3"><div class="cell"><span class="k">01</span><h3>موزّع إقليمي</h3><p>شركة لديها وصول إلى قناة الضيافة في الخليج أو الجمهوريات التركية أو روسيا، وقادرة على حمل مخزون قطع غيار.</p></div><div class="cell"><span class="k">02</span><h3>منشأة تجريبية</h3><p>خمس منشآت لاستخدام ميداني 60 يوماً في المرحلة T2. يُقدَّم الجهاز مجاناً مقابل تغذية راجعة أسبوعية.</p></div></div>
 </div></section>
 
@@ -592,6 +642,103 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
   <div class="shead"><span class="num">05</span><h2>أسئلة متكرّرة</h2></div>
   <div class="faq"><details><summary>هل يمكن شراء المنتج الآن؟</summary><p>لا. ‏NARION في المرحلة T0؛ والسلسلة الأولى البالغة 500 وحدة تخرج في المرحلة T4. المفتوح حالياً هو محادثات التوزيع وطلبات المنشآت التجريبية فقط.</p></details><details><summary>ما الحد الأدنى للطلب؟</summary><p>لأن السلسلة الأولى محدودة، تُحدَّد شرائح الكميات بالتفاوض. لا نعلن حداً أدنى ثابتاً — ففي سلسلة من 500 وحدة لن يكون ذلك صادقاً.</p></details><details><summary>هل المنتج معتمَد؟</summary><p>نُجري طلبات SABER/SASO (السعودية) وEAC (روسيا / الاتحاد الأوراسي) بالتوازي مع السلسلة التجريبية. وتقارير مواد التلامس الغذائي في المرحلة نفسها.</p></details><details><summary>هل العلامة الخاصة ممكنة؟</summary><p>ليس في السلسلة الأولى. علامة الصنع تُحفر بالليزر أسفل القاعدة فقط؛ وتُدرس العلامة الخاصة بعد T4 مقابل التزام بالكمية.</p></details><details><summary>لماذا لا توجد قائمة أسعار على الموقع؟</summary><p>سعر الوكيل يتغيّر بحسب السوق والكمية والقناة. كما أن نشر قائمة ثابتة يُفسد تسعير الموزّع نفسه.</p></details></div>
 </div></section>
+<script>
+(function(){
+  var c = document.getElementById('lg-tuval');
+  if (!c) return;
+  var x = c.getContext('2d'), gorsel = null;
+  var girdi = document.getElementById('lg-dosya'),
+      olcek = document.getElementById('lg-olcek'),
+      derin = document.getElementById('lg-derin'),
+      indir = document.getElementById('lg-indir'),
+      uyari = document.getElementById('lg-uyari');
+
+  function panel(){
+    var w = c.width, h = c.height;
+    // ceviz panel zemini
+    var g = x.createLinearGradient(0, 0, w, 0);
+    g.addColorStop(0, '#3d2a1d'); g.addColorStop(.22, '#6b4a33');
+    g.addColorStop(.5, '#8a6244'); g.addColorStop(.78, '#63432e');
+    g.addColorStop(1, '#3a271b');
+    x.fillStyle = g; x.fillRect(0, 0, w, h);
+    // damar
+    x.globalAlpha = .12;
+    for (var i = 0; i < 90; i++){
+      var y0 = Math.random() * h;
+      x.strokeStyle = Math.random() > .5 ? '#2a1c12' : '#a8815c';
+      x.lineWidth = Math.random() * 1.6 + .2;
+      x.beginPath(); x.moveTo(0, y0);
+      x.bezierCurveTo(w*.3, y0 + (Math.random()-.5)*26, w*.7, y0 + (Math.random()-.5)*26, w, y0 + (Math.random()-.5)*14);
+      x.stroke();
+    }
+    x.globalAlpha = 1;
+    // panel kenar golgesi
+    var k = x.createLinearGradient(0, 0, 0, h);
+    k.addColorStop(0, 'rgba(0,0,0,.38)'); k.addColorStop(.06, 'rgba(0,0,0,0)');
+    k.addColorStop(.94, 'rgba(0,0,0,0)'); k.addColorStop(1, 'rgba(0,0,0,.42)');
+    x.fillStyle = k; x.fillRect(0, 0, w, h);
+  }
+
+  function ciz(){
+    panel();
+    if (!gorsel) return;
+    var w = c.width, h = c.height;
+    var o = parseFloat(olcek.value) / 100;
+    var d = parseFloat(derin.value) / 100;         // kazıma derinliği hissi
+    var gw = w * o, gh = gorsel.height * (gw / gorsel.width);
+    if (gh > h * .82){ gh = h * .82; gw = gorsel.width * (gh / gorsel.height); }
+    var gx = (w - gw) / 2, gy = (h - gh) / 2;
+
+    // logoyu ayrı tuvalde gri tonlamaya çevir
+    var t = document.createElement('canvas'); t.width = Math.round(gw); t.height = Math.round(gh);
+    var tc = t.getContext('2d'); tc.drawImage(gorsel, 0, 0, t.width, t.height);
+    var im = tc.getImageData(0, 0, t.width, t.height), p = im.data;
+    for (var i = 0; i < p.length; i += 4){
+      var gri = (p[i]*.299 + p[i+1]*.587 + p[i+2]*.114);
+      var koyu = 255 - gri;                         // koyu pikseller kazınır
+      // tam siyah degil: kazinan ahsap koyulasir ama damar gorunmeye devam eder
+      p[i] = 58; p[i+1] = 38; p[i+2] = 24;
+      p[i+3] = Math.min(224, p[i+3] * (koyu/255) * (0.45 + d));
+    }
+    tc.putImageData(im, 0, 0);
+
+    // oyuk: koyu iz
+    x.globalCompositeOperation = 'multiply';
+    x.drawImage(t, gx, gy);
+    x.globalCompositeOperation = 'source-over';
+    // kenar isigi: gercek kazimada alt kenar isigi yakalar
+    x.globalAlpha = .30 + d * .3;
+    x.globalCompositeOperation = 'screen';
+    x.drawImage(t, gx, gy + Math.max(1, Math.round(gh*.012)));
+    x.globalCompositeOperation = 'source-over';
+    x.globalAlpha = 1;
+  }
+
+  girdi.addEventListener('change', function(e){
+    var f = e.target.files && e.target.files[0];
+    if (!f) return;
+    if (!/^image\//.test(f.type)) { uyari.hidden = false; return; }
+    uyari.hidden = true;
+    var fr = new FileReader();
+    fr.onload = function(ev){
+      var im = new Image();
+      im.onload = function(){ gorsel = im; ciz(); indir.disabled = false; };
+      im.src = ev.target.result;
+    };
+    fr.readAsDataURL(f);
+  });
+  olcek.addEventListener('input', ciz);
+  derin.addEventListener('input', ciz);
+  indir.addEventListener('click', function(){
+    var a = document.createElement('a');
+    a.download = 'narion-panel-onizleme.png';
+    a.href = c.toDataURL('image/png');
+    a.click();
+  });
+
+  panel();
+})();
+</script>
 <script>
 (function(){
   var A = ['h1','h2','h3','h4','h5','h6','h7','h8'], el = {};
