@@ -37,6 +37,18 @@ jobs:
           assert b'ekleLule' in data, 'missing ekleLule'
           assert len(data) > 20000, len(data)
 
+          # Assemble texture .b64 sidecars from split parts
+          for name in ['ceviz_color.jpg.b64','ceviz_normal.jpg.b64','ceviz_roughness.jpg.b64',
+                       'firca_normal.jpg.b64','firca_roughness.jpg.b64']:
+              parts = sorted(Path('gorsel/3d').glob(name + '.p*'))
+              if not parts:
+                  print('no texture parts', name)
+                  continue
+              data = ''.join(pp.read_text().strip() for pp in parts)
+              Path('gorsel/3d/' + name).write_text(data)
+              print('texture', name, len(data), 'from', len(parts), 'parts')
+
+
           INSERTS = {
             'tr': ('Kaplama',
               '<div class="v3-grp"><span class="v3-lab">Lüle</span><div class="picks">'
@@ -85,7 +97,7 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add gorsel/3d/uc-boyut-viewer.js tr/uc-boyut.html en/uc-boyut.html ar/uc-boyut.html ru/uc-boyut.html || true
+          git add gorsel/3d/uc-boyut-viewer.js gorsel/3d/*.jpg.b64 tr/uc-boyut.html en/uc-boyut.html ar/uc-boyut.html ru/uc-boyut.html || true
           if git diff --cached --quiet; then
             echo "No change"
           else
