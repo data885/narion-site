@@ -383,8 +383,8 @@ var _topla = null;
 function birlestir(gs){
 var tv = 0, ti = 0;
 gs.forEach(function(g){ tv += g.attributes.position.count; ti += g.index.count; });
-var pos = new Float32Arrax(tv*3), nor = new Float32Arrax(tv*3),
-uvd = new Float32Arrax(tv*2), idx = new Uint32Array(ti);
+var pos = new Float32Array(tv*3), nor = new Float32Array(tv*3),
+uvd = new Float32Array(tv*2), idx = new Uint32Array(ti);
 var vo = 0, io = 0;
 gs.forEach(function(g){
 pos.set(g.attributes.position.array, vo*3);
