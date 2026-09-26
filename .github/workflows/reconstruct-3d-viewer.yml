@@ -2,7 +2,7 @@ name: reconstruct-3d-viewer
 on:
   workflow_dispatch:
   push:
-    branches: [feat/3d-studio-materials]
+    branches: [feat/3d-lule-textures]
 jobs:
   rebuild:
     runs-on: ubuntu-latest
@@ -11,13 +11,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: feat/3d-studio-materials
+          ref: feat/3d-lule-textures
           fetch-depth: 0
-      - name: Decode viewer.js and locale HTML from b64 parts (or inject boot into main HTML)
+      - name: Decode viewer.js from b64 parts + inject Lüle UI into locale HTML
         run: |
           set -euo pipefail
           python3 <<'PY'
-          import base64, glob, re, subprocess
+          import base64, glob, re
           from pathlib import Path
 
           def decode_parts(pattern, dest, min_parts=1):
@@ -26,49 +26,59 @@ jobs:
                   print('skip decode', dest, 'parts', len(parts), '<', min_parts)
                   return False
               data = ''.join(Path(p).read_text().strip() for p in parts)
-              try:
-                  raw = base64.b64decode(data, validate=False)
-              except Exception as e:
-                  print('b64 fail', dest, e)
-                  return False
-              if dest.endswith('.html') and len(raw) < 20000:
-                  print('skip small html', dest, len(raw))
-                  return False
+              raw = base64.b64decode(data, validate=False)
               Path(dest).write_bytes(raw)
               print('wrote', dest, len(raw), 'from', len(parts), 'parts')
               return True
 
-          decode_parts('gorsel/3d/uc-boyut-viewer.js.b64.p*', 'gorsel/3d/uc-boyut-viewer.js', min_parts=8)
+          decode_parts('gorsel/3d/uc-boyut-viewer.js.b64.p*', 'gorsel/3d/uc-boyut-viewer.js', min_parts=9)
           data = Path('gorsel/3d/uc-boyut-viewer.js').read_bytes()
           assert data.startswith(b'(function'), data[:40]
+          assert b'ekleLule' in data, 'missing ekleLule'
           assert len(data) > 20000, len(data)
 
-          SCRIPTS = (
-              '<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>\n'
-              '<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/RGBELoader.js"></script>\n'
-              '<script src="../gorsel/3d/uc-boyut-viewer-boot.js"></script>'
-          )
-          pat = re.compile(
-              r'<script src="https://cdnjs\.cloudflare\.com/ajax/libs/three\.js/r128/three\.min\.js"></script>\s*<script>[\s\S]*?</script>',
-              re.M,
-          )
+          INSERTS = {
+            'tr': ('Kaplama',
+              '<div class="v3-grp"><span class="v3-lab">Lüle</span><div class="picks">'
+              '<button type="button" class="pick" data-lule="takili" aria-pressed="true">takılı</button>'
+              '<button type="button" class="pick" data-lule="cikik" aria-pressed="false">çıkık</button>'
+              '</div></div>'),
+            'en': ('Finish',
+              '<div class="v3-grp"><span class="v3-lab">Bowl</span><div class="picks">'
+              '<button type="button" class="pick" data-lule="takili" aria-pressed="true">fitted</button>'
+              '<button type="button" class="pick" data-lule="cikik" aria-pressed="false">lifted</button>'
+              '</div></div>'),
+            'ar': ('التشطيب',
+              '<div class="v3-grp"><span class="v3-lab">الرأس</span><div class="picks">'
+              '<button type="button" class="pick" data-lule="takili" aria-pressed="true">مركّب</button>'
+              '<button type="button" class="pick" data-lule="cikik" aria-pressed="false">مرفوع</button>'
+              '</div></div>'),
+            'ru': ('Покрытие',
+              '<div class="v3-grp"><span class="v3-lab">Чаша</span><div class="picks">'
+              '<button type="button" class="pick" data-lule="takili" aria-pressed="true">надета</button>'
+              '<button type="button" class="pick" data-lule="cikik" aria-pressed="false">снята</button>'
+              '</div></div>'),
+          }
 
-          subprocess.run(['git', 'fetch', 'origin', 'main'], check=False)
-          for loc in ['tr', 'en', 'ar', 'ru']:
-              dest = f'{loc}/uc-boyut.html'
-              if decode_parts(f'{loc}/uc-boyut.html.b64.p*', dest, min_parts=10):
+          for loc, (lab, block) in INSERTS.items():
+              dest = Path(f'{loc}/uc-boyut.html')
+              html = dest.read_text()
+              if 'data-lule=' in html:
+                  print(loc, 'already has lule')
                   continue
-              try:
-                  html = subprocess.check_output(['git', 'show', f'origin/main:{loc}/uc-boyut.html'], text=True)
-              except Exception as e:
-                  print('no main html', loc, e)
+              marker = f'<span class="v3-lab">{lab}</span>'
+              idx = html.find(marker)
+              if idx < 0:
+                  print('marker missing', loc, lab)
                   continue
-              html2, n = pat.subn(SCRIPTS, html, count=1)
-              if n != 1 or 'uc-boyut-viewer-boot' not in html2:
-                  print('inject failed', loc, n)
+              picks_end = html.find('</div></div>', idx)
+              if picks_end < 0:
+                  print('grp end missing', loc)
                   continue
-              Path(dest).write_text(html2)
-              print('injected boot into', dest, len(html2))
+              insert_at = picks_end + len('</div></div>')
+              html2 = html[:insert_at] + '\n    ' + block + html[insert_at:]
+              dest.write_text(html2)
+              print('injected lule into', dest, len(html2))
           PY
       - name: Commit rebuilt artifacts
         run: |
@@ -79,6 +89,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No change"
           else
-            git commit -m "Rebuild viewer.js + locale HTML (b64 or main+boot inject)"
+            git commit -m "Rebuild viewer.js from b64 parts + Lüle UI on locale HTML"
             git push
           fi
