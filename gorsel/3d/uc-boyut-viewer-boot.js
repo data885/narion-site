@@ -1,6 +1,6 @@
 (function(){
   var base = '../gorsel/3d/uc-boyut-viewer.js';
-  var N = 11;
+  var N = 8;
   function run(code){ (0,eval)(code); }
   function fromB64(b64){
     var bin = atob(b64.trim());
