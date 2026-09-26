@@ -438,6 +438,32 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
 .v3-zoom button:hover{border-color:var(--accent);color:var(--accent)}
 @media print{.v3-zoom{display:none}}
 
+
+/* --- kafe hesaplayicisi --- */
+.hesap{margin-top:20px}
+.hesap table{min-width:0}
+.hesap input[type=number]{font-family:var(--f-mono);font-size:14px;width:100%;max-width:120px;
+  padding:6px 9px;background:var(--surface);border:1px solid var(--line);border-radius:0;
+  color:var(--ink);font-variant-numeric:tabular-nums;text-align:right}
+.hesap input:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.hesap td.birim{font-family:var(--f-mono);font-size:11.5px;color:var(--faint);white-space:nowrap}
+.hout{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);
+  border:1px solid var(--line);margin-top:18px}
+@media(max-width:700px){.hout{grid-template-columns:1fr}}
+.ho{background:var(--surface);padding:16px 18px;display:flex;flex-direction:column;gap:3px}
+.ho .l{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.ho .v{font-family:var(--f-display);font-size:23px;font-weight:600;font-variant-numeric:tabular-nums;
+  line-height:1.15;color:var(--accent)}
+.ho .s{font-size:12px;color:var(--muted);line-height:1.45;margin-top:2px}
+.htop{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);
+  border:1px solid var(--line);border-top:none}
+@media(max-width:700px){.htop{grid-template-columns:1fr}}
+.htop>div{background:var(--accent-soft,rgba(150,101,43,.08));padding:16px 18px;
+  display:flex;flex-direction:column;gap:3px}
+.htop .l{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.htop .v{font-family:var(--f-display);font-size:27px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.1}
+@media print{.hesap input{border:none;border-bottom:1px dashed var(--line)}}
+
 </style>
 </head>
 <body>
@@ -525,7 +551,34 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
 </div></section>
 
 <section><div class="wrap">
-  <div class="shead"><span class="num">03</span><h2>Кого мы ищем</h2></div>
+  <div class="shead"><span class="num">03</span><h2>Арифметика заведения</h2>
+    <p>Мы не даём готовую цифру экономии: процент боя, цены деталей и объём подачи различаются в каждом заведении. Введите ниже собственные цифры — расчёт выполнится мгновенно.</p></div>
+  
+<div class="hesap">
+  <div class="tw"><table><thead><tr>
+    <th>Статья</th><th class="num">Ваша цифра</th><th>Единица</th>
+  </tr></thead><tbody><tr><td>Колб бьётся в месяц</td><td class="num"><input id="h1" type="number" min="0" step="1" value="6" inputmode="numeric" aria-label="Колб бьётся в месяц"></td><td class="birim">шт.</td></tr><tr><td>Цена колбы</td><td class="num"><input id="h2" type="number" min="0" step="1" value="250" inputmode="numeric" aria-label="Цена колбы"></td><td class="birim">USD</td></tr><tr><td>Чаш бьётся в месяц</td><td class="num"><input id="h3" type="number" min="0" step="1" value="10" inputmode="numeric" aria-label="Чаш бьётся в месяц"></td><td class="birim">шт.</td></tr><tr><td>Цена чаши</td><td class="num"><input id="h4" type="number" min="0" step="1" value="90" inputmode="numeric" aria-label="Цена чаши"></td><td class="birim">USD</td></tr><tr><td>Подач в день</td><td class="num"><input id="h5" type="number" min="0" step="1" value="40" inputmode="numeric" aria-label="Подач в день"></td><td class="birim">шт.</td></tr><tr><td>Уборка на прибор</td><td class="num"><input id="h6" type="number" min="0" step="1" value="4" inputmode="numeric" aria-label="Уборка на прибор"></td><td class="birim">минут</td></tr><tr><td>Стоимость часа персонала</td><td class="num"><input id="h7" type="number" min="0" step="1" value="120" inputmode="numeric" aria-label="Стоимость часа персонала"></td><td class="birim">USD</td></tr><tr><td>Разных моделей на складе</td><td class="num"><input id="h8" type="number" min="0" step="1" value="4" inputmode="numeric" aria-label="Разных моделей на складе"></td><td class="birim">видов</td></tr></tbody></table></div>
+
+  <div class="hout">
+    <div class="ho"><span class="l">Бой деталей</span><span class="v" id="o-kirilma">—</span>
+      <span class="s">С колбой Tritan и чашей из кордиерита эта статья обнуляется</span></div>
+    <div class="ho"><span class="l">Труд на уборку</span><span class="v" id="o-temizlik">—</span>
+      <span class="s">Выигрыш против разборки за 40 секунд без инструмента</span></div>
+    <div class="ho"><span class="l">Складские позиции</span><span class="v" id="o-stok">—</span>
+      <span class="s">Три модели используют один набор запчастей</span></div>
+  </div>
+
+  <div class="htop">
+    <div><span class="l">Итого в месяц</span><span class="v" id="o-toplam">—</span></div>
+    <div><span class="l">Итого в год</span><span class="v" id="o-yillik">—</span></div>
+  </div>
+
+  <p class="small">Метод: (колбы × цена) + (чаши × цена) + разница в трудозатратах на уборку. Разница — месячная стоимость труда между вашим текущим временем и целью NARION в 40 секунд. Значения из нашей производственной спецификации.</p>
+</div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="shead"><span class="num">04</span><h2>Кого мы ищем</h2></div>
   <div class="grid g3"><div class="cell"><span class="k">01</span><h3>Регионального дистрибьютора</h3><p>Компанию с доступом к каналу HoReCa в Заливе, тюркских республиках или России, способную держать склад запчастей.</p></div><div class="cell"><span class="k">02</span><h3>Пилотное заведение</h3><p>Пять заведений для 60 дней эксплуатации на этапе T2. Аппарат предоставляется бесплатно в обмен на еженедельную обратную связь.</p></div></div>
 </div></section>
 
@@ -539,6 +592,42 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
   <div class="shead"><span class="num">05</span><h2>Частые вопросы</h2></div>
   <div class="faq"><details><summary>Можно ли купить продукт сейчас?</summary><p>Нет. NARION на стадии T0; первая серия в 500 штук выходит на этапе T4. Сейчас открыты только переговоры с дистрибьюторами и заявки пилотных заведений.</p></details><details><summary>Какой минимальный заказ?</summary><p>Поскольку первая серия ограничена, объёмные ступени определяются в переговорах. Мы не объявляем фиксированный MOQ — на серии в 500 штук это было бы нечестно.</p></details><details><summary>Продукт сертифицирован?</summary><p>Заявки SABER/SASO (Саудовская Аравия) и EAC (Россия / ЕАЭС) мы ведём параллельно с пилотной серией. Отчёты по пищевому контакту — на той же стадии.</p></details><details><summary>Возможен ли private label?</summary><p>Не в первой серии. Марка наносится лазером только под основанием; private label рассматривается после T4 при объёмных обязательствах.</p></details><details><summary>Почему на сайте нет прайса?</summary><p>Дилерская цена зависит от рынка, объёма и канала. Публикация фиксированного прайса к тому же ломает ценообразование самого дистрибьютора.</p></details></div>
 </div></section>
+<script>
+(function(){
+  var A = ['h1','h2','h3','h4','h5','h6','h7','h8'], el = {};
+  A.forEach(function(i){ el[i] = document.getElementById(i); });
+  if (!el.h1) return;
+  var bicim = new Intl.NumberFormat("ru-RU", {maximumFractionDigits:0});
+  var birim = "USD";
+
+  function s(i){ var v = parseFloat(el[i].value); return isNaN(v) || v < 0 ? 0 : v; }
+  function yaz(id, v){ var o = document.getElementById(id); if(o) o.textContent = bicim.format(Math.round(v)) + ' ' + birim; }
+
+  function hesapla(){
+    var sise = s('h1') * s('h2');
+    var lule = s('h3') * s('h4');
+    var kirilma = sise + lule;
+
+    // mevcut temizlik is gucu: gunluk servis x dakika x 30 gun
+    var dk = s('h5') * s('h6') * 30;
+    var mevcut = (dk / 60) * s('h7');
+    // NARION hedefi: nargile basina 40 saniye
+    var narion = ((s('h5') * (40/60) * 30) / 60) * s('h7');
+    var fark = Math.max(0, mevcut - narion);
+
+    yaz('o-kirilma', kirilma);
+    yaz('o-temizlik', fark);
+    yaz('o-toplam', kirilma + fark);
+    yaz('o-yillik', (kirilma + fark) * 12);
+
+    var st = document.getElementById('o-stok');
+    if (st) st.textContent = s('h8') > 1 ? (s('h8') + ' → 1') : '1';
+  }
+
+  A.forEach(function(i){ el[i].addEventListener('input', hesapla); });
+  hesapla();
+})();
+</script>
 </main>
 <footer>
   <div class="wrap">

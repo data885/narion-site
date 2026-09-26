@@ -438,6 +438,32 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
 .v3-zoom button:hover{border-color:var(--accent);color:var(--accent)}
 @media print{.v3-zoom{display:none}}
 
+
+/* --- kafe hesaplayicisi --- */
+.hesap{margin-top:20px}
+.hesap table{min-width:0}
+.hesap input[type=number]{font-family:var(--f-mono);font-size:14px;width:100%;max-width:120px;
+  padding:6px 9px;background:var(--surface);border:1px solid var(--line);border-radius:0;
+  color:var(--ink);font-variant-numeric:tabular-nums;text-align:right}
+.hesap input:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.hesap td.birim{font-family:var(--f-mono);font-size:11.5px;color:var(--faint);white-space:nowrap}
+.hout{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);
+  border:1px solid var(--line);margin-top:18px}
+@media(max-width:700px){.hout{grid-template-columns:1fr}}
+.ho{background:var(--surface);padding:16px 18px;display:flex;flex-direction:column;gap:3px}
+.ho .l{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.ho .v{font-family:var(--f-display);font-size:23px;font-weight:600;font-variant-numeric:tabular-nums;
+  line-height:1.15;color:var(--accent)}
+.ho .s{font-size:12px;color:var(--muted);line-height:1.45;margin-top:2px}
+.htop{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);
+  border:1px solid var(--line);border-top:none}
+@media(max-width:700px){.htop{grid-template-columns:1fr}}
+.htop>div{background:var(--accent-soft,rgba(150,101,43,.08));padding:16px 18px;
+  display:flex;flex-direction:column;gap:3px}
+.htop .l{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.htop .v{font-family:var(--f-display);font-size:27px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.1}
+@media print{.hesap input{border:none;border-bottom:1px dashed var(--line)}}
+
 </style>
 </head>
 <body>
@@ -525,7 +551,34 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
 </div></section>
 
 <section><div class="wrap">
-  <div class="shead"><span class="num">03</span><h2>Who we are looking for</h2></div>
+  <div class="shead"><span class="num">03</span><h2>The café's arithmetic</h2>
+    <p>We don't hand you a savings figure; breakage rate, part prices and service volume differ in every venue. Put your customer's own numbers in below and the calculation runs instantly.</p></div>
+  
+<div class="hesap">
+  <div class="tw"><table><thead><tr>
+    <th>Item</th><th class="num">Your figure</th><th>Unit</th>
+  </tr></thead><tbody><tr><td>Vessels broken per month</td><td class="num"><input id="h1" type="number" min="0" step="1" value="6" inputmode="numeric" aria-label="Vessels broken per month"></td><td class="birim">units</td></tr><tr><td>Vessel unit price</td><td class="num"><input id="h2" type="number" min="0" step="1" value="250" inputmode="numeric" aria-label="Vessel unit price"></td><td class="birim">USD</td></tr><tr><td>Bowls broken per month</td><td class="num"><input id="h3" type="number" min="0" step="1" value="10" inputmode="numeric" aria-label="Bowls broken per month"></td><td class="birim">units</td></tr><tr><td>Bowl unit price</td><td class="num"><input id="h4" type="number" min="0" step="1" value="90" inputmode="numeric" aria-label="Bowl unit price"></td><td class="birim">USD</td></tr><tr><td>Daily servings</td><td class="num"><input id="h5" type="number" min="0" step="1" value="40" inputmode="numeric" aria-label="Daily servings"></td><td class="birim">units</td></tr><tr><td>Cleaning per unit</td><td class="num"><input id="h6" type="number" min="0" step="1" value="4" inputmode="numeric" aria-label="Cleaning per unit"></td><td class="birim">minutes</td></tr><tr><td>Staff hourly cost</td><td class="num"><input id="h7" type="number" min="0" step="1" value="120" inputmode="numeric" aria-label="Staff hourly cost"></td><td class="birim">USD</td></tr><tr><td>Different models in stock</td><td class="num"><input id="h8" type="number" min="0" step="1" value="4" inputmode="numeric" aria-label="Different models in stock"></td><td class="birim">types</td></tr></tbody></table></div>
+
+  <div class="hout">
+    <div class="ho"><span class="l">Breakage</span><span class="v" id="o-kirilma">—</span>
+      <span class="s">A Tritan vessel and cordierite bowl take this to zero</span></div>
+    <div class="ho"><span class="l">Cleaning labour</span><span class="v" id="o-temizlik">—</span>
+      <span class="s">Gained against the 40-second tool-free strip-down</span></div>
+    <div class="ho"><span class="l">Stock lines</span><span class="v" id="o-stok">—</span>
+      <span class="s">Three models share one spare-part set</span></div>
+  </div>
+
+  <div class="htop">
+    <div><span class="l">Monthly total</span><span class="v" id="o-toplam">—</span></div>
+    <div><span class="l">Annual total</span><span class="v" id="o-yillik">—</span></div>
+  </div>
+
+  <p class="small">Method: (vessels × price) + (bowls × price) + the cleaning labour difference. That difference is the monthly labour cost between your current time and NARION's 40-second strip-down. Figures come from our production specification.</p>
+</div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="shead"><span class="num">04</span><h2>Who we are looking for</h2></div>
   <div class="grid g3"><div class="cell"><span class="k">01</span><h3>Regional distributor</h3><p>A company with HoReCa channel access in the Gulf, the Turkic republics or Russia, able to carry spare-part stock.</p></div><div class="cell"><span class="k">02</span><h3>Pilot venue</h3><p>Five venues for 60 days of field use during T2. The device is provided free of charge in exchange for weekly usage feedback.</p></div></div>
 </div></section>
 
@@ -539,6 +592,42 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
   <div class="shead"><span class="num">05</span><h2>Frequently asked</h2></div>
   <div class="faq"><details><summary>Can the product be bought now?</summary><p>No. NARION is at T0; the first 500-unit series ships at T4. Only distributor discussions and pilot-venue applications are open at this stage.</p></details><details><summary>What is the minimum order quantity?</summary><p>Because the first series is limited, volume tiers are set in conversation. We do not publish a fixed MOQ — on a 500-unit series that would not be honest.</p></details><details><summary>Is the product certified?</summary><p>We run the SABER/SASO (Saudi Arabia) and EAC (Russia / EAEU) applications in parallel with the pilot series. Food-contact material reports are at the same stage.</p></details><details><summary>Is private label possible?</summary><p>Not on the first series. The brand mark is laser-etched under the base only; private label will be considered after T4 against a volume commitment.</p></details><details><summary>Why is there no price list on the site?</summary><p>Dealer pricing varies by market, volume and channel. Publishing a fixed list would also undermine the distributor's own pricing.</p></details></div>
 </div></section>
+<script>
+(function(){
+  var A = ['h1','h2','h3','h4','h5','h6','h7','h8'], el = {};
+  A.forEach(function(i){ el[i] = document.getElementById(i); });
+  if (!el.h1) return;
+  var bicim = new Intl.NumberFormat("en-US", {maximumFractionDigits:0});
+  var birim = "USD";
+
+  function s(i){ var v = parseFloat(el[i].value); return isNaN(v) || v < 0 ? 0 : v; }
+  function yaz(id, v){ var o = document.getElementById(id); if(o) o.textContent = bicim.format(Math.round(v)) + ' ' + birim; }
+
+  function hesapla(){
+    var sise = s('h1') * s('h2');
+    var lule = s('h3') * s('h4');
+    var kirilma = sise + lule;
+
+    // mevcut temizlik is gucu: gunluk servis x dakika x 30 gun
+    var dk = s('h5') * s('h6') * 30;
+    var mevcut = (dk / 60) * s('h7');
+    // NARION hedefi: nargile basina 40 saniye
+    var narion = ((s('h5') * (40/60) * 30) / 60) * s('h7');
+    var fark = Math.max(0, mevcut - narion);
+
+    yaz('o-kirilma', kirilma);
+    yaz('o-temizlik', fark);
+    yaz('o-toplam', kirilma + fark);
+    yaz('o-yillik', (kirilma + fark) * 12);
+
+    var st = document.getElementById('o-stok');
+    if (st) st.textContent = s('h8') > 1 ? (s('h8') + ' → 1') : '1';
+  }
+
+  A.forEach(function(i){ el[i].addEventListener('input', hesapla); });
+  hesapla();
+})();
+</script>
 </main>
 <footer>
   <div class="wrap">
