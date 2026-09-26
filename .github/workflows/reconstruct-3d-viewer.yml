@@ -19,14 +19,18 @@ jobs:
           from pathlib import Path
           root = Path('gorsel/3d')
           # Do NOT rebuild viewer.js — leave lüle viewer on the branch/main intact.
+          def decode_part(text: str) -> str:
+              t = ''.join(text.split())
+              if t.startswith('HEX:'):
+                  return bytes.fromhex(t[4:]).decode('ascii')
+              return t
           for name in ['ceviz_color.jpg.b64','ceviz_normal.jpg.b64','ceviz_roughness.jpg.b64',
                        'firca_normal.jpg.b64','firca_roughness.jpg.b64']:
               parts = sorted(root.glob(name + '.p*'))
               if not parts:
                   print('no texture parts', name)
                   continue
-              # Remove ALL whitespace so wrapped uploads still assemble correctly
-              data = ''.join(''.join(p.read_text().split()) for p in parts)
+              data = ''.join(decode_part(p.read_text()) for p in parts)
               (root / name).write_text(data)
               print('texture', name, len(data), 'from', len(parts), 'parts')
           PY
