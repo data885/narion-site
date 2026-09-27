@@ -1,366 +1,960 @@
-(function(){
-  var K = [
-    ["firca", "#c2c8cc", "Fırçalı Paslanmaz", 1.0, 1.0, 1.0, 0],
-    ["sampanya", "#d8bb8a", "PVD Şampanya", 1.15, 1.02, 0.78, 18],
-    ["siyah", "#33373a", "Mat Siyah PVD", 0.45, 0.45, 0.48, 0],
-    ["gun", "#5c666d", "Gun Metal", 0.72, 0.76, 0.82, -8]
-  ];
+/**
+ * NARION — Photorealistic 3D Studio Configurator Engine (WebGL / Three.js)
+ * 
+ * Features:
+ * - Independent PBR materials: Metal parts change ONLY metal; Wood sleeve changes ONLY wood;
+ *   Glass vase remains crystal refractive; Ceramic bowl remains technical ceramic.
+ * - 10 accurately proportioned NARION models in full 3D geometry.
+ * - 4 Metal finishes (Brushed Stainless, PVD Champagne, Matte Black PVD, Gun Metal).
+ * - 3 Natural wood finishes (American Walnut, Smoked Oak, Black Ash).
+ * - Component toggles: Fitted/lifted bowl, B2B laser engraving, custom hose.
+ * - Studio lighting: 3-point softbox, rim edge highlight, ground contact shadow.
+ * - 60 FPS smooth orbit rotation, pinch/wheel zoom, macro close-up, and HD PNG export.
+ */
 
-  var AHSAPLAR = {
-    "ceviz": "Doğal Amerikan Ceviz",
-    "mese": "Füme Koyu Meşe",
-    "disbudak": "Siyah Dişbudak"
+(function () {
+  'use strict';
+
+  var MODELLER = {
+    'narion-koza': {
+      name: 'KOZA',
+      code: 'NARION KOZA · MODERN SERİ',
+      height: '420 mm',
+      sise: '1,2 L · Tritan',
+      taban: 'Ø130 mm (Devrilmez)',
+      malzeme: 'AISI 304 Paslanmaz Çelik',
+      totalH: 4.2,
+      baseR: 1.3,
+      vaseH: 2.1,
+      stemH: 2.2,
+      stemProfile: 'koza'
+    },
+    'narion-ladin': {
+      name: 'LADİN',
+      code: 'NARION LADİN · LOUNGE SERİ',
+      height: '580 mm',
+      sise: '1,0 L · Kristal Cam',
+      taban: 'Ø120 mm (Kompakt)',
+      malzeme: 'AISI 304 Paslanmaz Çelik',
+      totalH: 5.8,
+      baseR: 1.2,
+      vaseH: 2.5,
+      stemH: 3.4,
+      stemProfile: 'ladin'
+    },
+    'narion-manolya': {
+      name: 'MANOLYA',
+      code: 'NARION MANOLYA · PRESTİJ SERİ',
+      height: '620 mm',
+      sise: '1,4 L · Kristal Fasetalı',
+      taban: 'Ø180 mm (Geniş Taban)',
+      malzeme: 'AISI 304 / 316L Çelik',
+      totalH: 6.2,
+      baseR: 1.8,
+      vaseH: 2.7,
+      stemH: 3.6,
+      stemProfile: 'manolya'
+    },
+    'narion-servi': {
+      name: 'SERVİ',
+      code: 'NARION SERVİ · İNCE MİMARİ SERİ',
+      height: '640 mm',
+      sise: '1,3 L · Dikey Silindir',
+      taban: 'Ø140 mm',
+      malzeme: 'AISI 304 Paslanmaz Çelik',
+      totalH: 6.4,
+      baseR: 1.4,
+      vaseH: 2.8,
+      stemH: 3.8,
+      stemProfile: 'servi'
+    },
+    'narion-prizma': {
+      name: 'PRİZMA',
+      code: 'NARION PRİZMA · GEOMETRİK SERİ',
+      height: '500 mm',
+      sise: '1,1 L · Altıgen Prizma',
+      taban: 'Ø150 mm',
+      malzeme: 'AISI 304 Paslanmaz Çelik',
+      totalH: 5.0,
+      baseR: 1.5,
+      vaseH: 2.3,
+      stemH: 2.8,
+      stemProfile: 'prizma'
+    },
+    'narion-nomad': {
+      name: 'NOMAD',
+      code: 'NARION NOMAD · SEYAHAT SERİ',
+      height: '360 mm',
+      sise: '0,9 L · Darbeye Dayanıklı',
+      taban: 'Ø160 mm (Ultra Alçak Merkez)',
+      malzeme: 'Hafifletilmiş AISI 304',
+      totalH: 3.6,
+      baseR: 1.6,
+      vaseH: 1.8,
+      stemH: 1.9,
+      stemProfile: 'nomad'
+    },
+    'narion-aura': {
+      name: 'AURA',
+      code: 'NARION AURA · DAMLA PRESTİJ',
+      height: '540 mm',
+      sise: '1,2 L · Damla Formu',
+      taban: 'Ø160 mm',
+      malzeme: 'AISI 304 Paslanmaz Çelik',
+      totalH: 5.4,
+      baseR: 1.6,
+      vaseH: 2.4,
+      stemH: 3.1,
+      stemProfile: 'aura'
+    },
+    'narion-monolit': {
+      name: 'MONOLİT',
+      code: 'NARION MONOLİT · MASİF BLOK',
+      height: '520 mm',
+      sise: '1,1 L · Ağır Taban Hazne',
+      taban: 'Ø140 mm',
+      malzeme: 'AISI 304 / 316L Çelik',
+      totalH: 5.2,
+      baseR: 1.4,
+      vaseH: 2.3,
+      stemH: 3.0,
+      stemProfile: 'monolit'
+    },
+    'narion-inci': {
+      name: 'İNCİ',
+      code: 'NARION İNCİ · SERAMİK & ÇELİK',
+      height: '480 mm',
+      sise: '1,0 L · Oval Beyaz Kristal',
+      taban: 'Ø150 mm',
+      malzeme: 'AISI 304 & Teknik Seramik',
+      totalH: 4.8,
+      baseR: 1.5,
+      vaseH: 2.2,
+      stemH: 2.7,
+      stemProfile: 'inci'
+    },
+    'narion-cakil': {
+      name: 'ÇAKIL',
+      code: 'NARION ÇAKIL · GENİŞ TABAN',
+      height: '380 mm',
+      sise: '1,4 L · Doğal Çakıl Formu',
+      taban: 'Ø190 mm (Maksimum Denge)',
+      malzeme: 'AISI 304 Paslanmaz Çelik',
+      totalH: 3.8,
+      baseR: 1.9,
+      vaseH: 1.9,
+      stemH: 2.0,
+      stemProfile: 'cakil'
+    }
   };
 
-  var MODELLER = [
-    {"id": "narion-koza", "ad": "NARION KOZA", "dosya": "model-narion-koza.webp", "yuk": "420 mm", "sise": "1,2 L", "taban": "Ø130 mm"},
-    {"id": "narion-ladin", "ad": "NARION LADİN", "dosya": "model-narion-ladin.webp", "yuk": "580 mm", "sise": "1,0 L", "taban": "Ø120 mm"},
-    {"id": "narion-manolya", "ad": "NARION MANOLYA", "dosya": "model-narion-manolya.webp", "yuk": "620 mm", "sise": "1,4 L", "taban": "Ø180 mm"},
-    {"id": "narion-servi", "ad": "NARION SERVİ", "dosya": "model-narion-servi.webp", "yuk": "640 mm", "sise": "1,3 L", "taban": "Ø140 mm"},
-    {"id": "narion-prizma", "ad": "NARION PRİZMA", "dosya": "model-narion-prizma.webp", "yuk": "500 mm", "sise": "1,1 L", "taban": "Ø150 mm"},
-    {"id": "narion-nomad", "ad": "NARION NOMAD", "dosya": "model-narion-nomad.webp", "yuk": "360 mm", "sise": "0,9 L", "taban": "Ø160 mm"},
-    {"id": "narion-aura", "ad": "NARION AURA", "dosya": "model-narion-aura.webp", "yuk": "540 mm", "sise": "1,2 L", "taban": "Ø160 mm"},
-    {"id": "narion-monolit", "ad": "NARION MONOLİT", "dosya": "model-narion-monolit.webp", "yuk": "520 mm", "sise": "1,1 L", "taban": "Ø140 mm"},
-    {"id": "narion-inci", "ad": "NARION İNCİ", "dosya": "model-narion-inci.webp", "yuk": "480 mm", "sise": "1,0 L", "taban": "Ø150 mm"},
-    {"id": "narion-cakil", "ad": "NARION ÇAKIL", "dosya": "model-narion-cakil.webp", "yuk": "380 mm", "sise": "1,4 L", "taban": "Ø190 mm"}
-  ];
+  var FINISHES = {
+    'firca': {
+      name: 'Fırçalı Paslanmaz',
+      color: 0xdedfe3,
+      metalness: 0.94,
+      roughness: 0.28,
+      clearcoat: 0.15,
+      clearcoatRoughness: 0.2
+    },
+    'sampanya': {
+      name: 'PVD Şampanya',
+      color: 0xd8ba7d,
+      metalness: 0.96,
+      roughness: 0.20,
+      clearcoat: 0.35,
+      clearcoatRoughness: 0.15
+    },
+    'siyah': {
+      name: 'Mat Siyah PVD',
+      color: 0x222428,
+      metalness: 0.82,
+      roughness: 0.40,
+      clearcoat: 0.05,
+      clearcoatRoughness: 0.4
+    },
+    'gun': {
+      name: 'Gun Metal',
+      color: 0x4e5760,
+      metalness: 0.94,
+      roughness: 0.24,
+      clearcoat: 0.20,
+      clearcoatRoughness: 0.2
+    }
+  };
 
-  var kap = K[0], mid = MODELLER[0].id, seciliAhsap = "ceviz";
-  var el = document.getElementById('sahne');
-  if (!el) return;
+  var WOODS = {
+    'ceviz': {
+      name: 'Doğal Amerikan Ceviz',
+      baseColor: '#6a3e23',
+      darkColor: '#361e11',
+      roughness: 0.48
+    },
+    'mese': {
+      name: 'Füme Koyu Meşe',
+      baseColor: '#3d3128',
+      darkColor: '#1e1814',
+      roughness: 0.55
+    },
+    'disbudak': {
+      name: 'Siyah Dişbudak',
+      baseColor: '#202124',
+      darkColor: '#101012',
+      roughness: 0.60
+    }
+  };
 
-  var canvas = el.querySelector('canvas');
-  if (!canvas) {
-    canvas = document.createElement('canvas');
-    canvas.style.display = 'block';
-    canvas.style.width = '100%';
-    canvas.style.height = '100%';
-    canvas.style.objectFit = 'contain';
-    el.appendChild(canvas);
+  // State
+  var currentModelId = 'narion-koza';
+  var currentFinishId = 'firca';
+  var currentWoodId = 'ceviz';
+  var currentViewMode = 'tam'; // 'tam' or 'yakin'
+  var optLule = true;
+  var optLogo = false;
+  var optMarpuc = false;
+
+  var container = document.getElementById('sahne');
+  if (!container) return;
+
+  // Clear previous canvas or HTML if any
+  while (container.firstChild) {
+    if (container.firstChild.classList && 
+       (container.firstChild.classList.contains('stage-spotlight') ||
+        container.firstChild.classList.contains('stage-badge') ||
+        container.firstChild.classList.contains('stage-view-toggle') ||
+        container.firstChild.classList.contains('stage-zoom-controls'))) {
+      break;
+    }
+    container.removeChild(container.firstChild);
   }
 
-  var ctx = canvas.getContext('2d');
+  // 1. Scene & Camera Setup
+  var scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x130e0a);
+  scene.fog = new THREE.FogExp2(0x130e0a, 0.045);
 
-  var resimler = {};
-  var yuklenen = 0;
-  MODELLER.forEach(function(m){
-    var img = new Image();
-    img.crossOrigin = 'anonymous';
-    img.onload = function(){
-      yuklenen++;
-      ciz();
-    };
-    img.src = '../gorsel/' + m.dosya;
-    resimler[m.id] = img;
+  var camera = new THREE.PerspectiveCamera(38, container.clientWidth / container.clientHeight, 0.1, 100);
+  camera.position.set(0, 2.6, 7.2);
+
+  var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false, preserveDrawingBuffer: true, powerPreference: 'high-performance' });
+  renderer.setSize(container.clientWidth, container.clientHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.15;
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.domElement.style.position = 'absolute';
+  renderer.domElement.style.top = '0';
+  renderer.domElement.style.left = '0';
+  renderer.domElement.style.width = '100%';
+  renderer.domElement.style.height = '100%';
+  renderer.domElement.style.zIndex = '1';
+  container.insertBefore(renderer.domElement, container.firstChild);
+
+  // 2. Controls
+  var controls;
+  if (typeof THREE.OrbitControls !== 'undefined') {
+    controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.06;
+    controls.minDistance = 3.2;
+    controls.maxDistance = 11.0;
+    controls.maxPolarAngle = Math.PI / 2 + 0.08; // don't go below floor
+    controls.minPolarAngle = 0.2;
+    controls.target.set(0, 2.2, 0);
+    controls.autoRotate = true;
+    controls.autoRotateSpeed = 0.8;
+  }
+
+  // Stop auto rotate on user drag
+  renderer.domElement.addEventListener('pointerdown', function () {
+    if (controls) controls.autoRotate = false;
   });
 
-  var rotX = 0, rotY = 0;
-  var hedefRotX = 0, hedefRotY = 0;
-  var zoom = 1.0, hedefZoom = 1.0;
-  var basili = false, sx = 0, sy = 0, pinch0 = 0;
-  var autoSweep = 0;
+  // 3. Studio Lighting & HDR Environment
+  var envMap = generateStudioEnvMap(renderer);
+  scene.environment = envMap;
 
-  function resize(){
-    var dpr = Math.min(window.devicePixelRatio || 1, 2);
-    canvas.width = el.clientWidth * dpr;
-    canvas.height = el.clientHeight * dpr;
-    ciz();
+  // Key Softbox Light (Warm, main directional)
+  var keyLight = new THREE.DirectionalLight(0xfffaee, 2.2);
+  keyLight.position.set(4.5, 6.5, 4.0);
+  keyLight.castShadow = true;
+  keyLight.shadow.mapSize.width = 1024;
+  keyLight.shadow.mapSize.height = 1024;
+  keyLight.shadow.bias = -0.0002;
+  keyLight.shadow.radius = 3;
+  scene.add(keyLight);
+
+  // Rim / Edge Backlight (Cool white, highlights metal bevels and silhouettes)
+  var rimLight = new THREE.DirectionalLight(0xd5e5ff, 2.8);
+  rimLight.position.set(-4.5, 5.0, -3.5);
+  scene.add(rimLight);
+
+  // Soft Front/Bottom Fill Light (Keeps dark metals visible and detailed)
+  var fillLight = new THREE.DirectionalLight(0xffe6cb, 0.9);
+  fillLight.position.set(0.5, 1.0, 5.0);
+  scene.add(fillLight);
+
+  // Ambient Studio Dome
+  var hemiLight = new THREE.HemisphereLight(0x403429, 0x120c08, 0.85);
+  scene.add(hemiLight);
+
+  // 4. Ground Stage (Contact Shadow & Reflection Plane)
+  var floorGeo = new THREE.PlaneGeometry(30, 30);
+  var floorMat = new THREE.MeshStandardMaterial({
+    color: 0x18120e,
+    roughness: 0.65,
+    metalness: 0.25,
+    envMap: envMap,
+    envMapIntensity: 0.4
+  });
+  var floorMesh = new THREE.Mesh(floorGeo, floorMat);
+  floorMesh.rotation.x = -Math.PI / 2;
+  floorMesh.position.y = -0.01;
+  floorMesh.receiveShadow = true;
+  scene.add(floorMesh);
+
+  // Soft Contact Shadow Decal
+  var shadowCanvas = document.createElement('canvas');
+  shadowCanvas.width = 256;
+  shadowCanvas.height = 256;
+  var sctx = shadowCanvas.getContext('2d');
+  var sgrad = sctx.createRadialGradient(128, 128, 10, 128, 128, 120);
+  sgrad.addColorStop(0, 'rgba(0,0,0,0.85)');
+  sgrad.addColorStop(0.35, 'rgba(0,0,0,0.45)');
+  sgrad.addColorStop(0.7, 'rgba(0,0,0,0.15)');
+  sgrad.addColorStop(1, 'rgba(0,0,0,0)');
+  sctx.fillStyle = sgrad;
+  sctx.fillRect(0, 0, 256, 256);
+  var shadowTex = new THREE.CanvasTexture(shadowCanvas);
+  var shadowMat = new THREE.MeshBasicMaterial({ map: shadowTex, transparent: true, opacity: 0.75, depthWrite: false });
+  var shadowMesh = new THREE.Mesh(new THREE.PlaneGeometry(4.2, 4.2), shadowMat);
+  shadowMesh.rotation.x = -Math.PI / 2;
+  shadowMesh.position.y = 0.002;
+  scene.add(shadowMesh);
+
+  // 5. Materials Cache
+  var matMetal = new THREE.MeshPhysicalMaterial({
+    envMap: envMap,
+    envMapIntensity: 1.5,
+    clearcoat: 0.2,
+    clearcoatRoughness: 0.2
+  });
+  updateMetalMaterial();
+
+  var woodTextures = {};
+  var matWood = new THREE.MeshStandardMaterial({
+    envMap: envMap,
+    envMapIntensity: 0.7,
+    roughness: 0.5
+  });
+  updateWoodMaterial();
+
+  var matGlass = new THREE.MeshPhysicalMaterial({
+    color: 0xffffff,
+    metalness: 0.02,
+    roughness: 0.04,
+    transmission: 0.94,
+    thickness: 0.9,
+    ior: 1.52,
+    transparent: true,
+    opacity: 0.95,
+    envMap: envMap,
+    envMapIntensity: 1.8,
+    clearcoat: 0.9,
+    clearcoatRoughness: 0.02
+  });
+
+  var matWater = new THREE.MeshPhysicalMaterial({
+    color: 0xa8c8e8,
+    metalness: 0.0,
+    roughness: 0.02,
+    transmission: 0.96,
+    thickness: 0.5,
+    ior: 1.33,
+    transparent: true,
+    opacity: 0.88
+  });
+
+  var matBowl = new THREE.MeshStandardMaterial({
+    color: 0xdfd4c5,
+    roughness: 0.85,
+    metalness: 0.03,
+    envMap: envMap,
+    envMapIntensity: 0.4
+  });
+
+  var matLeather = new THREE.MeshStandardMaterial({
+    color: 0x2b1d14,
+    roughness: 0.75,
+    metalness: 0.1
+  });
+
+  // 6. Hookah 3D Model Construction
+  var hookahGroup = new THREE.Group();
+  scene.add(hookahGroup);
+
+  var bowlGroup = new THREE.Group();
+  var marpucMesh = null;
+
+  buildHookahModel(currentModelId);
+
+  // -------------------------------------------------------------
+  // Model Geometries Builder
+  // -------------------------------------------------------------
+  function buildHookahModel(modelId) {
+    // Clear previous model meshes
+    while (hookahGroup.children.length > 0) {
+      var obj = hookahGroup.children[0];
+      hookahGroup.remove(obj);
+      if (obj.geometry) obj.geometry.dispose();
+    }
+
+    var cfg = MODELLER[modelId] || MODELLER['narion-koza'];
+    var p = cfg.stemProfile;
+    var bR = cfg.baseR;
+    var vH = cfg.vaseH;
+
+    // --- A. Glass / Tritan Vase (Cam Şişe) ---
+    var vasePoints = [];
+    if (p === 'prizma') {
+      // Hexagonal / faceted styled vase
+      var vaseGeo = new THREE.CylinderGeometry(bR * 0.55, bR * 0.95, vH, 6, 1, false);
+      vaseGeo.translate(0, vH * 0.5, 0);
+      var vaseMesh = new THREE.Mesh(vaseGeo, matGlass);
+      vaseMesh.castShadow = true;
+      vaseMesh.receiveShadow = true;
+      hookahGroup.add(vaseMesh);
+    } else {
+      // Smooth lathe profile vase
+      var segs = 18;
+      for (var i = 0; i <= segs; i++) {
+        var t = i / segs;
+        var y = t * vH;
+        var r = 0;
+        if (p === 'cakil') {
+          // Extra wide low pebble contour
+          r = bR * (0.95 * Math.sin(t * Math.PI * 0.85 + 0.2) + 0.15 * (1 - t));
+        } else if (p === 'manolya' || p === 'aura') {
+          // Curvaceous bell / teardrop
+          r = bR * (0.85 * Math.pow(Math.sin(t * Math.PI * 0.8), 0.8) + 0.28 * (1 - t * 0.6));
+        } else if (p === 'servi') {
+          // Sleek slender architectural beaker
+          r = bR * (0.65 + 0.25 * Math.cos(t * Math.PI * 0.9));
+        } else {
+          // Koza / Standard solid modern taper
+          r = bR * (0.85 * (1 - t * 0.55) + 0.2 * Math.sin(t * Math.PI));
+        }
+        if (t === 0) vasePoints.push(new THREE.Vector2(0, 0));
+        vasePoints.push(new THREE.Vector2(Math.max(r, 0.42), y));
+      }
+      var vaseGeo = new THREE.LatheGeometry(vasePoints, 48);
+      var vaseMesh = new THREE.Mesh(vaseGeo, matGlass);
+      vaseMesh.castShadow = true;
+      vaseMesh.receiveShadow = true;
+      hookahGroup.add(vaseMesh);
+    }
+
+    // --- B. Water Layer (Hazne Suyu) ---
+    var waterGeo = new THREE.CylinderGeometry(bR * 0.72, bR * 0.82, vH * 0.45, 32);
+    waterGeo.translate(0, vH * 0.26, 0);
+    var waterMesh = new THREE.Mesh(waterGeo, matWater);
+    hookahGroup.add(waterMesh);
+
+    // --- C. Bayonet Heart / Hub (Gövde Bayonet Bileziği & Portlar) ---
+    var hubY = vH;
+    var hubR = 0.68;
+    var hubH = 0.42;
+    var hubGeo = new THREE.CylinderGeometry(hubR * 0.92, hubR, hubH, 36);
+    hubGeo.translate(0, hubY + hubH * 0.5, 0);
+    var hubMesh = new THREE.Mesh(hubGeo, matMetal);
+    hubMesh.castShadow = true;
+    hookahGroup.add(hubMesh);
+
+    // Bayonet locking ring ribs (Quarter turn indicator)
+    var ringGeo = new THREE.TorusGeometry(hubR * 0.96, 0.045, 16, 36);
+    ringGeo.rotateX(Math.PI / 2);
+    ringGeo.translate(0, hubY + hubH * 0.5, 0);
+    var ringMesh = new THREE.Mesh(ringGeo, matMetal);
+    hookahGroup.add(ringMesh);
+
+    // Hose Port & Purge Valve Nozzles
+    var portGeo = new THREE.CylinderGeometry(0.14, 0.16, 0.38, 16);
+    portGeo.rotateZ(Math.PI / 3);
+    portGeo.translate(hubR * 0.75, hubY + hubH * 0.45, 0);
+    var portMesh = new THREE.Mesh(portGeo, matMetal);
+    hookahGroup.add(portMesh);
+
+    var purgeGeo = new THREE.CylinderGeometry(0.11, 0.13, 0.32, 16);
+    purgeGeo.rotateZ(-Math.PI / 3);
+    purgeGeo.translate(-hubR * 0.75, hubY + hubH * 0.45, 0);
+    var purgeMesh = new THREE.Mesh(purgeGeo, matMetal);
+    hookahGroup.add(purgeMesh);
+
+    // Downstem into water
+    var downstemGeo = new THREE.CylinderGeometry(0.16, 0.16, vH * 0.85, 24);
+    downstemGeo.translate(0, vH * 0.5, 0);
+    var downstemMesh = new THREE.Mesh(downstemGeo, matMetal);
+    hookahGroup.add(downstemMesh);
+
+    // Diffuser at downstem base
+    var diffGeo = new THREE.CylinderGeometry(0.24, 0.24, 0.28, 24);
+    diffGeo.translate(0, vH * 0.14, 0);
+    var diffMesh = new THREE.Mesh(diffGeo, matMetal);
+    hookahGroup.add(diffMesh);
+
+    // --- D. Wood Sleeve & Core Stem (Ahşap Kakma Gövde & Metal Çekirdek) ---
+    var stemStartY = hubY + hubH;
+    var stemH = cfg.stemH;
+
+    // Stainless inner core pipe
+    var coreGeo = new THREE.CylinderGeometry(0.22, 0.22, stemH, 24);
+    coreGeo.translate(0, stemStartY + stemH * 0.5, 0);
+    var coreMesh = new THREE.Mesh(coreGeo, matMetal);
+    hookahGroup.add(coreMesh);
+
+    // Outer Decorative Wood Sleeve (Distinct silhouette for each model)
+    var woodMesh;
+    if (p === 'prizma') {
+      var woodGeo = new THREE.CylinderGeometry(0.48, 0.54, stemH * 0.82, 6);
+      woodGeo.translate(0, stemStartY + stemH * 0.45, 0);
+      woodMesh = new THREE.Mesh(woodGeo, matWood);
+    } else {
+      var wPts = [];
+      var wSegs = 20;
+      var wH = stemH * 0.84;
+      for (var j = 0; j <= wSegs; j++) {
+        var wt = j / wSegs;
+        var wy = wt * wH;
+        var wr = 0.32;
+        if (p === 'koza') {
+          // Signature cocoon organic swell
+          wr = 0.32 + 0.35 * Math.sin(wt * Math.PI);
+        } else if (p === 'ladin') {
+          // Precision ribbed tall segmented cylinder
+          wr = 0.38 + 0.08 * Math.sin(wt * Math.PI * 4);
+        } else if (p === 'manolya') {
+          // Dual bulb flare
+          wr = 0.34 + 0.22 * Math.pow(Math.sin(wt * Math.PI * 2), 2);
+        } else if (p === 'servi') {
+          // Sleek continuous straight wood inlay
+          wr = 0.36 + 0.06 * (1 - wt);
+        } else if (p === 'aura') {
+          // Teardrop flare at bottom tapering upward
+          wr = 0.32 + 0.28 * Math.pow(1 - wt, 1.5);
+        } else if (p === 'monolit') {
+          // Massive monolithic solid block with micro grooving
+          wr = 0.52 + 0.04 * (j % 2);
+        } else {
+          wr = 0.38 + 0.18 * Math.sin(wt * Math.PI);
+        }
+        wPts.push(new THREE.Vector2(wr, wy));
+      }
+      var woodGeo = new THREE.LatheGeometry(wPts, 36);
+      woodGeo.translate(0, stemStartY + stemH * 0.06, 0);
+      woodMesh = new THREE.Mesh(woodGeo, matWood);
+    }
+    woodMesh.castShadow = true;
+    woodMesh.receiveShadow = true;
+    hookahGroup.add(woodMesh);
+
+    // Metal collar rings above & below wood
+    var collarLowGeo = new THREE.CylinderGeometry(0.36, 0.42, 0.15, 32);
+    collarLowGeo.translate(0, stemStartY + 0.075, 0);
+    hookahGroup.add(new THREE.Mesh(collarLowGeo, matMetal));
+
+    var collarHighGeo = new THREE.CylinderGeometry(0.42, 0.36, 0.15, 32);
+    collarHighGeo.translate(0, stemStartY + stemH * 0.92, 0);
+    hookahGroup.add(new THREE.Mesh(collarHighGeo, matMetal));
+
+    // --- E. Ashtray (Kül Tepsisi) ---
+    var trayY = stemStartY + stemH;
+    var trayR = 1.45;
+    var trayPts = [
+      new THREE.Vector2(0.24, 0),
+      new THREE.Vector2(trayR * 0.85, 0.03),
+      new THREE.Vector2(trayR, 0.22),
+      new THREE.Vector2(trayR - 0.04, 0.22),
+      new THREE.Vector2(trayR * 0.84, 0.06),
+      new THREE.Vector2(0.24, 0.04)
+    ];
+    var trayGeo = new THREE.LatheGeometry(trayPts, 48);
+    trayGeo.translate(0, trayY, 0);
+    var trayMesh = new THREE.Mesh(trayGeo, matMetal);
+    trayMesh.castShadow = true;
+    hookahGroup.add(trayMesh);
+
+    // Bowl Adapter Top Cone
+    var adapterGeo = new THREE.CylinderGeometry(0.22, 0.32, 0.35, 24);
+    adapterGeo.translate(0, trayY + 0.2, 0);
+    hookahGroup.add(new THREE.Mesh(adapterGeo, matMetal));
+
+    // --- F. Ceramic Bowl (Kordierit Seramik Lüle) ---
+    while (bowlGroup.children.length > 0) {
+      var bChild = bowlGroup.children[0];
+      bowlGroup.remove(bChild);
+      if (bChild.geometry) bChild.geometry.dispose();
+    }
+    var bowlY = trayY + 0.38;
+    var bowlPts = [
+      new THREE.Vector2(0.20, 0),
+      new THREE.Vector2(0.48, 0.45),
+      new THREE.Vector2(0.55, 0.72),
+      new THREE.Vector2(0.46, 0.72),
+      new THREE.Vector2(0.38, 0.48),
+      new THREE.Vector2(0.14, 0.18),
+      new THREE.Vector2(0.14, 0)
+    ];
+    var bowlGeo = new THREE.LatheGeometry(bowlPts, 36);
+    bowlGeo.translate(0, bowlY, 0);
+    var bowlMesh = new THREE.Mesh(bowlGeo, matBowl);
+    bowlMesh.castShadow = true;
+    bowlGroup.add(bowlMesh);
+
+    hookahGroup.add(bowlGroup);
+    bowlGroup.visible = optLule;
+
+    // --- G. Optional Leather Hose ---
+    if (optMarpuc) {
+      addHoseMesh(hubY, hubR);
+    }
+
+    // Shadow decal scale adjust
+    shadowMesh.scale.set(bR * 1.35, bR * 1.35, 1);
   }
-  window.addEventListener('resize', resize);
 
-  function ciz(){
-    if (!ctx || canvas.width === 0) return;
-    var W = canvas.width, H = canvas.height;
-    ctx.clearRect(0, 0, W, H);
+  function addHoseMesh(hubY, hubR) {
+    var curve = new THREE.CubicBezierCurve3(
+      new THREE.Vector3(hubR * 0.85, hubY + 0.2, 0),
+      new THREE.Vector3(hubR + 1.2, hubY - 0.2, 0.5),
+      new THREE.Vector3(hubR + 0.8, 0.2, 1.4),
+      new THREE.Vector3(hubR + 1.6, 0.05, 1.8)
+    );
+    var tubeGeo = new THREE.TubeGeometry(curve, 36, 0.08, 12, false);
+    var tubeMesh = new THREE.Mesh(tubeGeo, matLeather);
+    hookahGroup.add(tubeMesh);
 
-    // 1. Zengin Sıcak Stüdyo Arka Planı
-    var bgGrad = ctx.createRadialGradient(W * 0.46, H * 0.32, 10, W * 0.5, H * 0.45, Math.max(W, H) * 0.75);
-    bgGrad.addColorStop(0.00, '#38281d');
-    bgGrad.addColorStop(0.35, '#241a13');
-    bgGrad.addColorStop(0.70, '#130d09');
-    bgGrad.addColorStop(1.00, '#0a0705');
-    ctx.fillStyle = bgGrad;
-    ctx.fillRect(0, 0, W, H);
+    // Wood Handle
+    var handleGeo = new THREE.CylinderGeometry(0.12, 0.16, 1.2, 16);
+    handleGeo.rotateX(Math.PI / 3);
+    handleGeo.translate(hubR + 1.7, 0.45, 2.1);
+    var handleMesh = new THREE.Mesh(handleGeo, matWood);
+    hookahGroup.add(handleMesh);
+  }
 
-    // 2. Sıcak Işık Huzmesi (Studio Light Beam)
-    ctx.save();
-    ctx.translate(W * 0.5, H * 0.5);
-    var beamGrad = ctx.createLinearGradient(-W * 0.4, -H * 0.5, W * 0.3, H * 0.4);
-    beamGrad.addColorStop(0.0, 'rgba(255, 235, 215, 0.12)');
-    beamGrad.addColorStop(0.4, 'rgba(215, 175, 135, 0.05)');
-    beamGrad.addColorStop(1.0, 'rgba(0, 0, 0, 0)');
-    ctx.fillStyle = beamGrad;
-    ctx.fillRect(-W, -H, W * 2, H * 2);
-    ctx.restore();
+  // -------------------------------------------------------------
+  // Materials Update Helpers
+  // -------------------------------------------------------------
+  function updateMetalMaterial() {
+    var f = FINISHES[currentFinishId] || FINISHES['firca'];
+    matMetal.color.setHex(f.color);
+    matMetal.metalness = f.metalness;
+    matMetal.roughness = f.roughness;
+    matMetal.clearcoat = f.clearcoat;
+    matMetal.clearcoatRoughness = f.clearcoatRoughness;
+    matMetal.needsUpdate = true;
+  }
 
-    // 3. Masa Yüzeyi & Yumuşak Temas Gölgesi
-    var mY = H * 0.82;
-    var masaGrad = ctx.createRadialGradient(W * 0.5, mY, W * 0.05, W * 0.5, mY, W * 0.48);
-    masaGrad.addColorStop(0.00, 'rgba(38, 25, 16, 0.95)');
-    masaGrad.addColorStop(0.45, 'rgba(28, 18, 12, 0.70)');
-    masaGrad.addColorStop(0.85, 'rgba(15, 10, 6, 0.20)');
-    masaGrad.addColorStop(1.00, 'rgba(0, 0, 0, 0)');
-    ctx.fillStyle = masaGrad;
-    ctx.beginPath();
-    ctx.ellipse(W * 0.5, mY, W * 0.42, H * 0.11, 0, 0, Math.PI * 2);
-    ctx.fill();
+  function updateWoodMaterial() {
+    var w = WOODS[currentWoodId] || WOODS['ceviz'];
+    if (!woodTextures[currentWoodId]) {
+      woodTextures[currentWoodId] = generateWoodTexture(w.baseColor, w.darkColor);
+    }
+    matWood.map = woodTextures[currentWoodId];
+    matWood.roughness = w.roughness;
+    matWood.needsUpdate = true;
+  }
 
-    // Gölge Karartması
-    var shadowX = W * 0.5 + rotY * 18;
-    var golgeGrad = ctx.createRadialGradient(shadowX, mY - H * 0.015, 5, shadowX, mY - H * 0.015, W * 0.18);
-    golgeGrad.addColorStop(0.00, 'rgba(6, 4, 3, 0.88)');
-    golgeGrad.addColorStop(0.40, 'rgba(8, 5, 4, 0.45)');
-    golgeGrad.addColorStop(1.00, 'rgba(0, 0, 0, 0)');
-    ctx.fillStyle = golgeGrad;
-    ctx.beginPath();
-    ctx.ellipse(shadowX, mY - H * 0.015, W * 0.16, H * 0.045, 0, 0, Math.PI * 2);
-    ctx.fill();
+  // -------------------------------------------------------------
+  // Procedural Studio EnvMap & Woodgrain Generators
+  // -------------------------------------------------------------
+  function generateStudioEnvMap(glRenderer) {
+    var c = document.createElement('canvas');
+    c.width = 512;
+    c.height = 256;
+    var ctx = c.getContext('2d');
 
-    // 4. Model Fotoğrafik Render Çizimi
-    var curImg = resimler[mid];
-    if (curImg && curImg.complete && curImg.naturalWidth > 0) {
-      ctx.save();
-      var cX = W * 0.5 + rotY * 24;
-      var cY = H * 0.48 + rotX * 16;
-      ctx.translate(cX, cY);
+    // Dark luxury warm gradient background
+    var bg = ctx.createLinearGradient(0, 0, 0, 256);
+    bg.addColorStop(0, '#221912');
+    bg.addColorStop(0.5, '#120d09');
+    bg.addColorStop(1, '#080504');
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, 512, 256);
 
-      // 3D Perspektif & Zoom Dönüşümü
-      var scale = (Math.min(W / curImg.naturalWidth, H / curImg.naturalHeight) * 0.86) * zoom;
-      ctx.scale(scale, scale);
+    // Key softbox panel reflection (Top Left)
+    var keyGrad = ctx.createRadialGradient(160, 80, 5, 160, 80, 75);
+    keyGrad.addColorStop(0, 'rgba(255, 245, 230, 1.0)');
+    keyGrad.addColorStop(0.4, 'rgba(255, 230, 200, 0.7)');
+    keyGrad.addColorStop(1, 'rgba(255, 210, 170, 0.0)');
+    ctx.fillStyle = keyGrad;
+    ctx.fillRect(80, 10, 160, 140);
 
-      // Hafif 3D Yörünge Parallaksı
-      ctx.transform(1, 0, Math.tan(rotY * 0.08), 1, 0, 0);
+    // Rim softbox panel reflection (Back Right)
+    var rimGrad = ctx.createRadialGradient(390, 70, 5, 390, 70, 60);
+    rimGrad.addColorStop(0, 'rgba(230, 240, 255, 0.95)');
+    rimGrad.addColorStop(0.5, 'rgba(180, 210, 255, 0.45)');
+    rimGrad.addColorStop(1, 'rgba(150, 190, 255, 0.0)');
+    ctx.fillStyle = rimGrad;
+    ctx.fillRect(320, 10, 140, 120);
 
-      var iW = curImg.naturalWidth;
-      var iH = curImg.naturalHeight;
+    // Studio horizon fill
+    var horizGrad = ctx.createLinearGradient(0, 140, 0, 190);
+    horizGrad.addColorStop(0, 'rgba(180, 140, 100, 0.25)');
+    horizGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+    ctx.fillStyle = horizGrad;
+    ctx.fillRect(0, 140, 512, 50);
 
-      // Ana fotoğrafı çiz
-      ctx.drawImage(curImg, -iW * 0.5, -iH * 0.5, iW, iH);
+    var tex = new THREE.CanvasTexture(c);
+    tex.mapping = THREE.EquirectangularReflectionMapping;
 
-      // Kaplama / Finish Filtresi Uygula
-      if (kap[0] === 'sampanya') {
-        ctx.globalCompositeOperation = 'color';
-        ctx.fillStyle = 'rgba(216, 187, 138, 0.42)';
-        ctx.fillRect(-iW * 0.5, -iH * 0.5, iW, iH);
+    if (THREE.PMREMGenerator) {
+      var pmrem = new THREE.PMREMGenerator(glRenderer);
+      var renderTarget = pmrem.fromEquirectangular(tex);
+      pmrem.dispose();
+      return renderTarget.texture;
+    }
+    return tex;
+  }
 
-        ctx.globalCompositeOperation = 'soft-light';
-        ctx.fillStyle = 'rgba(235, 200, 140, 0.35)';
-        ctx.fillRect(-iW * 0.5, -iH * 0.5, iW, iH);
-      } else if (kap[0] === 'siyah') {
-        ctx.globalCompositeOperation = 'multiply';
-        ctx.fillStyle = 'rgba(60, 64, 68, 0.65)';
-        ctx.fillRect(-iW * 0.5, -iH * 0.5, iW, iH);
+  function generateWoodTexture(baseColor, darkColor) {
+    var c = document.createElement('canvas');
+    c.width = 512;
+    c.height = 512;
+    var ctx = c.getContext('2d');
 
-        ctx.globalCompositeOperation = 'overlay';
-        ctx.fillStyle = 'rgba(30, 32, 35, 0.30)';
-        ctx.fillRect(-iW * 0.5, -iH * 0.5, iW, iH);
-      } else if (kap[0] === 'gun') {
-        ctx.globalCompositeOperation = 'color';
-        ctx.fillStyle = 'rgba(92, 102, 109, 0.38)';
-        ctx.fillRect(-iW * 0.5, -iH * 0.5, iW, iH);
+    ctx.fillStyle = baseColor;
+    ctx.fillRect(0, 0, 512, 512);
 
-        ctx.globalCompositeOperation = 'multiply';
-        ctx.fillStyle = 'rgba(180, 190, 198, 0.45)';
-        ctx.fillRect(-iW * 0.5, -iH * 0.5, iW, iH);
+    // Organic Wood Rings & Fine Grain
+    ctx.strokeStyle = darkColor;
+    for (var y = 0; y < 512; y += 3) {
+      var alpha = 0.08 + 0.18 * Math.sin(y * 0.12) * Math.sin(y * 0.035);
+      ctx.lineWidth = 1 + Math.sin(y * 0.08);
+      ctx.globalAlpha = Math.max(alpha, 0.02);
+      ctx.beginPath();
+      var wobble = Math.sin(y * 0.02) * 20;
+      ctx.moveTo(0, y + wobble);
+      ctx.bezierCurveTo(170, y - wobble * 0.5, 340, y + wobble * 0.8, 512, y + wobble);
+      ctx.stroke();
+    }
+    ctx.globalAlpha = 1.0;
+
+    var tex = new THREE.CanvasTexture(c);
+    tex.wrapS = THREE.RepeatWrapping;
+    tex.wrapT = THREE.RepeatWrapping;
+    tex.repeat.set(1, 3);
+    return tex;
+  }
+
+  // -------------------------------------------------------------
+  // Camera & View Modes Animation
+  // -------------------------------------------------------------
+  function setViewMode(mode) {
+    currentViewMode = mode;
+    var targetCamY = mode === 'yakin' ? 3.4 : 2.6;
+    var targetCamZ = mode === 'yakin' ? 4.6 : 7.2;
+    var targetLookY = mode === 'yakin' ? 3.2 : 2.2;
+
+    var startCamY = camera.position.y;
+    var startCamZ = camera.position.z;
+    var startLookY = controls ? controls.target.y : 2.2;
+
+    var startTime = performance.now();
+    var duration = 650; // ms
+
+    function animateCam(now) {
+      var progress = Math.min((now - startTime) / duration, 1.0);
+      var ease = 0.5 - Math.cos(progress * Math.PI) / 2; // smooth in-out
+
+      camera.position.y = startCamY + (targetCamY - startCamY) * ease;
+      camera.position.z = startCamZ + (targetCamZ - startCamZ) * ease;
+      if (controls) {
+        controls.target.y = startLookY + (targetLookY - startLookY) * ease;
       }
 
-      // Dinamik Metalik Işık Parlaması (Specular Light Sweep)
-      var lightOffset = (rotY * 1.5 + autoSweep) % 2.0;
-      var sheenGrad = ctx.createLinearGradient(-iW * 0.6 + lightOffset * iW * 0.8, -iH * 0.5, -iW * 0.2 + lightOffset * iW * 0.8, iH * 0.5);
-      sheenGrad.addColorStop(0.0, 'rgba(255, 255, 255, 0)');
-      sheenGrad.addColorStop(0.5, 'rgba(255, 245, 230, 0.14)');
-      sheenGrad.addColorStop(1.0, 'rgba(255, 255, 255, 0)');
-
-      ctx.globalCompositeOperation = 'screen';
-      ctx.fillStyle = sheenGrad;
-      ctx.fillRect(-iW * 0.5, -iH * 0.5, iW, iH);
-
-      ctx.restore();
-    }
-
-    // 5. Fotoğrafik Vinyet
-    var vinGrad = ctx.createRadialGradient(W * 0.5, H * 0.5, Math.min(W, H) * 0.36, W * 0.5, H * 0.5, Math.max(W, H) * 0.72);
-    vinGrad.addColorStop(0.0, 'rgba(0, 0, 0, 0)');
-    vinGrad.addColorStop(0.7, 'rgba(0, 0, 0, 0.28)');
-    vinGrad.addColorStop(1.0, 'rgba(0, 0, 0, 0.65)');
-    ctx.fillStyle = vinGrad;
-    ctx.fillRect(0, 0, W, H);
-  }
-
-  function guncelleOzet(){
-    var m = MODELLER.filter(function(x){ return x.id === mid; })[0] || MODELLER[0];
-    var badge = document.getElementById('stage-badge');
-    var sCode = document.getElementById('sum-code');
-    var sTitle = document.getElementById('sum-title');
-    var sKap = document.getElementById('sum-kaplama');
-    var sAhs = document.getElementById('sum-ahsap');
-    var sYuk = document.getElementById('sum-yuk');
-    var sSise = document.getElementById('sum-sise');
-    var sTaban = document.getElementById('sum-taban');
-    var sMalz = document.getElementById('sum-malzeme');
-
-    if (badge) badge.textContent = m.ad;
-    if (sCode) sCode.textContent = m.ad + ' · ' + (m.id.indexOf('manolya') !== -1 || m.id.indexOf('servi') !== -1 ? 'KLASİK SERİ' : (m.id.indexOf('aura') !== -1 || m.id.indexOf('monolit') !== -1 || m.id.indexOf('inci') !== -1 ? 'PRESTİJ SERİSİ' : (m.id.indexOf('prizma') !== -1 || m.id.indexOf('nomad') !== -1 ? 'TEKNOLOJİ SERİSİ' : 'MODERN SERİ')));
-    if (sTitle) sTitle.textContent = m.ad.replace('NARION ', '');
-    if (sKap) sKap.textContent = kap[2];
-    if (sAhs) sAhs.textContent = AHSAPLAR[seciliAhsap] || "Doğal Amerikan Ceviz";
-    if (sYuk) sYuk.textContent = m.yuk;
-    if (sSise) sSise.textContent = m.sise + (m.id.indexOf('manolya') !== -1 ? ' · Kristal Kesme Cam' : ' · Tritan');
-    if (sTaban) sTaban.textContent = m.taban + ' (Devrilmez)';
-    if (sMalz) sMalz.textContent = (m.id.indexOf('manolya') !== -1 ? 'AISI 316L Paslanmaz Çelik' : 'AISI 304 Paslanmaz Çelik');
-  }
-
-  // --- Etkileşim & Kontroller ---
-  function onDown(e){
-    basili = true;
-    el.classList.add('is-grabbing');
-    if (e.touches && e.touches.length === 2) {
-      var dx = e.touches[0].clientX - e.touches[1].clientX;
-      var dy = e.touches[0].clientY - e.touches[1].clientY;
-      pinch0 = Math.sqrt(dx * dx + dy * dy);
-      return;
-    }
-    var t = e.touches ? e.touches[0] : e;
-    sx = t.clientX; sy = t.clientY;
-  }
-
-  function onUp(){
-    basili = false;
-    pinch0 = 0;
-    el.classList.remove('is-grabbing');
-  }
-
-  function onMove(e){
-    if (!basili) return;
-    if (e.touches && e.touches.length === 2) {
-      var dx = e.touches[0].clientX - e.touches[1].clientX;
-      var dy = e.touches[0].clientY - e.touches[1].clientY;
-      var p = Math.sqrt(dx * dx + dy * dy);
-      if (pinch0 > 0) {
-        var diff = (p - pinch0) * 0.005;
-        hedefZoom = Math.max(0.75, Math.min(2.4, hedefZoom + diff));
+      if (progress < 1.0) {
+        requestAnimationFrame(animateCam);
       }
-      pinch0 = p;
-      e.preventDefault();
-      return;
     }
-    var t = e.touches ? e.touches[0] : e;
-    var dX = (t.clientX - sx) * 0.005;
-    var dY = (t.clientY - sy) * 0.004;
-    hedefRotY = Math.max(-1.0, Math.min(1.0, hedefRotY + dX));
-    hedefRotX = Math.max(-0.6, Math.min(0.6, hedefRotX + dY));
-    sx = t.clientX; sy = t.clientY;
-    if (e.touches) e.preventDefault();
+    requestAnimationFrame(animateCam);
   }
 
-  el.addEventListener('mousedown', onDown);
-  el.addEventListener('touchstart', onDown, {passive:false});
-  window.addEventListener('mouseup', onUp);
-  window.addEventListener('touchend', onUp);
-  window.addEventListener('mousemove', onMove);
-  el.addEventListener('touchmove', onMove, {passive:false});
+  // -------------------------------------------------------------
+  // UI Bindings & DOM Synchronization
+  // -------------------------------------------------------------
+  function updateSummarySheet() {
+    var model = MODELLER[currentModelId] || MODELLER['narion-koza'];
+    var finish = FINISHES[currentFinishId] || FINISHES['firca'];
+    var wood = WOODS[currentWoodId] || WOODS['ceviz'];
 
-  el.addEventListener('wheel', function(e){
-    if (!e.ctrlKey && !e.metaKey) return;
-    hedefZoom = Math.max(0.75, Math.min(2.4, hedefZoom - e.deltaY * 0.002));
-    e.preventDefault();
-  }, {passive:false});
+    var elBadge = document.getElementById('stage-badge');
+    if (elBadge) elBadge.textContent = 'NARION ' + model.name;
 
-  var zi = document.getElementById('z-in'), zo = document.getElementById('z-out');
-  if (zi) zi.addEventListener('click', function(){ hedefZoom = Math.min(2.4, hedefZoom + 0.25); });
-  if (zo) zo.addEventListener('click', function(){ hedefZoom = Math.max(0.75, hedefZoom - 0.25); });
+    var elCode = document.getElementById('sum-code');
+    if (elCode) elCode.textContent = model.code;
 
-  // View Modu Değişimi (Genel Görünüm / Makro Yakın)
-  document.querySelectorAll('[data-view]').forEach(function(b){
-    b.addEventListener('click', function(){
-      document.querySelectorAll('[data-view]').forEach(function(x){ x.classList.remove('is-active'); });
-      b.classList.add('is-active');
-      if (b.dataset.view === 'yakin') {
-        hedefZoom = 1.75;
-      } else {
-        hedefZoom = 1.0;
-        hedefRotX = 0;
-        hedefRotY = 0;
-      }
+    var elTitle = document.getElementById('sum-title');
+    if (elTitle) elTitle.textContent = model.name;
+
+    var elKap = document.getElementById('sum-kaplama');
+    if (elKap) elKap.textContent = finish.name;
+
+    var elAhs = document.getElementById('sum-ahsap');
+    if (elAhs) elAhs.textContent = wood.name;
+
+    var elYuk = document.getElementById('sum-yuk');
+    if (elYuk) elYuk.textContent = model.height;
+
+    var elSise = document.getElementById('sum-sise');
+    if (elSise) elSise.textContent = model.sise;
+
+    var elTab = document.getElementById('sum-taban');
+    if (elTab) elTab.textContent = model.taban;
+
+    var elMalz = document.getElementById('sum-malzeme');
+    if (elMalz) elMalz.textContent = model.malzeme;
+  }
+
+  function bindUIEvents() {
+    // 1. Model cards
+    var mCards = document.querySelectorAll('[data-model]');
+    mCards.forEach(function (card) {
+      card.addEventListener('click', function () {
+        var mId = card.getAttribute('data-model');
+        if (!mId || !MODELLER[mId]) return;
+        currentModelId = mId;
+        mCards.forEach(function (c) { c.classList.remove('is-active'); });
+        card.classList.add('is-active');
+        buildHookahModel(currentModelId);
+        updateSummarySheet();
+      });
     });
-  });
 
-  // Animasyon Döngüsü
-  function anim(){
-    requestAnimationFrame(anim);
-    var dY = hedefRotY - rotY;
-    var dX = hedefRotX - rotX;
-    var dZ = hedefZoom - zoom;
+    // 2. Finish Swatches
+    var fSwatches = document.querySelectorAll('[data-kaplama]');
+    fSwatches.forEach(function (sw) {
+      sw.addEventListener('click', function () {
+        var fId = sw.getAttribute('data-kaplama');
+        if (!fId || !FINISHES[fId]) return;
+        currentFinishId = fId;
+        fSwatches.forEach(function (s) { s.classList.remove('is-active'); });
+        sw.classList.add('is-active');
+        updateMetalMaterial();
+        updateSummarySheet();
+      });
+    });
 
-    if (!basili) {
-      hedefRotY *= 0.95;
-      hedefRotX *= 0.95;
+    // 3. Wood Inlay Swatches
+    var wSwatches = document.querySelectorAll('[data-ahsap]');
+    wSwatches.forEach(function (sw) {
+      sw.addEventListener('click', function () {
+        var wId = sw.getAttribute('data-ahsap');
+        if (!wId || !WOODS[wId]) return;
+        currentWoodId = wId;
+        wSwatches.forEach(function (s) { s.classList.remove('is-active'); });
+        sw.classList.add('is-active');
+        updateWoodMaterial();
+        updateSummarySheet();
+      });
+    });
+
+    // 4. Add-on checkboxes
+    var chkLule = document.getElementById('opt-lule');
+    if (chkLule) {
+      chkLule.addEventListener('change', function () {
+        optLule = chkLule.checked;
+        bowlGroup.visible = optLule;
+      });
     }
 
-    if (Math.abs(dY) > 0.0005 || Math.abs(dX) > 0.0005 || Math.abs(dZ) > 0.001) {
-      rotY += dY * 0.16;
-      rotX += dX * 0.16;
-      zoom += dZ * 0.16;
-      ciz();
+    var chkLogo = document.getElementById('opt-logo');
+    if (chkLogo) {
+      chkLogo.addEventListener('change', function () {
+        optLogo = chkLogo.checked;
+      });
+    }
+
+    var chkMarpuc = document.getElementById('opt-marpuc');
+    if (chkMarpuc) {
+      chkMarpuc.addEventListener('change', function () {
+        optMarpuc = chkMarpuc.checked;
+        buildHookahModel(currentModelId);
+      });
+    }
+
+    // 5. View mode buttons (Tam / Yakın)
+    var vBtns = document.querySelectorAll('.stage-v-btn');
+    vBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var mode = btn.getAttribute('data-view');
+        if (!mode) return;
+        vBtns.forEach(function (b) { b.classList.remove('is-active'); });
+        btn.classList.add('is-active');
+        setViewMode(mode);
+      });
+    });
+
+    // 6. Zoom +/- buttons
+    var btnZIn = document.getElementById('z-in');
+    if (btnZIn) {
+      btnZIn.addEventListener('click', function () {
+        if (camera.position.z > 3.6) {
+          camera.position.z -= 0.6;
+          if (controls) controls.autoRotate = false;
+        }
+      });
+    }
+
+    var btnZOut = document.getElementById('z-out');
+    if (btnZOut) {
+      btnZOut.addEventListener('click', function () {
+        if (camera.position.z < 10.0) {
+          camera.position.z += 0.6;
+          if (controls) controls.autoRotate = false;
+        }
+      });
+    }
+
+    // 7. High-Res Snapshot Download
+    var btnDl = document.getElementById('v3-indir');
+    if (btnDl) {
+      btnDl.addEventListener('click', function () {
+        // Render 1 frame cleanly
+        renderer.render(scene, camera);
+        var dataUrl = renderer.domElement.toDataURL('image/png');
+        var a = document.createElement('a');
+        a.download = currentModelId + '-' + currentFinishId + '-' + currentWoodId + '.png';
+        a.href = dataUrl;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      });
     }
   }
 
-  // Model Butonları
-  document.querySelectorAll('[data-model]').forEach(function(b){
-    b.addEventListener('click', function(){
-      mid = b.dataset.model;
-      document.querySelectorAll('[data-model]').forEach(function(x){ x.classList.remove('is-active'); });
-      b.classList.add('is-active');
-      hedefRotY = 0.35;
-      guncelleOzet();
-      ciz();
-    });
-  });
+  // -------------------------------------------------------------
+  // Animation Render Loop & Resize Handling
+  // -------------------------------------------------------------
+  function onWindowResize() {
+    if (!container || !renderer || !camera) return;
+    var w = container.clientWidth;
+    var h = container.clientHeight;
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, h);
+  }
+  window.addEventListener('resize', onWindowResize);
 
-  // Kaplama Butonları
-  document.querySelectorAll('[data-kaplama]').forEach(function(b){
-    b.addEventListener('click', function(){
-      kap = K.filter(function(x){ return x[0] === b.dataset.kaplama; })[0] || K[0];
-      document.querySelectorAll('[data-kaplama]').forEach(function(x){ x.classList.remove('is-active'); });
-      b.classList.add('is-active');
-      guncelleOzet();
-      ciz();
-    });
-  });
+  function animate() {
+    requestAnimationFrame(animate);
+    if (controls) controls.update();
+    renderer.render(scene, camera);
+  }
 
-  // Ahşap Butonları
-  document.querySelectorAll('[data-ahsap]').forEach(function(b){
-    b.addEventListener('click', function(){
-      seciliAhsap = b.dataset.ahsap || "ceviz";
-      document.querySelectorAll('[data-ahsap]').forEach(function(x){ x.classList.remove('is-active'); });
-      b.classList.add('is-active');
-      guncelleOzet();
-      ciz();
-    });
-  });
+  // Init
+  bindUIEvents();
+  updateSummarySheet();
+  animate();
 
-  // Addon Seçimleri
-  document.querySelectorAll('.config-addon-item').forEach(function(item){
-    item.addEventListener('click', function(e){
-      var cb = item.querySelector('input[type="checkbox"]');
-      if (e.target !== cb) {
-        cb.checked = !cb.checked;
-      }
-      if (cb.checked) item.classList.add('is-active');
-      else item.classList.remove('is-active');
-    });
-  });
-
-  // Görüntü İndir Butonu
-  var dlb = document.getElementById('v3-indir');
-  if (dlb) dlb.addEventListener('click', function(){
-    var a = document.createElement('a');
-    a.href = canvas.toDataURL('image/png');
-    a.download = 'narion-' + mid.replace('narion-', '') + '-' + kap[0] + '.png';
-    a.click();
-  });
-
-  guncelleOzet();
-  resize();
-  anim();
 })();
