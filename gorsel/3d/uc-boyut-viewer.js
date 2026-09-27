@@ -169,6 +169,132 @@
   var currentTiltX = 0, currentTiltY = 0;
   var targetTiltX = 0, targetTiltY = 0;
 
+  // Wood Recolor Engine & Cache (HBOT Architecture)
+  var renderCache = {};
+  var offCanvas = document.createElement('canvas');
+  var offCtx = offCanvas.getContext('2d', { willReadFrequently: true });
+
+  function rgbToHsl(r, g, b) {
+    var max = Math.max(r, g, b), min = Math.min(r, g, b);
+    var l = (max + min) / 2;
+    if (max === min) return [0, 0, l];
+    var d = max - min;
+    var s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+    var h;
+    if (max === r) h = ((g - b) / d + (g < b ? 6 : 0)) / 6;
+    else if (max === g) h = ((b - r) / d + 2) / 6;
+    else h = ((r - g) / d + 4) / 6;
+    return [h, s, l];
+  }
+
+  function hslToRgb(h, s, l) {
+    if (s === 0) return [l, l, l];
+    var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+    var p = 2 * l - q;
+    function f(t) {
+      if (t < 0) t += 1;
+      if (t > 1) t -= 1;
+      if (t < 1/6) return p + (q - p) * 6 * t;
+      if (t < 1/2) return q;
+      if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+      return p;
+    }
+    return [f(h + 1/3), f(h), f(h - 1/3)];
+  }
+
+  function isWoodPixel(mId, r, g, b, h, s, l, nx, ny) {
+    if (mId === 'narion-koza') {
+      var inBody = (nx > 0.31) && (nx < 0.59) && (ny > 0.19) && (ny < 0.78);
+      var isWin = (nx > 0.36) && (nx < 0.54) && (ny > 0.37) && (ny < 0.55);
+      return inBody && !isWin && (s > 0.16) && (h > 0.03) && (h < 0.14) && (l < 0.70);
+    }
+    if (mId === 'narion-ladin') {
+      var inCol = (nx > 0.35) && (nx < 0.65) && (ny > 0.21) && (ny < 0.72);
+      return inCol && (s > 0.16) && (h > 0.03) && (h < 0.14) && (l < 0.75);
+    }
+    if (mId === 'narion-manolya') {
+      var inCol = (nx > 0.39) && (nx < 0.61) && (ny > 0.16) && (ny < 0.39);
+      return inCol && (s > 0.14) && (h > 0.03) && (h < 0.14) && (l < 0.75);
+    }
+    if (mId === 'narion-servi') {
+      var inCol = (nx > 0.43) && (nx < 0.57) && (ny > 0.14) && (ny < 0.60);
+      return inCol && (s > 0.13) && (h > 0.03) && (h < 0.14) && (l < 0.75);
+    }
+    if (mId === 'narion-aura') {
+      var inCol = (nx > 0.35) && (nx < 0.65) && (ny > 0.36) && (ny < 0.72);
+      return inCol && (s > 0.18) && (h > 0.03) && (h < 0.13) && (l < 0.65);
+    }
+    if (mId === 'narion-monolit') {
+      var inCol = (nx > 0.35) && (nx < 0.65) && (ny > 0.28) && (ny < 0.69);
+      return inCol && (s > 0.16) && (h > 0.03) && (h < 0.13) && (l < 0.65);
+    }
+    if (mId === 'narion-nomad') {
+      var inCol = (nx > 0.30) && (nx < 0.70) && (ny > 0.22) && (ny < 0.62);
+      return inCol && (l > 0.10) && (l < 0.55) && (s < 0.20);
+    }
+    if (mId === 'narion-cakil') {
+      var inCol = (nx > 0.44) && (nx < 0.64) && (ny > 0.32) && (ny < 0.61);
+      return inCol && (l > 0.18) && (l < 0.65);
+    }
+    if (mId === 'narion-inci') {
+      var inCol = (nx > 0.44) && (nx < 0.64) && (ny > 0.23) && (ny < 0.46);
+      return inCol && (l > 0.18) && (l < 0.65);
+    }
+    if (mId === 'narion-prizma') {
+      var inCol = (nx > 0.40) && (nx < 0.60) && (ny > 0.22) && (ny < 0.55);
+      return inCol && (l > 0.15) && (l < 0.60);
+    }
+    return false;
+  }
+
+  function applyWoodRecolor(imgElement, mId, wId) {
+    if (wId === 'ceviz') return imgElement.src;
+    var w = imgElement.naturalWidth || imgElement.width || 760;
+    var h = imgElement.naturalHeight || imgElement.height || 1132;
+    offCanvas.width = w;
+    offCanvas.height = h;
+    offCtx.drawImage(imgElement, 0, 0, w, h);
+    var imgData = offCtx.getImageData(0, 0, w, h);
+    var d = imgData.data;
+
+    for (var i = 0; i < d.length; i += 4) {
+      var pxIdx = i / 4;
+      var x = pxIdx % w;
+      var y = Math.floor(pxIdx / w);
+      var nx = x / w;
+      var ny = y / h;
+
+      var r = d[i] / 255;
+      var g = d[i + 1] / 255;
+      var b = d[i + 2] / 255;
+
+      var hsl = rgbToHsl(r, g, b);
+      var p_h = hsl[0], p_s = hsl[1], p_l = hsl[2];
+
+      if (isWoodPixel(mId, r, g, b, p_h, p_s, p_l, nx, ny)) {
+        var hi = Math.max(0, Math.min(1, (p_l - 0.40) / 0.40));
+        var outRgb = null;
+        if (wId === 'mese') {
+          var m_h = Math.max(0.05, Math.min(0.09, p_h * 0.95));
+          var m_s = p_s * 0.35;
+          var m_l = Math.max(0, Math.min(1, p_l * 0.58 + 0.08 * hi));
+          outRgb = hslToRgb(m_h, m_s, m_l);
+        } else if (wId === 'disbudak') {
+          var d_s = p_s * 0.08;
+          var d_l = Math.max(0, Math.min(1, p_l * 0.30 + 0.18 * hi));
+          outRgb = hslToRgb(p_h, d_s, d_l);
+        }
+        if (outRgb) {
+          d[i] = Math.round(outRgb[0] * 255);
+          d[i + 1] = Math.round(outRgb[1] * 255);
+          d[i + 2] = Math.round(outRgb[2] * 255);
+        }
+      }
+    }
+    offCtx.putImageData(imgData, 0, 0);
+    return offCanvas.toDataURL('image/webp');
+  }
+
   function resolveImageSrc(modelId, finishId) {
     return '../gorsel/renkler/' + modelId + '-' + finishId + '.webp';
   }
@@ -211,24 +337,40 @@
   });
 
   // -------------------------------------------------------------
-  // Real-Time Visual Update with Smooth Crossfade
+  // Real-Time Visual Update with Smooth Crossfade & Wood Engine
   // -------------------------------------------------------------
   function updateProductVisual() {
-    var newSrc = resolveImageSrc(currentModelId, currentFinishId);
+    var cacheKey = currentModelId + '_' + currentFinishId + '_' + currentWoodId;
     var incoming = activeSlot === 'a' ? imgB : imgA;
     var outgoing = activeSlot === 'a' ? imgA : imgB;
 
-    // Preload & crossfade
-    var loader = new Image();
-    loader.onload = function () {
-      incoming.src = newSrc;
+    function applySrc(srcUrl) {
+      incoming.src = srcUrl;
       incoming.classList.add('is-active');
       outgoing.classList.remove('is-active');
       activeSlot = activeSlot === 'a' ? 'b' : 'a';
-    };
-    loader.src = newSrc;
+      updateSummarySheet();
+    }
 
-    updateSummarySheet();
+    if (renderCache[cacheKey]) {
+      applySrc(renderCache[cacheKey]);
+      return;
+    }
+
+    var baseSrc = resolveImageSrc(currentModelId, currentFinishId);
+    var loader = new Image();
+    loader.crossOrigin = 'anonymous';
+    loader.onload = function () {
+      if (currentWoodId === 'ceviz') {
+        renderCache[cacheKey] = baseSrc;
+        applySrc(baseSrc);
+      } else {
+        var recoloredUrl = applyWoodRecolor(loader, currentModelId, currentWoodId);
+        renderCache[cacheKey] = recoloredUrl;
+        applySrc(recoloredUrl);
+      }
+    };
+    loader.src = baseSrc;
   }
 
   // -------------------------------------------------------------
@@ -321,7 +463,7 @@
         currentWoodId = wId;
         wSwatches.forEach(function (s) { s.classList.remove('is-active'); });
         sw.classList.add('is-active');
-        updateSummarySheet();
+        updateProductVisual();
       });
     });
 
@@ -356,7 +498,8 @@
     var btnDl = document.getElementById('v3-indir');
     if (btnDl) {
       btnDl.addEventListener('click', function () {
-        var src = resolveImageSrc(currentModelId, currentFinishId);
+        var activeImg = activeSlot === 'a' ? imgA : imgB;
+        var src = activeImg.src || resolveImageSrc(currentModelId, currentFinishId);
         var link = document.createElement('a');
         link.download = currentModelId + '-' + currentFinishId + '-' + currentWoodId + '.webp';
         link.href = src;
