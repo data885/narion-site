@@ -180,18 +180,22 @@ m.roughness = 0.48; m.metalness = 0.82; m.envMapIntensity = 0.95;
 return m;
 }
 function cam(){ return new THREE.MeshPhysicalMaterial({
-color:0xcfe4ee, metalness:0.0, roughness:0.02,
-transparent:true, opacity:0.20, side:THREE.DoubleSide,
-clearcoat:1.0, clearcoatRoughness:0.015, envMapIntensity:1.35,
+color:0xf8fdff, metalness:0.0, roughness:0.03,
+transmission:0.92, ior:1.52, thickness:3.5,
+transparent:true, opacity:1.0, side:THREE.DoubleSide,
+clearcoat:1.0, clearcoatRoughness:0.015, envMapIntensity:1.85,
 depthWrite:false }); }
-function kesmeCam(){ var m = cam();
-m.flatShading = true; m.envMapIntensity = 2.6; m.opacity = 0.36;
-m.clearcoatRoughness = 0.015; m.roughness = 0.02;
-return m; }
+function kesmeCam(){ return new THREE.MeshPhysicalMaterial({
+color:0xf4fbff, metalness:0.0, roughness:0.02,
+transmission:0.88, ior:1.56, thickness:4.5,
+transparent:true, opacity:1.0, side:THREE.DoubleSide,
+flatShading:true, clearcoat:1.0, clearcoatRoughness:0.012,
+envMapIntensity:2.9, depthWrite:false }); }
 function su(){ return new THREE.MeshPhysicalMaterial({
-color:0x44778c, metalness:0.0, roughness:0.10,
-transparent:true, opacity:0.80,
-clearcoat:0.45, envMapIntensity:0.6 }); }
+color:0x356e8c, metalness:0.0, roughness:0.06,
+transmission:0.80, ior:1.333, thickness:8.0,
+transparent:true, opacity:0.85,
+clearcoat:0.85, clearcoatRoughness:0.02, envMapIntensity:1.1 }); }
 var _cevizMaps = null;
 function cevizProc(){
 var S = 512;
@@ -664,27 +668,56 @@ kam.position.set(uzak*0.50, uzak*0.17, uzak*0.85);
 kam.lookAt(0, 0, 0);
 hedefUzak = uzak;
 }
-var donY = 0.72, donX = 0.16, basili = false, sx = 0, sy = 0, hedefUzak = 900;
-function ac(e){ basili = true; isaretle(); sx = (e.touches?e.touches[0]:e).clientX; sy = (e.touches?e.touches[0]:e).clientY; }
-function kapat(){ if(basili) isaretle(); basili = false; }
+var donY = 0.72, donX = 0.16, hedefDonY = 0.72, hedefDonX = 0.16;
+var basili = false, sx = 0, sy = 0, hedefUzak = 900, guncelUzak = 900;
+var pinch0 = 0;
+function ac(e){
+  basili = true; isaretle();
+  if (e.touches && e.touches.length === 2) {
+    var dx = e.touches[0].clientX - e.touches[1].clientX;
+    var dy = e.touches[0].clientY - e.touches[1].clientY;
+    pinch0 = Math.sqrt(dx * dx + dy * dy);
+    return;
+  }
+  var t = e.touches ? e.touches[0] : e;
+  sx = t.clientX; sy = t.clientY;
+}
+function kapat(e){
+  if (e && e.touches && e.touches.length > 0) return;
+  if (basili) isaretle();
+  basili = false; pinch0 = 0;
+}
 function hareket(e){
-if(!basili) return;
-var t = e.touches?e.touches[0]:e;
-donY += (t.clientX - sx) * 0.009;
-donX += (t.clientY - sy) * 0.006;
-donX = Math.max(-0.75, Math.min(0.95, donX));
-sx = t.clientX; sy = t.clientY; isaretle();
-if(e.touches) e.preventDefault();
+  if (!basili) return;
+  if (e.touches && e.touches.length === 2) {
+    var dx = e.touches[0].clientX - e.touches[1].clientX;
+    var dy = e.touches[0].clientY - e.touches[1].clientY;
+    var p = Math.sqrt(dx * dx + dy * dy);
+    if (pinch0 > 0) {
+      var delta = (pinch0 - p) * 2.2;
+      hedefUzak = Math.max(260, Math.min(2200, hedefUzak + delta));
+      isaretle();
+    }
+    pinch0 = p;
+    e.preventDefault();
+    return;
+  }
+  var t = e.touches ? e.touches[0] : e;
+  hedefDonY += (t.clientX - sx) * 0.008;
+  hedefDonX += (t.clientY - sy) * 0.005;
+  hedefDonX = Math.max(-0.75, Math.min(0.95, hedefDonX));
+  sx = t.clientX; sy = t.clientY; isaretle();
+  if (e.touches) e.preventDefault();
 }
 ren.domElement.addEventListener('mousedown', ac);
-ren.domElement.addEventListener('touchstart', ac, {passive:true});
+ren.domElement.addEventListener('touchstart', ac, {passive:false});
 addEventListener('mouseup', kapat); addEventListener('touchend', kapat);
 addEventListener('mousemove', hareket);
 ren.domElement.addEventListener('touchmove', hareket, {passive:false});
 ren.domElement.addEventListener('wheel', function(e){
-if(!e.ctrlKey && !e.metaKey) return;
-hedefUzak = Math.max(260, Math.min(2200, hedefUzak + e.deltaY*0.6));
-isaretle(); e.preventDefault();
+  if(!e.ctrlKey && !e.metaKey) return;
+  hedefUzak = Math.max(260, Math.min(2200, hedefUzak + e.deltaY*0.6));
+  isaretle(); e.preventDefault();
 }, {passive:false});
 var zi = document.getElementById('z-in'), zo = document.getElementById('z-out');
 if(zi) zi.addEventListener('click', function(){ hedefUzak = Math.max(260, hedefUzak-180); isaretle(); });
@@ -694,37 +727,48 @@ var BITMIS = Math.min(devicePixelRatio * 2, 3);
 var kirli = true, yuksek = false, sonHareket = 0;
 var acilisT = performance.now(), acilisVar = true, donY0 = donY - 0.62;
 function oranla(o){
-ren.setPixelRatio(o);
-ren.setSize(el.clientWidth, el.clientHeight);
-kam.aspect = el.clientWidth/el.clientHeight; kam.updateProjectionMatrix();
+  ren.setPixelRatio(o);
+  ren.setSize(el.clientWidth, el.clientHeight);
+  kam.aspect = el.clientWidth/el.clientHeight; kam.updateProjectionMatrix();
 }
 function isaretle(){
-kirli = true; sonHareket = performance.now(); acilisVar = false;
-if (yuksek){ yuksek = false; oranla(HIZLI); }
+  kirli = true; sonHareket = performance.now(); acilisVar = false;
+  if (yuksek){ yuksek = false; oranla(HIZLI); }
 }
 function ciz(){
-var r = hedefUzak;
-kam.position.x = Math.sin(donY)*Math.cos(donX)*r;
-kam.position.z = Math.cos(donY)*Math.cos(donX)*r;
-kam.position.y = Math.sin(donX)*r;
-kam.lookAt(0,0,0);
-ren.render(sah, kam);
+  var r = guncelUzak;
+  kam.position.x = Math.sin(donY)*Math.cos(donX)*r;
+  kam.position.z = Math.cos(donY)*Math.cos(donX)*r;
+  kam.position.y = Math.sin(donX)*r;
+  kam.lookAt(0,0,0);
+  ren.render(sah, kam);
 }
 function dongu(){
-requestAnimationFrame(dongu);
-var simdi = performance.now();
-if (acilisVar){
-var p = Math.min(1, (simdi - acilisT)/2400);
-var e2 = 1 - Math.pow(1 - p, 3);
-donY = donY0 + 0.62*e2;
-kirli = true;
-if (p >= 1){ acilisVar = false; sonHareket = simdi; }
-}
-if (basili) kirli = true;
-if (kirli){ kirli = false; ciz(); sonHareket = simdi; return; }
-if (!yuksek && simdi - sonHareket > 380){
-yuksek = true; oranla(BITMIS); ciz();
-}
+  requestAnimationFrame(dongu);
+  var simdi = performance.now();
+  if (acilisVar){
+    var p = Math.min(1, (simdi - acilisT)/2400);
+    var e2 = 1 - Math.pow(1 - p, 3);
+    hedefDonY = donY0 + 0.62*e2;
+    donY = hedefDonY;
+    kirli = true;
+    if (p >= 1){ acilisVar = false; sonHareket = simdi; }
+  } else {
+    var diffY = (hedefDonY - donY);
+    var diffX = (hedefDonX - donX);
+    var diffZ = (hedefUzak - guncelUzak);
+    if (Math.abs(diffY) > 0.0001 || Math.abs(diffX) > 0.0001 || Math.abs(diffZ) > 0.1) {
+      donY += diffY * 0.15;
+      donX += diffX * 0.15;
+      guncelUzak += diffZ * 0.15;
+      kirli = true;
+    }
+  }
+  if (basili) kirli = true;
+  if (kirli){ kirli = false; ciz(); sonHareket = simdi; return; }
+  if (!yuksek && simdi - sonHareket > 380){
+    yuksek = true; oranla(BITMIS); ciz();
+  }
 }
 addEventListener('resize', function(){
 oranla(yuksek ? BITMIS : HIZLI); isaretle();
