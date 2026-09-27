@@ -407,96 +407,58 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
 .fnote{font-size:12px;color:var(--faint);margin-top:12px;line-height:1.5}
 
 
-/* --- 3B goruntuleyici --- */
-.v3-bar{display:flex;flex-wrap:wrap;gap:26px;margin-bottom:18px}
-.v3-grp{display:flex;flex-direction:column;gap:8px}
-.v3-lab{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
-.picks{display:flex;flex-wrap:wrap;gap:8px}
-.pick{font-family:var(--f-mono);font-size:12px;letter-spacing:.04em;padding:8px 14px;
-  background:var(--surface);color:var(--muted);border:1px solid var(--line);cursor:pointer;
-  display:inline-flex;align-items:center;gap:8px;transition:border-color .15s,color .15s}
-.pick:hover{border-color:var(--line-strong,var(--line));color:var(--ink)}
-.pick[aria-pressed="true"]{border-color:var(--accent);color:var(--accent)}
-.pick.sw i{width:13px;height:13px;display:block;border:1px solid rgba(128,128,128,.4)}
-.v3-stage{position:relative;width:100%;aspect-ratio:1/1;max-height:660px;background:
-  radial-gradient(ellipse at 46% 30%, #38281d 0%, #221812 45%, #100b08 100%);
-  border:1px solid var(--line);touch-action:none;cursor:grab;overflow:hidden}
-/* vinyet: kadrajı fotografik yapar, urunu merkeze toplar */
-.v3-stage::after{content:'';position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(ellipse at 50% 42%,transparent 36%,rgba(0,0,0,.35) 75%,rgba(0,0,0,.68) 100%)}
-.v3-stage:active{cursor:grabbing}
-.v3-stage canvas{display:block;width:100%;height:100%}
-@media(max-width:600px){.v3-stage{aspect-ratio:3/4}}
-@media(min-width:900px){.v3-stage{aspect-ratio:16/11}}
-@media print{.v3-stage{display:none}.v3-bar{display:none}}
-
-
-.v3-wrap{position:relative}
-.v3-zoom{position:absolute;right:12px;bottom:12px;z-index:2;display:flex;flex-direction:column;gap:6px}
-.v3-zoom button{width:34px;height:34px;font-size:17px;line-height:1;cursor:pointer;
-  background:var(--surface);color:var(--muted);border:1px solid var(--line);font-family:var(--f-mono)}
-.v3-zoom button:hover{border-color:var(--accent);color:var(--accent)}
-@media print{.v3-zoom{display:none}}
-.v3-alt{display:flex;align-items:center;justify-content:space-between;gap:16px;
-  flex-wrap:wrap;margin-top:10px}
-.v3-alt p{margin:0}
-.v3-dl{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;
-  text-transform:uppercase;padding:9px 15px;cursor:pointer;background:none;
-  border:1px solid var(--line);color:var(--ink)}
-.v3-dl:hover{border-color:var(--accent);color:var(--accent)}
-.v3-dl[disabled]{opacity:.5;cursor:default}
-@media print{.v3-dl{display:none}}
-
-
-/* --- kafe hesaplayicisi --- */
-.hesap{margin-top:20px}
-.hesap table{min-width:0}
-.hesap input[type=number]{font-family:var(--f-mono);font-size:14px;width:100%;max-width:120px;
-  padding:6px 9px;background:var(--surface);border:1px solid var(--line);border-radius:0;
-  color:var(--ink);font-variant-numeric:tabular-nums;text-align:right}
-.hesap input:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
-.hesap td.birim{font-family:var(--f-mono);font-size:11.5px;color:var(--faint);white-space:nowrap}
-.hout{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);
-  border:1px solid var(--line);margin-top:18px}
-@media(max-width:700px){.hout{grid-template-columns:1fr}}
-.ho{background:var(--surface);padding:16px 18px;display:flex;flex-direction:column;gap:3px}
-.ho .l{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
-.ho .v{font-family:var(--f-display);font-size:23px;font-weight:600;font-variant-numeric:tabular-nums;
-  line-height:1.15;color:var(--accent)}
-.ho .s{font-size:12px;color:var(--muted);line-height:1.45;margin-top:2px}
-.htop{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);
-  border:1px solid var(--line);border-top:none}
-@media(max-width:700px){.htop{grid-template-columns:1fr}}
-.htop>div{background:var(--accent-soft,rgba(150,101,43,.08));padding:16px 18px;
-  display:flex;flex-direction:column;gap:3px}
-.htop .l{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-.htop .v{font-family:var(--f-display);font-size:27px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.1}
-@media print{.hesap input{border:none;border-bottom:1px dashed var(--line)}}
-
-
-/* --- kafe logosu onizleme --- */
-.lgrid{display:grid;grid-template-columns:1fr 250px;gap:22px;margin-top:20px;align-items:start}
-@media(max-width:820px){.lgrid{grid-template-columns:1fr}}
-#lg-tuval{width:100%;height:auto;display:block;border:1px solid var(--line);background:var(--surface-2,#eee)}
-.lg-sag{display:flex;flex-direction:column;gap:14px}
-.lg-yukle{display:block;cursor:pointer}
-.lg-yukle input{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}
-.lg-yukle span{display:block;text-align:center;font-family:var(--f-mono);font-size:12px;
-  letter-spacing:.05em;padding:13px 16px;border:1px dashed var(--line-strong,var(--line));
-  background:var(--surface);color:var(--muted);transition:border-color .15s,color .15s}
-.lg-yukle:hover span{border-color:var(--accent);color:var(--accent)}
-.lg-yukle input:focus-visible+span{outline:2px solid var(--accent);outline-offset:2px}
-.lg-uyari{font-size:12.5px;color:#a33636;margin:0}
-.lg-kaydir{display:flex;flex-direction:column;gap:6px}
-.lg-kaydir span{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;
-  text-transform:uppercase;color:var(--faint)}
-.lg-kaydir input[type=range]{width:100%;accent-color:var(--accent)}
-.lg-sag .btnbox{border:1px solid var(--line);cursor:pointer;font-family:var(--f-mono);
-  font-size:12px;text-align:center;background:var(--surface)}
-.lg-sag .btnbox:disabled{opacity:.42;cursor:not-allowed}
-.lg-gizlilik{font-size:11.5px;color:var(--faint);line-height:1.5;margin:0}
-@media print{.lgrid{display:none}}
-
+/* --- NARION Studio Configurator Styles (HBOT Architecture) --- */
+.configurator-layout{display:grid;grid-template-columns:1fr 420px;gap:36px;align-items:start;margin-top:20px}
+@media(max-width:960px){.configurator-layout{grid-template-columns:1fr}}
+.config-steps{display:flex;flex-direction:column;gap:24px}
+.config-step-card{background:var(--surface);border:1px solid var(--line);padding:22px 24px}
+.config-step-title{font-size:16.5px;font-weight:600;letter-spacing:-.01em;margin-bottom:4px}
+.config-step-note{font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.5}
+.config-model-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
+.config-m-card{border:1px solid var(--line);background:var(--bg);padding:10px 8px;cursor:pointer;display:flex;flex-direction:column;align-items:center;text-align:center;transition:border-color .15s,transform .15s}
+.config-m-card:hover{border-color:var(--line-2,#888);transform:translateY(-2px)}
+.config-m-card.is-active{border-color:var(--accent);background:var(--surface-2,rgba(150,101,43,.06))}
+.config-m-thumb{width:100%;height:94px;object-fit:contain;margin-bottom:6px}
+.config-m-name{font-size:12.5px;font-weight:600;line-height:1.2}
+.config-m-sub{font-family:var(--f-mono);font-size:10px;color:var(--faint);margin-top:2px}
+.config-swatch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
+.config-swatch-item{border:1px solid var(--line);background:var(--bg);padding:11px 13px;cursor:pointer;display:flex;align-items:center;gap:10px;transition:border-color .15s}
+.config-swatch-item:hover{border-color:var(--line-2,#888)}
+.config-swatch-item.is-active{border-color:var(--accent);background:var(--surface-2,rgba(150,101,43,.06))}
+.config-swatch-dot{width:20px;height:20px;border-radius:50%;flex-shrink:0;border:1px solid rgba(0,0,0,.2);box-shadow:inset 0 1px 3px rgba(0,0,0,.25)}
+.config-swatch-label{font-size:12.5px;font-weight:500;line-height:1.3}
+.config-addon-list{display:flex;flex-direction:column;gap:8px}
+.config-addon-item{border:1px solid var(--line);background:var(--bg);padding:11px 14px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:border-color .15s}
+.config-addon-item:hover{border-color:var(--line-2,#888)}
+.config-addon-item.is-active{border-color:var(--accent);background:var(--surface-2,rgba(150,101,43,.06))}
+.config-addon-left{display:flex;align-items:center;gap:10px}
+.config-addon-title{font-size:13px;font-weight:500}
+.config-addon-sub{font-size:11.5px;color:var(--muted)}
+.config-addon-price{font-family:var(--f-mono);font-size:11.5px;font-weight:600;color:var(--accent)}
+.config-stage-col{position:sticky;top:80px;display:flex;flex-direction:column;gap:18px}
+.config-stage{position:relative;width:100%;aspect-ratio:1/1;max-height:480px;background:radial-gradient(ellipse at 46% 30%, #38281d 0%, #201712 45%, #100b08 100%);border:1px solid var(--line);overflow:hidden;touch-action:none;user-select:none;cursor:grab}
+.config-stage canvas{display:block;width:100%;height:100%}
+.stage-spotlight{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 42%,transparent 36%,rgba(0,0,0,.35) 75%,rgba(0,0,0,.68) 100%)}
+.stage-badge{position:absolute;top:12px;inset-inline-start:12px;z-index:2;font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#d8bb8a;background:rgba(0,0,0,.65);border:1px solid rgba(216,187,138,.35);padding:4px 9px;backdrop-filter:blur(6px)}
+.stage-view-toggle{position:absolute;bottom:12px;inset-inline-start:12px;z-index:2;display:flex;gap:4px;background:rgba(0,0,0,.65);padding:3px;border:1px solid rgba(255,255,255,.15);backdrop-filter:blur(6px)}
+.stage-v-btn{background:none;border:none;color:rgba(255,255,255,.7);font-family:var(--f-mono);font-size:10px;padding:4px 8px;cursor:pointer}
+.stage-v-btn.is-active{background:var(--accent);color:#fff}
+.stage-zoom-controls{position:absolute;bottom:12px;inset-inline-end:12px;z-index:2;display:flex;flex-direction:column;gap:4px}
+.stage-z-btn{width:28px;height:28px;background:rgba(0,0,0,.65);color:#fff;border:1px solid rgba(255,255,255,.2);font-family:var(--f-mono);font-size:14px;display:flex;align-items:center;justify-content:center;cursor:pointer;backdrop-filter:blur(6px)}
+.stage-z-btn:hover{border-color:var(--accent)}
+.config-summary{background:var(--surface);border:1px solid var(--line);padding:22px 24px}
+.summary-head{border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:14px}
+.summary-code{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;color:var(--accent);text-transform:uppercase}
+.summary-name{font-size:20px;font-weight:600;margin:2px 0 0;letter-spacing:-.015em}
+.summary-rows{display:flex;flex-direction:column;gap:9px;margin-bottom:18px}
+.summary-row{display:flex;justify-content:space-between;align-items:baseline;font-size:13px}
+.summary-row .k{color:var(--muted)}
+.summary-row .v{font-family:var(--f-mono);font-weight:500;text-align:end}
+.summary-actions{display:flex;flex-direction:column;gap:9px}
+.btn-dl{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;padding:11px;background:var(--bg);border:1px solid var(--line);color:var(--ink);font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;font-weight:600;transition:border-color .15s}
+.btn-dl:hover{border-color:var(--accent);color:var(--accent)}
+.btn-quote{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;background:var(--accent);color:#fff;border:none;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;font-weight:600;text-decoration:none}
+.btn-quote:hover{opacity:.92}
 </style>
 </head>
 <body>
@@ -519,38 +481,226 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
 
 <div class="hero"><div class="wrap">
   <div>
-    <span class="eyebrow">Three dimensions</span>
-    <h1>See it from every angle
-before you hold it</h1>
-    <p class="lede">The model is built from the technical drawing; the proportions you see are production dimensions. Turn it, zoom in, change the finish.</p>
+    <span class="eyebrow">Studio Configurator</span>
+    <h1>Configure Your NARION Hookah</h1>
+    <p class="lede">Select model, finish and wood inlays — inspect live with real studio photography renders and download your configuration.</p>
   </div>
 </div></div>
 
 <section><div class="wrap">
-  <div class="v3-bar">
-    <div class="v3-grp"><span class="v3-lab">Model</span><div class="picks"><button type="button" class="pick" data-model="narion-koza" aria-pressed="true">NARION KOZA</button><button type="button" class="pick" data-model="narion-ladin" aria-pressed="false">NARION LADIN</button><button type="button" class="pick" data-model="narion-manolya" aria-pressed="false">NARION MANOLYA</button><button type="button" class="pick" data-model="narion-servi" aria-pressed="false">NARION SERVI</button><button type="button" class="pick" data-model="narion-prizma" aria-pressed="false">NARION PRIZMA</button><button type="button" class="pick" data-model="narion-nomad" aria-pressed="false">NARION NOMAD</button><button type="button" class="pick" data-model="narion-aura" aria-pressed="false">NARION AURA</button><button type="button" class="pick" data-model="narion-monolit" aria-pressed="false">NARION MONOLIT</button><button type="button" class="pick" data-model="narion-inci" aria-pressed="false">NARION INCI</button><button type="button" class="pick" data-model="narion-cakil" aria-pressed="false">NARION CAKIL</button></div></div>
-    <div class="v3-grp"><span class="v3-lab">Finish</span><div class="picks"><button type="button" class="pick sw" data-kaplama="firca" aria-pressed="true"><i style="background:#c2c8cc"></i>Brushed stainless</button><button type="button" class="pick sw" data-kaplama="sampanya" aria-pressed="false"><i style="background:#d8bb8a"></i>Champagne PVD</button><button type="button" class="pick sw" data-kaplama="siyah" aria-pressed="false"><i style="background:#33373a"></i>Matte black PVD</button><button type="button" class="pick sw" data-kaplama="gun" aria-pressed="false"><i style="background:#5c666d"></i>Gun metal</button></div></div>
-    <div class="v3-grp"><span class="v3-lab">Bowl</span><div class="picks"><button type="button" class="pick" data-lule="takili" aria-pressed="true">fitted</button><button type="button" class="pick" data-lule="cikik" aria-pressed="false">lifted</button></div></div>
-  </div>
-  <div class="v3-wrap">
-    <div id="sahne" class="v3-stage" role="img" aria-label="NARION three-dimensional product view — drag to rotate"></div>
-    <div class="v3-zoom">
-      <button type="button" id="z-in" aria-label="Zoom in">+</button>
-      <button type="button" id="z-out" aria-label="Zoom out">&minus;</button>
+  <div class="configurator-layout">
+    
+    <!-- Left: Config Steps -->
+    <div class="config-steps">
+      
+      <!-- 1. Model Selection -->
+      <div class="config-step-card">
+        <div class="config-step-title">1. Choose Model</div>
+        <div class="config-step-note">Select the NARION model that best suits your preferred form and venue.</div>
+        <div class="config-model-grid">
+          <div class="config-m-card is-active" data-model="narion-koza">
+            <img class="config-m-thumb" src="../gorsel/model-narion-koza.webp" alt="NARION KOZA" />
+            <div class="config-m-name">KOZA</div>
+            <div class="config-m-sub">420 mm · Cafe & Home</div>
+          </div>
+          <div class="config-m-card" data-model="narion-ladin">
+            <img class="config-m-thumb" src="../gorsel/model-narion-ladin.webp" alt="NARION LADIN" />
+            <div class="config-m-name">LADIN</div>
+            <div class="config-m-sub">580 mm · Lounge</div>
+          </div>
+          <div class="config-m-card" data-model="narion-manolya">
+            <img class="config-m-thumb" src="../gorsel/model-narion-manolya.webp" alt="NARION MANOLYA" />
+            <div class="config-m-name">MANOLYA</div>
+            <div class="config-m-sub">620 mm · Crystal Classic</div>
+          </div>
+          <div class="config-m-card" data-model="narion-servi">
+            <img class="config-m-thumb" src="../gorsel/model-narion-servi.webp" alt="NARION SERVI" />
+            <div class="config-m-name">SERVI</div>
+            <div class="config-m-sub">640 mm · Slender Stem</div>
+          </div>
+          <div class="config-m-card" data-model="narion-prizma">
+            <img class="config-m-thumb" src="../gorsel/model-narion-prizma.webp" alt="NARION PRIZMA" />
+            <div class="config-m-name">PRIZMA</div>
+            <div class="config-m-sub">500 mm · Hexagonal Prism</div>
+          </div>
+          <div class="config-m-card" data-model="narion-nomad">
+            <img class="config-m-thumb" src="../gorsel/model-narion-nomad.webp" alt="NARION NOMAD" />
+            <div class="config-m-name">NOMAD</div>
+            <div class="config-m-sub">360 mm · Travel</div>
+          </div>
+          <div class="config-m-card" data-model="narion-aura">
+            <img class="config-m-thumb" src="../gorsel/model-narion-aura.webp" alt="NARION AURA" />
+            <div class="config-m-name">AURA</div>
+            <div class="config-m-sub">540 mm · Teardrop Prestige</div>
+          </div>
+          <div class="config-m-card" data-model="narion-monolit">
+            <img class="config-m-thumb" src="../gorsel/model-narion-monolit.webp" alt="NARION MONOLIT" />
+            <div class="config-m-name">MONOLIT</div>
+            <div class="config-m-sub">520 mm · Monolith Block</div>
+          </div>
+          <div class="config-m-card" data-model="narion-inci">
+            <img class="config-m-thumb" src="../gorsel/model-narion-inci.webp" alt="NARION INCI" />
+            <div class="config-m-name">INCI</div>
+            <div class="config-m-sub">480 mm · Oval Ceramic</div>
+          </div>
+          <div class="config-m-card" data-model="narion-cakil">
+            <img class="config-m-thumb" src="../gorsel/model-narion-cakil.webp" alt="NARION CAKIL" />
+            <div class="config-m-name">CAKIL</div>
+            <div class="config-m-sub">380 mm · Wide Base</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Finish Selection -->
+      <div class="config-step-card">
+        <div class="config-step-title">2. Metal & PVD Finish</div>
+        <div class="config-step-note">All metal surfaces feature food-grade, corrosion-resistant PVD and satin finishes.</div>
+        <div class="config-swatch-grid">
+          <div class="config-swatch-item is-active" data-kaplama="firca">
+            <span class="config-swatch-dot" style="background:linear-gradient(135deg,#eef2f5,#9aa0a6)"></span>
+            <div>
+              <div class="config-swatch-label">Brushed Stainless</div>
+              <div class="config-m-sub">AISI 304 / 316L Satin</div>
+            </div>
+          </div>
+          <div class="config-swatch-item" data-kaplama="sampanya">
+            <span class="config-swatch-dot" style="background:linear-gradient(135deg,#f8e2be,#bf9f6f)"></span>
+            <div>
+              <div class="config-swatch-label">Champagne PVD</div>
+              <div class="config-m-sub">Luxury Brass & Gold PVD</div>
+            </div>
+          </div>
+          <div class="config-swatch-item" data-kaplama="siyah">
+            <span class="config-swatch-dot" style="background:linear-gradient(135deg,#484d52,#1c1e20)"></span>
+            <div>
+              <div class="config-swatch-label">Matte Black PVD</div>
+              <div class="config-m-sub">Obsidian Titanium Coating</div>
+            </div>
+          </div>
+          <div class="config-swatch-item" data-kaplama="gun">
+            <span class="config-swatch-dot" style="background:linear-gradient(135deg,#7b8791,#404850)"></span>
+            <div>
+              <div class="config-swatch-label">Gun Metal</div>
+              <div class="config-m-sub">Dark Graphite Metallic</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Wood Inlay Selection -->
+      <div class="config-step-card">
+        <div class="config-step-title">3. Wood Inlay & Sleeve</div>
+        <div class="config-step-note">Kiln-dried natural hardwood inlay with special water- and heat-resistant impregnation.</div>
+        <div class="config-swatch-grid">
+          <div class="config-swatch-item is-active" data-ahsap="ceviz">
+            <span class="config-swatch-dot" style="background:linear-gradient(135deg,#7a4e32,#462c1d)"></span>
+            <div>
+              <div class="config-swatch-label">Natural American Walnut</div>
+              <div class="config-m-sub">Deep Grain Hardwood</div>
+            </div>
+          </div>
+          <div class="config-swatch-item" data-ahsap="mese">
+            <span class="config-swatch-dot" style="background:linear-gradient(135deg,#4a3d34,#2b231d)"></span>
+            <div>
+              <div class="config-swatch-label">Smoked Dark Oak</div>
+              <div class="config-m-sub">Matte Smoked Oak Texture</div>
+            </div>
+          </div>
+          <div class="config-swatch-item" data-ahsap="disbudak">
+            <span class="config-swatch-dot" style="background:linear-gradient(135deg,#2e2e30,#18181a)"></span>
+            <div>
+              <div class="config-swatch-label">Black Ash</div>
+              <div class="config-m-sub">Black Wood Grain</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Accessories & Add-ons -->
+      <div class="config-step-card">
+        <div class="config-step-title">4. Components & Custom Accessories</div>
+        <div class="config-step-note">Configure standard bowl inclusion and optional bespoke B2B additions.</div>
+        <div class="config-addon-list">
+          <div class="config-addon-item is-active" data-opt="lule">
+            <div class="config-addon-left">
+              <input type="checkbox" checked id="opt-lule" />
+              <div>
+                <div class="config-addon-title">Cordierite Ceramic Bowl</div>
+                <div class="config-addon-sub">1200 °C technical ceramic, ghosting-resistant</div>
+              </div>
+            </div>
+            <div class="config-addon-price">Standard</div>
+          </div>
+          <div class="config-addon-item" data-opt="logo">
+            <div class="config-addon-left">
+              <input type="checkbox" id="opt-logo" />
+              <div>
+                <div class="config-addon-title">Laser Logo Engraving (B2B)</div>
+                <div class="config-addon-sub">Custom venue branding on walnut or steel panel</div>
+              </div>
+            </div>
+            <div class="config-addon-price">Complimentary (B2B)</div>
+          </div>
+          <div class="config-addon-item" data-opt="marpuc">
+            <div class="config-addon-left">
+              <input type="checkbox" id="opt-marpuc" />
+              <div>
+                <div class="config-addon-title">Leather-Wrapped Steel Hose</div>
+                <div class="config-addon-sub">Hand-stitched premium leather wrapped wood tip</div>
+              </div>
+            </div>
+            <div class="config-addon-price">+ Optional</div>
+          </div>
+        </div>
+      </div>
+
     </div>
-  </div>
-  <div class="v3-alt">
-    <p class="small">Drag to rotate · use the buttons to zoom</p>
-    <button type="button" id="v3-indir" class="v3-dl" title="Download this configuration as a high-resolution PNG">Download image</button>
-  </div>
-  <div class="note"><span class="k">Where the dimensions come from</span><p>Body diameter, base size and overall height are the values in our production specification. The three channels on the bayonet collar sit in their real positions — that geometry is what locks the joint in a quarter turn.</p></div>
-  <div class="ctarow" style="margin-top:26px">
-    <a class="btnbox" href="distributorluk.html">Distribution / sample request <span class="ar" aria-hidden="true">&rarr;</span></a>
+
+    <!-- Right: Sticky Stage & Live Summary -->
+    <div class="config-stage-col">
+      <div class="config-stage" id="sahne" role="img" aria-label="NARION studio product view">
+        <span class="stage-badge" id="stage-badge">NARION KOZA</span>
+        <div class="stage-spotlight"></div>
+        <div class="stage-view-toggle">
+          <button type="button" class="stage-v-btn is-active" data-view="tam">Overview</button>
+          <button type="button" class="stage-v-btn" data-view="yakin">Macro Close-up</button>
+        </div>
+        <div class="stage-zoom-controls">
+          <button type="button" class="stage-z-btn" id="z-in" title="Zoom in">+</button>
+          <button type="button" class="stage-z-btn" id="z-out" title="Zoom out">&minus;</button>
+        </div>
+      </div>
+
+      <!-- Live Summary Card -->
+      <aside class="config-summary">
+        <div class="summary-head">
+          <div class="summary-code" id="sum-code">NARION KOZA · MODERN SERIES</div>
+          <h2 class="summary-name" id="sum-title">KOZA</h2>
+        </div>
+        <div class="summary-rows">
+          <div class="summary-row"><span class="k">Selected Finish</span><span class="v" id="sum-kaplama">Brushed Stainless</span></div>
+          <div class="summary-row"><span class="k">Wood Inlay</span><span class="v" id="sum-ahsap">American Walnut</span></div>
+          <div class="summary-row"><span class="k">Total Height</span><span class="v" id="sum-yuk">420 mm</span></div>
+          <div class="summary-row"><span class="k">Body Material</span><span class="v" id="sum-malzeme">AISI 304 Stainless Steel</span></div>
+          <div class="summary-row"><span class="k">Vase / Chamber</span><span class="v" id="sum-sise">1.2 L · Tritan</span></div>
+          <div class="summary-row"><span class="k">Base Diameter</span><span class="v" id="sum-taban">Ø130 mm (Tip-proof)</span></div>
+          <div class="summary-row"><span class="k">Joint System</span><span class="v">3 × 90° Quarter-Turn Bayonet</span></div>
+        </div>
+        <div class="summary-actions">
+          <button type="button" class="btn-dl" id="v3-indir">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Configuration Image
+          </button>
+          <a class="btn-quote" href="distributorluk.html">
+            Request Sample / B2B Quote &rarr;
+          </a>
+        </div>
+      </aside>
+    </div>
+
   </div>
 </div></section>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/RGBELoader.js"></script>
-<script src="../gorsel/3d/uc-boyut-viewer-boot.js"></script>
+<script src="../gorsel/3d/uc-boyut-viewer.js"></script>
 </main>
 <footer>
   <div class="wrap">

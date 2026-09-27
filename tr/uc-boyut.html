@@ -407,45 +407,58 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
 .fnote{font-size:12px;color:var(--faint);margin-top:12px;line-height:1.5}
 
 
-/* --- 3B goruntuleyici --- */
-.v3-bar{display:flex;flex-wrap:wrap;gap:26px;margin-bottom:18px}
-.v3-grp{display:flex;flex-direction:column;gap:8px}
-.v3-lab{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
-.picks{display:flex;flex-wrap:wrap;gap:8px}
-.pick{font-family:var(--f-mono);font-size:12px;letter-spacing:.04em;padding:8px 14px;
-  background:var(--surface);color:var(--muted);border:1px solid var(--line);cursor:pointer;
-  display:inline-flex;align-items:center;gap:8px;transition:border-color .15s,color .15s}
-.pick:hover{border-color:var(--line-strong,var(--line));color:var(--ink)}
-.pick[aria-pressed="true"]{border-color:var(--accent);color:var(--accent)}
-.pick.sw i{width:13px;height:13px;display:block;border:1px solid rgba(128,128,128,.4)}
-.v3-stage{position:relative;width:100%;aspect-ratio:1/1;max-height:660px;background:
-  radial-gradient(ellipse at 46% 30%, #38281d 0%, #221812 45%, #100b08 100%);
-  border:1px solid var(--line);touch-action:none;cursor:grab;overflow:hidden}
-/* vinyet: kadrajı fotografik yapar, urunu merkeze toplar */
-.v3-stage::after{content:'';position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(ellipse at 50% 42%,transparent 36%,rgba(0,0,0,.35) 75%,rgba(0,0,0,.68) 100%)}
-.v3-stage:active{cursor:grabbing}
-.v3-stage canvas{display:block;width:100%;height:100%}
-@media(max-width:600px){.v3-stage{aspect-ratio:3/4}}
-@media(min-width:900px){.v3-stage{aspect-ratio:16/11}}
-@media print{.v3-stage{display:none}.v3-bar{display:none}}
-
-
-.v3-wrap{position:relative}
-.v3-zoom{position:absolute;right:12px;bottom:12px;z-index:2;display:flex;flex-direction:column;gap:6px}
-.v3-zoom button{width:34px;height:34px;font-size:17px;line-height:1;cursor:pointer;
-  background:var(--surface);color:var(--muted);border:1px solid var(--line);font-family:var(--f-mono)}
-.v3-zoom button:hover{border-color:var(--accent);color:var(--accent)}
-@media print{.v3-zoom{display:none}}
-.v3-alt{display:flex;align-items:center;justify-content:space-between;gap:16px;
-  flex-wrap:wrap;margin-top:10px}
-.v3-alt p{margin:0}
-.v3-dl{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;
-  text-transform:uppercase;padding:9px 15px;cursor:pointer;background:none;
-  border:1px solid var(--line);color:var(--ink)}
-.v3-dl:hover{border-color:var(--accent);color:var(--accent)}
-.v3-dl[disabled]{opacity:.5;cursor:default}
-@media print{.v3-dl{display:none}}
+/* --- NARION Lüks Konfigüratör Stilleri (HBOT Mimarisi) --- */
+.configurator-layout{display:grid;grid-template-columns:1fr 420px;gap:36px;align-items:start;margin-top:20px}
+@media(max-width:960px){.configurator-layout{grid-template-columns:1fr}}
+.config-steps{display:flex;flex-direction:column;gap:24px}
+.config-step-card{background:var(--surface);border:1px solid var(--line);padding:22px 24px}
+.config-step-title{font-size:16.5px;font-weight:600;letter-spacing:-.01em;margin-bottom:4px}
+.config-step-note{font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.5}
+.config-model-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
+.config-m-card{border:1px solid var(--line);background:var(--bg);padding:10px 8px;cursor:pointer;display:flex;flex-direction:column;align-items:center;text-align:center;transition:border-color .15s,transform .15s}
+.config-m-card:hover{border-color:var(--line-2,#888);transform:translateY(-2px)}
+.config-m-card.is-active{border-color:var(--accent);background:var(--surface-2,rgba(150,101,43,.06))}
+.config-m-thumb{width:100%;height:94px;object-fit:contain;margin-bottom:6px}
+.config-m-name{font-size:12.5px;font-weight:600;line-height:1.2}
+.config-m-sub{font-family:var(--f-mono);font-size:10px;color:var(--faint);margin-top:2px}
+.config-swatch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
+.config-swatch-item{border:1px solid var(--line);background:var(--bg);padding:11px 13px;cursor:pointer;display:flex;align-items:center;gap:10px;transition:border-color .15s}
+.config-swatch-item:hover{border-color:var(--line-2,#888)}
+.config-swatch-item.is-active{border-color:var(--accent);background:var(--surface-2,rgba(150,101,43,.06))}
+.config-swatch-dot{width:20px;height:20px;border-radius:50%;flex-shrink:0;border:1px solid rgba(0,0,0,.2);box-shadow:inset 0 1px 3px rgba(0,0,0,.25)}
+.config-swatch-label{font-size:12.5px;font-weight:500;line-height:1.3}
+.config-addon-list{display:flex;flex-direction:column;gap:8px}
+.config-addon-item{border:1px solid var(--line);background:var(--bg);padding:11px 14px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:border-color .15s}
+.config-addon-item:hover{border-color:var(--line-2,#888)}
+.config-addon-item.is-active{border-color:var(--accent);background:var(--surface-2,rgba(150,101,43,.06))}
+.config-addon-left{display:flex;align-items:center;gap:10px}
+.config-addon-title{font-size:13px;font-weight:500}
+.config-addon-sub{font-size:11.5px;color:var(--muted)}
+.config-addon-price{font-family:var(--f-mono);font-size:11.5px;font-weight:600;color:var(--accent)}
+.config-stage-col{position:sticky;top:80px;display:flex;flex-direction:column;gap:18px}
+.config-stage{position:relative;width:100%;aspect-ratio:1/1;max-height:480px;background:radial-gradient(ellipse at 46% 30%, #38281d 0%, #201712 45%, #100b08 100%);border:1px solid var(--line);overflow:hidden;touch-action:none;user-select:none;cursor:grab}
+.config-stage canvas{display:block;width:100%;height:100%}
+.stage-spotlight{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 42%,transparent 36%,rgba(0,0,0,.35) 75%,rgba(0,0,0,.68) 100%)}
+.stage-badge{position:absolute;top:12px;inset-inline-start:12px;z-index:2;font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#d8bb8a;background:rgba(0,0,0,.65);border:1px solid rgba(216,187,138,.35);padding:4px 9px;backdrop-filter:blur(6px)}
+.stage-view-toggle{position:absolute;bottom:12px;inset-inline-start:12px;z-index:2;display:flex;gap:4px;background:rgba(0,0,0,.65);padding:3px;border:1px solid rgba(255,255,255,.15);backdrop-filter:blur(6px)}
+.stage-v-btn{background:none;border:none;color:rgba(255,255,255,.7);font-family:var(--f-mono);font-size:10px;padding:4px 8px;cursor:pointer}
+.stage-v-btn.is-active{background:var(--accent);color:#fff}
+.stage-zoom-controls{position:absolute;bottom:12px;inset-inline-end:12px;z-index:2;display:flex;flex-direction:column;gap:4px}
+.stage-z-btn{width:28px;height:28px;background:rgba(0,0,0,.65);color:#fff;border:1px solid rgba(255,255,255,.2);font-family:var(--f-mono);font-size:14px;display:flex;align-items:center;justify-content:center;cursor:pointer;backdrop-filter:blur(6px)}
+.stage-z-btn:hover{border-color:var(--accent)}
+.config-summary{background:var(--surface);border:1px solid var(--line);padding:22px 24px}
+.summary-head{border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:14px}
+.summary-code{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;color:var(--accent);text-transform:uppercase}
+.summary-name{font-size:20px;font-weight:600;margin:2px 0 0;letter-spacing:-.015em}
+.summary-rows{display:flex;flex-direction:column;gap:9px;margin-bottom:18px}
+.summary-row{display:flex;justify-content:space-between;align-items:baseline;font-size:13px}
+.summary-row .k{color:var(--muted)}
+.summary-row .v{font-family:var(--f-mono);font-weight:500;text-align:end}
+.summary-actions{display:flex;flex-direction:column;gap:9px}
+.btn-dl{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;padding:11px;background:var(--bg);border:1px solid var(--line);color:var(--ink);font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;font-weight:600;transition:border-color .15s}
+.btn-dl:hover{border-color:var(--accent);color:var(--accent)}
+.btn-quote{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;background:var(--accent);color:#fff;border:none;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;font-weight:600;text-decoration:none}
+.btn-quote:hover{opacity:.92}
 
 
 /* --- kafe hesaplayicisi --- */
@@ -519,38 +532,226 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
 
 <div class="hero"><div class="wrap">
   <div>
-    <span class="eyebrow">Üç boyut</span>
-    <h1>Elinize almadan
-her açıdan görün</h1>
-    <p class="lede">Model teknik çizimden kuruldu; gördüğünüz oranlar üretim ölçüleridir. Döndürün, yakınlaştırın, kaplamayı değiştirin.</p>
+    <span class="eyebrow">Stüdyo Konfigüratör</span>
+    <h1>Kendi NARION Takımınızı Yapılandırın</h1>
+    <p class="lede">Modeli, kaplama yüzeyini ve ahşap detaylarını seçin — gerçek stüdyo render fotoğraflarıyla anında inceleyin ve yapılandırma dosyasını indirin.</p>
   </div>
 </div></div>
 
 <section><div class="wrap">
-  <div class="v3-bar">
-    <div class="v3-grp"><span class="v3-lab">Model</span><div class="picks"><button type="button" class="pick" data-model="narion-koza" aria-pressed="true">NARION KOZA</button><button type="button" class="pick" data-model="narion-ladin" aria-pressed="false">NARION LADİN</button><button type="button" class="pick" data-model="narion-manolya" aria-pressed="false">NARION MANOLYA</button><button type="button" class="pick" data-model="narion-servi" aria-pressed="false">NARION SERVİ</button><button type="button" class="pick" data-model="narion-prizma" aria-pressed="false">NARION PRİZMA</button><button type="button" class="pick" data-model="narion-nomad" aria-pressed="false">NARION NOMAD</button><button type="button" class="pick" data-model="narion-aura" aria-pressed="false">NARION AURA</button><button type="button" class="pick" data-model="narion-monolit" aria-pressed="false">NARION MONOLİT</button><button type="button" class="pick" data-model="narion-inci" aria-pressed="false">NARION İNCİ</button><button type="button" class="pick" data-model="narion-cakil" aria-pressed="false">NARION ÇAKIL</button></div></div>
-    <div class="v3-grp"><span class="v3-lab">Kaplama</span><div class="picks"><button type="button" class="pick sw" data-kaplama="firca" aria-pressed="true"><i style="background:#c2c8cc"></i>Fırçalı paslanmaz</button><button type="button" class="pick sw" data-kaplama="sampanya" aria-pressed="false"><i style="background:#d8bb8a"></i>PVD şampanya</button><button type="button" class="pick sw" data-kaplama="siyah" aria-pressed="false"><i style="background:#33373a"></i>Mat siyah PVD</button><button type="button" class="pick sw" data-kaplama="gun" aria-pressed="false"><i style="background:#5c666d"></i>Gun metal</button></div></div>
-    <div class="v3-grp"><span class="v3-lab">Lüle</span><div class="picks"><button type="button" class="pick" data-lule="takili" aria-pressed="true">takılı</button><button type="button" class="pick" data-lule="cikik" aria-pressed="false">çıkık</button></div></div>
-  </div>
-  <div class="v3-wrap">
-    <div id="sahne" class="v3-stage" role="img" aria-label="NARION üç boyutlu ürün görünümü — sürükleyerek döndürülür"></div>
-    <div class="v3-zoom">
-      <button type="button" id="z-in" aria-label="Yakınlaştır">+</button>
-      <button type="button" id="z-out" aria-label="Uzaklaştır">&minus;</button>
+  <div class="configurator-layout">
+    
+    <!-- Sol Taraf: Adımlar -->
+    <div class="config-steps">
+      
+      <!-- 1. Model Seçimi -->
+      <div class="config-step-card">
+        <div class="config-step-title">1. Model Seçin</div>
+        <div class="config-step-note">Gövde formuna ve kullanım amacınıza en uygun NARION modelini belirleyin.</div>
+        <div class="config-model-grid">
+          <div class="config-m-card is-active" data-model="narion-koza">
+            <img class="config-m-thumb" src="../gorsel/model-narion-koza.webp" alt="NARION KOZA" />
+            <div class="config-m-name">KOZA</div>
+            <div class="config-m-sub">420 mm · Kafe & Ev</div>
+          </div>
+          <div class="config-m-card" data-model="narion-ladin">
+            <img class="config-m-thumb" src="../gorsel/model-narion-ladin.webp" alt="NARION LADİN" />
+            <div class="config-m-name">LADİN</div>
+            <div class="config-m-sub">580 mm · Lounge</div>
+          </div>
+          <div class="config-m-card" data-model="narion-manolya">
+            <img class="config-m-thumb" src="../gorsel/model-narion-manolya.webp" alt="NARION MANOLYA" />
+            <div class="config-m-name">MANOLYA</div>
+            <div class="config-m-sub">620 mm · Kristal Klasik</div>
+          </div>
+          <div class="config-m-card" data-model="narion-servi">
+            <img class="config-m-thumb" src="../gorsel/model-narion-servi.webp" alt="NARION SERVİ" />
+            <div class="config-m-name">SERVİ</div>
+            <div class="config-m-sub">640 mm · İnce Uzun</div>
+          </div>
+          <div class="config-m-card" data-model="narion-prizma">
+            <img class="config-m-thumb" src="../gorsel/model-narion-prizma.webp" alt="NARION PRİZMA" />
+            <div class="config-m-name">PRİZMA</div>
+            <div class="config-m-sub">500 mm · Altıgen Prizma</div>
+          </div>
+          <div class="config-m-card" data-model="narion-nomad">
+            <img class="config-m-thumb" src="../gorsel/model-narion-nomad.webp" alt="NARION NOMAD" />
+            <div class="config-m-name">NOMAD</div>
+            <div class="config-m-sub">360 mm · Seyahat</div>
+          </div>
+          <div class="config-m-card" data-model="narion-aura">
+            <img class="config-m-thumb" src="../gorsel/model-narion-aura.webp" alt="NARION AURA" />
+            <div class="config-m-name">AURA</div>
+            <div class="config-m-sub">540 mm · Damla Prestij</div>
+          </div>
+          <div class="config-m-card" data-model="narion-monolit">
+            <img class="config-m-thumb" src="../gorsel/model-narion-monolit.webp" alt="NARION MONOLİT" />
+            <div class="config-m-name">MONOLİT</div>
+            <div class="config-m-sub">520 mm · Monolitik Blok</div>
+          </div>
+          <div class="config-m-card" data-model="narion-inci">
+            <img class="config-m-thumb" src="../gorsel/model-narion-inci.webp" alt="NARION İNCİ" />
+            <div class="config-m-name">İNCİ</div>
+            <div class="config-m-sub">480 mm · Oval Seramik</div>
+          </div>
+          <div class="config-m-card" data-model="narion-cakil">
+            <img class="config-m-thumb" src="../gorsel/model-narion-cakil.webp" alt="NARION ÇAKIL" />
+            <div class="config-m-name">ÇAKIL</div>
+            <div class="config-m-sub">380 mm · Geniş Taban</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Kaplama Seçimi -->
+      <div class="config-step-card">
+        <div class="config-step-title">2. Metal & PVD Kaplama</div>
+        <div class="config-step-note">Tüm yüzeyler gıda temasına uygun, korozyona dayanıklı PVD ve satin finisajla işlenir.</div>
+        <div class="config-swatch-grid">
+          <div class="config-swatch-item is-active" data-kaplama="firca">
+            <span class="config-swatch-dot" style="background:linear-gradient(135deg,#eef2f5,#9aa0a6)"></span>
+            <div>
+              <div class="config-swatch-label">Fırçalı Paslanmaz</div>
+              <div class="config-m-sub">AISI 304 / 316L Satin</div>
+            </div>
+          </div>
+          <div class="config-swatch-item" data-kaplama="sampanya">
+            <span class="config-swatch-dot" style="background:linear-gradient(135deg,#f8e2be,#bf9f6f)"></span>
+            <div>
+              <div class="config-swatch-label">PVD Şampanya</div>
+              <div class="config-m-sub">Lüks Pirinç & Altın PVD</div>
+            </div>
+          </div>
+          <div class="config-swatch-item" data-kaplama="siyah">
+            <span class="config-swatch-dot" style="background:linear-gradient(135deg,#484d52,#1c1e20)"></span>
+            <div>
+              <div class="config-swatch-label">Mat Siyah PVD</div>
+              <div class="config-m-sub">Obsidyen Titanyum Kaplama</div>
+            </div>
+          </div>
+          <div class="config-swatch-item" data-kaplama="gun">
+            <span class="config-swatch-dot" style="background:linear-gradient(135deg,#7b8791,#404850)"></span>
+            <div>
+              <div class="config-swatch-label">Gun Metal</div>
+              <div class="config-m-sub">Koyu Grafit Metalik</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Ahşap Panel Seçimi -->
+      <div class="config-step-card">
+        <div class="config-step-title">3. Ahşap Panel & Kakma</div>
+        <div class="config-step-note">Doğal fırınlanmış sert ağaç panel; suya ve ısıya karşı özel emprenye korumalıdır.</div>
+        <div class="config-swatch-grid">
+          <div class="config-swatch-item is-active" data-ahsap="ceviz">
+            <span class="config-swatch-dot" style="background:linear-gradient(135deg,#7a4e32,#462c1d)"></span>
+            <div>
+              <div class="config-swatch-label">Doğal Amerikan Ceviz</div>
+              <div class="config-m-sub">Derin Damarlı Ahşap</div>
+            </div>
+          </div>
+          <div class="config-swatch-item" data-ahsap="mese">
+            <span class="config-swatch-dot" style="background:linear-gradient(135deg,#4a3d34,#2b231d)"></span>
+            <div>
+              <div class="config-swatch-label">Füme Koyu Meşe</div>
+              <div class="config-m-sub">Mat İsli Meşe Dokusu</div>
+            </div>
+          </div>
+          <div class="config-swatch-item" data-ahsap="disbudak">
+            <span class="config-swatch-dot" style="background:linear-gradient(135deg,#2e2e30,#18181a)"></span>
+            <div>
+              <div class="config-swatch-label">Siyah Dişbudak</div>
+              <div class="config-m-sub">Siyah Ahşap Greni</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Donanım & Opsiyonlar -->
+      <div class="config-step-card">
+        <div class="config-step-title">4. Parçalar & Özel Aksesuarlar</div>
+        <div class="config-step-note">İhtiyacınıza göre lüle durumunu ve özel B2B / perakende aksesuarlarını ekleyin.</div>
+        <div class="config-addon-list">
+          <div class="config-addon-item is-active" data-opt="lule">
+            <div class="config-addon-left">
+              <input type="checkbox" checked id="opt-lule" />
+              <div>
+                <div class="config-addon-title">Kordierit Seramik Lüle</div>
+                <div class="config-addon-sub">1200 °C teknik seramik, koku tutmaz</div>
+              </div>
+            </div>
+            <div class="config-addon-price">Standart</div>
+          </div>
+          <div class="config-addon-item" data-opt="logo">
+            <div class="config-addon-left">
+              <input type="checkbox" id="opt-logo" />
+              <div>
+                <div class="config-addon-title">Lazer Logo Kazıma (B2B)</div>
+                <div class="config-addon-sub">Ceviz veya çelik panele özel işletme logosu</div>
+              </div>
+            </div>
+            <div class="config-addon-price">Ücretsiz (B2B)</div>
+          </div>
+          <div class="config-addon-item" data-opt="marpuc">
+            <div class="config-addon-left">
+              <input type="checkbox" id="opt-marpuc" />
+              <div>
+                <div class="config-addon-title">Deri Sarımlı Çelik Marpuç</div>
+                <div class="config-addon-sub">Lüks el dikişi deri kaplama ahşap ağızlık</div>
+              </div>
+            </div>
+            <div class="config-addon-price">+ Opsiyonel</div>
+          </div>
+        </div>
+      </div>
+
     </div>
-  </div>
-  <div class="v3-alt">
-    <p class="small">Sürükleyerek döndürün · sağ alttaki düğmelerle yakınlaştırın</p>
-    <button type="button" id="v3-indir" class="v3-dl" title="Bu yapılandırmayı yüksek çözünürlüklü PNG olarak indir">Görüntüyü indir</button>
-  </div>
-  <div class="note"><span class="k">Ölçüler nereden geliyor</span><p>Gövde çapı, taban ölçüsü ve toplam yükseklik üretim şartnamesindeki değerlerdir. Bayonet bileziğindeki üç kanal gerçek konumlarında; bağlantının çeyrek turla kilitlenmesini sağlayan geometri budur.</p></div>
-  <div class="ctarow" style="margin-top:26px">
-    <a class="btnbox" href="distributorluk.html">Distribütör / numune talebi <span class="ar" aria-hidden="true">&rarr;</span></a>
+
+    <!-- Sağ Taraf: Sticky Sahne & Canlı Özet -->
+    <div class="config-stage-col">
+      <div class="config-stage" id="sahne" role="img" aria-label="NARION stüdyo ürün görünümü">
+        <span class="stage-badge" id="stage-badge">NARION KOZA</span>
+        <div class="stage-spotlight"></div>
+        <div class="stage-view-toggle">
+          <button type="button" class="stage-v-btn is-active" data-view="tam">Genel Görünüm</button>
+          <button type="button" class="stage-v-btn" data-view="yakin">Makro Yakın</button>
+        </div>
+        <div class="stage-zoom-controls">
+          <button type="button" class="stage-z-btn" id="z-in" title="Yakınlaştır">+</button>
+          <button type="button" class="stage-z-btn" id="z-out" title="Uzaklaştır">&minus;</button>
+        </div>
+      </div>
+
+      <!-- Canlı Özet Kartı -->
+      <aside class="config-summary">
+        <div class="summary-head">
+          <div class="summary-code" id="sum-code">NARION KOZA · MODERN SERİ</div>
+          <h2 class="summary-name" id="sum-title">KOZA</h2>
+        </div>
+        <div class="summary-rows">
+          <div class="summary-row"><span class="k">Seçilen Kaplama</span><span class="v" id="sum-kaplama">Fırçalı Paslanmaz</span></div>
+          <div class="summary-row"><span class="k">Ahşap Detay</span><span class="v" id="sum-ahsap">Amerikan Ceviz</span></div>
+          <div class="summary-row"><span class="k">Toplam Yükseklik</span><span class="v" id="sum-yuk">420 mm</span></div>
+          <div class="summary-row"><span class="k">Gövde Malzemesi</span><span class="v" id="sum-malzeme">AISI 304 Paslanmaz Çelik</span></div>
+          <div class="summary-row"><span class="k">Şişe / Hazne</span><span class="v" id="sum-sise">1,2 L · Tritan</span></div>
+          <div class="summary-row"><span class="k">Taban Çapı</span><span class="v" id="sum-taban">Ø130 mm (Devrilmez)</span></div>
+          <div class="summary-row"><span class="k">Bağlantı Tipi</span><span class="v">3 × 90° Çeyrek Tur Bayonet</span></div>
+        </div>
+        <div class="summary-actions">
+          <button type="button" class="btn-dl" id="v3-indir">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Yapılandırma Görselini İndir
+          </button>
+          <a class="btn-quote" href="distributorluk.html">
+            Numune / Distribütör Teklifi Al &rarr;
+          </a>
+        </div>
+      </aside>
+    </div>
+
   </div>
 </div></section>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/RGBELoader.js"></script>
-<script src="../gorsel/3d/uc-boyut-viewer-boot.js"></script>
+<script src="../gorsel/3d/uc-boyut-viewer.js"></script>
 </main>
 <footer>
   <div class="wrap">

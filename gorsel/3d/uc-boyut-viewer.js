@@ -1,10 +1,16 @@
 (function(){
   var K = [
-    ["firca", "#c2c8cc", "Fırçalı paslanmaz", 1.0, 1.0, 1.0, 0],
-    ["sampanya", "#d8bb8a", "PVD şampanya", 1.15, 1.02, 0.78, 18],
-    ["siyah", "#33373a", "Mat siyah PVD", 0.45, 0.45, 0.48, 0],
-    ["gun", "#5c666d", "Gun metal", 0.72, 0.76, 0.82, -8]
+    ["firca", "#c2c8cc", "Fırçalı Paslanmaz", 1.0, 1.0, 1.0, 0],
+    ["sampanya", "#d8bb8a", "PVD Şampanya", 1.15, 1.02, 0.78, 18],
+    ["siyah", "#33373a", "Mat Siyah PVD", 0.45, 0.45, 0.48, 0],
+    ["gun", "#5c666d", "Gun Metal", 0.72, 0.76, 0.82, -8]
   ];
+
+  var AHSAPLAR = {
+    "ceviz": "Doğal Amerikan Ceviz",
+    "mese": "Füme Koyu Meşe",
+    "disbudak": "Siyah Dişbudak"
+  };
 
   var MODELLER = [
     {"id": "narion-koza", "ad": "NARION KOZA", "dosya": "model-narion-koza.webp", "yuk": "420 mm", "sise": "1,2 L", "taban": "Ø130 mm"},
@@ -19,25 +25,19 @@
     {"id": "narion-cakil", "ad": "NARION ÇAKIL", "dosya": "model-narion-cakil.webp", "yuk": "380 mm", "sise": "1,4 L", "taban": "Ø190 mm"}
   ];
 
-  var kap = K[0], mid = MODELLER[0].id;
+  var kap = K[0], mid = MODELLER[0].id, seciliAhsap = "ceviz";
   var el = document.getElementById('sahne');
   if (!el) return;
 
-  el.innerHTML = '';
-  el.style.position = 'relative';
-  el.style.overflow = 'hidden';
-  el.style.display = 'flex';
-  el.style.alignItems = 'center';
-  el.style.justifyContent = 'center';
-  el.style.cursor = 'grab';
-  el.style.userSelect = 'none';
-
-  var canvas = document.createElement('canvas');
-  canvas.style.display = 'block';
-  canvas.style.width = '100%';
-  canvas.style.height = '100%';
-  canvas.style.objectFit = 'contain';
-  el.appendChild(canvas);
+  var canvas = el.querySelector('canvas');
+  if (!canvas) {
+    canvas = document.createElement('canvas');
+    canvas.style.display = 'block';
+    canvas.style.width = '100%';
+    canvas.style.height = '100%';
+    canvas.style.objectFit = 'contain';
+    el.appendChild(canvas);
+  }
 
   var ctx = canvas.getContext('2d');
 
@@ -187,10 +187,33 @@
     ctx.fillRect(0, 0, W, H);
   }
 
+  function guncelleOzet(){
+    var m = MODELLER.filter(function(x){ return x.id === mid; })[0] || MODELLER[0];
+    var badge = document.getElementById('stage-badge');
+    var sCode = document.getElementById('sum-code');
+    var sTitle = document.getElementById('sum-title');
+    var sKap = document.getElementById('sum-kaplama');
+    var sAhs = document.getElementById('sum-ahsap');
+    var sYuk = document.getElementById('sum-yuk');
+    var sSise = document.getElementById('sum-sise');
+    var sTaban = document.getElementById('sum-taban');
+    var sMalz = document.getElementById('sum-malzeme');
+
+    if (badge) badge.textContent = m.ad;
+    if (sCode) sCode.textContent = m.ad + ' · ' + (m.id.indexOf('manolya') !== -1 || m.id.indexOf('servi') !== -1 ? 'KLASİK SERİ' : (m.id.indexOf('aura') !== -1 || m.id.indexOf('monolit') !== -1 || m.id.indexOf('inci') !== -1 ? 'PRESTİJ SERİSİ' : (m.id.indexOf('prizma') !== -1 || m.id.indexOf('nomad') !== -1 ? 'TEKNOLOJİ SERİSİ' : 'MODERN SERİ')));
+    if (sTitle) sTitle.textContent = m.ad.replace('NARION ', '');
+    if (sKap) sKap.textContent = kap[2];
+    if (sAhs) sAhs.textContent = AHSAPLAR[seciliAhsap] || "Doğal Amerikan Ceviz";
+    if (sYuk) sYuk.textContent = m.yuk;
+    if (sSise) sSise.textContent = m.sise + (m.id.indexOf('manolya') !== -1 ? ' · Kristal Kesme Cam' : ' · Tritan');
+    if (sTaban) sTaban.textContent = m.taban + ' (Devrilmez)';
+    if (sMalz) sMalz.textContent = (m.id.indexOf('manolya') !== -1 ? 'AISI 316L Paslanmaz Çelik' : 'AISI 304 Paslanmaz Çelik');
+  }
+
   // --- Etkileşim & Kontroller ---
   function onDown(e){
     basili = true;
-    el.style.cursor = 'grabbing';
+    el.classList.add('is-grabbing');
     if (e.touches && e.touches.length === 2) {
       var dx = e.touches[0].clientX - e.touches[1].clientX;
       var dy = e.touches[0].clientY - e.touches[1].clientY;
@@ -204,7 +227,7 @@
   function onUp(){
     basili = false;
     pinch0 = 0;
-    el.style.cursor = 'grab';
+    el.classList.remove('is-grabbing');
   }
 
   function onMove(e){
@@ -247,6 +270,21 @@
   if (zi) zi.addEventListener('click', function(){ hedefZoom = Math.min(2.4, hedefZoom + 0.25); });
   if (zo) zo.addEventListener('click', function(){ hedefZoom = Math.max(0.75, hedefZoom - 0.25); });
 
+  // View Modu Değişimi (Genel Görünüm / Makro Yakın)
+  document.querySelectorAll('[data-view]').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('[data-view]').forEach(function(x){ x.classList.remove('is-active'); });
+      b.classList.add('is-active');
+      if (b.dataset.view === 'yakin') {
+        hedefZoom = 1.75;
+      } else {
+        hedefZoom = 1.0;
+        hedefRotX = 0;
+        hedefRotY = 0;
+      }
+    });
+  });
+
   // Animasyon Döngüsü
   function anim(){
     requestAnimationFrame(anim);
@@ -271,8 +309,10 @@
   document.querySelectorAll('[data-model]').forEach(function(b){
     b.addEventListener('click', function(){
       mid = b.dataset.model;
-      document.querySelectorAll('[data-model]').forEach(function(x){ x.setAttribute('aria-pressed', x === b); });
+      document.querySelectorAll('[data-model]').forEach(function(x){ x.classList.remove('is-active'); });
+      b.classList.add('is-active');
       hedefRotY = 0.35;
+      guncelleOzet();
       ciz();
     });
   });
@@ -281,8 +321,33 @@
   document.querySelectorAll('[data-kaplama]').forEach(function(b){
     b.addEventListener('click', function(){
       kap = K.filter(function(x){ return x[0] === b.dataset.kaplama; })[0] || K[0];
-      document.querySelectorAll('[data-kaplama]').forEach(function(x){ x.setAttribute('aria-pressed', x === b); });
+      document.querySelectorAll('[data-kaplama]').forEach(function(x){ x.classList.remove('is-active'); });
+      b.classList.add('is-active');
+      guncelleOzet();
       ciz();
+    });
+  });
+
+  // Ahşap Butonları
+  document.querySelectorAll('[data-ahsap]').forEach(function(b){
+    b.addEventListener('click', function(){
+      seciliAhsap = b.dataset.ahsap || "ceviz";
+      document.querySelectorAll('[data-ahsap]').forEach(function(x){ x.classList.remove('is-active'); });
+      b.classList.add('is-active');
+      guncelleOzet();
+      ciz();
+    });
+  });
+
+  // Addon Seçimleri
+  document.querySelectorAll('.config-addon-item').forEach(function(item){
+    item.addEventListener('click', function(e){
+      var cb = item.querySelector('input[type="checkbox"]');
+      if (e.target !== cb) {
+        cb.checked = !cb.checked;
+      }
+      if (cb.checked) item.classList.add('is-active');
+      else item.classList.remove('is-active');
     });
   });
 
@@ -295,6 +360,7 @@
     a.click();
   });
 
+  guncelleOzet();
   resize();
   anim();
 })();
