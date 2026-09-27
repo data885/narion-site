@@ -1,5 +1,16 @@
 (function(){
-var K = [["firca", "#c2c8cc", 0.88, 0.3], ["sampanya", "#d8bb8a", 0.92, 0.22], ["siyah", "#33373a", 0.8, 0.44], ["gun", "#5c666d", 0.9, 0.3]], MODELLER = [{"id": "narion-koza", "ad": "NARION KOZA", "taban": 130.0, "sise": 150.0, "siseH": 143, "bilezik": 78.0, "saft": 45.0, "saftH": 168, "tabla": 232, "lule": 85.0, "yuk": 420.0, "panel": "pencereli", "siluet": [[0.0, 0.0], [0.4, 0.0], [0.47, 0.03], [0.5, 0.09], [0.5, 0.66], [0.48, 0.76], [0.4, 0.87], [0.28, 0.95], [0.23, 1.0]]}, {"id": "narion-ladin", "ad": "NARION LAD\u0130N", "taban": 120.0, "sise": 120.0, "siseH": 197, "bilezik": 78.0, "saft": 45.0, "saftH": 232, "tabla": 186, "lule": 85.0, "yuk": 580.0, "panel": "duz", "siluet": [[0.0, 0.0], [0.36, 0.0], [0.42, 0.04], [0.44, 0.1], [0.44, 0.72], [0.42, 0.82], [0.34, 0.92], [0.24, 1.0]]}, {"id": "narion-manolya", "ad": "NARION MANOLYA", "taban": 180.0, "sise": 150.0, "siseH": 211, "bilezik": 78.0, "saft": 45.0, "saftH": 248, "tabla": 232, "lule": 85.0, "yuk": 620.0, "panel": "yok", "siluet": [[0.0, 0.0], [0.3, 0.0], [0.38, 0.06], [0.47, 0.2], [0.5, 0.36], [0.48, 0.52], [0.4, 0.68], [0.3, 0.84], [0.24, 0.93], [0.22, 1.0]]}];
+var K = [["firca", "#c2c8cc", 0.88, 0.3], ["sampanya", "#d8bb8a", 0.92, 0.22], ["siyah", "#33373a", 0.8, 0.44], ["gun", "#5c666d", 0.9, 0.3]], MODELLER = [
+  {"id": "narion-koza", "ad": "NARION KOZA", "taban": 130.0, "sise": 150.0, "siseH": 143, "bilezik": 78.0, "saft": 45.0, "saftH": 168, "tabla": 232, "lule": 85.0, "yuk": 420.0, "panel": "pencereli"},
+  {"id": "narion-ladin", "ad": "NARION LAD\u0130N", "taban": 120.0, "sise": 120.0, "siseH": 197, "bilezik": 78.0, "saft": 45.0, "saftH": 232, "tabla": 186, "lule": 85.0, "yuk": 580.0, "panel": "duz"},
+  {"id": "narion-manolya", "ad": "NARION MANOLYA", "taban": 180.0, "sise": 150.0, "siseH": 211, "bilezik": 78.0, "saft": 45.0, "saftH": 248, "tabla": 232, "lule": 85.0, "yuk": 620.0, "panel": "yok"},
+  {"id": "narion-servi", "ad": "NARION SERV\u0130", "taban": 140.0, "sise": 125.0, "siseH": 220, "bilezik": 78.0, "saft": 42.0, "saftH": 260, "tabla": 210, "lule": 85.0, "yuk": 640.0, "panel": "yok"},
+  {"id": "narion-prizma", "ad": "NARION PR\u0130ZMA", "taban": 150.0, "sise": 140.0, "siseH": 180, "bilezik": 78.0, "saft": 50.0, "saftH": 190, "tabla": 220, "lule": 85.0, "yuk": 500.0, "panel": "yok"},
+  {"id": "narion-nomad", "ad": "NARION NOMAD", "taban": 160.0, "sise": 140.0, "siseH": 140, "bilezik": 78.0, "saft": 48.0, "saftH": 120, "tabla": 190, "lule": 80.0, "yuk": 360.0, "panel": "yok"},
+  {"id": "narion-aura", "ad": "NARION AURA", "taban": 160.0, "sise": 160.0, "siseH": 200, "bilezik": 78.0, "saft": 46.0, "saftH": 210, "tabla": 230, "lule": 85.0, "yuk": 540.0, "panel": "yok"},
+  {"id": "narion-monolit", "ad": "NARION MONOL\u0130T", "taban": 140.0, "sise": 130.0, "siseH": 190, "bilezik": 78.0, "saft": 48.0, "saftH": 200, "tabla": 210, "lule": 85.0, "yuk": 520.0, "panel": "yok"},
+  {"id": "narion-inci", "ad": "NARION \u0130NC\u0130", "taban": 150.0, "sise": 160.0, "siseH": 170, "bilezik": 78.0, "saft": 46.0, "saftH": 180, "tabla": 220, "lule": 85.0, "yuk": 480.0, "panel": "yok"},
+  {"id": "narion-cakil", "ad": "NARION \u00c7AKIL", "taban": 190.0, "sise": 170.0, "siseH": 130, "bilezik": 78.0, "saft": 52.0, "saftH": 140, "tabla": 240, "lule": 85.0, "yuk": 380.0, "panel": "yok"}
+];
 var kap = K[0], mid = MODELLER[0].id;
 var el = document.getElementById('sahne');
 if (!el || typeof THREE === 'undefined') return;
@@ -642,12 +653,186 @@ bR*2, kH2, metal(), y);
 y += kH2;
 return y;
 }
+function kurServi(M){
+var Y = M.yuk, y = 0;
+var kH = Y * 0.08;
+lathe2([[0,0],[0.92,0],[0.96,0.08],[0.96,0.92],[0.90,1.0],[0.50,1.0],[0,0.95]], M.taban, kH, metal(), y);
+y += kH;
+var sH = Y * 0.38;
+var prof = [[0,0],[0.60,0],[0.85,0.05],[0.95,0.22],[0.88,0.60],[0.72,0.85],[0.48,0.98],[0.40,1.0]];
+lathe2(prof, M.sise, sH, cam(), y);
+var suP = dilim(prof, 0, 0.45); suP.unshift([0.02, 0]); suP.push([0.02, 0.45]);
+lathe2(suP, M.sise, sH, su(), y+1, 0.94);
+sil(7.5, 7.5, sH*0.75, metal(), y + sH*0.42, 32);
+y += sH;
+var bH = Y * 0.06;
+lathe2([[0,0],[1.0,0],[1.04,0.08],[0.95,0.25],[0.95,0.75],[1.04,0.92],[0.98,1.0],[0,1.0]], M.taban*0.38, bH, metal(), y);
+marpuc(M.taban*0.22, y + bH*0.5, M.sise*1.6);
+y += bH;
+var aH = Y * 0.28;
+lathe2([[0,0],[0.88,0],[0.92,0.04],[0.78,0.50],[0.88,0.96],[0.92,1.0],[0,1.0]], M.taban*0.36, aH, ahsap(), y);
+sil(M.taban*0.19, M.taban*0.19, 4.0, metal(), y + aH*0.5, 48);
+y += aH;
+var nH = Y * 0.14;
+lathe2([[0,0],[0.85,0],[0.92,0.05],[0.65,0.55],[0.90,0.95],[1.15,1.0],[0.50,1.0],[0,0.85]], M.taban*0.36, nH, metal(), y);
+y += nH;
+return y;
+}
+function kurPrizma(M){
+var Y = M.yuk, y = 0;
+var kH = Y * 0.12;
+lathe2([[0,0],[0.96,0],[1.0,0.15],[0.95,0.85],[0.90,1.0],[0.40,1.0],[0,0.90]], M.taban, kH, metal(), y, 1, 0, Math.PI*2, 6);
+y += kH;
+var sH = Y * 0.42;
+var prof = [[0,0],[0.85,0],[0.95,0.08],[1.0,0.40],[0.85,0.75],[0.60,0.95],[0.45,1.0]];
+lathe2(prof, M.sise, sH, kesmeCam(), y, 1, 0, Math.PI*2, 6);
+var suP = dilim(prof, 0, 0.40); suP.unshift([0.02, 0]); suP.push([0.02, 0.40]);
+lathe2(suP, M.sise, sH, su(), y+1, 0.92, 0, Math.PI*2, 6);
+sil(8.0, 8.0, sH*0.75, metal(), y + sH*0.42, 32);
+y += sH;
+var bH = Y * 0.08;
+lathe2([[0,0],[1.0,0],[1.05,0.1],[0.95,0.5],[1.05,0.9],[0.95,1.0],[0,1.0]], M.taban*0.42, bH, metal(), y, 1, 0, Math.PI*2, 6);
+marpuc(M.taban*0.24, y + bH*0.5, M.sise*1.5);
+y += bH;
+var gH = Y * 0.26;
+lathe2([[0,0],[0.88,0],[0.92,0.06],[0.85,0.94],[0.92,1.0],[0,1.0]], M.taban*0.38, gH, metal(), y, 1, 0, Math.PI*2, 6);
+sil(M.taban*0.19, M.taban*0.19, 3.5, ahsap(), y + gH*0.5, 48);
+y += gH;
+var nH = Y * 0.12;
+lathe2([[0,0],[0.85,0],[0.95,0.08],[0.70,0.5],[0.95,0.92],[1.20,1.0],[0.48,1.0],[0,0.8]], M.taban*0.38, nH, metal(), y, 1, 0, Math.PI*2, 6);
+y += nH;
+return y;
+}
+function kurNomad(M){
+var Y = M.yuk, y = 0;
+var gH = Y * 0.68, r = M.sise/2;
+var prof = [[0,0],[0.82,0],[0.96,0.04],[1.0,0.12],[1.0,0.72],[0.96,0.85],[0.85,0.95],[0.55,1.0]];
+lathe2(prof, M.sise, gH, metal2(), y);
+var suP = dilim(prof, 0, 0.38); suP.unshift([0.02, 0]); suP.push([0.02, 0.38]);
+lathe2(suP, M.sise, gH, su(), y+1, 0.90);
+sil(8.0, 8.0, gH*0.72, metal(), y + gH*0.4, 32);
+sil(r*1.02, r*1.02, 5.0, silikon(), y + gH*0.25, 64);
+sil(r*1.02, r*1.02, 5.0, silikon(), y + gH*0.55, 64);
+sil(r*1.02, r*1.02, 5.0, silikon(), y + gH*0.75, 64);
+y += gH;
+var nH = Y * 0.32;
+var bo = [[0,0],[0.60,0],[0.62,0.06],[0.52,0.15],[0.42,0.45],[0.48,0.70],[0.65,0.92],[0.70,1.0],[0.45,1.0],[0,0.85]];
+lathe2(bo, M.sise, nH, metal(), y);
+marpuc(r, y - gH*0.35, r*2.8);
+y += nH;
+return y;
+}
+function kurAura(M){
+var Y = M.yuk, y = 0;
+var kH = Y * 0.09;
+lathe2([[0,0],[0.94,0],[1.0,0.1],[0.95,0.9],[0.90,1.0],[0.50,1.0],[0,0.95]], M.taban, kH, metal(), y);
+y += kH;
+var sH = Y * 0.44;
+var prof = [[0,0],[0.70,0],[0.92,0.06],[1.0,0.25],[0.92,0.55],[0.70,0.80],[0.45,0.96],[0.38,1.0]];
+lathe2(prof, M.sise, sH, cam(), y);
+var suP = dilim(prof, 0, 0.42); suP.unshift([0.02,0]); suP.push([0.02,0.42]);
+lathe2(suP, M.sise, sH, su(), y+1, 0.93);
+sil(7.5, 7.5, sH*0.75, metal(), y + sH*0.42, 32);
+y += sH;
+var bH = Y * 0.08;
+lathe2([[0,0],[1.0,0],[1.06,0.12],[0.96,0.3],[0.96,0.7],[1.06,0.88],[0.98,1.0],[0,1.0]], M.taban*0.38, bH, metal(), y);
+marpuc(M.taban*0.22, y + bH*0.5, M.sise*1.6);
+y += bH;
+var aH = Y * 0.24;
+lathe2([[0,0],[0.90,0],[0.96,0.06],[0.82,0.50],[0.94,0.94],[0.96,1.0],[0,1.0]], M.taban*0.36, aH, ahsap(), y);
+y += aH;
+var nH = Y * 0.15;
+lathe2([[0,0],[0.82,0],[0.90,0.06],[0.60,0.55],[0.88,0.92],[1.18,1.0],[0.48,1.0],[0,0.85]], M.taban*0.36, nH, metal(), y);
+y += nH;
+return y;
+}
+function kurMonolit(M){
+var Y = M.yuk, y = 0;
+var kH = Y * 0.14;
+lathe2([[0,0],[0.98,0],[1.0,0.1],[0.98,0.9],[0.92,1.0],[0.45,1.0],[0,0.95]], M.taban, kH, metal(), y, 1, 0, Math.PI*2, 4);
+y += kH;
+var sH = Y * 0.40;
+var prof = [[0,0],[0.90,0],[0.98,0.06],[1.0,0.60],[0.95,0.85],[0.80,0.96],[0.50,1.0]];
+lathe2(prof, M.sise, sH, kesmeCam(), y, 1, 0, Math.PI*2, 4);
+var suP = dilim(prof, 0, 0.40); suP.unshift([0.02,0]); suP.push([0.02,0.40]);
+lathe2(suP, M.sise, sH, su(), y+1, 0.92, 0, Math.PI*2, 4);
+sil(8.0, 8.0, sH*0.75, metal(), y + sH*0.42, 32);
+y += sH;
+var bH = Y * 0.08;
+lathe2([[0,0],[1.0,0],[1.05,0.1],[0.96,0.5],[1.05,0.9],[0.96,1.0],[0,1.0]], M.taban*0.40, bH, metal(), y, 1, 0, Math.PI*2, 4);
+marpuc(M.taban*0.22, y + bH*0.5, M.sise*1.5);
+y += bH;
+var gH = Y * 0.24;
+lathe2([[0,0],[0.90,0],[0.94,0.06],[0.88,0.94],[0.92,1.0],[0,1.0]], M.taban*0.36, gH, metal(), y, 1, 0, Math.PI*2, 4);
+y += gH;
+var nH = Y * 0.14;
+lathe2([[0,0],[0.85,0],[0.92,0.06],[0.68,0.55],[0.92,0.92],[1.22,1.0],[0.48,1.0],[0,0.8]], M.taban*0.36, nH, metal(), y, 1, 0, Math.PI*2, 4);
+y += nH;
+return y;
+}
+function kurInci(M){
+var Y = M.yuk, y = 0;
+var kH = Y * 0.08;
+lathe2([[0,0],[0.92,0],[0.96,0.08],[0.96,0.92],[0.88,1.0],[0.50,1.0],[0,0.95]], M.taban, kH, metal(), y);
+y += kH;
+var sH = Y * 0.46;
+var prof = [[0,0],[0.65,0],[0.88,0.08],[1.0,0.36],[0.96,0.65],[0.80,0.88],[0.50,0.98],[0.42,1.0]];
+lathe2(prof, M.sise, sH, seramik(), y);
+var suP = dilim(prof, 0, 0.40); suP.unshift([0.02,0]); suP.push([0.02,0.40]);
+lathe2(suP, M.sise, sH, su(), y+1, 0.92);
+sil(7.5, 7.5, sH*0.75, metal(), y + sH*0.42, 32);
+y += sH;
+var bH = Y * 0.08;
+lathe2([[0,0],[1.0,0],[1.06,0.12],[0.95,0.3],[0.95,0.7],[1.06,0.88],[0.98,1.0],[0,1.0]], M.taban*0.36, bH, metal(), y);
+marpuc(M.taban*0.20, y + bH*0.5, M.sise*1.5);
+y += bH;
+var aH = Y * 0.22;
+lathe2([[0,0],[0.88,0],[0.94,0.06],[0.80,0.50],[0.92,0.94],[0.95,1.0],[0,1.0]], M.taban*0.34, aH, metal(), y);
+sil(M.taban*0.17, M.taban*0.17, 3.5, seramik(), y + aH*0.5, 48);
+y += aH;
+var nH = Y * 0.16;
+lathe2([[0,0],[0.82,0],[0.90,0.06],[0.60,0.55],[0.88,0.92],[1.18,1.0],[0.48,1.0],[0,0.85]], M.taban*0.34, nH, metal(), y);
+y += nH;
+return y;
+}
+function kurCakil(M){
+var Y = M.yuk, y = 0;
+var kH = Y * 0.10;
+lathe2([[0,0],[0.96,0],[1.0,0.08],[0.98,0.92],[0.92,1.0],[0.55,1.0],[0,0.95]], M.taban, kH, metal(), y);
+y += kH;
+var sH = Y * 0.44;
+var prof = [[0,0],[0.80,0],[0.98,0.06],[1.0,0.22],[0.88,0.55],[0.68,0.80],[0.48,0.95],[0.42,1.0]];
+lathe2(prof, M.sise, sH, cam(), y);
+var suP = dilim(prof, 0, 0.42); suP.unshift([0.02,0]); suP.push([0.02,0.42]);
+lathe2(suP, M.sise, sH, su(), y+1, 0.92);
+sil(8.0, 8.0, sH*0.75, metal(), y + sH*0.42, 32);
+y += sH;
+var bH = Y * 0.08;
+lathe2([[0,0],[1.0,0],[1.05,0.1],[0.95,0.3],[0.95,0.7],[1.05,0.9],[0.96,1.0],[0,1.0]], M.taban*0.38, bH, metal(), y);
+marpuc(M.taban*0.22, y + bH*0.5, M.sise*1.5);
+y += bH;
+var aH = Y * 0.22;
+lathe2([[0,0],[0.92,0],[0.98,0.06],[0.85,0.50],[0.94,0.94],[0.96,1.0],[0,1.0]], M.taban*0.36, aH, ahsap(), y);
+y += aH;
+var nH = Y * 0.16;
+lathe2([[0,0],[0.85,0],[0.92,0.06],[0.65,0.55],[0.92,0.92],[1.20,1.0],[0.48,1.0],[0,0.85]], M.taban*0.36, nH, metal(), y);
+y += nH;
+return y;
+}
 function kur(){
 while(grup.children.length) grup.remove(grup.children[0]);
 var M = MODELLER.filter(function(x){return x.id===mid;})[0];
+if (!M) M = MODELLER[0];
 var toplam;
 if (M.id === 'narion-ladin')        toplam = kurLadin(M);
 else if (M.id === 'narion-manolya') toplam = kurManolya(M);
+else if (M.id === 'narion-servi')   toplam = kurServi(M);
+else if (M.id === 'narion-prizma')  toplam = kurPrizma(M);
+else if (M.id === 'narion-nomad')   toplam = kurNomad(M);
+else if (M.id === 'narion-aura')    toplam = kurAura(M);
+else if (M.id === 'narion-monolit') toplam = kurMonolit(M);
+else if (M.id === 'narion-inci')    toplam = kurInci(M);
+else if (M.id === 'narion-cakil')   toplam = kurCakil(M);
 else                                toplam = kurKoza(M);
 toplam += ekleLule(M, toplam);
 var genis = Math.max(M.taban, M.sise, M.lule);
