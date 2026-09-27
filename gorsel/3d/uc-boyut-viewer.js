@@ -83,8 +83,8 @@ if(!ok) yukleHDR(HDR_CDN, function(ok2){ /* yedek softbox zaten aktif */ });
 // Ürün-stüdyo ışık: soft key + fill + rim (HDRI asıl GI'yi taşır)
 sah.add(new THREE.HemisphereLight(0xf5f7fa, 0x1c2228, 0.22));
 var l1 = new THREE.DirectionalLight(0xfff7ef, 0.78); l1.position.set(320, 520, 380);
-l1.castShadow = true; l1.shadow.mapSize.set(2048, 2048); l1.shadow.bias = -0.0012;
-l1.shadow.radius = 4; sah.add(l1);
+l1.castShadow = true; l1.shadow.mapSize.set(1024, 1024); l1.shadow.bias = -0.0012;
+l1.shadow.radius = 2; sah.add(l1);
 var l2 = new THREE.DirectionalLight(0xe8eef4, 0.32); l2.position.set(-360, 200, -220); sah.add(l2);
 var l3 = new THREE.DirectionalLight(0xdfe7ec, 0.20); l3.position.set(0, -260, 160); sah.add(l3);
 var grup = new THREE.Group(); sah.add(grup);
@@ -191,22 +191,19 @@ m.roughness = 0.48; m.metalness = 0.82; m.envMapIntensity = 0.95;
 return m;
 }
 function cam(){ return new THREE.MeshPhysicalMaterial({
-color:0xf8fdff, metalness:0.0, roughness:0.03,
-transmission:0.92, ior:1.52, thickness:3.5,
-transparent:true, opacity:1.0, side:THREE.DoubleSide,
-clearcoat:1.0, clearcoatRoughness:0.015, envMapIntensity:1.85,
+color:0xe8f4fa, metalness:0.05, roughness:0.02,
+transparent:true, opacity:0.24, side:THREE.DoubleSide,
+clearcoat:1.0, clearcoatRoughness:0.015, envMapIntensity:1.8,
 depthWrite:false }); }
 function kesmeCam(){ return new THREE.MeshPhysicalMaterial({
-color:0xf4fbff, metalness:0.0, roughness:0.02,
-transmission:0.88, ior:1.56, thickness:4.5,
-transparent:true, opacity:1.0, side:THREE.DoubleSide,
-flatShading:true, clearcoat:1.0, clearcoatRoughness:0.012,
-envMapIntensity:2.9, depthWrite:false }); }
+color:0xebf5fb, metalness:0.05, roughness:0.02,
+transparent:true, opacity:0.38, side:THREE.DoubleSide,
+flatShading:true, clearcoat:1.0, clearcoatRoughness:0.01,
+envMapIntensity:2.8, depthWrite:false }); }
 function su(){ return new THREE.MeshPhysicalMaterial({
-color:0x356e8c, metalness:0.0, roughness:0.06,
-transmission:0.80, ior:1.333, thickness:8.0,
-transparent:true, opacity:0.85,
-clearcoat:0.85, clearcoatRoughness:0.02, envMapIntensity:1.1 }); }
+color:0x3d7b99, metalness:0.0, roughness:0.08,
+transparent:true, opacity:0.78,
+clearcoat:0.60, clearcoatRoughness:0.02, envMapIntensity:0.8 }); }
 var _cevizMaps = null;
 function cevizProc(){
 var S = 512;
@@ -879,8 +876,9 @@ function hareket(e){
     var dy = e.touches[0].clientY - e.touches[1].clientY;
     var p = Math.sqrt(dx * dx + dy * dy);
     if (pinch0 > 0) {
-      var delta = (pinch0 - p) * 2.2;
+      var delta = (pinch0 - p) * 2.0;
       hedefUzak = Math.max(260, Math.min(2200, hedefUzak + delta));
+      guncelUzak = hedefUzak;
       isaretle();
     }
     pinch0 = p;
@@ -888,10 +886,12 @@ function hareket(e){
     return;
   }
   var t = e.touches ? e.touches[0] : e;
-  hedefDonY += (t.clientX - sx) * 0.008;
-  hedefDonX += (t.clientY - sy) * 0.005;
-  hedefDonX = Math.max(-0.75, Math.min(0.95, hedefDonX));
-  sx = t.clientX; sy = t.clientY; isaretle();
+  var dX = (t.clientX - sx) * 0.008;
+  var dY = (t.clientY - sy) * 0.005;
+  donY += dX;
+  donX = Math.max(-0.75, Math.min(0.95, donX + dY));
+  sx = t.clientX; sy = t.clientY;
+  isaretle();
   if (e.touches) e.preventDefault();
 }
 ren.domElement.addEventListener('mousedown', ac);
@@ -907,8 +907,8 @@ ren.domElement.addEventListener('wheel', function(e){
 var zi = document.getElementById('z-in'), zo = document.getElementById('z-out');
 if(zi) zi.addEventListener('click', function(){ hedefUzak = Math.max(260, hedefUzak-180); isaretle(); });
 if(zo) zo.addEventListener('click', function(){ hedefUzak = Math.min(2200, hedefUzak+180); isaretle(); });
-var HIZLI = Math.min(devicePixelRatio, 1.75);
-var BITMIS = Math.min(devicePixelRatio * 2, 3);
+var HIZLI = Math.min(window.devicePixelRatio || 1, 1.5);
+var BITMIS = Math.min(window.devicePixelRatio || 1, 1.75);
 var kirli = true, yuksek = false, sonHareket = 0;
 var acilisT = performance.now(), acilisVar = true, donY0 = donY - 0.62;
 function oranla(o){
@@ -932,27 +932,29 @@ function dongu(){
   requestAnimationFrame(dongu);
   var simdi = performance.now();
   if (acilisVar){
-    var p = Math.min(1, (simdi - acilisT)/2400);
+    var p = Math.min(1, (simdi - acilisT)/2000);
     var e2 = 1 - Math.pow(1 - p, 3);
-    hedefDonY = donY0 + 0.62*e2;
-    donY = hedefDonY;
+    donY = donY0 + 0.62*e2;
     kirli = true;
     if (p >= 1){ acilisVar = false; sonHareket = simdi; }
   } else {
-    var diffY = (hedefDonY - donY);
-    var diffX = (hedefDonX - donX);
     var diffZ = (hedefUzak - guncelUzak);
-    if (Math.abs(diffY) > 0.0001 || Math.abs(diffX) > 0.0001 || Math.abs(diffZ) > 0.1) {
-      donY += diffY * 0.15;
-      donX += diffX * 0.15;
-      guncelUzak += diffZ * 0.15;
+    if (Math.abs(diffZ) > 0.5) {
+      guncelUzak += diffZ * 0.2;
       kirli = true;
     }
   }
   if (basili) kirli = true;
-  if (kirli){ kirli = false; ciz(); sonHareket = simdi; return; }
-  if (!yuksek && simdi - sonHareket > 380){
-    yuksek = true; oranla(BITMIS); ciz();
+  if (kirli){
+    kirli = false;
+    ciz();
+    sonHareket = simdi;
+    return;
+  }
+  if (!yuksek && simdi - sonHareket > 400){
+    yuksek = true;
+    oranla(BITMIS);
+    ciz();
   }
 }
 addEventListener('resize', function(){
