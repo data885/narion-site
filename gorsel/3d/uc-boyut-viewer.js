@@ -80,13 +80,14 @@ undefined, function(){ if(sonra) sonra(false); });
 yukleHDR(ASSET3D + 'studio_small_09_1k.hdr', function(ok){
 if(!ok) yukleHDR(HDR_CDN, function(ok2){ /* yedek softbox zaten aktif */ });
 });
-// Ürün-stüdyo ışık: soft key + fill + rim (HDRI asıl GI'yi taşır)
-sah.add(new THREE.HemisphereLight(0xf5f7fa, 0x1c2228, 0.22));
-var l1 = new THREE.DirectionalLight(0xfff7ef, 0.78); l1.position.set(320, 520, 380);
-l1.castShadow = true; l1.shadow.mapSize.set(1024, 1024); l1.shadow.bias = -0.0012;
-l1.shadow.radius = 2; sah.add(l1);
-var l2 = new THREE.DirectionalLight(0xe8eef4, 0.32); l2.position.set(-360, 200, -220); sah.add(l2);
-var l3 = new THREE.DirectionalLight(0xdfe7ec, 0.20); l3.position.set(0, -260, 160); sah.add(l3);
+// Warm luxury studio lighting matching official render photography
+sah.add(new THREE.HemisphereLight(0xfff1e4, 0x241710, 0.48));
+var l1 = new THREE.DirectionalLight(0xfff6ec, 1.25); l1.position.set(300, 580, 350);
+l1.castShadow = true; l1.shadow.mapSize.set(1024, 1024); l1.shadow.bias = -0.001;
+l1.shadow.radius = 2.5; sah.add(l1);
+var l2 = new THREE.DirectionalLight(0xb27448, 0.50); l2.position.set(0, -220, 180); sah.add(l2);
+var l3 = new THREE.DirectionalLight(0xd4e6f6, 0.85); l3.position.set(-380, 260, -280); sah.add(l3);
+var l4 = new THREE.DirectionalLight(0xffffff, 0.45); l4.position.set(50, 650, 50); sah.add(l4);
 var grup = new THREE.Group(); sah.add(grup);
 var _fircaMaps = null;
 function fircaProc(){
@@ -169,41 +170,41 @@ return _fircaMaps;
 function metal(){
 var m = new THREE.MeshStandardMaterial({
 color:new THREE.Color(kap[1]), metalness:kap[2], roughness:kap[3],
-envMapIntensity: 1.25 });
+envMapIntensity: 1.5 });
 var fm = fircaMaps();
 if (kap[0] === 'firca'){
 m.roughnessMap = fm.rough; m.normalMap = fm.normal;
-m.normalScale = new THREE.Vector2(0.85, 0.28);
-m.roughness = 0.34; m.metalness = 0.92; m.envMapIntensity = 1.35;
+m.normalScale = new THREE.Vector2(0.65, 0.20);
+m.roughness = 0.26; m.metalness = 0.94; m.envMapIntensity = 1.75;
 } else if (kap[0] === 'gun'){
 m.roughnessMap = fm.rough; m.normalMap = fm.normal;
-m.normalScale = new THREE.Vector2(0.70, 0.22);
-m.roughness = 0.36; m.metalness = 0.90; m.envMapIntensity = 1.20;
+m.normalScale = new THREE.Vector2(0.50, 0.16);
+m.roughness = 0.30; m.metalness = 0.92; m.envMapIntensity = 1.45;
 } else if (kap[0] === 'sampanya'){
 m.roughnessMap = fm.rough; m.normalMap = fm.normal;
-m.normalScale = new THREE.Vector2(0.35, 0.12);
-m.roughness = 0.20; m.metalness = 0.95; m.envMapIntensity = 1.45;
+m.normalScale = new THREE.Vector2(0.30, 0.10);
+m.roughness = 0.16; m.metalness = 0.96; m.envMapIntensity = 1.95;
 } else if (kap[0] === 'siyah'){
 m.roughnessMap = fm.rough; m.normalMap = fm.normal;
-m.normalScale = new THREE.Vector2(0.45, 0.16);
-m.roughness = 0.48; m.metalness = 0.82; m.envMapIntensity = 0.95;
+m.normalScale = new THREE.Vector2(0.35, 0.12);
+m.roughness = 0.38; m.metalness = 0.85; m.envMapIntensity = 1.15;
 }
 return m;
 }
 function cam(){ return new THREE.MeshPhysicalMaterial({
-color:0xe8f4fa, metalness:0.05, roughness:0.02,
-transparent:true, opacity:0.24, side:THREE.DoubleSide,
-clearcoat:1.0, clearcoatRoughness:0.015, envMapIntensity:1.8,
+color:0x181b1e, metalness:0.08, roughness:0.02,
+transparent:true, opacity:0.45, side:THREE.DoubleSide,
+clearcoat:1.0, clearcoatRoughness:0.015, envMapIntensity:2.2,
 depthWrite:false }); }
 function kesmeCam(){ return new THREE.MeshPhysicalMaterial({
-color:0xebf5fb, metalness:0.05, roughness:0.02,
-transparent:true, opacity:0.38, side:THREE.DoubleSide,
+color:0xebf5fb, metalness:0.05, roughness:0.015,
+transparent:true, opacity:0.40, side:THREE.DoubleSide,
 flatShading:true, clearcoat:1.0, clearcoatRoughness:0.01,
-envMapIntensity:2.8, depthWrite:false }); }
+envMapIntensity:3.2, depthWrite:false }); }
 function su(){ return new THREE.MeshPhysicalMaterial({
-color:0x3d7b99, metalness:0.0, roughness:0.08,
-transparent:true, opacity:0.78,
-clearcoat:0.60, clearcoatRoughness:0.02, envMapIntensity:0.8 }); }
+color:0x346b85, metalness:0.0, roughness:0.06,
+transparent:true, opacity:0.75,
+clearcoat:0.70, clearcoatRoughness:0.02, envMapIntensity:0.9 }); }
 var _cevizMaps = null;
 function cevizProc(){
 var S = 512;
@@ -370,32 +371,32 @@ m.position.y = y0; grup.add(m); return m;
 var zeminler = [], yansima = null;
 function zeminKur(zf, genislik){
 zeminler.forEach(function(o){ sah.remove(o); }); zeminler = [];
-var R = genislik*5.0;
+var R = genislik*6.2;
 var zc = document.createElement('canvas'); zc.width = zc.height = 512;
 var zx = zc.getContext('2d');
-var zg = zx.createRadialGradient(256, 256, 20, 256, 256, 252);
-zg.addColorStop(0.00, 'rgba(28,24,20,0.92)');
-zg.addColorStop(0.45, 'rgba(24,21,18,0.74)');
-zg.addColorStop(0.78, 'rgba(18,16,14,0.28)');
-zg.addColorStop(1.00, 'rgba(18,16,14,0)');
+var zg = zx.createRadialGradient(256, 256, 12, 256, 256, 254);
+zg.addColorStop(0.00, 'rgba(46,30,20,0.96)');
+zg.addColorStop(0.32, 'rgba(36,24,16,0.85)');
+zg.addColorStop(0.68, 'rgba(22,15,10,0.40)');
+zg.addColorStop(1.00, 'rgba(15,10,7,0)');
 zx.fillStyle = zg; zx.fillRect(0, 0, 512, 512);
 var yuzey = new THREE.Mesh(new THREE.PlaneGeometry(R, R),
-new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(zc),
-transparent:true, depthWrite:false}));
+new THREE.MeshStandardMaterial({map:new THREE.CanvasTexture(zc),
+roughness:0.35, metalness:0.1, transparent:true, depthWrite:false}));
 yuzey.rotation.x = -Math.PI/2; yuzey.position.y = zf + 0.4;
 yuzey.renderOrder = 1;
 var gol = new THREE.Mesh(new THREE.PlaneGeometry(R, R),
-new THREE.ShadowMaterial({opacity:0.55}));
+new THREE.ShadowMaterial({opacity:0.65}));
 gol.rotation.x = -Math.PI/2; gol.position.y = zf + 0.8;
 gol.receiveShadow = true; gol.renderOrder = 2;
 var cg = document.createElement('canvas'); cg.width = cg.height = 256;
 var g3 = cg.getContext('2d');
-var rg = g3.createRadialGradient(128, 128, 2, 128, 128, 124);
-rg.addColorStop(0, 'rgba(6,5,4,0.78)');
-rg.addColorStop(0.42, 'rgba(6,5,4,0.28)');
-rg.addColorStop(1, 'rgba(6,5,4,0)');
+var rg = g3.createRadialGradient(128, 128, 2, 128, 128, 126);
+rg.addColorStop(0, 'rgba(10,6,4,0.88)');
+rg.addColorStop(0.38, 'rgba(10,6,4,0.36)');
+rg.addColorStop(1, 'rgba(10,6,4,0)');
 g3.fillStyle = rg; g3.fillRect(0, 0, 256, 256);
-var tem = new THREE.Mesh(new THREE.PlaneGeometry(genislik*1.9, genislik*1.9),
+var tem = new THREE.Mesh(new THREE.PlaneGeometry(genislik*2.1, genislik*2.1),
 new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(cg),
 transparent:true, depthWrite:false}));
 tem.rotation.x = -Math.PI/2; tem.position.y = zf + 1.2; tem.renderOrder = 3;
