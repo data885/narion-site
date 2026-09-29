@@ -163,8 +163,10 @@
 
   var viewToggle = document.createElement('div');
   viewToggle.className = 'stage-view-toggle';
-  viewToggle.innerHTML = '<button type="button" class="stage-v-btn is-active" data-view="tam">Genel Görünüm</button>' +
-                          '<button type="button" class="stage-v-btn" data-view="yakin">Makro Detay</button>';
+  viewToggle.innerHTML = '<button type="button" class="stage-v-btn is-active" data-view="tam">Stüdyo Ön (3B)</button>' +
+                          '<button type="button" class="stage-v-btn" data-view="perspektif">3/4 Perspektif</button>' +
+                          '<button type="button" class="stage-v-btn" data-view="kutu">Kutulama & VIP</button>' +
+                          '<button type="button" class="stage-v-btn" data-view="makro">Bayonet Makro</button>';
   stage.appendChild(viewToggle);
 
   var zoomControls = document.createElement('div');
@@ -390,15 +392,54 @@
   }
 
   // -------------------------------------------------------------
-  // View Modes (Tam / Yakın)
+  // View Modes (Stüdyo Ön / 3/4 Perspektif / Kutulama / Makro)
   // -------------------------------------------------------------
+  var currentViewMode = 'tam';
+
   function setView(viewMode) {
-    if (viewMode === 'yakin') {
-      targetScale = 1.75;
-      tiltWrap.style.transformOrigin = '50% 36%';
-    } else {
-      targetScale = 1.0;
-      tiltWrap.style.transformOrigin = '50% 50%';
+    currentViewMode = viewMode;
+    var model = MODELLER[currentModelId] || MODELLER['narion-koza'];
+    var elBadge = document.getElementById('stage-badge');
+
+    targetScale = 1.0;
+    tiltWrap.style.transformOrigin = '50% 50%';
+
+    var incoming = activeSlot === 'a' ? imgB : imgA;
+    var outgoing = activeSlot === 'a' ? imgA : imgB;
+
+    function transitionTo(srcUrl, badgeText) {
+      var loader = new Image();
+      loader.onload = function () {
+        incoming.src = srcUrl;
+        incoming.classList.add('is-active');
+        outgoing.classList.remove('is-active');
+        activeSlot = activeSlot === 'a' ? 'b' : 'a';
+        if (elBadge && badgeText) elBadge.textContent = badgeText;
+      };
+      loader.src = srcUrl;
+    }
+
+    if (viewMode === 'tam') {
+      updateProductVisual();
+    } else if (viewMode === 'perspektif') {
+      transitionTo('../gorsel/koza-perspektif-aci.webp', 'NARION ' + model.name + ' · 3/4 DİNAMİK PERSPEKTİF AÇISI');
+    } else if (viewMode === 'kutu') {
+      var boxSrc = (currentModelId === 'narion-nomad') ? '../gorsel/nomad-travel-kutu.webp' : '../gorsel/kutu-luks-sunum.webp';
+      var boxText = (currentModelId === 'narion-nomad') ? 'NARION NOMAD · TAKTİK SEYAHAT KUTUSU' : 'NARION · VIP SERT SUNUM KUTUSU & UNBOXING';
+      transitionTo(boxSrc, boxText);
+    } else if (viewMode === 'makro') {
+      transitionTo('../gorsel/bayonet-iscilik-makro.webp', 'NARION · CNC BAYONET KİLİT & CEVİZ İŞÇİLİĞİ');
+    }
+  }
+
+  function resetToTamView() {
+    if (currentViewMode !== 'tam') {
+      currentViewMode = 'tam';
+      var vBtns = document.querySelectorAll('.stage-v-btn');
+      vBtns.forEach(function (b) {
+        if (b.getAttribute('data-view') === 'tam') b.classList.add('is-active');
+        else b.classList.remove('is-active');
+      });
     }
   }
 
@@ -484,6 +525,7 @@
         currentModelId = mId;
         mCards.forEach(function (c) { c.classList.remove('is-active'); });
         card.classList.add('is-active');
+        resetToTamView();
         updateProductVisual();
       });
     });
@@ -497,6 +539,7 @@
         currentFinishId = fId;
         fSwatches.forEach(function (s) { s.classList.remove('is-active'); });
         sw.classList.add('is-active');
+        resetToTamView();
         updateProductVisual();
       });
     });
@@ -510,6 +553,7 @@
         currentWoodId = wId;
         wSwatches.forEach(function (s) { s.classList.remove('is-active'); });
         sw.classList.add('is-active');
+        resetToTamView();
         updateProductVisual();
       });
     });
