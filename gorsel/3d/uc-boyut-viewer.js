@@ -20,7 +20,8 @@
       height: '420 mm',
       sise: '1,2 L · Tritan',
       taban: 'Ø130 mm (Devrilmez)',
-      malzeme: 'AISI 304 Paslanmaz Çelik'
+      malzeme: 'AISI 304 Paslanmaz Çelik & Masif Ceviz',
+      hasWood: true
     },
     'narion-ladin': {
       name: 'LADİN',
@@ -28,7 +29,8 @@
       height: '580 mm',
       sise: '1,0 L · Kristal Cam',
       taban: 'Ø120 mm (Kompakt)',
-      malzeme: 'AISI 304 Paslanmaz Çelik'
+      malzeme: 'AISI 304 Paslanmaz Çelik & Balıksırtı Ahşap',
+      hasWood: true
     },
     'narion-manolya': {
       name: 'MANOLYA',
@@ -36,7 +38,8 @@
       height: '620 mm',
       sise: '1,4 L · Kristal Fasetalı',
       taban: 'Ø180 mm (Geniş Taban)',
-      malzeme: 'AISI 304 / 316L Çelik'
+      malzeme: 'AISI 304 / 316L Çelik & Ahşap Bilezik',
+      hasWood: true
     },
     'narion-servi': {
       name: 'SERVİ',
@@ -44,7 +47,8 @@
       height: '640 mm',
       sise: '1,3 L · Dikey Silindir',
       taban: 'Ø140 mm',
-      malzeme: 'AISI 304 Paslanmaz Çelik'
+      malzeme: 'Tornalanmış Masif Ahşap Gövde & Çelik',
+      hasWood: true
     },
     'narion-prizma': {
       name: 'PRİZMA',
@@ -52,7 +56,9 @@
       height: '500 mm',
       sise: '1,1 L · Altıgen Prizma',
       taban: 'Ø150 mm',
-      malzeme: 'AISI 304 Paslanmaz Çelik'
+      malzeme: 'AISI 304 / Eloksallı Titanyum',
+      hasWood: false,
+      woodNote: 'PRİZMA monolitik geometrik metal gövdedir (Ahşap panel içermez).'
     },
     'narion-nomad': {
       name: 'NOMAD',
@@ -60,7 +66,9 @@
       height: '360 mm',
       sise: '0,9 L · Darbeye Dayanıklı',
       taban: 'Ø160 mm (Ultra Alçak Merkez)',
-      malzeme: 'Hafifletilmiş AISI 304'
+      malzeme: 'Hafifletilmiş Metal & Koruma Kılıfı',
+      hasWood: false,
+      woodNote: 'NOMAD seyahat serisi yekpare hafifletilmiş metal alaşımdır (Ahşap panel içermez).'
     },
     'narion-aura': {
       name: 'AURA',
@@ -68,7 +76,8 @@
       height: '540 mm',
       sise: '1,2 L · Damla Formu',
       taban: 'Ø160 mm',
-      malzeme: 'AISI 304 Paslanmaz Çelik'
+      malzeme: 'PVD Pirinç Kanatlar & Ceviz İç Kaplama',
+      hasWood: true
     },
     'narion-monolit': {
       name: 'MONOLİT',
@@ -76,7 +85,8 @@
       height: '520 mm',
       sise: '1,1 L · Ağır Taban Hazne',
       taban: 'Ø140 mm',
-      malzeme: 'AISI 304 / 316L Çelik'
+      malzeme: 'Masif Ahşap Kolon & Pirinç / Mermer Taban',
+      hasWood: true
     },
     'narion-inci': {
       name: 'İNCİ',
@@ -84,7 +94,9 @@
       height: '480 mm',
       sise: '1,0 L · Oval Beyaz Kristal',
       taban: 'Ø150 mm',
-      malzeme: 'AISI 304 & Teknik Seramik'
+      malzeme: 'Fırınlanmış Teknik Seramik & Pirinç',
+      hasWood: false,
+      woodNote: 'İNCİ modeli fırınlanmış teknik seramik gövdelidir (Ahşap panel içermez).'
     },
     'narion-cakil': {
       name: 'ÇAKIL',
@@ -92,7 +104,9 @@
       height: '380 mm',
       sise: '1,4 L · Doğal Çakıl Formu',
       taban: 'Ø190 mm (Maksimum Denge)',
-      malzeme: 'AISI 304 Paslanmaz Çelik'
+      malzeme: 'Yekpare Döküm Mineral / Gun Metal Gövde',
+      hasWood: false,
+      woodNote: 'ÇAKIL akarsu taşından esinlenen tek kütle mineral/metal gövdedir (Ahşap panel içermez).'
     }
   };
 
@@ -340,7 +354,9 @@
   // Real-Time Visual Update with Smooth Crossfade & Wood Engine
   // -------------------------------------------------------------
   function updateProductVisual() {
-    var cacheKey = currentModelId + '_' + currentFinishId + '_' + currentWoodId;
+    var model = MODELLER[currentModelId] || MODELLER['narion-koza'];
+    var effectiveWood = model.hasWood ? currentWoodId : 'ceviz';
+    var cacheKey = currentModelId + '_' + currentFinishId + '_' + effectiveWood;
     var incoming = activeSlot === 'a' ? imgB : imgA;
     var outgoing = activeSlot === 'a' ? imgA : imgB;
 
@@ -361,11 +377,11 @@
     var loader = new Image();
     loader.crossOrigin = 'anonymous';
     loader.onload = function () {
-      if (currentWoodId === 'ceviz') {
+      if (!model.hasWood || effectiveWood === 'ceviz') {
         renderCache[cacheKey] = baseSrc;
         applySrc(baseSrc);
       } else {
-        var recoloredUrl = applyWoodRecolor(loader, currentModelId, currentWoodId);
+        var recoloredUrl = applyWoodRecolor(loader, currentModelId, effectiveWood);
         renderCache[cacheKey] = recoloredUrl;
         applySrc(recoloredUrl);
       }
@@ -409,7 +425,9 @@
     if (elKap) elKap.textContent = finish.name;
 
     var elAhs = document.getElementById('sum-ahsap');
-    if (elAhs) elAhs.textContent = wood.name;
+    if (elAhs) {
+      elAhs.textContent = model.hasWood ? wood.name : (model.woodNote || 'Gövde Yekpare (Ahşap Yok)');
+    }
 
     var elYuk = document.getElementById('sum-yuk');
     if (elYuk) elYuk.textContent = model.height;
@@ -422,6 +440,35 @@
 
     var elMalz = document.getElementById('sum-malzeme');
     if (elMalz) elMalz.textContent = model.malzeme;
+
+    // Adapt Step 3 (Wood Section) dynamically according to model capability
+    var woodSwatches = document.querySelectorAll('[data-ahsap]');
+    var woodParent = woodSwatches.length > 0 ? woodSwatches[0].closest('.config-step-card') : null;
+    var woodNote = woodParent ? woodParent.querySelector('.config-step-note') : null;
+    var woodGrid = woodParent ? woodParent.querySelector('.config-swatch-grid') : null;
+
+    if (woodParent) {
+      if (!model.hasWood) {
+        if (woodNote) {
+          woodNote.innerHTML = '<span style="display:inline-block; padding:6px 12px; background:#fff4e6; color:#9c4c00; border-radius:6px; font-weight:600; font-size:13px; line-height:1.4;">' +
+            'ℹ️ ' + (model.woodNote || 'Bu modelde ahşap panel opsiyonu bulunmaz.') + '</span>';
+        }
+        if (woodGrid) {
+          woodGrid.style.opacity = '0.30';
+          woodGrid.style.pointerEvents = 'none';
+          woodGrid.style.filter = 'grayscale(1)';
+        }
+      } else {
+        if (woodNote) {
+          woodNote.textContent = 'Doğal fırınlanmış sert ağaç panel; suya ve ısıya karşı özel emprenye korumalıdır.';
+        }
+        if (woodGrid) {
+          woodGrid.style.opacity = '1.0';
+          woodGrid.style.pointerEvents = 'auto';
+          woodGrid.style.filter = 'none';
+        }
+      }
+    }
   }
 
   // -------------------------------------------------------------
