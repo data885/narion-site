@@ -12,7 +12,7 @@
   'use strict';
 
   // Apps Script dağıtımından sonra buraya /exec adresi yazılır. Boşken mailto modu.
-  var UC = '';
+  var UC = 'https://script.google.com/macros/s/AKfycbxorhyQVZvEZC7KFM-NIzekI1XDqCVw_RcjohQP1xwC84itMyVlBY7Vze3Oe-VLgd0Q4g/exec';
   var ADRES = 'info@narionhookah.com';
 
   var BASLIK = {

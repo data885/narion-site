@@ -4,10 +4,20 @@ Hedef: sitedeki **üç formun** (ön kayıt, B2B, iletişim) gönderimi
 **info@narionhookah.com**'a mail olarak düşsün ve **"NARION — Talepler"**
 e-tablosuna satır olarak yazılsın.
 
-> **Durum (05.10.2026):** site tarafı HAZIR ve canlı. Arka uç kurulmadı.
-> Uç nokta tanımlı olmadığı için formlar şu an **mailto'ya düşüyor** —
-> yanlış "alındı" mesajı vermiyorlar. Aşağıdaki adımlar bitince
-> `yayin/assets/form.js` içindeki `UC` değişkenine `/exec` adresi yazılır.
+> **Durum (05.10.2026): KURULUM TAMAM.** Üç adım da bitti — DKIM doğrulandı,
+> `info@narionhookah.com` açıldı, Apps Script dağıtıldı ve `UC` siteye yazıldı.
+>
+> | ne | değer |
+> |---|---|
+> | Apps Script projesi | **NARION Formlar** (info@narionhookah.com hesabında) |
+> | dağıtım | web uygulaması, "Site formlari v1", çalıştıran: info@, erişim: **Herkes** |
+> | `/exec` | `https://script.google.com/macros/s/AKfycbxorhyQVZvEZC7KFM-NIzekI1XDqCVw_RcjohQP1xwC84itMyVlBY7Vze3Oe-VLgd0Q4g/exec` |
+> | tablo | **NARION — Talepler** — `1TPos38mEjx1eT827eQlfjRRE5N91E4NsWA-0OBqQk80` |
+> | siteye yazıldı | `yayin/assets/form.js` → `UC`, etiketler `form.js?v=2` |
+>
+> **Uç noktayı değiştirirken:** `Code.gs`'i düzenledikten sonra **Dağıt → Dağıtımları
+> yönet → kalem → Sürüm: Yeni sürüm** ile güncelleyin. "Yeni dağıtım" açarsanız
+> `/exec` adresi değişir ve sitedeki `UC` bayatlar.
 
 ---
 
@@ -28,7 +38,7 @@ uyduruyordu. 4 dil × 3 form = 12 canlı formun tamamı böyleydi.
 | TXT | `@` | `v=spf1 include:_spf.google.com ~all` | ✅ var |
 | TXT | `@` | `google-site-verification=…KuchB30uq…` | ✅ var |
 | TXT | `_dmarc` | `v=DMARC1; p=quarantine; adkim=r; aspf=r` | ✅ var |
-| TXT | `google._domainkey` | DKIM anahtarı | ❌ **EKSİK — adım 2** |
+| TXT | `google._domainkey` | DKIM anahtarı (2048 bit, seçici `google`) | ✅ **eklendi 05.10.2026** |
 
 ---
 
@@ -40,7 +50,12 @@ uyduruyordu. 4 dil × 3 form = 12 canlı formun tamamı böyleydi.
 - Birincil e-posta: `info` · alan adı açılırından **narionhookah.com**
 - 1 lisans tüketir.
 
-## 2. DKIM (aynı konsol)
+## 2. DKIM (aynı konsol) — ✅ TAMAMLANDI 05.10.2026
+
+> Konsol durumu: **"DKIM ile e-postanın kimliği doğrulanıyor"**.
+> Anahtar `dkim-narionhookah.txt` dosyasında; DNS'teki değerle byte-byte aynı
+> (`dig +short TXT google._domainkey.narionhookah.com` → `…PjG0KXSQIDAQAB`).
+> Aşağıdaki adımlar kayıt amaçlı duruyor, tekrar yapılmayacak.
 
 **Uygulamalar → Google Workspace → Gmail → E-posta kimlik doğrulama**
 1. Alan adı olarak `narionhookah.com` seç
@@ -90,3 +105,30 @@ verip info@ adresine yönlendirir — asla sahte "alındı" göstermez.
 - Form 4 saniyeden hızlı gönderildiyse yutulur
 - Aynı e-posta/telefondan 10 dakikada en çok 3 gönderim
 - Hücreler `= + - @` ile başlıyorsa metne çevrilir (e-tablo formül enjeksiyonu)
+
+
+---
+
+## Doğrulama (05.10.2026)
+
+Dağıtımdan sonra uç nokta beş senaryoyla sınandı:
+
+| senaryo | beklenen | sonuç |
+|---|---|---|
+| geçerli ön kayıt | `ok:true` + sunucu kodu | `NAR-2026-B1-1003` ✅ |
+| tuzak alan (`website`) dolu | sessiz `ok:true`, **kayıt yok** | tabloda satır oluşmadı ✅ |
+| `sure < 4` | sessiz `ok:true`, **kayıt yok** | tabloda satır oluşmadı ✅ |
+| bilinmeyen `tur` | `ok:false, neden:"tur"` | ✅ |
+| geçersiz e-posta | `ok:false, neden:"eksik"` | ✅ |
+
+Ardından yerelde (`localhost:8101`) gerçek gönderim yapıldı:
+- `tr/on-kayit.html` → başarı paneli **sunucunun ürettiği** `NAR-2026-B1-1004` kodunu gösterdi
+- `en/b2b-kurumsal.html` → tabloya "İngilizce" dilinde satır düştü
+
+**Yolda bulunan ayrı hata:** ön kayıt sayfaları `assets/form.js`'i hiç yüklemiyordu
+(form `data-narion` taşıyor ama script etiketi yoktu). Yani ön kayıt formu
+tarayıcıda native submit yapıyor, sayfayı yeniliyor ve talebi kaybediyordu.
+Beş `on-kayit.html` dosyasına da script etiketi eklendi.
+
+Tabloda kalan test satırları ("TEST —", "CURL TEST", "YEREL TEST", "EN B2B TEST")
+silinebilir; kasıtlı olarak bırakıldı.
