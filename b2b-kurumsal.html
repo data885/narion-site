@@ -390,26 +390,8 @@ function updateB2BCalc(daily) {
   document.getElementById('yearlySaveVal').innerText = yearlyNet.toLocaleString('tr-TR') + ' ₺';
 }
 
-function setLang(code, el) {
-  document.querySelectorAll('.langs a').forEach(a => a.classList.remove('on'));
-  el.classList.add('on');
-  const toast = document.getElementById('langToast');
-  if (toast) {
-    const langNames = {
-      'TR': 'Türkçe seçildi',
-      'EN': 'Language set to English',
-      'AR': 'تم اختيار اللغة العربية',
-      'RU': 'Выбран русский язык',
-      'DE': 'Sprache auf Deutsch eingestellt'
-    };
-    toast.innerText = '🌐 ' + (langNames[code] || code);
-    toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 2400);
-  }
-}
 </script>
 
-<div class="lang-toast" id="langToast">🌐 Dil güncellendi</div>
 
 </body>
 </html>

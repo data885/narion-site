@@ -296,26 +296,6 @@
   </div>
 </footer>
 
-<div class="lang-toast" id="langToast">🌐 Dil güncellendi</div>
 
-<script>
-function setLang(code, el) {
-  document.querySelectorAll('.langs a').forEach(function(a) { a.classList.remove('on'); });
-  el.classList.add('on');
-  var toast = document.getElementById('langToast');
-  if (toast) {
-    var langNames = {
-      'TR': 'Türkçe seçildi',
-      'EN': 'Language set to English',
-      'AR': 'تم اختيار اللغة العربية',
-      'RU': 'Выбран русский язык',
-      'DE': 'Sprache auf Deutsch eingestellt'
-    };
-    toast.innerText = '🌐 ' + (langNames[code] || code);
-    toast.classList.add('show');
-    setTimeout(function() { toast.classList.remove('show'); }, 2200);
-  }
-}
-</script>
 </body>
 </html>

@@ -8,6 +8,10 @@
 <link rel="icon" type="image/svg+xml" href="../logo/favicon.svg">
 <link rel="apple-touch-icon" href="../logo/apple-touch-icon-180.png">
 <link rel="stylesheet" href="../assets/style.css?v=7">
+<link rel="canonical" href="https://narionhookah.com/tr/modeller.html">
+<link rel="alternate" hreflang="tr" href="https://narionhookah.com/tr/modeller.html">
+<link rel="alternate" hreflang="en" href="https://narionhookah.com/en/modeller.html">
+<link rel="alternate" hreflang="x-default" href="https://narionhookah.com/tr/modeller.html">
 </head>
 <body>
 
@@ -61,7 +65,7 @@
 
     <div class="head-cta">
       <!-- DİL SEÇİCİ (YATAY BAR) -->
-      <div class="langs" role="navigation" aria-label="Dil"><a href="modeller.html" hreflang="tr" lang="tr" class="on" aria-current="true">TR</a><a href="../en/index.html" hreflang="en" lang="en">EN</a><a href="../ar/index.html" hreflang="ar" lang="ar">AR</a><a href="../ru/index.html" hreflang="ru" lang="ru">RU</a></div>
+      <div class="langs" role="navigation" aria-label="Dil"><a href="modeller.html" hreflang="tr" lang="tr" class="on" aria-current="true">TR</a><a href="../en/modeller.html" hreflang="en" lang="en">EN</a><a href="../ar/index.html" hreflang="ar" lang="ar">AR</a><a href="../ru/index.html" hreflang="ru" lang="ru">RU</a></div>
       <a class="btn glass sm" href="on-kayit.html">Ön Kayıt</a>
       <a class="btn gold sm" href="b2b-kurumsal.html">Kurumsal (B2B)</a>
     </div>
@@ -603,27 +607,7 @@ function filterM(cat, btn) {
 }
 </script>
 
-<div class="lang-toast" id="langToast">🌐 Dil güncellendi</div>
 
-<script>
-function setLang(code, el) {
-  document.querySelectorAll('.langs a').forEach(a => a.classList.remove('on'));
-  el.classList.add('on');
-  const toast = document.getElementById('langToast');
-  if (toast) {
-    const langNames = {
-      'TR': 'Türkçe seçildi',
-      'EN': 'Language set to English',
-      'AR': 'تم اختيار اللغة العربية',
-      'RU': 'Выбран русский язык',
-      'DE': 'Sprache auf Deutsch eingestellt'
-    };
-    toast.innerText = '🌐 ' + (langNames[code] || code);
-    toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 2400);
-  }
-}
-</script>
 
 </body>
 </html>
