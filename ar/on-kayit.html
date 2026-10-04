@@ -7,7 +7,7 @@
 <meta name="description" content="صفحة الحجز المسبق للأفراد لأطقم NARION ورأس التسخين الكهربائي Smart HMD. احجز مكانك في الدفعة الأولى المرقّمة من الإصدار 01.">
 <link rel="icon" type="image/svg+xml" href="../logo/favicon.svg">
 <link rel="apple-touch-icon" href="../logo/apple-touch-icon-180.png">
-<link rel="stylesheet" href="../assets/style.css?v=11">
+<link rel="stylesheet" href="../assets/style.css?v=12">
 <link rel="canonical" href="https://narionhookah.com/ar/on-kayit.html">
 <link rel="alternate" hreflang="tr" href="https://narionhookah.com/tr/on-kayit.html">
 <link rel="alternate" hreflang="en" href="https://narionhookah.com/en/on-kayit.html">
@@ -110,31 +110,32 @@
           <span class="eyebrow">تفاصيل الحجز</span>
           <h2 style="margin-bottom:24px">نموذج الحجز المسبق</h2>
 
-          <form id="preorder-form" onsubmit="handlePreorder(event)">
+          <form id="preorder-form" data-narion="on-kayit" data-basari="form-success">
+            <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label>الموقع الإلكتروني<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
               <div>
                 <label>الاسم الكامل *</label>
-                <input type="text" id="cust-name" required placeholder="مثال: Burak Kaya">
+                <input type="text" id="cust-name" name="f_ad" data-etiket="Ad Soyad" required placeholder="مثال: Burak Kaya">
               </div>
               <div>
                 <label>الهاتف / واتساب *</label>
-                <input type="tel" id="cust-phone" required placeholder="+90 532 000 0000">
+                <input type="tel" id="cust-phone" name="f_tel" data-etiket="Telefon" required placeholder="+90 532 000 0000">
               </div>
             </div>
 
             <div style="margin-bottom:16px">
               <label>بريدك الإلكتروني *</label>
-              <input type="email" id="cust-email" required placeholder="name@example.com">
+              <input type="email" id="cust-email" name="f_eposta" data-etiket="E-posta" required placeholder="name@example.com">
             </div>
 
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
               <div>
                 <label>المدينة / الدولة *</label>
-                <input type="text" id="cust-city" required placeholder="إسطنبول / تركيا">
+                <input type="text" id="cust-city" name="f_sehir" data-etiket="Şehir / Ülke" required placeholder="إسطنبول / تركيا">
               </div>
               <div>
                 <label>الطراز المفضّل *</label>
-                <select id="cust-model" onchange="updateSummary()">
+                <select id="cust-model" name="f_model" data-etiket="Model" onchange="updateSummary()">
                 <option value="NARION KOZA (Amiral Gemisi - Masif Ceviz)">NARION KOZA (الطراز الرائد — خشب جوز صلب)</option>
                 <option value="NARION LADİN (İskandinav - Masif Meşe)">NARION LADİN (إسكندنافي — خشب بلوط صلب)</option>
                 <option value="NARION MANOLYA (Modern İskelet & Tritan)">NARION MANOLYA (هيكل عصري وTritan)</option>
@@ -160,14 +161,14 @@
             <div style="margin-bottom:20px;background:var(--card);padding:20px;border-radius:10px;border:1px solid var(--card-border-gold)">
               <div style="font-size:14px;font-weight:600;margin-bottom:12px;color:var(--gold-light)">باقة رأس التسخين الكهربائي Smart HMD</div>
               <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:14px;margin-bottom:10px;color:var(--text-main)">
-                <input type="radio" name="hmd-pack" value="full" checked onchange="updateSummary()" style="margin-top:3px;width:auto">
+                <input type="radio" name="f_paket" data-etiket="Paket" data-metin="Tam Paket (Smart HMD dahil)" value="full" checked onchange="updateSummary()" style="margin-top:3px;width:auto">
                 <div>
                   <strong>الباقة الكاملة: Smart HMD لاسلكي ضمن الطقم (مع بطارية ثانية)</strong>
                   <div style="font-size:12.5px;color:var(--text-muted)">صفر ppm من أول أكسيد الكربون، بطارية 14.8 فولت، وسخّان خزفي بقفل حراري PID.</div>
                 </div>
               </label>
               <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:14px;color:var(--text-main)">
-                <input type="radio" name="hmd-pack" value="classic" onchange="updateSummary()" style="margin-top:3px;width:auto">
+                <input type="radio" name="f_paket" data-etiket="Paket" data-metin="Geleneksel Takım (Smart HMD yok)" value="classic" onchange="updateSummary()" style="margin-top:3px;width:auto">
                 <div>
                   <strong>الطقم التقليدي فقط (بدون Smart HMD)</strong>
                   <div style="font-size:12.5px;color:var(--text-muted)">مع حشوة رأس تقليدية وملقط فحم من الفولاذ المقاوم للصدأ.</div>
@@ -177,7 +178,7 @@
 
             <div style="margin-bottom:16px">
               <label>طلاء الهيكل واللون</label>
-              <select id="cust-finish">
+              <select id="cust-finish" name="f_kaplama" data-etiket="Kaplama">
                 <option value="Mat Antrasit (PVD Titanyum)">أنثراسيت مطفأ (طلاء تيتانيوم PVD)</option>
                 <option value="Doğal Masif Ceviz / Şampanya Pirinç">خشب جوز صلب طبيعي ونحاس بلون الشمبانيا</option>
                 <option value="Füme Titanyum & Gümüş">تيتانيوم مدخّن وفضي مؤكسد</option>
@@ -187,7 +188,7 @@
 
             <div style="margin-bottom:24px">
               <label>نص النقش بالليزر (اختياري)</label>
-              <input type="text" id="cust-note" placeholder="مثال: أرجو نقش «B.KAYA» بالليزر على الهيكل.">
+              <input type="text" id="cust-note" name="f_not" data-etiket="Gravür notu" placeholder="مثال: أرجو نقش «B.KAYA» بالليزر على الهيكل.">
             </div>
 
             <button type="submit" class="btn gold" style="width:100%;padding:14px;border:none">← إرسال طلب الحجز المسبق (مجانًا)</button>
@@ -334,7 +335,7 @@ const MODEL_GORSEL = {
 function updateSummary() {
   const modelSelect = document.getElementById('cust-model');
   const selectedModel = modelSelect.value;
-  const hmdRadios = document.getElementsByName('hmd-pack');
+  const hmdRadios = document.getElementsByName('f_paket');
   let isFullHmd = true;
   for (let r of hmdRadios) {
     if (r.checked && r.value === 'classic') isFullHmd = false;
@@ -370,29 +371,30 @@ function updateSummary() {
   updateSummary();
 })();
 
-function handlePreorder(e) {
-  e.preventDefault();
-  const name = document.getElementById('cust-name').value;
-  const model = document.getElementById('cust-model').value;
-  const hmdRadios = document.getElementsByName('hmd-pack');
-  let packText = 'الباقة الكاملة: رأس التسخين الكهربائي Smart HMD (+بطارية ثانية)';
-  for (let r of hmdRadios) {
-    if (r.checked && r.value === 'classic') {
-      packText = 'الطقم التقليدي';
+// Başarı panelini DOLDURUR; göstermez. Gösterme kararı assets/form.js'te,
+// yalnızca sunucu talebi gerçekten aldıysa veriliyor. Rezervasyon kodu da
+// sunucudan gelir — eskiden burada Math.random() ile uyduruluyordu.
+window.narionBasariOncesi = function (form, yanit) {
+  if (form.id !== 'preorder-form') return;
+  var al = function (ad) {
+    var e = form.querySelector('[name="' + ad + '"]');
+    if (!e) return '';
+    if (e.type === 'radio') {
+      var s = form.querySelector('[name="' + ad + '"]:checked');
+      return s ? (s.getAttribute('data-metin') || s.value) : '';
     }
-  }
-
-  document.getElementById('succ-name').innerText = name;
-  document.getElementById('succ-model').innerText = model;
-  document.getElementById('succ-pack').innerText = packText;
-  
-  const randNum = Math.floor(1000 + Math.random() * 9000);
-  document.getElementById('succ-code').innerText = 'NAR-2026-B1-' + randNum;
-
-  document.getElementById('preorder-form').style.display = 'none';
-  document.getElementById('form-success').style.display = 'block';
-  document.getElementById('form-success').scrollIntoView({ behavior: 'smooth' });
-}
+    if (e.tagName === 'SELECT') return e.options[e.selectedIndex] ? e.options[e.selectedIndex].text : '';
+    return e.value;
+  };
+  var yaz = function (id, deger) {
+    var e = document.getElementById(id);
+    if (e) e.innerText = deger;
+  };
+  yaz('succ-name', al('f_ad'));
+  yaz('succ-model', al('f_model'));
+  yaz('succ-pack', al('f_paket'));
+  if (yanit && yanit.kod) yaz('succ-code', yanit.kod);
+};
 
 </script>
 

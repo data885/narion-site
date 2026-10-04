@@ -7,7 +7,7 @@
 <meta name="description" content="Страница частного предзаказа комплектов NARION и электрической головки Smart HMD. Забронируйте место в нумерованной первой партии серии 01.">
 <link rel="icon" type="image/svg+xml" href="../logo/favicon.svg">
 <link rel="apple-touch-icon" href="../logo/apple-touch-icon-180.png">
-<link rel="stylesheet" href="../assets/style.css?v=11">
+<link rel="stylesheet" href="../assets/style.css?v=12">
 <link rel="canonical" href="https://narionhookah.com/ru/on-kayit.html">
 <link rel="alternate" hreflang="tr" href="https://narionhookah.com/tr/on-kayit.html">
 <link rel="alternate" hreflang="en" href="https://narionhookah.com/en/on-kayit.html">
@@ -110,31 +110,32 @@
           <span class="eyebrow">Детали бронирования</span>
           <h2 style="margin-bottom:24px">Форма предзаказа</h2>
 
-          <form id="preorder-form" onsubmit="handlePreorder(event)">
+          <form id="preorder-form" data-narion="on-kayit" data-basari="form-success">
+            <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label>Веб-сайт<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
               <div>
                 <label>Имя и фамилия *</label>
-                <input type="text" id="cust-name" required placeholder="Напр.: Бурак Кая">
+                <input type="text" id="cust-name" name="f_ad" data-etiket="Ad Soyad" required placeholder="Напр.: Бурак Кая">
               </div>
               <div>
                 <label>Телефон / WhatsApp *</label>
-                <input type="tel" id="cust-phone" required placeholder="+90 532 000 0000">
+                <input type="tel" id="cust-phone" name="f_tel" data-etiket="Telefon" required placeholder="+90 532 000 0000">
               </div>
             </div>
 
             <div style="margin-bottom:16px">
               <label>Ваш адрес электронной почты *</label>
-              <input type="email" id="cust-email" required placeholder="name@example.com">
+              <input type="email" id="cust-email" name="f_eposta" data-etiket="E-posta" required placeholder="name@example.com">
             </div>
 
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
               <div>
                 <label>Город / страна *</label>
-                <input type="text" id="cust-city" required placeholder="Стамбул / Турция">
+                <input type="text" id="cust-city" name="f_sehir" data-etiket="Şehir / Ülke" required placeholder="Стамбул / Турция">
               </div>
               <div>
                 <label>Предпочитаемая модель *</label>
-                <select id="cust-model" onchange="updateSummary()">
+                <select id="cust-model" name="f_model" data-etiket="Model" onchange="updateSummary()">
                 <option value="NARION KOZA (Amiral Gemisi - Masif Ceviz)">NARION KOZA (флагман — массив ореха)</option>
                 <option value="NARION LADİN (İskandinav - Masif Meşe)">NARION LADİN (скандинавский — массив дуба)</option>
                 <option value="NARION MANOLYA (Modern İskelet & Tritan)">NARION MANOLYA (современный каркас и Tritan)</option>
@@ -160,14 +161,14 @@
             <div style="margin-bottom:20px;background:var(--card);padding:20px;border-radius:10px;border:1px solid var(--card-border-gold)">
               <div style="font-size:14px;font-weight:600;margin-bottom:12px;color:var(--gold-light)">Пакет с электрической головкой Smart HMD</div>
               <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:14px;margin-bottom:10px;color:var(--text-main)">
-                <input type="radio" name="hmd-pack" value="full" checked onchange="updateSummary()" style="margin-top:3px;width:auto">
+                <input type="radio" name="f_paket" data-etiket="Paket" data-metin="Tam Paket (Smart HMD dahil)" value="full" checked onchange="updateSummary()" style="margin-top:3px;width:auto">
                 <div>
                   <strong>Полный пакет: беспроводной Smart HMD в комплекте (со вторым аккумулятором)</strong>
                   <div style="font-size:12.5px;color:var(--text-muted)">0 ppm угарного газа, аккумулятор 14,8 В и керамический нагреватель с ПИД-замком температуры.</div>
                 </div>
               </label>
               <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:14px;color:var(--text-main)">
-                <input type="radio" name="hmd-pack" value="classic" onchange="updateSummary()" style="margin-top:3px;width:auto">
+                <input type="radio" name="f_paket" data-etiket="Paket" data-metin="Geleneksel Takım (Smart HMD yok)" value="classic" onchange="updateSummary()" style="margin-top:3px;width:auto">
                 <div>
                   <strong>Только традиционный комплект (без Smart HMD)</strong>
                   <div style="font-size:12.5px;color:var(--text-muted)">С традиционным уплотнением чаши и щипцами из нержавеющей стали.</div>
@@ -177,7 +178,7 @@
 
             <div style="margin-bottom:16px">
               <label>Покрытие корпуса и цвет</label>
-              <select id="cust-finish">
+              <select id="cust-finish" name="f_kaplama" data-etiket="Kaplama">
                 <option value="Mat Antrasit (PVD Titanyum)">Матовый антрацит (титановое PVD-покрытие)</option>
                 <option value="Doğal Masif Ceviz / Şampanya Pirinç">Натуральный массив ореха и латунь цвета шампань</option>
                 <option value="Füme Titanyum & Gümüş">Дымчатый титан и анодированное серебро</option>
@@ -187,7 +188,7 @@
 
             <div style="margin-bottom:24px">
               <label>Текст для лазерной гравировки (необязательно)</label>
-              <input type="text" id="cust-note" placeholder="Напр.: прошу нанести на корпус лазером «B.KAYA».">
+              <input type="text" id="cust-note" name="f_not" data-etiket="Gravür notu" placeholder="Напр.: прошу нанести на корпус лазером «B.KAYA».">
             </div>
 
             <button type="submit" class="btn gold" style="width:100%;padding:14px;border:none">Отправить заявку на предзаказ (бесплатно) →</button>
@@ -334,7 +335,7 @@ const MODEL_GORSEL = {
 function updateSummary() {
   const modelSelect = document.getElementById('cust-model');
   const selectedModel = modelSelect.value;
-  const hmdRadios = document.getElementsByName('hmd-pack');
+  const hmdRadios = document.getElementsByName('f_paket');
   let isFullHmd = true;
   for (let r of hmdRadios) {
     if (r.checked && r.value === 'classic') isFullHmd = false;
@@ -370,29 +371,30 @@ function updateSummary() {
   updateSummary();
 })();
 
-function handlePreorder(e) {
-  e.preventDefault();
-  const name = document.getElementById('cust-name').value;
-  const model = document.getElementById('cust-model').value;
-  const hmdRadios = document.getElementsByName('hmd-pack');
-  let packText = 'Полный пакет: электрическая головка Smart HMD (+2-й аккумулятор)';
-  for (let r of hmdRadios) {
-    if (r.checked && r.value === 'classic') {
-      packText = 'Традиционный комплект';
+// Başarı panelini DOLDURUR; göstermez. Gösterme kararı assets/form.js'te,
+// yalnızca sunucu talebi gerçekten aldıysa veriliyor. Rezervasyon kodu da
+// sunucudan gelir — eskiden burada Math.random() ile uyduruluyordu.
+window.narionBasariOncesi = function (form, yanit) {
+  if (form.id !== 'preorder-form') return;
+  var al = function (ad) {
+    var e = form.querySelector('[name="' + ad + '"]');
+    if (!e) return '';
+    if (e.type === 'radio') {
+      var s = form.querySelector('[name="' + ad + '"]:checked');
+      return s ? (s.getAttribute('data-metin') || s.value) : '';
     }
-  }
-
-  document.getElementById('succ-name').innerText = name;
-  document.getElementById('succ-model').innerText = model;
-  document.getElementById('succ-pack').innerText = packText;
-  
-  const randNum = Math.floor(1000 + Math.random() * 9000);
-  document.getElementById('succ-code').innerText = 'NAR-2026-B1-' + randNum;
-
-  document.getElementById('preorder-form').style.display = 'none';
-  document.getElementById('form-success').style.display = 'block';
-  document.getElementById('form-success').scrollIntoView({ behavior: 'smooth' });
-}
+    if (e.tagName === 'SELECT') return e.options[e.selectedIndex] ? e.options[e.selectedIndex].text : '';
+    return e.value;
+  };
+  var yaz = function (id, deger) {
+    var e = document.getElementById(id);
+    if (e) e.innerText = deger;
+  };
+  yaz('succ-name', al('f_ad'));
+  yaz('succ-model', al('f_model'));
+  yaz('succ-pack', al('f_paket'));
+  if (yanit && yanit.kod) yaz('succ-code', yanit.kod);
+};
 
 </script>
 

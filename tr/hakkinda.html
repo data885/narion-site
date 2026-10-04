@@ -7,7 +7,7 @@
 <meta name="description" content="NARION'un kuruluş hikayesi, İstanbul Ar-Ge ve CNC üretim merkezi ile 500 yıllık ritüelin modern mühendislikle buluşması.">
 <link rel="icon" type="image/svg+xml" href="../logo/favicon.svg">
 <link rel="apple-touch-icon" href="../logo/apple-touch-icon-180.png">
-<link rel="stylesheet" href="../assets/style.css?v=11">
+<link rel="stylesheet" href="../assets/style.css?v=12">
 <link rel="canonical" href="https://narionhookah.com/tr/hakkinda.html">
 <link rel="alternate" hreflang="tr" href="https://narionhookah.com/tr/hakkinda.html">
 <link rel="alternate" hreflang="en" href="https://narionhookah.com/en/hakkinda.html">
@@ -179,26 +179,27 @@
           <div class="card card-gold" style="padding:36px">
             <h3 style="margin-bottom:20px">Mesaj Gönderin</h3>
             
-            <form id="contact-form" onsubmit="event.preventDefault(); document.getElementById('contact-form-ok').style.display='block'; this.style.display='none';">
+            <form id="contact-form" data-narion="iletisim" data-basari="contact-form-ok">
+              <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label>Web sitesi<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
               <div style="margin-bottom:16px">
                 <label>Adınız Soyadınız *</label>
-                <input type="text" required placeholder="Adınız Soyadınız">
+                <input type="text" name="f_ad" data-etiket="Ad Soyad" required placeholder="Adınız Soyadınız">
               </div>
 
               <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
                 <div>
                   <label>E-posta Adresi *</label>
-                  <input type="email" required placeholder="ad@ornek.com">
+                  <input type="email" name="f_eposta" data-etiket="E-posta" required placeholder="ad@ornek.com">
                 </div>
                 <div>
                   <label>Telefon</label>
-                  <input type="tel" placeholder="+90 5XX XXX XX XX">
+                  <input type="tel" name="f_tel" data-etiket="Telefon" placeholder="+90 5XX XXX XX XX">
                 </div>
               </div>
 
               <div style="margin-bottom:16px">
                 <label>Konu *</label>
-                <select>
+                <select name="f_konu" data-etiket="Konu">
                   <option>Bireysel Rezervasyon & Bilgi</option>
                   <option>Kafe & Lounge İş Ortaklığı (B2B)</option>
                   <option>Distribütörlük & Bayilik</option>
@@ -208,7 +209,7 @@
 
               <div style="margin-bottom:24px">
                 <label>Mesajınız *</label>
-                <textarea rows="4" required placeholder="Mesajınızı buraya yazabilirsiniz..."></textarea>
+                <textarea rows="4" name="f_mesaj" data-etiket="Mesaj" required placeholder="Mesajınızı buraya yazabilirsiniz..."></textarea>
               </div>
 
               <button type="submit" class="btn gold" style="width:100%;padding:14px;border:none">
@@ -302,5 +303,6 @@
 
 
 <script src="../assets/menu.js?v=1" defer></script>
+<script src="../assets/form.js?v=1" defer></script>
 </body>
 </html>

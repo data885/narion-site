@@ -7,7 +7,7 @@
 <meta name="description" content="Lounge ve kafe işletmeleri için NARION Smart HMD HaaS (Hardware-as-a-Service) kiralama modeli, canlı ROI tasarruf hesaplayıcısı ve Lounge OS konsolu.">
 <link rel="icon" type="image/svg+xml" href="../logo/favicon.svg">
 <link rel="apple-touch-icon" href="../logo/apple-touch-icon-180.png">
-<link rel="stylesheet" href="../assets/style.css?v=11">
+<link rel="stylesheet" href="../assets/style.css?v=12">
 <link rel="canonical" href="https://narionhookah.com/tr/b2b-kurumsal.html">
 <link rel="alternate" hreflang="tr" href="https://narionhookah.com/tr/b2b-kurumsal.html">
 <link rel="alternate" hreflang="en" href="https://narionhookah.com/en/b2b-kurumsal.html">
@@ -255,32 +255,38 @@
       </div>
 
       <div style="max-width:680px;margin:0 auto;background:var(--card);border:1px solid var(--card-border);padding:36px;border-radius:16px">
-        <form id="b2b-contact-form" onsubmit="event.preventDefault(); document.getElementById('b2b-form-success').style.display='block'; this.style.display='none';">
+        <form id="b2b-contact-form" data-narion="b2b" data-basari="b2b-form-success">
+              <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label>Web sitesi<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
             <div>
               <label>Yetkili Adı Soyadı *</label>
-              <input type="text" required placeholder="Adınız Soyadı">
+              <input type="text" name="f_ad" data-etiket="Yetkili" required placeholder="Adınız Soyadı">
             </div>
             <div>
               <label>İşletme / Lounge Adı *</label>
-              <input type="text" required placeholder="Örn: Bosphorus Lounge">
+              <input type="text" name="f_isletme" data-etiket="İşletme" required placeholder="Örn: Bosphorus Lounge">
             </div>
           </div>
 
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
             <div>
               <label>Telefon Numarası *</label>
-              <input type="tel" required placeholder="+90 5XX XXX XX XX">
+              <input type="tel" name="f_tel" data-etiket="Telefon" required placeholder="+90 5XX XXX XX XX">
             </div>
             <div>
               <label>Şehir / İlçe *</label>
-              <input type="text" required placeholder="İstanbul / Beşiktaş">
+              <input type="text" name="f_sehir" data-etiket="Şehir" required placeholder="İstanbul / Beşiktaş">
             </div>
           </div>
 
           <div style="margin-bottom:16px">
+            <label>E-posta Adresi</label>
+            <input type="email" name="f_eposta" data-etiket="E-posta" placeholder="ad@isletme.com">
+          </div>
+
+          <div style="margin-bottom:16px">
             <label>Aktif Nargile Masası Sayısı *</label>
-            <select>
+            <select name="f_masa" data-etiket="Masa sayısı">
               <option>10 - 20 Masa</option>
               <option>20 - 40 Masa</option>
               <option>40 - 80 Masa</option>
@@ -290,7 +296,7 @@
 
           <div style="margin-bottom:24px">
             <label>Tercih Ettiğiniz Model</label>
-            <select>
+            <select name="f_model" data-etiket="Tercih edilen model">
               <option>Model A: HaaS Kiralama (Aylık Kiralama)</option>
               <option>Model B: Mülkiyet Satışı (Doğrudan Satın Alma)</option>
               <option>Önce Yerinde Demo İstiyorum</option>
@@ -401,5 +407,6 @@ function updateB2BCalc(daily) {
 
 
 <script src="../assets/menu.js?v=1" defer></script>
+<script src="../assets/form.js?v=1" defer></script>
 </body>
 </html>
