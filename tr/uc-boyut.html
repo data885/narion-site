@@ -441,6 +441,7 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
 .stage-img.is-active{opacity:1;transform:scale(1)}
 .stage-floor{position:absolute;left:10%;right:10%;bottom:8%;height:14%;pointer-events:none;background:radial-gradient(ellipse 55% 100% at 50% 100%, rgba(216, 187, 138, 0.24), rgba(0, 0, 0, 0.6) 60%, transparent 80%)}
 .stage-badge{position:absolute;top:12px;inset-inline-start:12px;z-index:3;font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#d8bb8a;background:rgba(10,8,6,.75);border:1px solid rgba(216,187,138,.35);padding:5px 11px;backdrop-filter:blur(8px);border-radius:2px}
+.stage-hmd{position:absolute;top:46px;inset-inline-start:12px;z-index:3;display:flex;align-items:center;gap:8px;max-width:calc(100% - 24px);font-family:var(--f-mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;line-height:1.35;color:#f3e5ab;background:rgba(10,8,6,.8);border:1px solid rgba(216,187,138,.45);padding:4px 10px 4px 4px;border-radius:3px;text-decoration:none;backdrop-filter:blur(8px)}.stage-hmd img{width:30px;height:30px;object-fit:cover;border-radius:2px;flex:none}.stage-hmd:hover{border-color:#d8bb8a}
 .stage-view-toggle{position:absolute;bottom:12px;inset-inline-start:12px;z-index:3;display:flex;gap:4px;background:rgba(10,8,6,.85);padding:4px;border:1px solid rgba(216,187,138,.35);backdrop-filter:blur(10px);border-radius:3px;flex-wrap:wrap;max-width:calc(100% - 70px)}
 .stage-v-btn{background:none;border:none;color:rgba(255,255,255,.8);font-family:var(--f-mono);font-size:10.5px;letter-spacing:.04em;padding:5px 9px;cursor:pointer;transition:all .15s;border-radius:2px}
 .stage-v-btn:hover{background:rgba(216,187,138,.18);color:#fff}
@@ -684,8 +685,8 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
             <div class="config-addon-left">
               <input type="checkbox" checked id="opt-lule" />
               <div>
-                <div class="config-addon-title">Kordierit Seramik Lüle</div>
-                <div class="config-addon-sub">1200 °C teknik seramik, koku tutmaz</div>
+                <div class="config-addon-title">NARION Smart HMD Akıllı Lüle</div>
+                <div class="config-addon-sub">Tüm modellerde standart · kablosuz, kömürsüz ısıtma</div>
               </div>
             </div>
             <div class="config-addon-price">Standart</div>
@@ -719,6 +720,7 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
     <div class="config-stage-col">
       <div class="config-stage" id="sahne" role="img" aria-label="NARION stüdyo ürün görünümü">
         <span class="stage-badge" id="stage-badge">NARION KOZA</span>
+        <a class="stage-hmd" href="smart-hmd.html"><img src="../gorsel/hmd-sarj.jpg" alt="" width="30" height="30" /><span>Smart HMD lüle · tüm modellerde standart</span></a>
         <div class="stage-spotlight"></div>
         <div class="stage-view-toggle">
           <button type="button" class="stage-v-btn is-active" data-view="tam">Genel Görünüm</button>
@@ -744,6 +746,7 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
           <div class="summary-row"><span class="k">Şişe / Hazne</span><span class="v" id="sum-sise">750 ml · Tritan</span></div>
           <div class="summary-row"><span class="k">Taban Çapı</span><span class="v" id="sum-taban">Ø150 mm (Geniş Sarsılmaz Denge)</span></div>
           <div class="summary-row"><span class="k">Bağlantı Tipi</span><span class="v">45° Bayonet</span></div>
+          <div class="summary-row"><span class="k">Lüle</span><span class="v">NARION Smart HMD (standart)</span></div>
         </div>
         <div class="summary-actions">
           <button type="button" class="btn-dl" id="v3-indir">
@@ -794,7 +797,7 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
         <div style="padding:18px 20px 22px; flex:1; display:flex; flex-direction:column;">
           <span style="font-family:var(--f-mono); font-size:11px; color:#9c783e; letter-spacing:.08em; text-transform:uppercase;">3/4 İzometrik Açı</span>
           <h3 style="font-size:17px; margin:6px 0 8px; font-weight:600;">45° Derinlik & Hacim Açısı</h3>
-          <p style="color:var(--muted); font-size:13.5px; line-height:1.55; margin:0 0 14px;">Kapsül kafes formunun bombesi, masif Amerikan ceviz panel eğriliği, su penceresi ve kristal tabanın ışık kırılımları.</p>
+          <p style="color:var(--muted); font-size:13.5px; line-height:1.55; margin:0 0 14px;">Kapsül kafes formunun bombesi, masif Amerikan ceviz panel eğriliği, su penceresi ve ahşap-metal geçişlerindeki ışık oyunları.</p>
           <div style="margin-top:auto; font-family:var(--f-mono); font-size:11.5px; color:var(--faint);">Model: NARION KOZA · 420 mm</div>
         </div>
       </div>

@@ -127,6 +127,7 @@
   if (!stage) return;
 
   // Build HBOT Studio Stage Elements
+  var hmdCallout = stage.querySelector('.stage-hmd'); // Smart HMD rozeti (HTML'de, dile göre) korunur
   stage.innerHTML = '';
 
   var spotlight = document.createElement('div');
@@ -174,6 +175,7 @@
   zoomControls.innerHTML = '<button type="button" class="stage-z-btn" id="z-in" title="Yakınlaştır">+</button>' +
                            '<button type="button" class="stage-z-btn" id="z-out" title="Uzaklaştır">&minus;</button>';
   stage.appendChild(zoomControls);
+  if (hmdCallout) stage.appendChild(hmdCallout);
 
   // State
   var currentModelId = 'narion-koza';
