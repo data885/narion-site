@@ -127,6 +127,43 @@
     </div>
   </section>
 
+
+  <!-- MARKA FİLMİ -->
+  <section class="sec sec-border-bottom" id="film">
+    <div class="wrap">
+      <div style="text-align:center;max-width:720px;margin:0 auto 40px">
+        <span class="eyebrow" style="justify-content:center">Фильм NARION</span>
+        <h2>Серия 01,<br><em>в движении.</em></h2>
+        <p class="lead">Силуэт серии 01, байонетный механизм и головка Smart HMD — двадцать секунд без звука.</p>
+      </div>
+      <div class="film-kare">
+        <video id="marka-filmi" poster="../film/narion-poster.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Фирменный фильм NARION">
+          <source src="../film/narion.webm" type="video/webm">
+          <source src="../film/narion.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </section>
+<script>
+(function () {
+  var v = document.getElementById('marka-filmi');
+  if (!v) return;
+  // Hareketi azalt tercihi aciksa film kendiliginden oynamaz;
+  // bunun yerine kontrolleri acip kullaniciya birakiyoruz.
+  var az = window.matchMedia('(prefers-reduced-motion: reduce)');
+  function uygula() {
+    if (az.matches) { v.removeAttribute('autoplay'); v.pause(); v.controls = true; }
+    else {
+      v.controls = false;
+      var p = v.play();
+      if (p && p.catch) p.catch(function () { v.controls = true; });
+    }
+  }
+  uygula();
+  if (az.addEventListener) az.addEventListener('change', uygula); else az.addListener(uygula);
+})();
+</script>
+
   <!-- 3 AYIRICI İMZA ÖZELLİK -->
   <section class="sec sec-border-bottom">
     <div class="sec-glow"></div>

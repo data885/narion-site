@@ -10,7 +10,9 @@
 <link rel="stylesheet" href="../assets/style.css?v=8">
 <link rel="canonical" href="https://narionhookah.com/tr/index.html">
 <link rel="alternate" hreflang="tr" href="https://narionhookah.com/tr/index.html">
+<link rel="alternate" hreflang="en" href="https://narionhookah.com/en/index.html">
 <link rel="alternate" hreflang="ar" href="https://narionhookah.com/ar/index.html">
+<link rel="alternate" hreflang="ru" href="https://narionhookah.com/ru/index.html">
 <link rel="alternate" hreflang="x-default" href="https://narionhookah.com/tr/index.html">
 </head>
 <body>
@@ -126,6 +128,43 @@
       </div>
     </div>
   </section>
+
+
+  <!-- MARKA FİLMİ -->
+  <section class="sec sec-border-bottom" id="film">
+    <div class="wrap">
+      <div style="text-align:center;max-width:720px;margin:0 auto 40px">
+        <span class="eyebrow" style="justify-content:center">NARION Filmi</span>
+        <h2>Seri 01,<br><em>Harekette.</em></h2>
+        <p class="lead">Seri 01'in silueti, bayonet mekanizması ve Smart HMD başlığı — yirmi saniyelik sessiz bir bakış.</p>
+      </div>
+      <div class="film-kare">
+        <video id="marka-filmi" poster="../film/narion-poster.jpg" muted loop playsinline autoplay preload="metadata" aria-label="NARION marka filmi">
+          <source src="../film/narion.webm" type="video/webm">
+          <source src="../film/narion.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </section>
+<script>
+(function () {
+  var v = document.getElementById('marka-filmi');
+  if (!v) return;
+  // Hareketi azalt tercihi aciksa film kendiliginden oynamaz;
+  // bunun yerine kontrolleri acip kullaniciya birakiyoruz.
+  var az = window.matchMedia('(prefers-reduced-motion: reduce)');
+  function uygula() {
+    if (az.matches) { v.removeAttribute('autoplay'); v.pause(); v.controls = true; }
+    else {
+      v.controls = false;
+      var p = v.play();
+      if (p && p.catch) p.catch(function () { v.controls = true; });
+    }
+  }
+  uygula();
+  if (az.addEventListener) az.addEventListener('change', uygula); else az.addListener(uygula);
+})();
+</script>
 
   <!-- 3 AYIRICI İMZA ÖZELLİK -->
   <section class="sec sec-border-bottom">

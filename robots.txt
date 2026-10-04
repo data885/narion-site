@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /_arac/
 
 Sitemap: https://narionhookah.com/sitemap.xml
