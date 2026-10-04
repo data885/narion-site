@@ -18,7 +18,7 @@
       name: 'KOZA',
       code: 'NARION KOZA · LOKOMOTİF SERİ',
       height: '420 mm',
-      sise: '750 ml · Tritan',
+      sise: '750 ml',
       taban: 'Ø150 mm (Geniş Sarsılmaz Denge)',
       malzeme: 'AISI 304 Paslanmaz Çelik & Masif Ceviz',
       hasWood: true
