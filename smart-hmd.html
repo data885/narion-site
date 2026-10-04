@@ -365,7 +365,10 @@ function setMode(mode, temp, btn) {
 
   currentTemp = temp;
   document.getElementById('ph-temp').innerText = temp + '°';
-  document.getElementById('ph-mode-title').innerText = mode.toUpperCase() + ' MOD';
+  // Etiketi parcali kurmuyoruz: kelime sirasi dile gore degisir
+  // (RU'da "REJIM HARD"). Her mod kendi tam metni olarak cevrilsin.
+  const MOD_ETIKET = { soft: 'SOFT MOD', medium: 'MEDIUM MOD', hard: 'HARD MOD' };
+  document.getElementById('ph-mode-title').innerText = MOD_ETIKET[mode] || mode.toUpperCase();
 
   let p = 60;
   if (mode === 'soft') p = 45;

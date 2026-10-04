@@ -4,18 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Трёхмерный просмотр · NARION</title>
-<meta name="description" content="Поворачивайте модели NARION и рассматривайте с любого угла: пропорции корпуса, байонетное кольцо, ореховая панель и четыре покрытия.">
-<link rel="canonical" href="https://narionhookah.com/ru/uc-boyut.html">
+<meta name="description" content="Поворачивайте модели NARION и рассматривайте их со всех сторон: пропорции корпуса, байонетное кольцо, деревянная панель и четыре варианта покрытия.">
 <meta property="og:title" content="Трёхмерный просмотр · NARION">
-<meta property="og:description" content="Поворачивайте модели NARION и рассматривайте с любого угла: пропорции корпуса, байонетное кольцо, ореховая панель и четыре покрытия.">
+<meta property="og:description" content="Поворачивайте модели NARION и рассматривайте их со всех сторон: пропорции корпуса, байонетное кольцо, деревянная панель и четыре варианта покрытия.">
 <meta property="og:type" content="website">
-<meta property="og:locale" content="ru">
+<meta property="og:locale" content="tr">
 <meta property="og:url" content="https://narionhookah.com/ru/uc-boyut.html">
 <meta property="og:site_name" content="NARION">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="robots" content="index,follow">
-<link rel="alternate" hreflang="tr" href="https://narionhookah.com/tr/uc-boyut.html"><link rel="alternate" hreflang="en" href="https://narionhookah.com/en/uc-boyut.html"><link rel="alternate" hreflang="ar" href="https://narionhookah.com/ar/uc-boyut.html"><link rel="alternate" hreflang="ru" href="https://narionhookah.com/ru/uc-boyut.html"><link rel="alternate" hreflang="x-default" href="https://narionhookah.com/tr/uc-boyut.html">
 <link rel="icon" href="../logo/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../logo/apple-touch-icon-180.png">
 <link rel="stylesheet" href="../font/narion-fontlar.css">
@@ -407,7 +405,7 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
 .fnote{font-size:12px;color:var(--faint);margin-top:12px;line-height:1.5}
 
 
-/* --- NARION Studio Configurator Styles (HBOT Architecture) --- */
+/* --- NARION Lüks Konfigüratör Stilleri (HBOT Mimarisi) --- */
 .configurator-layout{display:grid;grid-template-columns:1fr 420px;gap:36px;align-items:start;margin-top:20px}
 @media(max-width:960px){.configurator-layout{grid-template-columns:1fr}}
 .config-steps{display:flex;flex-direction:column;gap:24px}
@@ -463,22 +461,78 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
 .btn-dl:hover{border-color:var(--accent);color:var(--accent)}
 .btn-quote{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;background:var(--accent);color:#fff;border:none;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;font-weight:600;text-decoration:none}
 .btn-quote:hover{opacity:.92}
+
+
+/* --- kafe hesaplayicisi --- */
+.hesap{margin-top:20px}
+.hesap table{min-width:0}
+.hesap input[type=number]{font-family:var(--f-mono);font-size:14px;width:100%;max-width:120px;
+  padding:6px 9px;background:var(--surface);border:1px solid var(--line);border-radius:0;
+  color:var(--ink);font-variant-numeric:tabular-nums;text-align:right}
+.hesap input:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.hesap td.birim{font-family:var(--f-mono);font-size:11.5px;color:var(--faint);white-space:nowrap}
+.hout{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);
+  border:1px solid var(--line);margin-top:18px}
+@media(max-width:700px){.hout{grid-template-columns:1fr}}
+.ho{background:var(--surface);padding:16px 18px;display:flex;flex-direction:column;gap:3px}
+.ho .l{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.ho .v{font-family:var(--f-display);font-size:23px;font-weight:600;font-variant-numeric:tabular-nums;
+  line-height:1.15;color:var(--accent)}
+.ho .s{font-size:12px;color:var(--muted);line-height:1.45;margin-top:2px}
+.htop{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);
+  border:1px solid var(--line);border-top:none}
+@media(max-width:700px){.htop{grid-template-columns:1fr}}
+.htop>div{background:var(--accent-soft,rgba(150,101,43,.08));padding:16px 18px;
+  display:flex;flex-direction:column;gap:3px}
+.htop .l{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.htop .v{font-family:var(--f-display);font-size:27px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.1}
+@media print{.hesap input{border:none;border-bottom:1px dashed var(--line)}}
+
+
+/* --- kafe logosu onizleme --- */
+.lgrid{display:grid;grid-template-columns:1fr 250px;gap:22px;margin-top:20px;align-items:start}
+@media(max-width:820px){.lgrid{grid-template-columns:1fr}}
+#lg-tuval{width:100%;height:auto;display:block;border:1px solid var(--line);background:var(--surface-2,#eee)}
+.lg-sag{display:flex;flex-direction:column;gap:14px}
+.lg-yukle{display:block;cursor:pointer}
+.lg-yukle input{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}
+.lg-yukle span{display:block;text-align:center;font-family:var(--f-mono);font-size:12px;
+  letter-spacing:.05em;padding:13px 16px;border:1px dashed var(--line-strong,var(--line));
+  background:var(--surface);color:var(--muted);transition:border-color .15s,color .15s}
+.lg-yukle:hover span{border-color:var(--accent);color:var(--accent)}
+.lg-yukle input:focus-visible+span{outline:2px solid var(--accent);outline-offset:2px}
+.lg-uyari{font-size:12.5px;color:#a33636;margin:0}
+.lg-kaydir{display:flex;flex-direction:column;gap:6px}
+.lg-kaydir span{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--faint)}
+.lg-kaydir input[type=range]{width:100%;accent-color:var(--accent)}
+.lg-sag .btnbox{border:1px solid var(--line);cursor:pointer;font-family:var(--f-mono);
+  font-size:12px;text-align:center;background:var(--surface)}
+.lg-sag .btnbox:disabled{opacity:.42;cursor:not-allowed}
+.lg-gizlilik{font-size:11.5px;color:var(--faint);line-height:1.5;margin:0}
+@media print{.lgrid{display:none}}
+
 </style>
+<link rel="canonical" href="https://narionhookah.com/ru/uc-boyut.html">
+<link rel="alternate" hreflang="tr" href="https://narionhookah.com/tr/uc-boyut.html">
+<link rel="alternate" hreflang="en" href="https://narionhookah.com/en/uc-boyut.html">
+<link rel="alternate" hreflang="ru" href="https://narionhookah.com/ru/uc-boyut.html">
+<link rel="alternate" hreflang="x-default" href="https://narionhookah.com/tr/uc-boyut.html">
 </head>
 <body>
-<a class="skip" href="#main">Перейти к содержанию</a>
+<a class="skip" href="#main">Перейти к содержимому</a>
 <header class="top">
   <div class="wrap topin">
     <a class="brand" href="index.html"><span class="brand-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"  role="img" aria-label="NARION"><mask id="mi" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100"><rect width="100" height="100" fill="#fff"/><g stroke="#000" stroke-width="9" fill="none" stroke-linecap="round"><path d="M50.00 0.00 L50.00 21.00"/><path d="M50.00 21.00 A35 35 0 0 0 28.45 22.42"/><path d="M6.70 75.00 L24.89 64.50"/><path d="M24.89 64.50 A35 35 0 0 0 36.89 82.45"/><path d="M93.30 75.00 L75.11 64.50"/><path d="M75.11 64.50 A35 35 0 0 0 84.66 45.13"/></g></mask><g mask="url(#mi)"><circle cx="50" cy="50" r="35" fill="none" stroke="currentColor" stroke-width="15"/></g></svg></span>
       <span class="brand-txt"><b>NARION</b><span>Almita Group</span></span></a>
-    <nav class="main" aria-label="Меню"><a href="index.html">Главная</a><span class="nav-grup"><a href="index.html#modeller" aria-haspopup="true">Модели</a><span class="nav-alt"><a href="narion-koza.html">KOZA</a><a href="narion-ladin.html">LADİN</a><a href="narion-manolya.html">MANOLYA</a><span class="alt-baslik">Производственная программа</span><a href="narion-servi.html">SERVİ</a><a href="narion-prizma.html">PRİZMA</a><a href="narion-ocak.html">OCAK</a><a href="narion-fener.html">FENER</a><a href="narion-nomad.html">NOMAD</a><a href="narion-aura.html">AURA</a><a href="narion-monolit.html">MONOLİT</a><a href="narion-inci.html">İNCİ</a><a href="narion-yalin.html">YALIN</a><a href="narion-zeytin.html">ZEYTİN</a><a href="narion-ardic.html">ARDIÇ</a><a href="narion-kemer.html">KEMER</a><a href="narion-yorunge.html">YÖRÜNGE</a><a href="narion-cakil.html">ÇAKIL</a><a class="alt-ayrac" href="karsilastirma.html">Сравнение</a></span></span><a href="teknoloji.html">Технология</a><a href="uc-boyut.html" aria-current="page">3D</a><a href="yedek-parca.html">Запчасти</a><a href="distributorluk.html">Дистрибуция</a><a href="on-kayit.html">Предзапись</a><a href="hakkinda.html">О проекте</a></nav>
-    <div class="langs" role="navigation" aria-label="Язык"><a href="../tr/uc-boyut.html" hreflang="tr" lang="tr">tr</a><a href="../en/uc-boyut.html" hreflang="en" lang="en">en</a><a href="../ar/uc-boyut.html" hreflang="ar" lang="ar">ar</a><a href="../ru/uc-boyut.html" hreflang="ru" lang="ru" aria-current="true">ru</a></div>
+    <nav class="main" aria-label="Меню"><a href="index.html">Главная</a><span class="nav-grup"><a href="index.html#modeller" aria-haspopup="true">Модели</a><span class="nav-alt"><a href="narion-koza.html">KOZA</a><a href="narion-ladin.html">LADİN</a><a href="narion-manolya.html">MANOLYA</a><span class="alt-baslik">Производственная программа</span><a href="narion-servi.html">SERVİ</a><a href="narion-prizma.html">PRİZMA</a><a href="narion-ocak.html">OCAK</a><a href="narion-fener.html">FENER</a><a href="narion-nomad.html">NOMAD</a><a href="narion-aura.html">AURA</a><a href="narion-monolit.html">MONOLİT</a><a href="narion-inci.html">İNCİ</a><a href="narion-yalin.html">YALIN</a><a href="narion-zeytin.html">ZEYTİN</a><a href="narion-ardic.html">ARDIÇ</a><a href="narion-kemer.html">KEMER</a><a href="narion-yorunge.html">YÖRÜNGE</a><a href="narion-cakil.html">ÇAKIL</a><a class="alt-ayrac" href="karsilastirma.html">Сравнение</a></span></span><a href="teknoloji.html">Технологии</a><a href="uc-boyut.html" aria-current="page">3D</a><a href="yedek-parca.html">Запчасти</a><a href="distributorluk.html">Дистрибуция</a><a href="on-kayit.html">Предзаказ</a><a href="hakkinda.html">О нас</a></nav>
+    <div class="langs" role="navigation" aria-label="Dil"><a href="../tr/uc-boyut.html" hreflang="tr" lang="tr">TR</a><a href="../en/uc-boyut.html" hreflang="en" lang="en">EN</a><a href="../ar/index.html" hreflang="ar" lang="ar">AR</a><a href="uc-boyut.html" hreflang="ru" lang="ru" class="on" aria-current="true">RU</a></div>
   </div>
 </header>
 <div class="status">
   <div class="wrap">
     <b>Первая серия · 2026</b>
-    <p>Проектирование, инженерия и контроль качества — за NARION; производство идёт на сертифицированных производственных партнёрах. Первая серия в подготовке к производству: техническая документация готова, идёт этап образцов. Размеры и показатели на сайте — наша производственная спецификация.</p>
+    <p>Дизайн, инженерия и контроль качества — за NARION; производство ведётся с сертифицированными партнёрами. Первая серия готовится к выпуску: техническое досье закрыто, идёт стадия образцов. Размеры и показатели на сайте — это наша производственная спецификация.</p>
   </div>
 </div>
 <main id="main">
@@ -486,92 +540,92 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
 <div class="hero"><div class="wrap">
   <div>
     <span class="eyebrow">Студийный конфигуратор</span>
-    <h1>Сконфигурируйте ваш кальян NARION</h1>
-    <p class="lede">Выберите модель, покрытие и деревянные вставки — оцените в реальном времени с фотореалистичными студийными рендерами и скачайте конфигурацию.</p>
+    <h1>Соберите свой комплект NARION</h1>
+    <p class="lede">Выберите модель, покрытие и деревянную деталь — сразу посмотрите на настоящих студийных рендерах и скачайте файл конфигурации.</p>
   </div>
 </div></div>
 
 <section><div class="wrap">
   <div class="configurator-layout">
     
-    <!-- Слева: Шаги конфигурации -->
+    <!-- Sol Taraf: Adımlar -->
     <div class="config-steps">
       
-      <!-- 1. Выбор модели -->
+      <!-- 1. Model Seçimi -->
       <div class="config-step-card">
         <div class="config-step-title">1. Выберите модель</div>
-        <div class="config-step-note">Выберите модель NARION, наиболее подходящую по форме и назначению.</div>
+        <div class="config-step-note">Подберите модель NARION, которая лучше всего подходит под форму и задуманное применение.</div>
         <div class="config-model-grid">
           <div class="config-m-card is-active" data-model="narion-koza">
             <img class="config-m-thumb" src="../gorsel/model-narion-koza.webp" alt="NARION KOZA" />
             <div class="config-m-name">KOZA</div>
-            <div class="config-m-sub">420 мм · Кафе и дом</div>
+            <div class="config-m-sub">420 мм · кафе и дом</div>
           </div>
           <div class="config-m-card" data-model="narion-ladin">
             <img class="config-m-thumb" src="../gorsel/model-narion-ladin.webp" alt="NARION LADİN" />
             <div class="config-m-name">LADİN</div>
-            <div class="config-m-sub">580 мм · Лаунж</div>
+            <div class="config-m-sub">580 мм · лаунж</div>
           </div>
           <div class="config-m-card" data-model="narion-manolya">
             <img class="config-m-thumb" src="../gorsel/model-narion-manolya.webp" alt="NARION MANOLYA" />
             <div class="config-m-name">MANOLYA</div>
-            <div class="config-m-sub">620 мм · Хрустальная классика</div>
+            <div class="config-m-sub">620 мм · кристальная классика</div>
           </div>
           <div class="config-m-card" data-model="narion-servi">
             <img class="config-m-thumb" src="../gorsel/model-narion-servi.webp" alt="NARION SERVİ" />
             <div class="config-m-name">SERVİ</div>
-            <div class="config-m-sub">640 мм · Тонкий силуэт</div>
+            <div class="config-m-sub">640 мм · тонкий и высокий</div>
           </div>
           <div class="config-m-card" data-model="narion-prizma">
             <img class="config-m-thumb" src="../gorsel/model-narion-prizma.webp" alt="NARION PRİZMA" />
             <div class="config-m-name">PRİZMA</div>
-            <div class="config-m-sub">500 мм · Шестигранная призма</div>
+            <div class="config-m-sub">500 мм · шестигранная призма</div>
           </div>
           <div class="config-m-card" data-model="narion-nomad">
             <img class="config-m-thumb" src="../gorsel/model-narion-nomad.webp" alt="NARION NOMAD" />
             <div class="config-m-name">NOMAD</div>
-            <div class="config-m-sub">360 мм · Путешествия</div>
+            <div class="config-m-sub">360 мм · дорожный</div>
           </div>
           <div class="config-m-card" data-model="narion-aura">
             <img class="config-m-thumb" src="../gorsel/model-narion-aura.webp" alt="NARION AURA" />
             <div class="config-m-name">AURA</div>
-            <div class="config-m-sub">540 мм · Каплевидный престиж</div>
+            <div class="config-m-sub">540 мм · капля, Prestige</div>
           </div>
           <div class="config-m-card" data-model="narion-monolit">
             <img class="config-m-thumb" src="../gorsel/model-narion-monolit.webp" alt="NARION MONOLİT" />
             <div class="config-m-name">MONOLİT</div>
-            <div class="config-m-sub">520 мм · Монолитный блок</div>
+            <div class="config-m-sub">520 мм · монолитный блок</div>
           </div>
           <div class="config-m-card" data-model="narion-inci">
             <img class="config-m-thumb" src="../gorsel/model-narion-inci.webp" alt="NARION İNCİ" />
             <div class="config-m-name">İNCİ</div>
-            <div class="config-m-sub">480 мм · Овальная керамика</div>
+            <div class="config-m-sub">480 мм · овальная керамика</div>
           </div>
           <div class="config-m-card" data-model="narion-cakil">
             <img class="config-m-thumb" src="../gorsel/model-narion-cakil.webp" alt="NARION ÇAKIL" />
             <div class="config-m-name">ÇAKIL</div>
-            <div class="config-m-sub">380 мм · Широкое основание</div>
+            <div class="config-m-sub">380 мм · широкое основание</div>
           </div>
         </div>
       </div>
 
-      <!-- 2. Выбор покрытия -->
+      <!-- 2. Kaplama Seçimi -->
       <div class="config-step-card">
         <div class="config-step-title">2. Металл и PVD-покрытие</div>
-        <div class="config-step-note">Все металлические поверхности имеют пищевое и коррозионностойкое сатинированное и PVD-покрытие.</div>
+        <div class="config-step-note">Все поверхности обработаны коррозионностойким PVD и сатином, пригодными для контакта с пищей.</div>
         <div class="config-swatch-grid">
           <div class="config-swatch-item is-active" data-kaplama="firca">
             <span class="config-swatch-dot" style="background:linear-gradient(135deg,#eef2f5,#9aa0a6)"></span>
             <div>
-              <div class="config-swatch-label">Шлифованная сталь</div>
-              <div class="config-m-sub">AISI 304 / 316L Satin</div>
+              <div class="config-swatch-label">Шлифованная нержавеющая сталь</div>
+              <div class="config-m-sub">AISI 304 / 316L сатин</div>
             </div>
           </div>
           <div class="config-swatch-item" data-kaplama="sampanya">
             <span class="config-swatch-dot" style="background:linear-gradient(135deg,#f8e2be,#bf9f6f)"></span>
             <div>
               <div class="config-swatch-label">PVD шампань</div>
-              <div class="config-m-sub">Премиальная латунь и золото PVD</div>
+              <div class="config-m-sub">Латунь и золотой PVD</div>
             </div>
           </div>
           <div class="config-swatch-item" data-kaplama="siyah">
@@ -584,53 +638,53 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
           <div class="config-swatch-item" data-kaplama="gun">
             <span class="config-swatch-dot" style="background:linear-gradient(135deg,#7b8791,#404850)"></span>
             <div>
-              <div class="config-swatch-label">Gun Metal</div>
-              <div class="config-m-sub">Тёмно-графитовый металлик</div>
+              <div class="config-swatch-label">Оружейная сталь</div>
+              <div class="config-m-sub">Тёмный графитовый металлик</div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- 3. Выбор дерева -->
+      <!-- 3. Ahşap Panel Seçimi -->
       <div class="config-step-card">
-        <div class="config-step-title">3. Деревянная вставка и накладка</div>
-        <div class="config-step-note">Натуральное термообработанное твёрдое дерево с защитой от влаги и тепла.</div>
+        <div class="config-step-title">3. Деревянная панель и инкрустация</div>
+        <div class="config-step-note">Панель из камерной сушки твёрдых пород, со специальной пропиткой от влаги и нагрева.</div>
         <div class="config-swatch-grid">
           <div class="config-swatch-item is-active" data-ahsap="ceviz">
             <span class="config-swatch-dot" style="background:linear-gradient(135deg,#7a4e32,#462c1d)"></span>
             <div>
-              <div class="config-swatch-label">Американский орех</div>
-              <div class="config-m-sub">Глубокая текстура дерева</div>
+              <div class="config-swatch-label">Натуральный американский орех</div>
+              <div class="config-m-sub">Древесина с выраженной текстурой</div>
             </div>
           </div>
           <div class="config-swatch-item" data-ahsap="mese">
             <span class="config-swatch-dot" style="background:linear-gradient(135deg,#4a3d34,#2b231d)"></span>
             <div>
-              <div class="config-swatch-label">Тёмный мореный дуб</div>
-              <div class="config-m-sub">Матовая фактура дуба</div>
+              <div class="config-swatch-label">Тёмный морёный дуб</div>
+              <div class="config-m-sub">Матовая фактура копчёного дуба</div>
             </div>
           </div>
           <div class="config-swatch-item" data-ahsap="disbudak">
             <span class="config-swatch-dot" style="background:linear-gradient(135deg,#2e2e30,#18181a)"></span>
             <div>
               <div class="config-swatch-label">Чёрный ясень</div>
-              <div class="config-m-sub">Чёрный древесный узор</div>
+              <div class="config-m-sub">Чёрная текстура дерева</div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- 4. Опции -->
+      <!-- 4. Donanım & Opsiyonlar -->
       <div class="config-step-card">
-        <div class="config-step-title">4. Комплектация и опции</div>
-        <div class="config-step-note">Настройте комплектацию чаши и специальные опции для B2B и розницы.</div>
+        <div class="config-step-title">4. Детали и аксессуары</div>
+        <div class="config-step-note">Добавьте вариант чаши и нужные аксессуары для B2B или розницы.</div>
         <div class="config-addon-list">
           <div class="config-addon-item is-active" data-opt="lule">
             <div class="config-addon-left">
               <input type="checkbox" checked id="opt-lule" />
               <div>
                 <div class="config-addon-title">Кордиеритовая керамическая чаша</div>
-                <div class="config-addon-sub">Техническая керамика 1200 °C, не впитывает запахи</div>
+                <div class="config-addon-sub">Техническая керамика до 1200 °C, не впитывает запах</div>
               </div>
             </div>
             <div class="config-addon-price">Стандарт</div>
@@ -640,7 +694,7 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
               <input type="checkbox" id="opt-logo" />
               <div>
                 <div class="config-addon-title">Лазерная гравировка логотипа (B2B)</div>
-                <div class="config-addon-sub">Фирменный логотип на ореховой или стальной панели</div>
+                <div class="config-addon-sub">Логотип заведения на ореховой или стальной панели</div>
               </div>
             </div>
             <div class="config-addon-price">Бесплатно (B2B)</div>
@@ -649,25 +703,25 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
             <div class="config-addon-left">
               <input type="checkbox" id="opt-marpuc" />
               <div>
-                <div class="config-addon-title">Стальной мундштук в кожаной оплётке</div>
-                <div class="config-addon-sub">Премиальная ручная строчка с деревянным наконечником</div>
+                <div class="config-addon-title">Стальной мундштук в коже</div>
+                <div class="config-addon-sub">Деревянный мундштук в коже ручной прошивки</div>
               </div>
             </div>
-            <div class="config-addon-price">+ Опция</div>
+            <div class="config-addon-price">+ Опционально</div>
           </div>
         </div>
       </div>
 
     </div>
 
-    <!-- Справа: Студийная сцена и интерактивная спецификация -->
+    <!-- Sağ Taraf: Sticky Sahne & Canlı Özet -->
     <div class="config-stage-col">
-      <div class="config-stage" id="sahne" role="img" aria-label="Студийный трёхмерный просмотр изделия NARION">
+      <div class="config-stage" id="sahne" role="img" aria-label="Студийный вид изделия NARION">
         <span class="stage-badge" id="stage-badge">NARION KOZA</span>
         <div class="stage-spotlight"></div>
         <div class="stage-view-toggle">
           <button type="button" class="stage-v-btn is-active" data-view="tam">Общий вид</button>
-          <button type="button" class="stage-v-btn" data-view="yakin">Макро-зум</button>
+          <button type="button" class="stage-v-btn" data-view="yakin">Макро</button>
         </div>
         <div class="stage-zoom-controls">
           <button type="button" class="stage-z-btn" id="z-in" title="Приблизить">+</button>
@@ -675,35 +729,98 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
         </div>
       </div>
 
-      <!-- Карточка спецификации -->
+      <!-- Canlı Özet Kartı -->
       <aside class="config-summary">
         <div class="summary-head">
-          <div class="summary-code" id="sum-code">NARION KOZA · СОВРЕМЕННАЯ СЕРИЯ</div>
+          <div class="summary-code" id="sum-code">NARION KOZA · СЕРИЯ MODERN</div>
           <h2 class="summary-name" id="sum-title">KOZA</h2>
         </div>
         <div class="summary-rows">
-          <div class="summary-row"><span class="k">Выбранное покрытие</span><span class="v" id="sum-kaplama">Шлифованная сталь</span></div>
+          <div class="summary-row"><span class="k">Выбранное покрытие</span><span class="v" id="sum-kaplama">Шлифованная нержавеющая сталь</span></div>
           <div class="summary-row"><span class="k">Деревянная деталь</span><span class="v" id="sum-ahsap">Американский орех</span></div>
-          <div class="summary-row"><span class="k">Общая высота</span><span class="v" id="sum-yuk">420 мм</span></div>
-          <div class="summary-row"><span class="k">Материал шахты</span><span class="v" id="sum-malzeme">Нержавеющая сталь AISI 304</span></div>
-          <div class="summary-row"><span class="k">Колба / Объём</span><span class="v" id="sum-sise">1,2 л · Tritan</span></div>
-          <div class="summary-row"><span class="k">Диаметр основания</span><span class="v" id="sum-taban">Ø130 мм (Устойчивое)</span></div>
-          <div class="summary-row"><span class="k">Тип соединения</span><span class="v">Байонет 3 × 90° (четверть оборота)</span></div>
+          <div class="summary-row"><span class="k">Общая высота</span><span class="v" id="sum-yuk">420 mm</span></div>
+          <div class="summary-row"><span class="k">Материал корпуса</span><span class="v" id="sum-malzeme">Нержавеющая сталь AISI 304</span></div>
+          <div class="summary-row"><span class="k">Колба / резервуар</span><span class="v" id="sum-sise">1,2 л · Tritan</span></div>
+          <div class="summary-row"><span class="k">Диаметр основания</span><span class="v" id="sum-taban">Ø130 мм (устойчивое основание)</span></div>
+          <div class="summary-row"><span class="k">Тип соединения</span><span class="v">Байонет 3 × 90°, четверть оборота</span></div>
         </div>
         <div class="summary-actions">
           <button type="button" class="btn-dl" id="v3-indir">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            Скачать изображение конфигурации
-          </button>
-          <a class="btn-quote" href="distributorluk.html">
-            Запросить образец / Условия дистрибуции &rarr;
-          </a>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Скачать изображение конфигурации</button>
+          <a class="btn-quote" href="distributorluk.html">Запросить образец или предложение для дистрибьютора &rarr;</a>
         </div>
       </aside>
     </div>
 
   </div>
 </div></section>
+
+<!-- Ambalaj & Farklı Açı Galerisi -->
+<section class="section" style="border-top:1px solid var(--line); padding:64px 0 80px; background:var(--surface);">
+  <div class="wrap">
+    <div style="max-width:720px; margin-bottom:36px;">
+      <span style="font-family:var(--f-mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--faint);">Студийное портфолио и упаковка</span>
+      <h2 style="font-size:28px; margin:8px 0 12px; font-weight:600;">Виды со всех сторон и презентационный кейс</h2>
+      <p style="color:var(--muted); font-size:15px; line-height:1.65; margin:0;">NARION — не предмет для одного ракурса. В перспективе 45°, в макросъёмке байонетного замка с микронным допуском и в VIP-упаковке при доставке он остаётся цельной работой промышленного дизайна.</p>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:24px;">
+      
+      <!-- Kart 1: VIP Lüks Kutu -->
+      <div style="background:#fff; border:1px solid var(--line); border-radius:4px; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 2px 8px rgba(0,0,0,.03);">
+        <div style="aspect-ratio:4/3; background:#0d0d0f; overflow:hidden;">
+          <img src="../gorsel/kutu-luks-sunum.webp" alt="VIP-кейс NARION" style="width:100%; height:100%; object-fit:cover; display:block; transition:transform .3s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" />
+        </div>
+        <div style="padding:18px 20px 22px; flex:1; display:flex; flex-direction:column;">
+          <span style="font-family:var(--f-mono); font-size:11px; color:#9c783e; letter-spacing:.08em; text-transform:uppercase;">VIP-упаковка</span>
+          <h3 style="font-size:17px; margin:6px 0 8px; font-weight:600;">Жёсткий магнитный подарочный кейс</h3>
+          <p style="color:var(--muted); font-size:13.5px; line-height:1.55; margin:0 0 14px;">Ложемент из плотного бархатистого пеноматериала EVA лазерной резки, крышка с тиснением «NARION» горячей фольгой и защита для разобранного комплекта.</p>
+          <div style="margin-top:auto; font-family:var(--f-mono); font-size:11.5px; color:var(--faint);">Стандарт: все модели (B2B / розница)</div>
+        </div>
+      </div>
+
+      <!-- Kart 2: 3/4 Dinamik Perspektif Açısı -->
+      <div style="background:#fff; border:1px solid var(--line); border-radius:4px; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 2px 8px rgba(0,0,0,.03);">
+        <div style="aspect-ratio:4/3; background:#0d0d0f; overflow:hidden;">
+          <img src="../gorsel/koza-perspektif-aci.webp" alt="NARION KOZA в перспективе 45 градусов" style="width:100%; height:100%; object-fit:cover; display:block; transition:transform .3s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" />
+        </div>
+        <div style="padding:18px 20px 22px; flex:1; display:flex; flex-direction:column;">
+          <span style="font-family:var(--f-mono); font-size:11px; color:#9c783e; letter-spacing:.08em; text-transform:uppercase;">Изометрия в три четверти</span>
+          <h3 style="font-size:17px; margin:6px 0 8px; font-weight:600;">Ракурс 45°: глубина и объём</h3>
+          <p style="color:var(--muted); font-size:13.5px; line-height:1.55; margin:0 0 14px;">Выпуклость каркаса-капсулы, изгиб панели из массива американского ореха, водяное окно и преломление света в кристальном основании.</p>
+          <div style="margin-top:auto; font-family:var(--f-mono); font-size:11.5px; color:var(--faint);">Модель: NARION KOZA · 420 мм</div>
+        </div>
+      </div>
+
+      <!-- Kart 3: NOMAD Taktik Seyahat Kutusu -->
+      <div style="background:#fff; border:1px solid var(--line); border-radius:4px; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 2px 8px rgba(0,0,0,.03);">
+        <div style="aspect-ratio:4/3; background:#0d0d0f; overflow:hidden;">
+          <img src="../gorsel/nomad-travel-kutu.webp" alt="Дорожный кейс NARION NOMAD" style="width:100%; height:100%; object-fit:cover; display:block; transition:transform .3s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" />
+        </div>
+        <div style="padding:18px 20px 22px; flex:1; display:flex; flex-direction:column;">
+          <span style="font-family:var(--f-mono); font-size:11px; color:#9c783e; letter-spacing:.08em; text-transform:uppercase;">Дорожный защитный кейс</span>
+          <h3 style="font-size:17px; margin:6px 0 8px; font-weight:600;">Ударопоглощающий кейс NOMAD</h3>
+          <p style="color:var(--muted); font-size:13.5px; line-height:1.55; margin:0 0 14px;">Ударопоглощающий поликарбонатный кейс для улицы, поездок и выездного обслуживания, с гнёздами под четыре наконечника и силиконовый мундштук.</p>
+          <div style="margin-top:auto; font-family:var(--f-mono); font-size:11.5px; color:var(--faint);">Модель: NARION NOMAD · дорожная серия</div>
+        </div>
+      </div>
+
+      <!-- Kart 4: Bayonet Mekanizma Makrosu -->
+      <div style="background:#fff; border:1px solid var(--line); border-radius:4px; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 2px 8px rgba(0,0,0,.03);">
+        <div style="aspect-ratio:4/3; background:#0d0d0f; overflow:hidden;">
+          <img src="../gorsel/bayonet-iscilik-makro.webp" alt="Байонетный замок NARION и качество исполнения" style="width:100%; height:100%; object-fit:cover; display:block; transition:transform .3s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" />
+        </div>
+        <div style="padding:18px 20px 22px; flex:1; display:flex; flex-direction:column;">
+          <span style="font-family:var(--f-mono); font-size:11px; color:#9c783e; letter-spacing:.08em; text-transform:uppercase;">Макродеталь</span>
+          <h3 style="font-size:17px; margin:6px 0 8px; font-weight:600;">Байонетный замок с ЧПУ и массив дерева</h3>
+          <p style="color:var(--muted); font-size:13.5px; line-height:1.55; margin:0 0 14px;">Кольцо разборки без инструмента 3×90°, стальной запорный штифт с микронным допуском на ЧПУ и естественный переход текстуры ореха.</p>
+          <div style="margin-top:auto; font-family:var(--f-mono); font-size:11.5px; color:var(--faint);">Допуск: &plusmn;0,02 мм · нержавеющая сталь AISI 304</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 <script src="../gorsel/3d/uc-boyut-viewer.js"></script>
 </main>
 <footer>
@@ -712,15 +829,15 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
       <div>
         <h4>NARION</h4>
         <p>Размеры взяты из нашей производственной спецификации.</p>
-        <p class="kunye">Postane Mah. Rauf Orbay Cad., Kemal Sunal Sok. No: 29, Tuzla / İstanbul<br>VKN 0551569402</p>
+        <p class="kunye">Postane Mah. Rauf Orbay Cad., Kemal Sunal Sok. No: 29, Тузла / Стамбул<br>ИНН 0551569402</p>
       </div>
       <div><h4>Модели</h4><a href="narion-koza.html">KOZA</a><a href="narion-ladin.html">LADİN</a><a href="narion-manolya.html">MANOLYA</a><a href="narion-servi.html">SERVİ</a><a href="narion-prizma.html">PRİZMA</a><a href="narion-ocak.html">OCAK</a><a href="narion-fener.html">FENER</a><a href="narion-nomad.html">NOMAD</a><a href="narion-aura.html">AURA</a><a href="narion-monolit.html">MONOLİT</a><a href="narion-inci.html">İNCİ</a><a href="narion-yalin.html">YALIN</a><a href="narion-zeytin.html">ZEYTİN</a><a href="narion-ardic.html">ARDIÇ</a><a href="narion-kemer.html">KEMER</a><a href="narion-yorunge.html">YÖRÜNGE</a><a href="narion-cakil.html">ÇAKIL</a><a href="karsilastirma.html">Сравнение</a></div>
-      <div><h4>Меню</h4><a href="index.html">Главная</a><a href="teknoloji.html">Технология</a><a href="uc-boyut.html">3D</a><a href="yedek-parca.html">Запчасти</a><a href="distributorluk.html">Дистрибуция</a><a href="on-kayit.html">Предзапись</a><a href="hakkinda.html">О проекте</a></div>
+      <div><h4>Меню</h4><a href="index.html">Главная</a><a href="teknoloji.html">Технологии</a><a href="uc-boyut.html">3D</a><a href="yedek-parca.html">Запчасти</a><a href="distributorluk.html">Дистрибуция</a><a href="on-kayit.html">Предзаказ</a><a href="hakkinda.html">О нас</a></div>
       <div><h4>Контакты</h4><a href="mailto:info@narionhookah.com">info@narionhookah.com</a><a href="tel:+908508881679">+90 850 888 1679</a></div>
     </div>
     <div class="fine">
       <span>Almita Group · 2026</span>
-      <span>Сайт не использует файлы cookie и не отслеживает посетителей; шрифты загружаются с нашего сервера.</span>
+      <span>Сайт не использует файлы cookie и не отслеживает посетителей; шрифты загружаются с нашего собственного сервера.</span>
     </div>
   </div>
 </footer>
