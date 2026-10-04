@@ -1,0 +1,1581 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NARION — 2026 Resmi Ürün Kataloğu & Koleksiyon Lookbook</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    @page {
+      size: 210mm 297mm; /* A4 Portrait Luxury Editorial Format */
+      margin: 0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #06080d;
+      color: #f8fafc;
+      line-height: 1.5;
+      font-size: 9.5pt;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* Screen Mode */
+    @media screen {
+      body {
+        padding: 30px 0 80px 0;
+        background: #020306;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+      }
+      .cat-page {
+        box-shadow: 0 30px 70px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.08);
+        border-radius: 8px;
+      }
+      .toolbar {
+        position: fixed;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(15, 21, 35, 0.9);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+        border-radius: 40px;
+        padding: 8px 18px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        z-index: 9999;
+      }
+      .toolbar-btn {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: #fff;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .toolbar-btn:hover {
+        background: #d4af37;
+        color: #000;
+        border-color: #d4af37;
+      }
+      .toolbar-btn.primary {
+        background: linear-gradient(135deg, #d4af37 0%, #aa8010 100%);
+        color: #000;
+        font-weight: 700;
+        border: none;
+      }
+      .toolbar-info {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 11px;
+        color: #94a3b8;
+      }
+    }
+
+    @media print {
+      .toolbar { display: none !important; }
+      body { background: #07090e; }
+      .cat-page { border-radius: 0; box-shadow: none; }
+    }
+
+    /* Page Canvas */
+    .cat-page {
+      width: 210mm;
+      height: 297mm;
+      page-break-after: always;
+      break-after: page;
+      position: relative;
+      overflow: hidden;
+      padding: 16mm 18mm 14mm 18mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background-color: #07090e;
+      background-image: 
+        radial-gradient(circle at 15% 12%, rgba(212, 175, 55, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 85% 88%, rgba(249, 115, 22, 0.06) 0%, transparent 45%),
+        radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.03) 0%, transparent 50%);
+    }
+
+    /* Page Header & Footer */
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 8px;
+    }
+    .brand-meta {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+    .brand-logo-text {
+      font-size: 14pt;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      color: #fff;
+    }
+    .brand-col-tag {
+      font-size: 7.5pt;
+      color: #d4af37;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .page-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8pt;
+      color: #64748b;
+      font-weight: 600;
+    }
+
+    .page-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 8px;
+      font-size: 7.5pt;
+      color: #64748b;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Typography */
+    h1.hero-title {
+      font-size: 28pt;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.8px;
+      margin-bottom: 12px;
+      background: linear-gradient(180deg, #ffffff 40%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    h2.section-title {
+      font-size: 18pt;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    p.lead-text {
+      font-size: 9.5pt;
+      color: #94a3b8;
+      line-height: 1.55;
+      margin-bottom: 14px;
+    }
+
+    /* Cards & Grids */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+
+    .card {
+      background: rgba(18, 24, 38, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 12px 14px;
+      position: relative;
+    }
+    .card.highlight {
+      border-color: rgba(212, 175, 55, 0.4);
+      background: rgba(212, 175, 55, 0.04);
+    }
+    .card.green {
+      border-color: rgba(16, 185, 129, 0.4);
+      background: rgba(16, 185, 129, 0.04);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-size: 7pt;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .badge.gold { background: rgba(212, 175, 55, 0.15); color: #d4af37; border: 1px solid rgba(212, 175, 55, 0.3); }
+    .badge.green { background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .badge.blue { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
+
+    /* Single Model Showcase (Full Page or Half Page) */
+    .model-hero-spread {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 20px;
+      align-items: center;
+      flex: 1;
+      padding: 10px 0;
+    }
+    .model-img-box {
+      background: #090c14;
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 2/3;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+      position: relative;
+    }
+    .model-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .model-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .model-code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8.5pt;
+      color: #d4af37;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .model-title {
+      font-size: 26pt;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+    .model-desc {
+      font-size: 9.5pt;
+      color: #cbd5e1;
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+    .spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 8pt;
+      margin-bottom: 14px;
+    }
+    .spec-table td {
+      padding: 6px 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      color: #94a3b8;
+    }
+    .spec-table td strong {
+      color: #f1f5f9;
+    }
+
+    /* Dual Model Page (2 Models per Page) */
+    .dual-models-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      flex: 1;
+      padding: 10px 0;
+      align-items: stretch;
+    }
+    .dual-model-card {
+      background: rgba(18, 24, 38, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .dual-fig {
+      width: 100%;
+      height: 120mm;
+      background: #090c14;
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 10px;
+      position: relative;
+    }
+    .dual-fig img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .dual-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 4px;
+    }
+    .dual-title {
+      font-size: 15pt;
+      font-weight: 800;
+      color: #fff;
+    }
+    .dual-code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 7.5pt;
+      color: #d4af37;
+      font-weight: 700;
+    }
+    .dual-desc {
+      font-size: 8pt;
+      color: #94a3b8;
+      line-height: 1.45;
+      margin-bottom: 8px;
+      height: 38px;
+      overflow: hidden;
+    }
+    .dual-specs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      font-size: 7.2pt;
+      background: rgba(0,0,0,0.3);
+      padding: 6px 8px;
+      border-radius: 6px;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .dual-specs div {
+      color: #94a3b8;
+    }
+    .dual-specs strong {
+      color: #e2e8f0;
+    }
+
+    /* Unboxing Showcase Box */
+    .unboxing-thumb {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(0,0,0,0.35);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      border-radius: 8px;
+      padding: 8px 12px;
+      margin-top: 10px;
+    }
+    .unboxing-thumb img {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+    .unboxing-thumb-text {
+      font-size: 7.5pt;
+      color: #cbd5e1;
+      line-height: 1.4;
+    }
+
+    /* Comparison Full Table */
+    .cat-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 7.5pt;
+      margin-top: 8px;
+    }
+    .cat-table th {
+      background: rgba(255, 255, 255, 0.05);
+      color: #d4af37;
+      padding: 7px 8px;
+      text-align: left;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 7pt;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    }
+    .cat-table td {
+      padding: 6px 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      color: #94a3b8;
+    }
+    .cat-table tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Screen Toolbar -->
+  <div class="toolbar">
+    <div class="toolbar-info">NARION • 2026 Ürün Kataloğu (18 Sayfa)</div>
+    <button class="toolbar-btn" onclick="window.print()">🖨️ PDF / Yazdır</button>
+    <a class="toolbar-btn primary" href="file:///Users/murselalkan/Desktop/NARION_Proje_Paketi/NARION_2026_Urun_Katalogu.pdf" target="_blank">📄 Hazır PDF'i Aç</a>
+  </div>
+
+  <!-- ==================== SAYFA 1: KAPAK (COVER) ==================== -->
+  <div class="cat-page" style="justify-content: center; align-items: center; text-align: center; background: radial-gradient(circle at 50% 40%, rgba(212, 175, 55, 0.12) 0%, transparent 60%), #07090e;">
+    <div style="position: absolute; top: 16mm; left: 18mm; right: 18mm; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 8px;">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:8pt;color:#d4af37;letter-spacing:2px;">ALMITA GROUP • İSTANBUL</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:8pt;color:#64748b;">COLLECTION 2026</span>
+    </div>
+
+    <div style="max-width: 160mm;">
+      <!-- Logo SVG -->
+      <div style="width: 70px; height: 70px; margin: 0 auto 24px; color: #d4af37;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round">
+          <circle cx="50" cy="50" r="35" stroke-dasharray="140 30" />
+          <line x1="50" y1="15" x2="50" y2="35" />
+          <line x1="20" y1="68" x2="35" y2="58" />
+          <line x1="80" y1="68" x2="65" y2="58" />
+        </svg>
+      </div>
+
+      <span class="badge gold" style="margin-bottom: 16px; font-size: 8.5pt; padding: 4px 14px;">RESMİ ÜRÜN KATALOĞU & MÜHENDİSLİK LOOKBOOK</span>
+      <h1 style="font-size: 38pt; font-weight: 800; letter-spacing: 4px; color: #fff; margin-bottom: 8px; line-height: 1;">NARION</h1>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11pt;letter-spacing:5px;color:#d4af37;margin-bottom:24px;">SERİ 01 • LUXURY COLLECTION</div>
+      
+      <p style="font-size: 11pt; color: #94a3b8; line-height: 1.7; margin-bottom: 30px;">
+        Havacılık Sınıfı Kopolyester Hazne • Patentli 45° Bayonet Kilit Standardı • 17 Özgün Tasarım Modeli ve Dünyanın İlk 0.0 ppm Karbonmonoksitli Kablosuz Akıllı Seramik HMD Ekosistemi.
+      </p>
+
+      <div style="display: flex; justify-content: center; gap: 20px; font-family:'JetBrains Mono',monospace; font-size: 8pt; color: #cbd5e1; border-top: 1px solid rgba(212,175,55,0.2); padding-top: 20px;">
+        <div><strong>17</strong> MODEL</div>
+        <div>•</div>
+        <div><strong>%100</strong> BPA-FREE TRITAN™</div>
+        <div>•</div>
+        <div><strong>45°</strong> ÇEYREK TUR BAYONET</div>
+        <div>•</div>
+        <div><strong>0.0 PPM</strong> CO</div>
+      </div>
+    </div>
+
+    <div style="position: absolute; bottom: 14mm; left: 18mm; right: 18mm; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 8px; font-size: 7.5pt; color: #64748b; font-family:'JetBrains Mono',monospace;">
+      <span>NARION HOOKAH ARCHITECTURE</span>
+      <span>WWW.NARIONHOOKAH.COM</span>
+    </div>
+  </div>
+
+  <!-- ==================== SAYFA 2: MARKA MANİFESTOSU & MÜHENDİSLİK ==================== -->
+  <div class="cat-page">
+    <div class="page-header">
+      <div class="brand-meta">
+        <span class="brand-logo-text">NARION</span>
+        <span class="brand-col-tag">Felsefe & Radikal Mühendislik</span>
+      </div>
+      <span class="page-num">02</span>
+    </div>
+
+    <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 10px 0;">
+      <span class="badge gold" style="margin-bottom: 8px;">MARKA MANİFESTOSU</span>
+      <h2 class="section-title">Gelenek ile Havacılık Mühendisliğinin Kesişimi</h2>
+      <p class="lead-text">NARION, yüzyıllardır değişmeyen nargile kültürünü modern malzeme bilimi, havacılık toleransları ve mikrobiyolojik hijyen standartlarıyla yeniden tanımlar.</p>
+
+      <div class="grid-2" style="margin-bottom: 16px;">
+        <div class="card highlight">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:7.5pt;color:#d4af37;font-weight:700;">KARAR 01</span>
+          <div style="font-size:12pt;font-weight:700;color:#fff;margin:4px 0 6px;">Kırılmaz Tritan™ Kopolyester Hazne</div>
+          <p style="font-size:8.5pt;color:#94a3b8;line-height:1.5;">Camın patlayarak kırılma, derin kesik açma ve mikro-çatlaklarda bakteri barındırma riskini sıfırlar. %100 BPA/BPS-Free, 109°C ısı dayanımı ve cam berraklığı.</p>
+        </div>
+
+        <div class="card highlight">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:7.5pt;color:#d4af37;font-weight:700;">KARAR 02</span>
+          <div style="font-size:12pt;font-weight:700;color:#fff;margin:4px 0 6px;">45° Çeyrek Tur Bayonet Kilidi</div>
+          <p style="font-size:8.5pt;color:#94a3b8;line-height:1.5;">Gevşeyen vidalar veya yırtılan contalar yerine, silah ve havacılık mekanizmalarından ilham alan 3 tırnaklı CNC paslanmaz kilit. Çeyrek turda hermetik sızdırmazlık.</p>
+        </div>
+
+        <div class="card">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:7.5pt;color:#38bdf8;font-weight:700;">KARAR 03</span>
+          <div style="font-size:12pt;font-weight:700;color:#fff;margin:4px 0 6px;">Monoblok CNC Daldırma Borusu</div>
+          <p style="font-size:8.5pt;color:#94a3b8;line-height:1.5;">Dişsiz ve kaynaksız tek parça AISI 304 çelik kütleden işlenir. Şerbet birikmesi veya korozyon imkansızdır; akışkanlar mekaniğine göre optimize difüzör kanalları.</p>
+        </div>
+
+        <div class="card green">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:7.5pt;color:#10b981;font-weight:700;">KARAR 04</span>
+          <div style="font-size:12pt;font-weight:700;color:#fff;margin:4px 0 6px;">Aletsiz 40 Saniyede Demontaj</div>
+          <p style="font-size:8.5pt;color:#94a3b8;line-height:1.5;">Tüm parçalar aletsiz sökülür, durulanır veya 80°C sanayi tipi bulaşık makinesinde yıkanır. Eski seansın kokusu (ghosting) asla bir sonraki seansa taşınmaz.</p>
+        </div>
+      </div>
+
+      <div style="background:#090c14;border:1px solid rgba(212,175,55,0.25);border-radius:10px;padding:12px 16px;display:flex;align-items:center;gap:18px;">
+        <img src="NARION_Web_v3/gorsel/bayonet-iscilik-makro.webp" style="width:80px;height:60px;object-fit:cover;border-radius:6px;border:1px solid rgba(255,255,255,0.1);">
+        <div>
+          <div style="font-size:10pt;font-weight:700;color:#fff;margin-bottom:2px;">Hassas AISI 304 & Masif Ağaç İşçiliği</div>
+          <div style="font-size:8pt;color:#94a3b8;">Her parça İstanbul'daki atölyemizde 5 eksenli CNC tezgahlarda mikron toleranslarla işlenir, elle polisajlanır ve mikronik hava basıncıyla test edilir.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>NARION Felsefe & İnovasyon Manifestosu</span>
+      <span>Sayfa 02 / 18</span>
+    </div>
+  </div>
+
+  <!-- ==================== SAYFA 3: SMART HMD & 0 PPM CO DEVRİMİ ==================== -->
+  <div class="cat-page">
+    <div class="page-header">
+      <div class="brand-meta">
+        <span class="brand-logo-text">NARION</span>
+        <span class="brand-col-tag">Teknoloji Ekosistemi</span>
+      </div>
+      <span class="page-num">03</span>
+    </div>
+
+    <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 10px 0;">
+      <span class="badge green" style="margin-bottom: 8px;">DÜNYADA BİR İLK • 0.0 PPM KARBONMONOKSİT</span>
+      <h2 class="section-title">NARION Smart HMD: Közün Ötesinde Isı Devrimi</h2>
+      <p class="lead-text">Geleneksel kömürün ürettiği 1200+ ppm zehirli karbonmonoksit gazını, külü ve koku kirliliğini tarihe gömen kablosuz akıllı seramik ısıtıcı başlık.</p>
+
+      <div class="grid-2" style="margin-bottom: 14px; align-items: center;">
+        <div style="background:#090c14;border:1px solid rgba(16,185,129,0.3);border-radius:10px;overflow:hidden;aspect-ratio:4/3;">
+          <img src="01_NARION_Kablosuz_HMD_ve_Sarj_Istasyonu.jpg" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+        <div>
+          <div class="card highlight" style="margin-bottom: 10px;">
+            <div style="font-size:10pt;font-weight:700;color:#fff;margin-bottom:4px;">Saf MCH Seramik Çekirdek</div>
+            <p style="font-size:8pt;color:#94a3b8;">Aroma yakmayan, direkt tütün yaprağının gözeneklerine nüfuz eden hassas PID kontrollü mikronik ısıtma (180°C - 230°C).</p>
+          </div>
+          <div class="card green" style="margin-bottom: 10px;">
+            <div style="font-size:10pt;font-weight:700;color:#fff;margin-bottom:4px;">14.8V Kablosuz Lityum Batarya</div>
+            <p style="font-size:8pt;color:#94a3b8;">Kablo karmaşası olmadan tek şarjla 90 dakikalık kesintisiz seans. Manyetik tak-çıkar batarya mimarisiyle sıfır bekleme.</p>
+          </div>
+          <div class="card">
+            <div style="font-size:10pt;font-weight:700;color:#fff;margin-bottom:4px;">Lounge OS & Mobil Entegrasyon</div>
+            <p style="font-size:8pt;color:#94a3b8;">Kullanıcı için masada akıllı telefon kontrolü; kafe işletmesi için tüm masaların ısısını izleyen merkezi konsol.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="card" style="text-align:center;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:16pt;font-weight:800;color:#10b981;">0.0 ppm</div>
+          <div style="font-size:8pt;color:#cbd5e1;font-weight:700;">Karbonmonoksit</div>
+          <div style="font-size:7pt;color:#64748b;">Baş ağrısı ve duman zehirlenmesine son</div>
+        </div>
+        <div class="card" style="text-align:center;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:16pt;font-weight:800;color:#d4af37;">90 dk</div>
+          <div style="font-size:8pt;color:#cbd5e1;font-weight:700;">Kesintisiz Seans</div>
+          <div style="font-size:7pt;color:#64748b;">Manyetik tak-çıkar pil ile 7/24 döngü</div>
+        </div>
+        <div class="card" style="text-align:center;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:16pt;font-weight:800;color:#38bdf8;">100W GaN</div>
+          <div style="font-size:8pt;color:#cbd5e1;font-weight:700;">Hızlı Şarj İstasyonu</div>
+          <div style="font-size:7pt;color:#64748b;">25 dakikada %80 batarya dolumu</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>NARION Smart HMD · Seramik Isı Devrimi</span>
+      <span>Sayfa 03 / 18</span>
+    </div>
+  </div>
+
+  <!-- ==================== SAYFA 4: KOLEKSİYON MİMARİSİ (GENEL BAKIŞ) ==================== -->
+  <div class="cat-page">
+    <div class="page-header">
+      <div class="brand-meta">
+        <span class="brand-logo-text">NARION</span>
+        <span class="brand-col-tag">Koleksiyon Mimarisi</span>
+      </div>
+      <span class="page-num">04</span>
+    </div>
+
+    <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 10px 0;">
+      <span class="badge gold" style="margin-bottom: 8px;">17 ÖZGÜN TASARIM • 4 KARAKTER SERİSİ</span>
+      <h2 class="section-title">Koleksiyonun Dört Mimari Çizgisi</h2>
+      <p class="lead-text">Farklı iç mekan estetikleri, yaşam tarzları ve ritüeller için tasarlanmış 4 ana koleksiyon segmenti:</p>
+
+      <div class="grid-2" style="gap: 14px; margin-bottom: 12px;">
+        <div class="card highlight">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+            <span class="badge gold">01. LOKOMOTİF SERİSİ</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:7.5pt;color:#d4af37;">3 MODEL</span>
+          </div>
+          <div style="font-size:12pt;font-weight:800;color:#fff;margin-bottom:4px;">Koza • Ladin • Manolya</div>
+          <p style="font-size:8.2pt;color:#94a3b8;line-height:1.5;">Koleksiyonun omurgasını oluşturan amiral gemisi modeller. Masif ceviz, balıksırtı meşe ve havacılık alüminyumu kafesleriyle lüks rezidansların ve seçkin mekanların odak noktası.</p>
+        </div>
+
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+            <span class="badge blue">02. MODERN SERİ</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:7.5pt;color:#38bdf8;">5 MODEL</span>
+          </div>
+          <div style="font-size:12pt;font-weight:800;color:#fff;margin-bottom:4px;">Zeytin • Ardıç • Kemer • Yörünge • Çakıl</div>
+          <p style="font-size:8.2pt;color:#94a3b8;line-height:1.5;">Organik doğa formları ve çağdaş endüstriyel çizgiler. Kompakt yapılar, akıcı heykelsi yaylar ve modern daireler için kusursuz ergonomi.</p>
+        </div>
+
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+            <span class="badge gold">03. PRESTİJ & KLASİK SERİSİ</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:7.5pt;color:#d4af37;">5 MODEL</span>
+          </div>
+          <div style="font-size:12pt;font-weight:800;color:#fff;margin-bottom:4px;">Servi • Yalın • Aura • Monolit • İnci</div>
+          <p style="font-size:8.2pt;color:#94a3b8;line-height:1.5;">Anıtsal 680 mm boylar, yekpare alüminyum bloktan saatlerce oyulan heykeller, sedef beyaz seramik kaplamalar ve şampanya pirinç lüksü.</p>
+        </div>
+
+        <div class="card green">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+            <span class="badge green">04. TEKNOLOJİ SERİSİ</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:7.5pt;color:#10b981;">4 MODEL</span>
+          </div>
+          <div style="font-size:12pt;font-weight:800;color:#fff;margin-bottom:4px;">Prizma • Ocak • Fener • Nomad</div>
+          <p style="font-size:8.2pt;color:#94a3b8;line-height:1.5;">Fasetli prizmatik geometriler, rüzgar geçirmez marin sınıfı gövdeler ve manyetik seyahat çantalı ultra kompakt seyyar nargile deneyimi.</p>
+        </div>
+      </div>
+
+      <div style="background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:10px 14px;font-size:8pt;color:#94a3b8;display:flex;justify-content:space-between;align-items:center;">
+        <span>Tüm modeller patentli <strong>45° Bayonet kilidi</strong> ve <strong>kırılmaz Tritan™ hazne</strong> standardını paylaşır.</span>
+        <span style="color:#d4af37;font-weight:700;">Standart NARION Ekosistemi</span>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>NARION Koleksiyon Mimarisi · 4 Segment & 17 Model</span>
+      <span>Sayfa 04 / 18</span>
+    </div>
+  </div>
+
+  <!-- ==================== SAYFA 5: MODEL KOZA (AMİRAL GEMİSİ) ==================== -->
+  <div class="cat-page">
+    <div class="page-header">
+      <div class="brand-meta">
+        <span class="brand-logo-text">NARION</span>
+        <span class="brand-col-tag">Lokomotif Serisi</span>
+      </div>
+      <span class="page-num">05</span>
+    </div>
+
+    <div class="model-hero-spread">
+      <div class="model-img-box">
+        <img src="NARION_Web_v3/gorsel/model-narion-koza.webp" alt="NARION KOZA">
+      </div>
+      <div class="model-content">
+        <span class="model-code">AMİRAL GEMİSİ • REF. NR-KZ-01</span>
+        <h2 class="model-title">KOZA</h2>
+        <p class="model-desc">
+          Masif Amerikan ceviz kabuğu, küresel panoramik su pencereli Tritan™ hazne ve heykelsi siluet. Doğanın organik koruma içgüdüsünü en yüksek lüks standartlarıyla birleştiren amiral gemisi.
+        </p>
+
+        <table class="spec-table">
+          <tr>
+            <td>Yükseklik:</td>
+            <td><strong>420 mm</strong></td>
+          </tr>
+          <tr>
+            <td>Gövde Ağırlığı:</td>
+            <td><strong>3.400 gr</strong> (Düşük ağırlık merkezi)</td>
+          </tr>
+          <tr>
+            <td>Ahşap Gövde:</td>
+            <td><strong>Masif Amerikan Cevizi</strong> (Doğal Yağlı)</td>
+          </tr>
+          <tr>
+            <td>Hazne & Kilit:</td>
+            <td><strong>Eastman Tritan™ & 45° AISI 304 Bayonet</strong></td>
+          </tr>
+          <tr>
+            <td>Difüzör Tipi:</td>
+            <td><strong>Ayarlanabilir Akustik Sessiz Difüzör</strong></td>
+          </tr>
+        </table>
+
+        <div class="unboxing-thumb">
+          <img src="NARION_Web_v3/gorsel/kutu-narion-koza.webp" alt="KOZA Kutu">
+          <div class="unboxing-thumb-text">
+            <strong>Özel Manyetik Sunum Kutusu Dahil</strong><br>
+            Sert kapaklı lüks sunum kutusu, soft-touch dokulu iç sünger yuvası ve orijinallik sertifikası.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>NARION KOZA · Amiral Gemisi Model Özellikleri</span>
+      <span>Sayfa 05 / 18</span>
+    </div>
+  </div>
+
+  <!-- ==================== SAYFA 6: MODEL LADİN (LOKOMOTİF) ==================== -->
+  <div class="cat-page">
+    <div class="page-header">
+      <div class="brand-meta">
+        <span class="brand-logo-text">NARION</span>
+        <span class="brand-col-tag">Lokomotif Serisi</span>
+      </div>
+      <span class="page-num">06</span>
+    </div>
+
+    <div class="model-hero-spread">
+      <div class="model-img-box">
+        <img src="NARION_Web_v3/gorsel/model-narion-ladin.webp" alt="NARION LADİN">
+      </div>
+      <div class="model-content">
+        <span class="model-code">LOKOMOTİF MODEL • REF. NR-LD-02</span>
+        <h2 class="model-title">LADİN</h2>
+        <p class="model-desc">
+          İskandinav mimarisinin yalın formu, balıksırtı dizilimli masif meşe paneller ve ipeksi sessiz çekiş akustiği. Dikey mimarisiyle modern kütüphanelerin ve şık çalışma alanlarının vazgeçilmezi.
+        </p>
+
+        <table class="spec-table">
+          <tr>
+            <td>Yükseklik:</td>
+            <td><strong>580 mm</strong></td>
+          </tr>
+          <tr>
+            <td>Gövde Ağırlığı:</td>
+            <td><strong>3.150 gr</strong></td>
+          </tr>
+          <tr>
+            <td>Panel Malzemesi:</td>
+            <td><strong>Balıksırtı Doğal Masif Meşe</strong></td>
+          </tr>
+          <tr>
+            <td>Metal Bileşenler:</td>
+            <td><strong>Fırçalanmış AISI 304 Paslanmaz Çelik</strong></td>
+          </tr>
+          <tr>
+            <td>Hazne:</td>
+            <td><strong>Kırılmaz Optik Berrak Kopolyester</strong></td>
+          </tr>
+        </table>
+
+        <div class="unboxing-thumb">
+          <img src="NARION_Web_v3/gorsel/kutu-narion-ladin.webp" alt="LADİN Kutu">
+          <div class="unboxing-thumb-text">
+            <strong>Özel Manyetik Sunum Kutusu Dahil</strong><br>
+            Balıksırtı desen işlemeli dış karton ve özel koruma kılıfı ile eksiksiz donanım.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>NARION LADİN · İskandinav Zarafeti & Dikey Mimari</span>
+      <span>Sayfa 06 / 18</span>
+    </div>
+  </div>
+
+  <!-- ==================== SAYFA 7: MODEL MANOLYA (LOKOMOTİF) ==================== -->
+  <div class="cat-page">
+    <div class="page-header">
+      <div class="brand-meta">
+        <span class="brand-logo-text">NARION</span>
+        <span class="brand-col-tag">Lokomotif Serisi</span>
+      </div>
+      <span class="page-num">07</span>
+    </div>
+
+    <div class="model-hero-spread">
+      <div class="model-img-box">
+        <img src="NARION_Web_v3/gorsel/model-narion-manolya.webp" alt="NARION MANOLYA">
+      </div>
+      <div class="model-content">
+        <span class="model-code">LOKOMOTİF MODEL • REF. NR-MN-03</span>
+        <h2 class="model-title">MANOLYA</h2>
+        <p class="model-desc">
+          Havacılık sınıfı alüminyum kafes, 360° kristal berraklık ve fırçalanmış şampanya pirinç kaplama detaylar. Işığı kıran geometrik kafesiyle görkemli salonların başyapıtı.
+        </p>
+
+        <table class="spec-table">
+          <tr>
+            <td>Yükseklik:</td>
+            <td><strong>620 mm</strong></td>
+          </tr>
+          <tr>
+            <td>Gövde Ağırlığı:</td>
+            <td><strong>3.600 gr</strong></td>
+          </tr>
+          <tr>
+            <td>Kafes Strüktürü:</td>
+            <td><strong>6061-T6 Havacılık Alüminyumu</strong></td>
+          </tr>
+          <tr>
+            <td>Kaplama:</td>
+            <td><strong>Fırçalanmış Şampanya Pirinç PVD</strong></td>
+          </tr>
+          <tr>
+            <td>Hazne & Kilit:</td>
+            <td><strong>Eastman Tritan™ & 45° Bayonet</strong></td>
+          </tr>
+        </table>
+
+        <div class="unboxing-thumb">
+          <img src="NARION_Web_v3/gorsel/kutu-narion-manolya.webp" alt="MANOLYA Kutu">
+          <div class="unboxing-thumb-text">
+            <strong>Özel Manyetik Sunum Kutusu Dahil</strong><br>
+            Altın yaldız baskılı, manyetik kapaklı lüks kutu ve pirinç temizleme bezi hediyesi.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>NARION MANOLYA · Şampanya Pirinç Lüksü & 360° Kristal Berraklık</span>
+      <span>Sayfa 07 / 18</span>
+    </div>
+  </div>
+
+  <!-- ==================== SAYFA 8: MODERN SERİ (ZEYTİN & ARDIÇ) ==================== -->
+  <div class="cat-page">
+    <div class="page-header">
+      <div class="brand-meta">
+        <span class="brand-logo-text">NARION</span>
+        <span class="brand-col-tag">Modern Seri</span>
+      </div>
+      <span class="page-num">08</span>
+    </div>
+
+    <div class="dual-models-grid">
+      <!-- MODEL 4: ZEYTİN -->
+      <div class="dual-model-card">
+        <div class="dual-fig">
+          <img src="NARION_Web_v3/gorsel/model-narion-zeytin.webp" alt="ZEYTİN">
+        </div>
+        <div>
+          <div class="dual-meta">
+            <span class="dual-title">Zeytin</span>
+            <span class="dual-code">440 mm • REF. NR-ZY-04</span>
+          </div>
+          <p class="dual-desc">Akıcı organik hatlar, küresel Tritan kristalini kucaklayan iki masif ceviz kanat ve kompakt zarafet.</p>
+          <div class="dual-specs">
+            <div>Malzeme: <strong>Masif Ceviz Kanat</strong></div>
+            <div>Ağırlık: <strong>2.800 gr</strong></div>
+            <div>Hazne: <strong>Küresel Kopolyester</strong></div>
+            <div>Kutu: <strong>Manyetik Kutu Dahil</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODEL 5: ARDIÇ -->
+      <div class="dual-model-card">
+        <div class="dual-fig">
+          <img src="NARION_Web_v3/gorsel/model-narion-ardic.webp" alt="ARDIÇ">
+        </div>
+        <div>
+          <div class="dual-meta">
+            <span class="dual-title">Ardıç</span>
+            <span class="dual-code">500 mm • REF. NR-AR-05</span>
+          </div>
+          <p class="dual-desc">Dikey çizgisel ritim, fırçalanmış titanyum gövde omurgası ve koyu masif ahşabın asil kontrastı.</p>
+          <div class="dual-specs">
+            <div>Omurga: <strong>Titanyum PVD Çelik</strong></div>
+            <div>Ağırlık: <strong>3.050 gr</strong></div>
+            <div>Panel: <strong>Koyu Masif Ahşap</strong></div>
+            <div>Kutu: <strong>Manyetik Kutu Dahil</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>NARION ZEYTİN & ARDIÇ · Organik Doğa Çizgileri</span>
+      <span>Sayfa 08 / 18</span>
+    </div>
+  </div>
+
+  <!-- ==================== SAYFA 9: MODERN SERİ (KEMER & YÖRÜNGE) ==================== -->
+  <div class="cat-page">
+    <div class="page-header">
+      <div class="brand-meta">
+        <span class="brand-logo-text">NARION</span>
+        <span class="brand-col-tag">Modern Seri</span>
+      </div>
+      <span class="page-num">09</span>
+    </div>
+
+    <div class="dual-models-grid">
+      <!-- MODEL 6: KEMER -->
+      <div class="dual-model-card">
+        <div class="dual-fig">
+          <img src="NARION_Web_v3/gorsel/model-narion-kemer.webp" alt="KEMER">
+        </div>
+        <div>
+          <div class="dual-meta">
+            <span class="dual-title">Kemer</span>
+            <span class="dual-code">560 mm • REF. NR-KM-06</span>
+          </div>
+          <p class="dual-desc">Tarihi su kemerlerinin anıtsal yay formlarını modern CNC frezeleme ile buluşturan heykelsi mimari duruş.</p>
+          <div class="dual-specs">
+            <div>Form: <strong>CNC Heykelsi Yay</strong></div>
+            <div>Ağırlık: <strong>3.300 gr</strong></div>
+            <div>Metal: <strong>AISI 304 Paslanmaz</strong></div>
+            <div>Kutu: <strong>Manyetik Kutu Dahil</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODEL 7: YÖRÜNGE -->
+      <div class="dual-model-card">
+        <div class="dual-fig">
+          <img src="NARION_Web_v3/gorsel/model-narion-yorunge.webp" alt="YÖRÜNGE">
+        </div>
+        <div>
+          <div class="dual-meta">
+            <span class="dual-title">Yörünge</span>
+            <span class="dual-code">460 mm • REF. NR-YR-07</span>
+          </div>
+          <p class="dual-desc">Kozmik gezegen yörüngelerini andıran alüminyum diskler ve ultra alçak ağırlık merkeziyle devrilmez denge.</p>
+          <div class="dual-specs">
+            <div>Diskler: <strong>Havacılık Alüminyumu</strong></div>
+            <div>Ağırlık: <strong>3.100 gr</strong></div>
+            <div>Denge: <strong>Geniş Taban Plakası</strong></div>
+            <div>Kutu: <strong>Manyetik Kutu Dahil</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>NARION KEMER & YÖRÜNGE · Anıtsal Heykel & Sarsılmaz Denge</span>
+      <span>Sayfa 09 / 18</span>
+    </div>
+  </div>
+
+  <!-- ==================== SAYFA 10: MODERN & PRESTİJ (ÇAKIL & SERVİ) ==================== -->
+  <div class="cat-page">
+    <div class="page-header">
+      <div class="brand-meta">
+        <span class="brand-logo-text">NARION</span>
+        <span class="brand-col-tag">Modern & Prestij</span>
+      </div>
+      <span class="page-num">10</span>
+    </div>
+
+    <div class="dual-models-grid">
+      <!-- MODEL 8: ÇAKIL -->
+      <div class="dual-model-card">
+        <div class="dual-fig">
+          <img src="NARION_Web_v3/gorsel/model-narion-cakil.webp" alt="ÇAKIL">
+        </div>
+        <div>
+          <div class="dual-meta">
+            <span class="dual-title">Çakıl</span>
+            <span class="dual-code">380 mm • REF. NR-CK-08</span>
+          </div>
+          <p class="dual-desc">Deniz suyunun şekillendirdiği çakıl taşları gibi pürüzsüz kavisler ve yumuşak dokulu saten yüzey ergonomisi.</p>
+          <div class="dual-specs">
+            <div>Doku: <strong>Saten Soft-Touch</strong></div>
+            <div>Ağırlık: <strong>2.450 gr</strong></div>
+            <div>Tasarım: <strong>Organik Pebble Yay</strong></div>
+            <div>Kutu: <strong>Manyetik Kutu Dahil</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODEL 9: SERVİ -->
+      <div class="dual-model-card">
+        <div class="dual-fig">
+          <img src="NARION_Web_v3/gorsel/model-narion-servi.webp" alt="SERVİ">
+        </div>
+        <div>
+          <div class="dual-meta">
+            <span class="dual-title">Servi</span>
+            <span class="dual-code">680 mm • REF. NR-SR-09</span>
+          </div>
+          <p class="dual-desc">Gökyüzüne uzanan asil servi ağacının zarafeti. Geniş salonlar ve yüksek tavanlı malikaneler için anıtsal boy.</p>
+          <div class="dual-specs">
+            <div>Boy: <strong>680 mm (En Uzun Boy)</strong></div>
+            <div>Ağırlık: <strong>4.100 gr</strong></div>
+            <div>Karakter: <strong>Anıtsal Prestij</strong></div>
+            <div>Kutu: <strong>Lüks XL Manyetik Kutu</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>NARION ÇAKIL & SERVİ · Saten Dokudan Anıtsal Boylara</span>
+      <span>Sayfa 10 / 18</span>
+    </div>
+  </div>
+
+  <!-- ==================== SAYFA 11: KLASİK & PRESTİJ (YALIN & AURA) ==================== -->
+  <div class="cat-page">
+    <div class="page-header">
+      <div class="brand-meta">
+        <span class="brand-logo-text">NARION</span>
+        <span class="brand-col-tag">Klasik & Prestij</span>
+      </div>
+      <span class="page-num">11</span>
+    </div>
+
+    <div class="dual-models-grid">
+      <!-- MODEL 10: YALIN -->
+      <div class="dual-model-card">
+        <div class="dual-fig">
+          <img src="NARION_Web_v3/gorsel/model-narion-yalin.webp" alt="YALIN">
+        </div>
+        <div>
+          <div class="dual-meta">
+            <span class="dual-title">Yalın</span>
+            <span class="dual-code">520 mm • REF. NR-YL-10</span>
+          </div>
+          <p class="dual-desc">Süslemelerden arındırılmış saf metalik estetik. Fırçalanmış AISI 304 çelik omurga ve şeffaf monoblok hazne.</p>
+          <div class="dual-specs">
+            <div>Felsefe: <strong>Saf Minimalizm</strong></div>
+            <div>Ağırlık: <strong>3.200 gr</strong></div>
+            <div>Metal: <strong>Fırçalanmış Paslanmaz</strong></div>
+            <div>Kutu: <strong>Manyetik Kutu Dahil</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODEL 11: AURA -->
+      <div class="dual-model-card">
+        <div class="dual-fig">
+          <img src="NARION_Web_v3/gorsel/model-narion-aura.webp" alt="AURA">
+        </div>
+        <div>
+          <div class="dual-meta">
+            <span class="dual-title">Aura</span>
+            <span class="dual-code">600 mm • REF. NR-AU-11</span>
+          </div>
+          <p class="dual-desc">Işığı kıran özel prizmatik kanallar ve loş ışıkta masif ahşabın sıcaklığını yansıtan gizli ambiyans haresi.</p>
+          <div class="dual-specs">
+            <div>Optik: <strong>Işık Kırıcı Prizmatik</strong></div>
+            <div>Ağırlık: <strong>3.550 gr</strong></div>
+            <div>Aura: <strong>Gizli Ambiyans Kanalı</strong></div>
+            <div>Kutu: <strong>Manyetik Kutu Dahil</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>NARION YALIN & AURA · Saf Minimalizm ve Prizmatik Işık</span>
+      <span>Sayfa 11 / 18</span>
+    </div>
+  </div>
+
+  <!-- ==================== SAYFA 12: PRESTİJ SERİSİ (MONOLİT & İNCİ) ==================== -->
+  <div class="cat-page">
+    <div class="page-header">
+      <div class="brand-meta">
+        <span class="brand-logo-text">NARION</span>
+        <span class="brand-col-tag">Prestij Serisi</span>
+      </div>
+      <span class="page-num">12</span>
+    </div>
+
+    <div class="dual-models-grid">
+      <!-- MODEL 12: MONOLİT -->
+      <div class="dual-model-card">
+        <div class="dual-fig">
+          <img src="NARION_Web_v3/gorsel/model-narion-monolit.webp" alt="MONOLİT">
+        </div>
+        <div>
+          <div class="dual-meta">
+            <span class="dual-title">Monolit</span>
+            <span class="dual-code">550 mm • REF. NR-MN-12</span>
+          </div>
+          <p class="dual-desc">Tek blok havacılık alüminyumundan 6 saatlik kesintisiz frezeleme ile oyulan masif ve sarsılmaz mimari gövde.</p>
+          <div class="dual-specs">
+            <div>İmalat: <strong>6 Saatlik Yekpare Freze</strong></div>
+            <div>Ağırlık: <strong>3.750 gr</strong></div>
+            <div>Kütle: <strong>Monoblok Alüminyum</strong></div>
+            <div>Kutu: <strong>Manyetik Kutu Dahil</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODEL 13: İNCİ -->
+      <div class="dual-model-card">
+        <div class="dual-fig">
+          <img src="NARION_Web_v3/gorsel/model-narion-inci.webp" alt="İNCİ">
+        </div>
+        <div>
+          <div class="dual-meta">
+            <span class="dual-title">İnci</span>
+            <span class="dual-code">480 mm • REF. NR-IN-13</span>
+          </div>
+          <p class="dual-desc">Sedef parlaklığında beyaz PVD seramik kaplama ve fırçalanmış şampanya pirinç aksamların eşsiz asaleti.</p>
+          <div class="dual-specs">
+            <div>Kaplama: <strong>Sedef Beyaz PVD Seramik</strong></div>
+            <div>Ağırlık: <strong>3.100 gr</strong></div>
+            <div>Aksam: <strong>Şampanya Pirinç</strong></div>
+            <div>Kutu: <strong>Manyetik Kutu Dahil</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>NARION MONOLİT & İNCİ · Monoblok Frezeleme & Sedef PVD Seramik</span>
+      <span>Sayfa 12 / 18</span>
+    </div>
+  </div>
+
+  <!-- ==================== SAYFA 13: TEKNOLOJİ SERİSİ (PRİZMA & OCAK) ==================== -->
+  <div class="cat-page">
+    <div class="page-header">
+      <div class="brand-meta">
+        <span class="brand-logo-text">NARION</span>
+        <span class="brand-col-tag">Teknoloji Serisi</span>
+      </div>
+      <span class="page-num">13</span>
+    </div>
+
+    <div class="dual-models-grid">
+      <!-- MODEL 14: PRİZMA -->
+      <div class="dual-model-card">
+        <div class="dual-fig">
+          <img src="NARION_Web_v3/gorsel/model-narion-prizma.webp" alt="PRİZMA">
+        </div>
+        <div>
+          <div class="dual-meta">
+            <span class="dual-title">Prizma</span>
+            <span class="dual-code">510 mm • REF. NR-PR-14</span>
+          </div>
+          <p class="dual-desc">Fasetli geometrik yüzeyler, dikey hava tahliye difüzörleri ve modern sanat galerisi heykeli aurası.</p>
+          <div class="dual-specs">
+            <div>Geometri: <strong>Fasetli Prizma</strong></div>
+            <div>Ağırlık: <strong>3.250 gr</strong></div>
+            <div>Tahliye: <strong>Dikey Difüzör Sistemi</strong></div>
+            <div>Kutu: <strong>Manyetik Kutu Dahil</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODEL 15: OCAK -->
+      <div class="dual-model-card">
+        <div class="dual-fig">
+          <img src="NARION_Web_v3/gorsel/model-narion-ocak.webp" alt="OCAK">
+        </div>
+        <div>
+          <div class="dual-meta">
+            <span class="dual-title">Ocak</span>
+            <span class="dual-code">470 mm • REF. NR-OC-15</span>
+          </div>
+          <p class="dual-desc">Geleneksel köz ocağı ritüelini kapalı devre MCH seramik mühendisliğiyle buluşturan endüstriyel başyapıt.</p>
+          <div class="dual-specs">
+            <div>İlham: <strong>Tarihi Köz Ocağı Formu</strong></div>
+            <div>Ağırlık: <strong>3.350 gr</strong></div>
+            <div>Teknoloji: <strong>MCH Isı Uyumluluğu</strong></div>
+            <div>Kutu: <strong>Manyetik Kutu Dahil</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>NARION PRİZMA & OCAK · Geometrik Sanat ve Köz Ocağı Yeniliği</span>
+      <span>Sayfa 13 / 18</span>
+    </div>
+  </div>
+
+  <!-- ==================== SAYFA 14: TEKNOLOJİ SERİSİ (FENER & NOMAD) ==================== -->
+  <div class="cat-page">
+    <div class="page-header">
+      <div class="brand-meta">
+        <span class="brand-logo-text">NARION</span>
+        <span class="brand-col-tag">Teknoloji Serisi</span>
+      </div>
+      <span class="page-num">14</span>
+    </div>
+
+    <div class="dual-models-grid">
+      <!-- MODEL 16: FENER -->
+      <div class="dual-model-card">
+        <div class="dual-fig">
+          <img src="NARION_Web_v3/gorsel/model-narion-fener.webp" alt="FENER">
+        </div>
+        <div>
+          <div class="dual-meta">
+            <span class="dual-title">Fener</span>
+            <span class="dual-code">530 mm • REF. NR-FN-16</span>
+          </div>
+          <p class="dual-desc">Rüzgar geçirmez iç hava akımı kafesi ve marin sınıfı kaplamasıyla yatlar ve açık hava terasları için tasarlandı.</p>
+          <div class="dual-specs">
+            <div>Ortam: <strong>Marin Sınıfı & Rüzgar Korumalı</strong></div>
+            <div>Ağırlık: <strong>3.400 gr</strong></div>
+            <div>Kullanım: <strong>Yat, Teras, Açık Hava</strong></div>
+            <div>Kutu: <strong>Manyetik Kutu Dahil</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODEL 17: NOMAD -->
+      <div class="dual-model-card">
+        <div class="dual-fig">
+          <img src="NARION_Web_v3/gorsel/model-narion-nomad.webp" alt="NOMAD">
+        </div>
+        <div>
+          <div class="dual-meta">
+            <span class="dual-title">Nomad</span>
+            <span class="dual-code">350 mm • REF. NR-NM-17</span>
+          </div>
+          <p class="dual-desc">Süper kompakt seyahat boyu. Manyetik taşıma çantası, kırılmaz Tritan hazne ve devrilmez düşük ağırlık merkezi.</p>
+          <div class="dual-specs">
+            <div>Format: <strong>Ultra Seyahat Boyu (350 mm)</strong></div>
+            <div>Ağırlık: <strong>2.150 gr (En Hafif Model)</strong></div>
+            <div>Mobilite: <strong>Özel Seyahat Çantası</strong></div>
+            <div>Kutu: <strong>Travel Çanta Dahil</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>NARION FENER & NOMAD · Açık Hava, Marin & Seyahat Özgürlüğü</span>
+      <span>Sayfa 14 / 18</span>
+    </div>
+  </div>
+
+  <!-- ==================== SAYFA 15: LÜKS KUTULAMA & UNBOXING ==================== -->
+  <div class="cat-page">
+    <div class="page-header">
+      <div class="brand-meta">
+        <span class="brand-logo-text">NARION</span>
+        <span class="brand-col-tag">Ambalaj & Deneyim</span>
+      </div>
+      <span class="page-num">15</span>
+    </div>
+
+    <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 10px 0;">
+      <span class="badge gold" style="margin-bottom: 8px;">KUSURSUZ AÇILIM RİTÜELİ</span>
+      <h2 class="section-title">Koleksiyona Özel Manyetik Sunum Kutuları</h2>
+      <p class="lead-text">Her bir NARION takımı, mücevher ve lüks saat endüstrisi standartlarında sert kapaklı, soft-touch dokulu ve neodimyum mıknatıslı özel sunum kutusuyla teslim edilir.</p>
+
+      <div style="background:#090c14;border:1px solid rgba(212,175,55,0.3);border-radius:12px;overflow:hidden;padding:12px;margin-bottom:14px;box-shadow:0 15px 35px rgba(0,0,0,0.6);">
+        <img src="NARION_Web_v3/gorsel/kutu-luks-sunum.webp" style="width:100%;height:68mm;object-fit:cover;display:block;border-radius:8px;">
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:8pt;color:#d4af37;font-weight:700;">1. SERT GÖVDE & MIKNATIS</div>
+          <p style="font-size:7.8pt;color:#94a3b8;margin-top:4px;">1800 gr/m² sert mukavva ve kapağın pürüzsüzce kapanmasını sağlayan çift neodimyum mıknatıs kilit sistemi.</p>
+        </div>
+        <div class="card">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:8pt;color:#d4af37;font-weight:700;">2. LAZER KESİM EVA YUVALAR</div>
+          <p style="font-size:7.8pt;color:#94a3b8;margin-top:4px;">Gövde, marpuç, şişe ve HMD aksamlarının milimetrik oturduğu, çizilmeyi önleyen flok kaplamalı lazer kesim sünger.</p>
+        </div>
+        <div class="card">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:8pt;color:#d4af37;font-weight:700;">3. SERTİFİKA & AKSESUARLAR</div>
+          <p style="font-size:7.8pt;color:#94a3b8;margin-top:4px;">Seri numaralı metal garanti kartı, bakım ve kullanım kılavuzu, mikrofiber temizlik bezi ve yedek medikal O-ring seti.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>NARION Ambalaj Standartları · Unboxing Ritüeli</span>
+      <span>Sayfa 15 / 18</span>
+    </div>
+  </div>
+
+  <!-- ==================== SAYFA 16: VOYAGER SEYAHAT ÇANTASI & GaN İSTASYONU ==================== -->
+  <div class="cat-page">
+    <div class="page-header">
+      <div class="brand-meta">
+        <span class="brand-logo-text">NARION</span>
+        <span class="brand-col-tag">Seyahat & Donanım</span>
+      </div>
+      <span class="page-num">16</span>
+    </div>
+
+    <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 10px 0;">
+      <span class="badge gold" style="margin-bottom: 8px;">VIP TRAVEL & AKSESUARLAR</span>
+      <h2 class="section-title">VIP Voyager Seyahat Çantası & GaN Şarj İstasyonu</h2>
+      <p class="lead-text">Özel jetlerde, süper yatlarda ve dünya seyahatlerinde tam bağımsızlık sunan taşınabilir zırhlı karbonfiber set.</p>
+
+      <div class="grid-2" style="margin-bottom: 14px; align-items: center;">
+        <div style="background:#090c14;border:1px solid rgba(212,175,55,0.25);border-radius:10px;overflow:hidden;aspect-ratio:4/3;">
+          <img src="05_NARION_VIP_Voyager_Case_ve_Pod.jpg" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+        <div>
+          <div class="card highlight" style="margin-bottom: 10px;">
+            <div style="font-size:10pt;font-weight:700;color:#fff;margin-bottom:4px;">Karbonfiber Zırhlı Seyahat Çantası</div>
+            <p style="font-size:8pt;color:#94a3b8;">Darbe sönümleyici sert kabuk, TSA onaylı şifreli kilit ve su geçirmez hava valfi. 1 Takım + 2 Smart HMD + 4 Batarya kapasitesi.</p>
+          </div>
+          <div class="card" style="margin-bottom: 10px;">
+            <div style="font-size:10pt;font-weight:700;color:#fff;margin-bottom:4px;">GaN Masaüstü Hızlı Şarj İstasyonu</div>
+            <p style="font-size:8pt;color:#94a3b8;">100W GaN teknolojisiyle aynı anda 4 adet 14.8V bataryayı 25 dakikada dolduran lüks alüminyum gövdeli baz istasyonu.</p>
+          </div>
+          <div class="card green">
+            <div style="font-size:10pt;font-weight:700;color:#fff;margin-bottom:4px;">RFID Flavour Pod Ekosistemi</div>
+            <p style="font-size:8pt;color:#94a3b8;">Mühürlü alüminyum aroma kapsülleri. Tütün tazeliğini 2 yıl korur, dökülme ve kömür kokusu olmadan 5 saniyede takılır.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:7.5pt;color:#d4af37;font-weight:700;">ÖLÇÜLER</span>
+          <div style="font-size:9pt;font-weight:700;color:#fff;margin-top:2px;">48 x 36 x 18 cm</div>
+          <div style="font-size:7.5pt;color:#94a3b8;">Kabin boyu uyumlu</div>
+        </div>
+        <div class="card">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:7.5pt;color:#10b981;font-weight:700;">AĞIRLIK</span>
+          <div style="font-size:9pt;font-weight:700;color:#fff;margin-top:2px;">4.2 kg (Tam Dolu Set)</div>
+          <div style="font-size:7.5pt;color:#94a3b8;">Ultra hafif karbonfiber</div>
+        </div>
+        <div class="card">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:7.5pt;color:#38bdf8;font-weight:700;">SERTİFİKASYON</span>
+          <div style="font-size:9pt;font-weight:700;color:#fff;margin-top:2px;">IP67 & TSA Approved</div>
+          <div style="font-size:7.5pt;color:#94a3b8;">Havacılık güvenlik onayı</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>NARION Voyager & GaN Ekosistemi</span>
+      <span>Sayfa 16 / 18</span>
+    </div>
+  </div>
+
+  <!-- ==================== SAYFA 17: TÜM 17 MODEL KARŞILAŞTIRMA MATRİSİ ==================== -->
+  <div class="cat-page">
+    <div class="page-header">
+      <div class="brand-meta">
+        <span class="brand-logo-text">NARION</span>
+        <span class="brand-col-tag">Teknik Spesifikasyon Matrisi</span>
+      </div>
+      <span class="page-num">17</span>
+    </div>
+
+    <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 10px 0;">
+      <span class="badge gold" style="margin-bottom: 6px;">TEKNİK KARŞILAŞTIRMA</span>
+      <h2 class="section-title">17 Modelin Teknik Ölçü ve Malzeme Matrisi</h2>
+      <p class="lead-text" style="margin-bottom: 8px;">Tüm modeller standart olarak gıda sınıfı AISI 304 paslanmaz çelik iç omurga, kırılmaz Tritan™ hazne ve 45° Bayonet kilit taşır:</p>
+
+      <table class="cat-table">
+        <thead>
+          <tr>
+            <th>MODEL ADI</th>
+            <th>SERİ</th>
+            <th>BOY</th>
+            <th>AĞIRLIK</th>
+            <th>GÖVDE MALZEMESİ</th>
+            <th>KİLİT SİSTEMİ</th>
+            <th>ÖZEL NİTELİK</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background:rgba(212,175,55,0.06);">
+            <td><strong>KOZA</strong></td>
+            <td>Lokomotif</td>
+            <td>420 mm</td>
+            <td>3.400 gr</td>
+            <td>Masif Amerikan Cevizi</td>
+            <td>45° Bayonet</td>
+            <td>Panoramik Su Penceresi</td>
+          </tr>
+          <tr>
+            <td><strong>LADİN</strong></td>
+            <td>Lokomotif</td>
+            <td>580 mm</td>
+            <td>3.150 gr</td>
+            <td>Balıksırtı Masif Meşe</td>
+            <td>45° Bayonet</td>
+            <td>İskandinav Dikey Çizgiler</td>
+          </tr>
+          <tr>
+            <td><strong>MANOLYA</strong></td>
+            <td>Lokomotif</td>
+            <td>620 mm</td>
+            <td>3.600 gr</td>
+            <td>Alüminyum & Şampanya Pirinç</td>
+            <td>45° Bayonet</td>
+            <td>360° Kristal Şeffaf Kafes</td>
+          </tr>
+          <tr>
+            <td><strong>ZEYTİN</strong></td>
+            <td>Modern</td>
+            <td>440 mm</td>
+            <td>2.800 gr</td>
+            <td>Doğal Masif Ceviz Kanat</td>
+            <td>45° Bayonet</td>
+            <td>Organik Akıcı Kanatlar</td>
+          </tr>
+          <tr>
+            <td><strong>ARDIÇ</strong></td>
+            <td>Modern</td>
+            <td>500 mm</td>
+            <td>3.050 gr</td>
+            <td>Titanyum PVD & Ahşap</td>
+            <td>45° Bayonet</td>
+            <td>Çizgisel Dikey Ritim</td>
+          </tr>
+          <tr>
+            <td><strong>KEMER</strong></td>
+            <td>Modern</td>
+            <td>560 mm</td>
+            <td>3.300 gr</td>
+            <td>CNC İşlenmiş AISI 304</td>
+            <td>45° Bayonet</td>
+            <td>Anıtsal Yay Formu</td>
+          </tr>
+          <tr>
+            <td><strong>YÖRÜNGE</strong></td>
+            <td>Modern</td>
+            <td>460 mm</td>
+            <td>3.100 gr</td>
+            <td>Havacılık Alüminyum Disk</td>
+            <td>45° Bayonet</td>
+            <td>Devrilmez Alçak Ağırlık</td>
+          </tr>
+          <tr>
+            <td><strong>ÇAKIL</strong></td>
+            <td>Modern</td>
+            <td>380 mm</td>
+            <td>2.450 gr</td>
+            <td>Saten Dokulu Paslanmaz</td>
+            <td>45° Bayonet</td>
+            <td>Pürüzsüz Taş Kavisleri</td>
+          </tr>
+          <tr>
+            <td><strong>SERVİ</strong></td>
+            <td>Prestij</td>
+            <td>680 mm</td>
+            <td>4.100 gr</td>
+            <td>Yüksek Fırçalanmış Çelik</td>
+            <td>45° Bayonet</td>
+            <td>Anıtsal En Uzun Boy</td>
+          </tr>
+          <tr>
+            <td><strong>YALIN</strong></td>
+            <td>Klasik</td>
+            <td>520 mm</td>
+            <td>3.200 gr</td>
+            <td>AISI 304 Paslanmaz Çelik</td>
+            <td>45° Bayonet</td>
+            <td>Saf Metalik Minimalizm</td>
+          </tr>
+          <tr>
+            <td><strong>AURA</strong></td>
+            <td>Prestij</td>
+            <td>600 mm</td>
+            <td>3.550 gr</td>
+            <td>Prizmatik Çelik & Ahşap</td>
+            <td>45° Bayonet</td>
+            <td>Gizli Ambiyans Işık Haresi</td>
+          </tr>
+          <tr>
+            <td><strong>MONOLİT</strong></td>
+            <td>Prestij</td>
+            <td>550 mm</td>
+            <td>3.750 gr</td>
+            <td>Tek Blok Oyma Alüminyum</td>
+            <td>45° Bayonet</td>
+            <td>Yekpare Monoblok Heykel</td>
+          </tr>
+          <tr>
+            <td><strong>İNCİ</strong></td>
+            <td>Prestij</td>
+            <td>480 mm</td>
+            <td>3.100 gr</td>
+            <td>Sedef Beyaz PVD Seramik</td>
+            <td>45° Bayonet</td>
+            <td>Şampanya Pirinç Detaylar</td>
+          </tr>
+          <tr>
+            <td><strong>PRİZMA</strong></td>
+            <td>Teknoloji</td>
+            <td>510 mm</td>
+            <td>3.250 gr</td>
+            <td>Fasetli Çelik Konstrüksiyon</td>
+            <td>45° Bayonet</td>
+            <td>Dikey Tahliye Difüzörü</td>
+          </tr>
+          <tr>
+            <td><strong>OCAK</strong></td>
+            <td>Teknoloji</td>
+            <td>470 mm</td>
+            <td>3.350 gr</td>
+            <td>Endüstriyel Masif Çelik</td>
+            <td>45° Bayonet</td>
+            <td>Köz Ocağı Kapalı Devre</td>
+          </tr>
+          <tr>
+            <td><strong>FENER</strong></td>
+            <td>Teknoloji</td>
+            <td>530 mm</td>
+            <td>3.400 gr</td>
+            <td>Marin Sınıfı Rüzgar Kafesi</td>
+            <td>45° Bayonet</td>
+            <td>Yat & Açık Hava Uyumu</td>
+          </tr>
+          <tr>
+            <td><strong>NOMAD</strong></td>
+            <td>Teknoloji</td>
+            <td>350 mm</td>
+            <td>2.150 gr</td>
+            <td>Ultra Kompakt Kopolyester</td>
+            <td>45° Bayonet</td>
+            <td>Özel Seyahat Çantası</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="page-footer">
+      <span>NARION Teknik Spesifikasyon Matrisi · Tüm 17 Model</span>
+      <span>Sayfa 17 / 18</span>
+    </div>
+  </div>
+
+  <!-- ==================== SAYFA 18: ARKA KAPAK (BACK COVER) ==================== -->
+  <div class="cat-page" style="justify-content: center; align-items: center; text-align: center; background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.08) 0%, transparent 60%), #07090e;">
+    <div style="position: absolute; top: 16mm; left: 18mm; right: 18mm; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 8px;">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:8pt;color:#d4af37;letter-spacing:2px;">NARION GLOBAL HQ</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:8pt;color:#64748b;">İSTANBUL, TR</span>
+    </div>
+
+    <div style="max-width: 150mm;">
+      <!-- Logo SVG -->
+      <div style="width: 60px; height: 60px; margin: 0 auto 20px; color: #d4af37;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round">
+          <circle cx="50" cy="50" r="35" stroke-dasharray="140 30" />
+          <line x1="50" y1="15" x2="50" y2="35" />
+          <line x1="20" y1="68" x2="35" y2="58" />
+          <line x1="80" y1="68" x2="65" y2="58" />
+        </svg>
+      </div>
+
+      <h2 style="font-size: 24pt; font-weight: 800; letter-spacing: 2px; color: #fff; margin-bottom: 8px;">NARION</h2>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9pt;color:#d4af37;letter-spacing:3px;margin-bottom:24px;">ALMITA GROUP</div>
+
+      <p style="font-size: 10pt; color: #94a3b8; line-height: 1.6; margin-bottom: 28px;">
+        NARION ürünleri, patentli bayonet kilit mekanizması ve kırılmaz havacılık kopolyesteri haznesiyle İstanbul'daki atölyemizde hassas toleranslarla üretilmektedir.
+      </p>
+
+      <div style="background:rgba(18,24,38,0.7);border:1px solid rgba(212,175,55,0.25);border-radius:12px;padding:16px 20px;margin-bottom:24px;text-align:left;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:8pt;">
+          <div>
+            <span style="color:#64748b;font-family:'JetBrains Mono',monospace;">RESMİ WEB SİTESİ</span>
+            <div style="color:#fff;font-weight:700;margin-top:2px;">www.narionhookah.com</div>
+          </div>
+          <div>
+            <span style="color:#64748b;font-family:'JetBrains Mono',monospace;">E-POSTA & İLETİŞİM</span>
+            <div style="color:#fff;font-weight:700;margin-top:2px;">info@narionhookah.com</div>
+          </div>
+          <div>
+            <span style="color:#64748b;font-family:'JetBrains Mono',monospace;">MERKEZ OFİS</span>
+            <div style="color:#cbd5e1;margin-top:2px;">Almita Group, İstanbul, Türkiye</div>
+          </div>
+          <div>
+            <span style="color:#64748b;font-family:'JetBrains Mono',monospace;">B2B & DİSTRİBÜTÖRLÜK</span>
+            <div style="color:#d4af37;font-weight:700;margin-top:2px;">Özel Randevu & Demo Talebi</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="font-family:'JetBrains Mono',monospace;font-size:7.5pt;color:#64748b;">
+        © 2026 NARION Hookah Architecture. Tüm hakları saklıdır.<br>
+        Tritan™ is a trademark of Eastman Chemical Company.
+      </div>
+    </div>
+
+    <div style="position: absolute; bottom: 14mm; left: 18mm; right: 18mm; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 8px; font-size: 7.5pt; color: #64748b; font-family:'JetBrains Mono',monospace;">
+      <span>NARION RESMİ KOLEKSİYON KATALOĞU</span>
+      <span>SERİ 01 • BASKI 2026</span>
+    </div>
+  </div>
+
+</body>
+</html>
