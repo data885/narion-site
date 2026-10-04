@@ -1052,3 +1052,26 @@ label {
    Yan etki: kart metni fareyle secilemez — urun izgaralarinda olagan. */
 .card[style*="padding:0"] h3,
 .card[style*="padding:0"] p { position: relative; z-index: 3; pointer-events: none; }
+
+/* ================================================================
+   SAĞDAN SOLA (Arapça)
+   Düzenin kendisi flex/grid olduğu için dir="rtl" ile kendiliğinden
+   döner. Burada yalnızca yöne sabitlenmiş birkaç bildirim aynalanır.
+   ================================================================ */
+
+[dir="rtl"] .announce-badge { margin-right: 0; margin-left: 8px; }
+
+[dir="rtl"] .menu   { margin-left: 0; margin-right: auto; }
+[dir="rtl"] .menu a { margin-right: 0; margin-left: 12px; }
+[dir="rtl"] .burger { margin-left: 0; margin-right: auto; }
+
+[dir="rtl"] .luxe-table th,
+[dir="rtl"] .luxe-table td { text-align: right; }
+
+[dir="rtl"] .mcard .badge { left: auto; right: 14px; }
+
+[dir="rtl"] .calc .out { border-left: none; border-right: 1px solid var(--line); }
+
+/* dekoratif isik lekeleri — dengeyi korumak icin aynalanir */
+[dir="rtl"] .hero-glow-1 { right: auto; left: -5%; }
+[dir="rtl"] .hero-glow-2 { left: auto; right: 10%; }
