@@ -313,6 +313,12 @@
 </footer>
 
 <script>
+// Gorsel klasorunun yolu <img>'in kendi src'sinden turetilir:
+// sayfa hem kokte hem /tr/ /en/ /ar/ /ru/ altinda calisiyor.
+const GORSEL_KOK = (document.getElementById('sum-img')
+  ? document.getElementById('sum-img').getAttribute('src').replace(/gorsel\/.*$/, '')
+  : '') + 'gorsel/';
+
 function updateSummary() {
   const modelSelect = document.getElementById('cust-model');
   const selectedModel = modelSelect.value;
@@ -327,17 +333,17 @@ function updateSummary() {
   document.getElementById('sum-model-name').innerText = modelBase;
   
   if (selectedModel.includes('KOZA')) {
-    document.getElementById('sum-img').src = 'gorsel/model-narion-koza.webp';
+    document.getElementById('sum-img').src = GORSEL_KOK + 'model-narion-koza.webp';
   } else if (selectedModel.includes('LADİN')) {
-    document.getElementById('sum-img').src = 'gorsel/model-narion-ladin.webp';
+    document.getElementById('sum-img').src = GORSEL_KOK + 'model-narion-ladin.webp';
   } else if (selectedModel.includes('MANOLYA')) {
-    document.getElementById('sum-img').src = 'gorsel/model-narion-manolya.webp';
+    document.getElementById('sum-img').src = GORSEL_KOK + 'model-narion-manolya.webp';
   } else if (selectedModel.includes('VOYAGER')) {
-    document.getElementById('sum-img').src = 'gorsel/05-narion-nomad.png';
+    document.getElementById('sum-img').src = GORSEL_KOK + 'kutu-narion-nomad.webp';
   } else if (selectedModel.includes('KUBBE')) {
-    document.getElementById('sum-img').src = 'gorsel/06-narion-servi.png';
+    document.getElementById('sum-img').src = GORSEL_KOK + 'kutu-narion-servi.webp';
   } else {
-    document.getElementById('sum-img').src = 'gorsel/hmd-sarj.jpg';
+    document.getElementById('sum-img').src = GORSEL_KOK + 'hmd-sarj.jpg';
   }
 
   if (isFullHmd) {
