@@ -1030,10 +1030,28 @@ label {
 .burger { display: none; background: none; border: 1px solid var(--line); width: 42px; height: 38px; border-radius: 6px; cursor: pointer; }
 .burger span { display: block; width: 20px; height: 2px; background: var(--text-main); margin: 4px auto; }
 @media (max-width: 1024px) {
-  .menu { display: none; position: absolute; top: 76px; left: 0; right: 0; background: #0c0b0f; border-bottom: 1px solid var(--line); flex-direction: column; padding: 20px; }
-  .menu.open { display: flex; }
+  /* Başlık tek satırdan iki satıra sarar: üstte logo + düğme, altta panel.
+     Mutlak konumlandırma yok — panel yüksekliğini hesaplamak gerekmiyor. */
+  .head-in { flex-wrap: wrap; height: auto; min-height: 76px; }
   .burger { display: block; margin-left: auto; }
-  .head-cta { display: none; }
+
+  .menu, .head-cta { display: none; flex-basis: 100%; }
+
+  .head-in.acik .menu {
+    display: flex; flex-direction: column; align-items: stretch;
+    gap: 2px; margin: 0 0 4px; padding-top: 10px;
+    border-top: 1px solid var(--line);
+  }
+  .head-in.acik .menu > .mi > a { padding: 13px 10px; font-size: 15px; }
+
+  /* Dil seçici ve iki CTA da panelde: önceden head-cta tümden gizliydi,
+     yani telefonda dil değiştirilemiyor ve ön kayıt düğmesi görünmüyordu. */
+  .head-in.acik .head-cta {
+    display: flex; flex-direction: column; align-items: stretch;
+    gap: 10px; padding: 4px 0 18px;
+  }
+  .head-in.acik .head-cta .langs { justify-content: center; }
+  .head-in.acik .head-cta .btn { width: 100%; text-align: center; }
 }
 
 
@@ -1089,3 +1107,42 @@ label {
 /* yuklenene kadar kutu zıplamasın */
 .film-kare::before { content: ""; display: block; padding-top: 56.25%; }
 .film-kare video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+
+/* ---------- mobil düzen düzeltmeleri ---------- */
+@media (max-width: 900px) {
+  /* .hero-in hiçbir kırılma noktasında tek sütuna inmiyordu; 375px'te
+     görsel kart ~117px'e sıkışıp içindeki rozet ekran dışına taşıyordu. */
+  .hero-in { grid-template-columns: 1fr; gap: 36px; }
+  .hero { min-height: 0; padding-block: 44px; }
+  .hero-stats { grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 32px; padding-top: 24px; }
+}
+@media (max-width: 520px) {
+  .hero-stats { grid-template-columns: 1fr; gap: 18px; }
+  .hero-pill { left: 14px; right: 14px; bottom: 14px; padding: 12px 14px; flex-wrap: wrap; gap: 10px; }
+  .hero-pill .btn { width: 100%; text-align: center; }
+}
+/* Dekoratif ışık lekeleri taşmayı tetikliyordu */
+.hero, .sec { overflow-x: clip; }
+
+/* ---------- geniş teknik tablolar ----------
+   .luxe-table width:100% ama 4 sütunlu Türkçe metin 375px'e sığmıyordu;
+   tablo kadrajın dışına taşıyordu. Kap yatay kaydırma veriyor, dar ekranda
+   kenardan kenara açılıyor ki kaydırılabildiği görünsün. */
+.tablo-kaydir { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+@media (max-width: 760px) {
+  .tablo-kaydir {
+    margin-inline: calc(var(--gut) * -1);
+    padding-inline: var(--gut);
+  }
+  .tablo-kaydir .luxe-table { min-width: 560px; }
+  .luxe-table th, .luxe-table td { padding: 12px 14px; font-size: 13px; }
+}
+
+
+/* Dokunma hedefi: başlıktaki dil seçici ve küçük bağlantılar
+   36px altındaydı; parmakla isabet ettirmek zordu. */
+@media (max-width: 1024px) {
+  .langs a { padding: 10px 14px; }
+  .site-foot a { display: inline-block; padding-block: 6px; }
+}

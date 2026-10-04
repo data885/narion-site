@@ -406,6 +406,33 @@
     .cat-table tr:hover td {
       background: rgba(255, 255, 255, 0.02);
     }
+  
+    /* ---------- mobil ----------
+       .cat-page sabit A4 (210mm ~ 794px); telefonda sayfa 584px'e taşıp
+       yatay kaydırma yaratıyordu. Sayfayı kadraja ölçekliyoruz; metin
+       küçülüyor ama düzen bozulmuyor ve parmakla yakınlaştırma açık.
+       Okumak isteyen üstteki PDF düğmesini kullanır. */
+    @media screen and (max-width: 860px) { :root { --kat-olcek: 0.92; } }
+    @media screen and (max-width: 768px) { :root { --kat-olcek: 0.80; } }
+    @media screen and (max-width: 640px) { :root { --kat-olcek: 0.66; } }
+    @media screen and (max-width: 480px) { :root { --kat-olcek: 0.52; } }
+    @media screen and (max-width: 400px) { :root { --kat-olcek: 0.44; } }
+
+    @media screen and (max-width: 860px) {
+      html, body { overflow-x: hidden; }
+      body { padding: 14px 0 92px; }
+      .cat-page {
+        transform: scale(var(--kat-olcek));
+        transform-origin: top center;
+        margin-bottom: calc(297mm * (var(--kat-olcek) - 1) + 16px);
+      }
+      .toolbar {
+        left: 12px; right: 12px; transform: none;
+        border-radius: 14px; flex-wrap: wrap; justify-content: center;
+        padding: 10px 12px; gap: 8px;
+      }
+      .toolbar-btn { flex: 1 1 auto; text-align: center; }
+    }
   </style>
 </head>
 <body>
@@ -448,7 +475,7 @@
         <div>•</div>
         <div><strong>%100</strong> BPA-FREE TRITAN™</div>
         <div>•</div>
-        <div><strong>45°</strong> ÇEYREK TUR BAYONET</div>
+        <div><strong>45°</strong> BAYONET KİLİT</div>
         <div>•</div>
         <div><strong>0.0 PPM</strong> CO</div>
       </div>
