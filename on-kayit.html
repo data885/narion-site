@@ -7,7 +7,7 @@
 <meta name="description" content="NARION nargile takımları ve Smart HMD elektrikli közlük için bireysel ön kayıt sayfası. Seri 01 numaralı ilk partide yerinizi ayırtın.">
 <link rel="icon" type="image/svg+xml" href="logo/favicon.svg">
 <link rel="apple-touch-icon" href="logo/apple-touch-icon-180.png">
-<link rel="stylesheet" href="assets/style.css?v=10">
+<link rel="stylesheet" href="assets/style.css?v=12">
 </head>
 <body>
 
@@ -106,31 +106,32 @@
           <span class="eyebrow">Rezervasyon Detayları</span>
           <h2 style="margin-bottom:24px">Ön Kayıt Formu</h2>
 
-          <form id="preorder-form" onsubmit="handlePreorder(event)">
+          <form id="preorder-form" data-narion="on-kayit" data-basari="form-success">
+            <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label>Web sitesi<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
               <div>
                 <label>Adınız Soyadınız *</label>
-                <input type="text" id="cust-name" required placeholder="Örn: Burak Kaya">
+                <input type="text" id="cust-name" name="f_ad" data-etiket="Ad Soyad" required placeholder="Örn: Burak Kaya">
               </div>
               <div>
                 <label>Telefon / WhatsApp *</label>
-                <input type="tel" id="cust-phone" required placeholder="+90 532 000 0000">
+                <input type="tel" id="cust-phone" name="f_tel" data-etiket="Telefon" required placeholder="+90 532 000 0000">
               </div>
             </div>
 
             <div style="margin-bottom:16px">
               <label>E-posta Adresiniz *</label>
-              <input type="email" id="cust-email" required placeholder="burak@ornek.com">
+              <input type="email" id="cust-email" name="f_eposta" data-etiket="E-posta" required placeholder="burak@ornek.com">
             </div>
 
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
               <div>
                 <label>Şehir / Ülke *</label>
-                <input type="text" id="cust-city" required placeholder="İstanbul / Türkiye">
+                <input type="text" id="cust-city" name="f_sehir" data-etiket="Şehir / Ülke" required placeholder="İstanbul / Türkiye">
               </div>
               <div>
                 <label>Model Tercihiniz *</label>
-                <select id="cust-model" onchange="updateSummary()">
+                <select id="cust-model" name="f_model" data-etiket="Model" onchange="updateSummary()">
                 <option value="NARION KOZA (Amiral Gemisi - Masif Ceviz)">NARION KOZA (Amiral Gemisi - Masif Ceviz)</option>
                 <option value="NARION LADİN (İskandinav - Masif Meşe)">NARION LADİN (İskandinav - Masif Meşe)</option>
                 <option value="NARION MANOLYA (Modern İskelet & Tritan)">NARION MANOLYA (Modern İskelet & Tritan)</option>
@@ -156,14 +157,14 @@
             <div style="margin-bottom:20px;background:var(--card);padding:20px;border-radius:10px;border:1px solid var(--card-border-gold)">
               <div style="font-size:14px;font-weight:600;margin-bottom:12px;color:var(--gold-light)">Smart HMD Elektrikli Közlük Paketi</div>
               <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:14px;margin-bottom:10px;color:var(--text-main)">
-                <input type="radio" name="hmd-pack" value="full" checked onchange="updateSummary()" style="margin-top:3px;width:auto">
+                <input type="radio" name="f_paket" data-etiket="Paket" data-metin="Tam Paket (Smart HMD dahil)" value="full" checked onchange="updateSummary()" style="margin-top:3px;width:auto">
                 <div>
                   <strong>Tam Paket: Kablosuz Smart HMD Dahil (+2. Batarya Hediyeli)</strong>
                   <div style="font-size:12.5px;color:var(--text-muted)">0 ppm Karbonmonoksit, 14.8V batarya, PID ısı kilitli seramik rezistans.</div>
                 </div>
               </label>
               <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:14px;color:var(--text-main)">
-                <input type="radio" name="hmd-pack" value="classic" onchange="updateSummary()" style="margin-top:3px;width:auto">
+                <input type="radio" name="f_paket" data-etiket="Paket" data-metin="Geleneksel Takım (Smart HMD yok)" value="classic" onchange="updateSummary()" style="margin-top:3px;width:auto">
                 <div>
                   <strong>Yalnızca Geleneksel Takım (Smart HMD Olmadan)</strong>
                   <div style="font-size:12.5px;color:var(--text-muted)">Geleneksel lüle contası ve paslanmaz kömür maşası paketiyle.</div>
@@ -173,7 +174,7 @@
 
             <div style="margin-bottom:16px">
               <label>Gövde Kaplama & Renk Tercihi</label>
-              <select id="cust-finish">
+              <select id="cust-finish" name="f_kaplama" data-etiket="Kaplama">
                 <option value="Mat Antrasit (PVD Titanyum)">Mat Antrasit (PVD Titanyum Kaplama)</option>
                 <option value="Doğal Masif Ceviz / Şampanya Pirinç">Doğal Masif Ceviz & Şampanya Pirinç</option>
                 <option value="Füme Titanyum & Gümüş">Füme Titanyum & Eloksallı Gümüş</option>
@@ -183,7 +184,7 @@
 
             <div style="margin-bottom:24px">
               <label>Özel Lazer Gravür Notunuz (İsteğe Bağlı)</label>
-              <input type="text" id="cust-note" placeholder="Örn: Gövdeye 'B.KAYA' lazer işlemesi rica ediyorum.">
+              <input type="text" id="cust-note" name="f_not" data-etiket="Gravür notu" placeholder="Örn: Gövdeye 'B.KAYA' lazer işlemesi rica ediyorum.">
             </div>
 
             <button type="submit" class="btn gold" style="width:100%;padding:14px;border:none">
@@ -346,7 +347,7 @@ const MODEL_GORSEL = {
 function updateSummary() {
   const modelSelect = document.getElementById('cust-model');
   const selectedModel = modelSelect.value;
-  const hmdRadios = document.getElementsByName('hmd-pack');
+  const hmdRadios = document.getElementsByName('f_paket');
   let isFullHmd = true;
   for (let r of hmdRadios) {
     if (r.checked && r.value === 'classic') isFullHmd = false;
@@ -382,33 +383,35 @@ function updateSummary() {
   updateSummary();
 })();
 
-function handlePreorder(e) {
-  e.preventDefault();
-  const name = document.getElementById('cust-name').value;
-  const model = document.getElementById('cust-model').value;
-  const hmdRadios = document.getElementsByName('hmd-pack');
-  let packText = 'Tam Paket: Smart HMD Elektrikli Közlük (+2. Batarya)';
-  for (let r of hmdRadios) {
-    if (r.checked && r.value === 'classic') {
-      packText = 'Geleneksel Takım Paketi';
+// Başarı panelini DOLDURUR; göstermez. Gösterme kararı assets/form.js'te,
+// yalnızca sunucu talebi gerçekten aldıysa veriliyor. Rezervasyon kodu da
+// sunucudan gelir — eskiden burada Math.random() ile uyduruluyordu.
+window.narionBasariOncesi = function (form, yanit) {
+  if (form.id !== 'preorder-form') return;
+  var al = function (ad) {
+    var e = form.querySelector('[name="' + ad + '"]');
+    if (!e) return '';
+    if (e.type === 'radio') {
+      var s = form.querySelector('[name="' + ad + '"]:checked');
+      return s ? (s.getAttribute('data-metin') || s.value) : '';
     }
-  }
-
-  document.getElementById('succ-name').innerText = name;
-  document.getElementById('succ-model').innerText = model;
-  document.getElementById('succ-pack').innerText = packText;
-  
-  const randNum = Math.floor(1000 + Math.random() * 9000);
-  document.getElementById('succ-code').innerText = 'NAR-2026-B1-' + randNum;
-
-  document.getElementById('preorder-form').style.display = 'none';
-  document.getElementById('form-success').style.display = 'block';
-  document.getElementById('form-success').scrollIntoView({ behavior: 'smooth' });
-}
+    if (e.tagName === 'SELECT') return e.options[e.selectedIndex] ? e.options[e.selectedIndex].text : '';
+    return e.value;
+  };
+  var yaz = function (id, deger) {
+    var e = document.getElementById(id);
+    if (e) e.innerText = deger;
+  };
+  yaz('succ-name', al('f_ad'));
+  yaz('succ-model', al('f_model'));
+  yaz('succ-pack', al('f_paket'));
+  if (yanit && yanit.kod) yaz('succ-code', yanit.kod);
+};
 
 </script>
 
 
 <script src="assets/menu.js?v=1" defer></script>
+<script src="assets/form.js?v=2" defer></script>
 </body>
 </html>

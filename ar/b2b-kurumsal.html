@@ -257,32 +257,38 @@
       </div>
 
       <div style="max-width:680px;margin:0 auto;background:var(--card);border:1px solid var(--card-border);padding:36px;border-radius:16px">
-        <form id="b2b-contact-form" onsubmit="event.preventDefault(); document.getElementById('b2b-form-success').style.display='block'; this.style.display='none';">
+        <form id="b2b-contact-form" data-narion="b2b" data-basari="b2b-form-success">
+              <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label>الموقع الإلكتروني<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
             <div>
               <label>اسم المسؤول الكامل *</label>
-              <input type="text" required placeholder="الاسم الكامل">
+              <input type="text" name="f_ad" data-etiket="Yetkili" required placeholder="الاسم الكامل">
             </div>
             <div>
               <label>اسم المنشأة / الصالة *</label>
-              <input type="text" required placeholder="مثال: Bosphorus Lounge">
+              <input type="text" name="f_isletme" data-etiket="İşletme" required placeholder="مثال: Bosphorus Lounge">
             </div>
           </div>
 
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
             <div>
               <label>رقم الهاتف *</label>
-              <input type="tel" required placeholder="+90 5XX XXX XX XX">
+              <input type="tel" name="f_tel" data-etiket="Telefon" required placeholder="+90 5XX XXX XX XX">
             </div>
             <div>
               <label>المدينة / المنطقة *</label>
-              <input type="text" required placeholder="إسطنبول / بشيكتاش">
+              <input type="text" name="f_sehir" data-etiket="Şehir" required placeholder="إسطنبول / بشيكتاش">
             </div>
           </div>
 
           <div style="margin-bottom:16px">
+            <label>البريد الإلكتروني</label>
+            <input type="email" name="f_eposta" data-etiket="E-posta" placeholder="name@business.com">
+          </div>
+
+          <div style="margin-bottom:16px">
             <label>عدد طاولات النرجيلة العاملة *</label>
-            <select>
+            <select name="f_masa" data-etiket="Masa sayısı">
               <option>10 – 20 طاولة</option>
               <option>20 – 40 طاولة</option>
               <option>40 – 80 طاولة</option>
@@ -292,7 +298,7 @@
 
           <div style="margin-bottom:24px">
             <label>الطراز المفضّل</label>
-            <select>
+            <select name="f_model" data-etiket="Tercih edilen model">
               <option>النموذج أ: تأجير HaaS (شهريًا)</option>
               <option>النموذج ب: الشراء والتملّك</option>
               <option>أرغب بعرض ميداني أولًا</option>
@@ -397,5 +403,6 @@ function updateB2BCalc(daily) {
 
 
 <script src="../assets/menu.js?v=1" defer></script>
+<script src="../assets/form.js?v=2" defer></script>
 </body>
 </html>

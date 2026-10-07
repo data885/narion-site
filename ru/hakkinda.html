@@ -178,26 +178,27 @@
           <div class="card card-gold" style="padding:36px">
             <h3 style="margin-bottom:20px">Отправьте сообщение</h3>
             
-            <form id="contact-form" onsubmit="event.preventDefault(); document.getElementById('contact-form-ok').style.display='block'; this.style.display='none';">
+            <form id="contact-form" data-narion="iletisim" data-basari="contact-form-ok">
+              <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label>Веб-сайт<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
               <div style="margin-bottom:16px">
                 <label>Имя и фамилия *</label>
-                <input type="text" required placeholder="Имя и фамилия">
+                <input type="text" name="f_ad" data-etiket="Ad Soyad" required placeholder="Имя и фамилия">
               </div>
 
               <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
                 <div>
                   <label>Адрес электронной почты *</label>
-                  <input type="email" required placeholder="name@example.com">
+                  <input type="email" name="f_eposta" data-etiket="E-posta" required placeholder="name@example.com">
                 </div>
                 <div>
                   <label>Телефон</label>
-                  <input type="tel" placeholder="+90 5XX XXX XX XX">
+                  <input type="tel" name="f_tel" data-etiket="Telefon" placeholder="+90 5XX XXX XX XX">
                 </div>
               </div>
 
               <div style="margin-bottom:16px">
                 <label>Тема *</label>
-                <select>
+                <select name="f_konu" data-etiket="Konu">
                   <option>Частное бронирование и информация</option>
                   <option>Партнёрство с кафе и лаунжами (B2B)</option>
                   <option>Дистрибуция и дилерство</option>
@@ -207,7 +208,7 @@
 
               <div style="margin-bottom:24px">
                 <label>Ваше сообщение *</label>
-                <textarea rows="4" required placeholder="Напишите своё сообщение здесь…"></textarea>
+                <textarea rows="4" name="f_mesaj" data-etiket="Mesaj" required placeholder="Напишите своё сообщение здесь…"></textarea>
               </div>
 
               <button type="submit" class="btn gold" style="width:100%;padding:14px;border:none">Отправить сообщение →</button>
@@ -295,5 +296,6 @@
 
 
 <script src="../assets/menu.js?v=1" defer></script>
+<script src="../assets/form.js?v=2" defer></script>
 </body>
 </html>

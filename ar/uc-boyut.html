@@ -19,24 +19,16 @@
 <link rel="stylesheet" href="../font/narion-fontlar.css">
 <style>
 :root{
-  color-scheme: light;
-  --bg:        #ffffff;
-  --bg-2:      #f7f7f7;
-  --surface:   #fbfbfb;
-  --surface-2: #f2f2f2;
-  --line:      #e9e9e9;
-  --line-2:    #cfcfcf;
-  --ink:       #111111;
-  --muted:     #5e5e5e;
-  --faint:     #8a8a8a;
-  --accent:    #1a1a1a;
-  --accent-2:  #6d6d6d;
-  --steel:     #6d6d6d;
-  --gunmetal:  #4a5157;
-  --tritan:    #9fb6c0;
-  --ok:        #2c7a57;
-  --warn:      #8a5a12;
-  --no:        #a33636;
+  color-scheme: dark;
+      --bg: #09090b; --bg-2: #0f0f13; --surface: #141419; --surface-2: #1a1a22;
+      --line: rgba(255,255,255,.08); --line-2: rgba(255,255,255,.16);
+      --ink: #f5f5f7; --muted: #9c9ca4; --faint: #8b8b96;
+      --accent: #d4af37; --accent-2: #f3e5ab;
+      --steel: #9aa3ab; --gunmetal: #8a949c; --tritan: #9fb6c0;
+      --ok: #2fd47a; --warn: #e0a93a; --no: #ef5f5f;
+      --muted-2: #7e7e88; --line-strong: rgba(255,255,255,.16);
+      --accent-soft: rgba(212,175,55,.08);
+      --f-body: var(--f-sans); --f-display: var(--f-sans);
   --f-sans: "IBM Plex Sans","IBM Plex Sans Arabic",-apple-system,"Segoe UI",Roboto,sans-serif;
   --f-mono: "IBM Plex Mono",ui-monospace,Menlo,monospace;
   --w: 1140px;
@@ -57,12 +49,12 @@ a:hover{color:#e0c79a}
 .wrap{max-width:var(--w); margin:0 auto; padding-inline:var(--gut)}
 
 /* skip link */
-.skip{position:absolute; inset-inline-start:-9999px; top:0; background:var(--accent); color:#fff;
+.skip{position:absolute; inset-inline-start:-9999px; top:0; background:var(--accent); color:#09090b;
   padding:10px 16px; z-index:99; font-weight:600}
 .skip:focus{inset-inline-start:0}
 
 /* ---------- üst bar ---------- */
-.top{position:sticky; top:0; z-index:40; background:rgba(255,255,255,.92);
+.top{position:sticky; top:0; z-index:40; background:rgba(9,9,11,.88);
   backdrop-filter:blur(10px); border-bottom:1px solid var(--line)}
 .topin{display:flex; align-items:center; gap:22px; height:62px}
 .brand{display:flex; align-items:center; gap:11px; text-decoration:none; color:var(--ink); flex:none}
@@ -88,7 +80,7 @@ nav.main a[aria-current]{box-shadow:0 2px 0 var(--accent)}
 .nav-alt a{padding:8px 16px; font-size:13.5px; white-space:nowrap}
 .nav-alt a:hover{background:var(--surface-2); color:var(--ink)}
 .nav-alt .alt-baslik{padding:9px 16px 4px; font-size:10.5px; letter-spacing:.14em;
-  text-transform:uppercase; color:var(--muted-2,#9a9a9a); border-top:1px solid var(--line);
+  text-transform:uppercase; color:var(--muted-2); border-top:1px solid var(--line);
   margin-top:5px}
 .nav-alt a.alt-ayrac{border-top:1px solid var(--line); margin-top:5px;
   padding-top:11px; color:var(--accent)}
@@ -100,7 +92,7 @@ nav.main a[aria-current]{box-shadow:0 2px 0 var(--accent)}
 .langs a{font-family:var(--f-mono); font-size:10.5px; letter-spacing:.09em; text-transform:uppercase;
   color:var(--faint); text-decoration:none; padding:4px 7px}
 .langs a:hover{color:var(--ink)}
-.langs a[aria-current]{background:var(--accent); color:#fff}
+.langs a[aria-current]{background:var(--accent); color:#09090b}
 @media(max-width:900px){
   .topin{height:auto; flex-wrap:wrap; padding-block:12px; gap:10px 14px}
   .brand{flex:1}
@@ -236,12 +228,12 @@ tbody tr:last-child td{border-bottom:none}
 tbody td:first-child{color:var(--ink); font-weight:500}
 td.num{font-family:var(--f-mono); font-variant-numeric:tabular-nums; white-space:nowrap;
   unicode-bidi:isolate}
-tr.pick td{background:#f4f4f4}
+tr.pick td{background:rgba(212,175,55,.08)}
 .tag{display:inline-block; font-family:var(--f-mono); font-size:10px; font-weight:600;
   letter-spacing:.08em; text-transform:uppercase; padding:3px 8px; border:1px solid; white-space:nowrap}
-.t-ok{color:var(--ok); border-color:var(--ok); background:#eaf5ef}
-.t-no{color:var(--no); border-color:var(--no); background:#faecec}
-.t-warn{color:var(--warn); border-color:var(--warn); background:#f8f0e2}
+.t-ok{color:var(--ok); border-color:var(--ok); background:rgba(47,212,122,.12)}
+.t-no{color:var(--no); border-color:var(--no); background:rgba(239,95,95,.12)}
+.t-warn{color:var(--warn); border-color:var(--warn); background:rgba(224,169,58,.12)}
 
 /* ---------- karşılaştırma tablosu ---------- */
 table.kiyas{min-width:640px}
@@ -308,7 +300,7 @@ html[dir="rtl"] .btnbox:hover .ar{transform:scaleX(-1) translateX(4px)}
   border:1px solid var(--accent); color:var(--accent); text-decoration:none;
   font-family:var(--f-mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase;
   font-weight:600; margin-top:22px}
-.btnbox:hover{background:var(--accent); color:#fff}
+.btnbox:hover{background:var(--accent); color:#09090b}
 /* e-posta ve alan adı: uppercase YAPILMAZ.
    Türkçe sayfada lang="tr" olduğu için tarayıcı i→İ dönüşümü uygular ve
    info@… adresi İNFO@NARİONHOOKAH.COM olur; tıklanabilir adres bozulmuş görünür. */
@@ -414,21 +406,21 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
 .config-step-note{font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.5}
 .config-model-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
 .config-m-card{border:1px solid var(--line);background:var(--bg);padding:10px 8px;cursor:pointer;display:flex;flex-direction:column;align-items:center;text-align:center;transition:border-color .15s,transform .15s}
-.config-m-card:hover{border-color:var(--line-2,#888);transform:translateY(-2px)}
-.config-m-card.is-active{border-color:var(--accent);background:var(--surface-2,rgba(150,101,43,.06))}
+.config-m-card:hover{border-color:var(--line-2);transform:translateY(-2px)}
+.config-m-card.is-active{border-color:var(--accent);background:var(--surface-2)}
 .config-m-thumb{width:100%;height:94px;object-fit:contain;margin-bottom:6px}
 .config-m-name{font-size:12.5px;font-weight:600;line-height:1.2}
 .config-m-sub{font-family:var(--f-mono);font-size:10px;color:var(--faint);margin-top:2px}
 .config-swatch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
 .config-swatch-item{border:1px solid var(--line);background:var(--bg);padding:11px 13px;cursor:pointer;display:flex;align-items:center;gap:10px;transition:border-color .15s}
-.config-swatch-item:hover{border-color:var(--line-2,#888)}
-.config-swatch-item.is-active{border-color:var(--accent);background:var(--surface-2,rgba(150,101,43,.06))}
+.config-swatch-item:hover{border-color:var(--line-2)}
+.config-swatch-item.is-active{border-color:var(--accent);background:var(--surface-2)}
 .config-swatch-dot{width:20px;height:20px;border-radius:50%;flex-shrink:0;border:1px solid rgba(0,0,0,.2);box-shadow:inset 0 1px 3px rgba(0,0,0,.25)}
 .config-swatch-label{font-size:12.5px;font-weight:500;line-height:1.3}
 .config-addon-list{display:flex;flex-direction:column;gap:8px}
 .config-addon-item{border:1px solid var(--line);background:var(--bg);padding:11px 14px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:border-color .15s}
-.config-addon-item:hover{border-color:var(--line-2,#888)}
-.config-addon-item.is-active{border-color:var(--accent);background:var(--surface-2,rgba(150,101,43,.06))}
+.config-addon-item:hover{border-color:var(--line-2)}
+.config-addon-item.is-active{border-color:var(--accent);background:var(--surface-2)}
 .config-addon-left{display:flex;align-items:center;gap:10px}
 .config-addon-title{font-size:13px;font-weight:500}
 .config-addon-sub{font-size:11.5px;color:var(--muted)}
@@ -460,7 +452,7 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
 .summary-actions{display:flex;flex-direction:column;gap:9px}
 .btn-dl{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;padding:11px;background:var(--bg);border:1px solid var(--line);color:var(--ink);font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;font-weight:600;transition:border-color .15s}
 .btn-dl:hover{border-color:var(--accent);color:var(--accent)}
-.btn-quote{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;background:var(--accent);color:#fff;border:none;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;font-weight:600;text-decoration:none}
+.btn-quote{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;background:var(--accent);color:#09090b;border:none;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;font-weight:600;text-decoration:none}
 .btn-quote:hover{opacity:.92}
 
 
@@ -483,7 +475,7 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
 .htop{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);
   border:1px solid var(--line);border-top:none}
 @media(max-width:700px){.htop{grid-template-columns:1fr}}
-.htop>div{background:var(--accent-soft,rgba(150,101,43,.08));padding:16px 18px;
+.htop>div{background:var(--accent-soft);padding:16px 18px;
   display:flex;flex-direction:column;gap:3px}
 .htop .l{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 .htop .v{font-family:var(--f-display);font-size:27px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.1}
@@ -493,12 +485,12 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
 /* --- kafe logosu onizleme --- */
 .lgrid{display:grid;grid-template-columns:1fr 250px;gap:22px;margin-top:20px;align-items:start}
 @media(max-width:820px){.lgrid{grid-template-columns:1fr}}
-#lg-tuval{width:100%;height:auto;display:block;border:1px solid var(--line);background:var(--surface-2,#eee)}
+#lg-tuval{width:100%;height:auto;display:block;border:1px solid var(--line);background:var(--surface-2)}
 .lg-sag{display:flex;flex-direction:column;gap:14px}
 .lg-yukle{display:block;cursor:pointer}
 .lg-yukle input{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}
 .lg-yukle span{display:block;text-align:center;font-family:var(--f-mono);font-size:12px;
-  letter-spacing:.05em;padding:13px 16px;border:1px dashed var(--line-strong,var(--line));
+  letter-spacing:.05em;padding:13px 16px;border:1px dashed var(--line-strong);
   background:var(--surface);color:var(--muted);transition:border-color .15s,color .15s}
 .lg-yukle:hover span{border-color:var(--accent);color:var(--accent)}
 .lg-yukle input:focus-visible+span{outline:2px solid var(--accent);outline-offset:2px}
@@ -786,7 +778,7 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
     <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:24px;">
       
       <!-- Kart 1: VIP Lüks Kutu -->
-      <div style="background:#fff; border:1px solid var(--line); border-radius:4px; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 2px 8px rgba(0,0,0,.03);">
+      <div style="background:var(--surface); border:1px solid var(--line); border-radius:4px; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 2px 8px rgba(0,0,0,.03);">
         <div style="aspect-ratio:4/3; background:#0d0d0f; overflow:hidden;">
           <img src="../gorsel/kutu-luks-sunum.webp" alt="علبة NARION الفاخرة VIP" style="width:100%; height:100%; object-fit:cover; display:block; transition:transform .3s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" loading="lazy" decoding="async">
         </div>
@@ -799,7 +791,7 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
       </div>
 
       <!-- Kart 2: 3/4 Dinamik Perspektif Açısı -->
-      <div style="background:#fff; border:1px solid var(--line); border-radius:4px; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 2px 8px rgba(0,0,0,.03);">
+      <div style="background:var(--surface); border:1px solid var(--line); border-radius:4px; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 2px 8px rgba(0,0,0,.03);">
         <div style="aspect-ratio:4/3; background:#0d0d0f; overflow:hidden;">
           <img src="../gorsel/koza-perspektif-aci.webp" alt="NARION KOZA بزاوية 45 درجة" style="width:100%; height:100%; object-fit:cover; display:block; transition:transform .3s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" loading="lazy" decoding="async">
         </div>
@@ -812,7 +804,7 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
       </div>
 
       <!-- Kart 3: NOMAD Taktik Seyahat Kutusu -->
-      <div style="background:#fff; border:1px solid var(--line); border-radius:4px; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 2px 8px rgba(0,0,0,.03);">
+      <div style="background:var(--surface); border:1px solid var(--line); border-radius:4px; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 2px 8px rgba(0,0,0,.03);">
         <div style="aspect-ratio:4/3; background:#0d0d0f; overflow:hidden;">
           <img src="../gorsel/nomad-travel-kutu.webp" alt="حقيبة سفر NARION NOMAD" style="width:100%; height:100%; object-fit:cover; display:block; transition:transform .3s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" loading="lazy" decoding="async">
         </div>
@@ -825,7 +817,7 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
       </div>
 
       <!-- Kart 4: Bayonet Mekanizma Makrosu -->
-      <div style="background:#fff; border:1px solid var(--line); border-radius:4px; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 2px 8px rgba(0,0,0,.03);">
+      <div style="background:var(--surface); border:1px solid var(--line); border-radius:4px; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 2px 8px rgba(0,0,0,.03);">
         <div style="aspect-ratio:4/3; background:#0d0d0f; overflow:hidden;">
           <img src="../gorsel/bayonet-iscilik-makro.webp" alt="قفل بايونيت NARION وجودة التنفيذ" style="width:100%; height:100%; object-fit:cover; display:block; transition:transform .3s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" loading="lazy" decoding="async">
         </div>
@@ -848,7 +840,7 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
       <div>
         <h4>NARION</h4>
         <p>الأبعاد مأخوذة من مواصفاتنا الإنتاجية.</p>
-        <p class="kunye">توزلا، إسطنبول<br>توزلا، إسطنبول</p>
+        <p class="kunye">توزلا، إسطنبول</p>
       </div>
       <div><h4>الطرازات</h4><a href="narion-koza.html">KOZA</a><a href="narion-ladin.html">LADİN</a><a href="narion-manolya.html">MANOLYA</a><a href="narion-servi.html">SERVİ</a><a href="narion-prizma.html">PRİZMA</a><a href="narion-ocak.html">OCAK</a><a href="narion-fener.html">FENER</a><a href="narion-nomad.html">NOMAD</a><a href="narion-aura.html">AURA</a><a href="narion-monolit.html">MONOLİT</a><a href="narion-inci.html">İNCİ</a><a href="narion-yalin.html">YALIN</a><a href="narion-zeytin.html">ZEYTİN</a><a href="narion-ardic.html">ARDIÇ</a><a href="narion-kemer.html">KEMER</a><a href="narion-yorunge.html">YÖRÜNGE</a><a href="narion-cakil.html">ÇAKIL</a><a href="karsilastirma.html">المقارنة</a></div>
       <div><h4>القائمة</h4><a href="index.html">الرئيسية</a><a href="teknoloji.html">التقنية</a><a href="uc-boyut.html">ثلاثي الأبعاد</a><a href="yedek-parca.html">قطع الغيار</a><a href="distributorluk.html">التوزيع</a><a href="on-kayit.html">الحجز المسبق</a><a href="hakkinda.html">من نحن</a></div>

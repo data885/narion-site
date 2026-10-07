@@ -126,31 +126,32 @@
           <span class="eyebrow">Reservation Details</span>
           <h2 style="margin-bottom:24px">Pre-order Form</h2>
 
-          <form id="preorder-form" onsubmit="handlePreorder(event)">
+          <form id="preorder-form" data-narion="on-kayit" data-basari="form-success">
+            <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
               <div>
                 <label>Full Name *</label>
-                <input type="text" id="cust-name" required placeholder="e.g. Burak Kaya">
+                <input type="text" id="cust-name" name="f_ad" data-etiket="Ad Soyad" required placeholder="e.g. Burak Kaya">
               </div>
               <div>
                 <label>Phone / WhatsApp *</label>
-                <input type="tel" id="cust-phone" required placeholder="+90 532 000 0000">
+                <input type="tel" id="cust-phone" name="f_tel" data-etiket="Telefon" required placeholder="+90 532 000 0000">
               </div>
             </div>
 
             <div style="margin-bottom:16px">
               <label>Your E-mail Address *</label>
-              <input type="email" id="cust-email" required placeholder="name@example.com">
+              <input type="email" id="cust-email" name="f_eposta" data-etiket="E-posta" required placeholder="name@example.com">
             </div>
 
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
               <div>
                 <label>City / Country *</label>
-                <input type="text" id="cust-city" required placeholder="Istanbul / Türkiye">
+                <input type="text" id="cust-city" name="f_sehir" data-etiket="Şehir / Ülke" required placeholder="Istanbul / Türkiye">
               </div>
               <div>
                 <label>Preferred Model *</label>
-                <select id="cust-model" onchange="updateSummary()">
+                <select id="cust-model" name="f_model" data-etiket="Model" onchange="updateSummary()">
                 <option value="NARION KOZA (Amiral Gemisi - Masif Ceviz)">NARION KOZA (flagship — solid walnut)</option>
                 <option value="NARION LADİN (İskandinav - Masif Meşe)">NARION LADİN (Scandinavian — solid oak)</option>
                 <option value="NARION MANOLYA (Modern İskelet & Tritan)">NARION MANOLYA (modern frame & Tritan)</option>
@@ -176,14 +177,14 @@
             <div style="margin-bottom:20px;background:var(--card);padding:20px;border-radius:10px;border:1px solid var(--card-border-gold)">
               <div style="font-size:14px;font-weight:600;margin-bottom:12px;color:var(--gold-light)">Smart HMD Electric Heat Head Package</div>
               <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:14px;margin-bottom:10px;color:var(--text-main)">
-                <input type="radio" name="hmd-pack" value="full" checked onchange="updateSummary()" style="margin-top:3px;width:auto">
+                <input type="radio" name="f_paket" data-etiket="Paket" data-metin="Tam Paket (Smart HMD dahil)" value="full" checked onchange="updateSummary()" style="margin-top:3px;width:auto">
                 <div>
                   <strong>Full package: cordless Smart HMD included (with a second battery)</strong>
                   <div style="font-size:12.5px;color:var(--text-muted)">0 ppm carbon monoxide, a 14.8V battery and a PID heat-locked ceramic element.</div>
                 </div>
               </label>
               <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:14px;color:var(--text-main)">
-                <input type="radio" name="hmd-pack" value="classic" onchange="updateSummary()" style="margin-top:3px;width:auto">
+                <input type="radio" name="f_paket" data-etiket="Paket" data-metin="Geleneksel Takım (Smart HMD yok)" value="classic" onchange="updateSummary()" style="margin-top:3px;width:auto">
                 <div>
                   <strong>Traditional set only (without Smart HMD)</strong>
                   <div style="font-size:12.5px;color:var(--text-muted)">Supplied with a traditional bowl gasket and stainless coal tongs.</div>
@@ -193,7 +194,7 @@
 
             <div style="margin-bottom:16px">
               <label>Body Finish & Colour Preference</label>
-              <select id="cust-finish">
+              <select id="cust-finish" name="f_kaplama" data-etiket="Kaplama">
                 <option value="Mat Antrasit (PVD Titanyum)">Matte anthracite (PVD titanium finish)</option>
                 <option value="Doğal Masif Ceviz / Şampanya Pirinç">Natural solid walnut & champagne brass</option>
                 <option value="Füme Titanyum & Gümüş">Smoked titanium & anodised silver</option>
@@ -203,7 +204,7 @@
 
             <div style="margin-bottom:24px">
               <label>Your laser engraving note (optional)</label>
-              <input type="text" id="cust-note" placeholder="e.g. Please laser-engrave 'B.KAYA' on the body.">
+              <input type="text" id="cust-note" name="f_not" data-etiket="Gravür notu" placeholder="e.g. Please laser-engrave 'B.KAYA' on the body.">
             </div>
 
             <button type="submit" class="btn gold" style="width:100%;padding:14px;border:none">Send Pre-order Request (free) →</button>
@@ -350,7 +351,7 @@ const MODEL_GORSEL = {
 function updateSummary() {
   const modelSelect = document.getElementById('cust-model');
   const selectedModel = modelSelect.value;
-  const hmdRadios = document.getElementsByName('hmd-pack');
+  const hmdRadios = document.getElementsByName('f_paket');
   let isFullHmd = true;
   for (let r of hmdRadios) {
     if (r.checked && r.value === 'classic') isFullHmd = false;
@@ -386,33 +387,35 @@ function updateSummary() {
   updateSummary();
 })();
 
-function handlePreorder(e) {
-  e.preventDefault();
-  const name = document.getElementById('cust-name').value;
-  const model = document.getElementById('cust-model').value;
-  const hmdRadios = document.getElementsByName('hmd-pack');
-  let packText = 'Full package: Smart HMD electric heat head (+2nd battery)';
-  for (let r of hmdRadios) {
-    if (r.checked && r.value === 'classic') {
-      packText = 'Traditional Set Package';
+// Başarı panelini DOLDURUR; göstermez. Gösterme kararı assets/form.js'te,
+// yalnızca sunucu talebi gerçekten aldıysa veriliyor. Rezervasyon kodu da
+// sunucudan gelir — eskiden burada Math.random() ile uyduruluyordu.
+window.narionBasariOncesi = function (form, yanit) {
+  if (form.id !== 'preorder-form') return;
+  var al = function (ad) {
+    var e = form.querySelector('[name="' + ad + '"]');
+    if (!e) return '';
+    if (e.type === 'radio') {
+      var s = form.querySelector('[name="' + ad + '"]:checked');
+      return s ? (s.getAttribute('data-metin') || s.value) : '';
     }
-  }
-
-  document.getElementById('succ-name').innerText = name;
-  document.getElementById('succ-model').innerText = model;
-  document.getElementById('succ-pack').innerText = packText;
-  
-  const randNum = Math.floor(1000 + Math.random() * 9000);
-  document.getElementById('succ-code').innerText = 'NAR-2026-B1-' + randNum;
-
-  document.getElementById('preorder-form').style.display = 'none';
-  document.getElementById('form-success').style.display = 'block';
-  document.getElementById('form-success').scrollIntoView({ behavior: 'smooth' });
-}
+    if (e.tagName === 'SELECT') return e.options[e.selectedIndex] ? e.options[e.selectedIndex].text : '';
+    return e.value;
+  };
+  var yaz = function (id, deger) {
+    var e = document.getElementById(id);
+    if (e) e.innerText = deger;
+  };
+  yaz('succ-name', al('f_ad'));
+  yaz('succ-model', al('f_model'));
+  yaz('succ-pack', al('f_paket'));
+  if (yanit && yanit.kod) yaz('succ-code', yanit.kod);
+};
 
 </script>
 
 
 <script src="../assets/menu.js?v=1" defer></script>
+<script src="../assets/form.js?v=2" defer></script>
 </body>
 </html>

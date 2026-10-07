@@ -178,26 +178,27 @@
           <div class="card card-gold" style="padding:36px">
             <h3 style="margin-bottom:20px">Send a Message</h3>
             
-            <form id="contact-form" onsubmit="event.preventDefault(); document.getElementById('contact-form-ok').style.display='block'; this.style.display='none';">
+            <form id="contact-form" data-narion="iletisim" data-basari="contact-form-ok">
+              <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
               <div style="margin-bottom:16px">
                 <label>Full Name *</label>
-                <input type="text" required placeholder="Full name">
+                <input type="text" name="f_ad" data-etiket="Ad Soyad" required placeholder="Full name">
               </div>
 
               <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
                 <div>
                   <label>E-mail Address *</label>
-                  <input type="email" required placeholder="name@example.com">
+                  <input type="email" name="f_eposta" data-etiket="E-posta" required placeholder="name@example.com">
                 </div>
                 <div>
                   <label>Phone</label>
-                  <input type="tel" placeholder="+90 5XX XXX XX XX">
+                  <input type="tel" name="f_tel" data-etiket="Telefon" placeholder="+90 5XX XXX XX XX">
                 </div>
               </div>
 
               <div style="margin-bottom:16px">
                 <label>Subject *</label>
-                <select>
+                <select name="f_konu" data-etiket="Konu">
                   <option>Individual reservation & information</option>
                   <option>Café & lounge partnership (B2B)</option>
                   <option>Distribution & dealership</option>
@@ -207,7 +208,7 @@
 
               <div style="margin-bottom:24px">
                 <label>Your Message *</label>
-                <textarea rows="4" required placeholder="Write your message here…"></textarea>
+                <textarea rows="4" name="f_mesaj" data-etiket="Mesaj" required placeholder="Write your message here…"></textarea>
               </div>
 
               <button type="submit" class="btn gold" style="width:100%;padding:14px;border:none">Send Message →</button>
@@ -295,5 +296,6 @@
 
 
 <script src="../assets/menu.js?v=1" defer></script>
+<script src="../assets/form.js?v=2" defer></script>
 </body>
 </html>

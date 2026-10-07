@@ -257,32 +257,38 @@
       </div>
 
       <div style="max-width:680px;margin:0 auto;background:var(--card);border:1px solid var(--card-border);padding:36px;border-radius:16px">
-        <form id="b2b-contact-form" onsubmit="event.preventDefault(); document.getElementById('b2b-form-success').style.display='block'; this.style.display='none';">
+        <form id="b2b-contact-form" data-narion="b2b" data-basari="b2b-form-success">
+              <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
             <div>
               <label>Contact Full Name *</label>
-              <input type="text" required placeholder="Full name">
+              <input type="text" name="f_ad" data-etiket="Yetkili" required placeholder="Full name">
             </div>
             <div>
               <label>Venue / Lounge Name *</label>
-              <input type="text" required placeholder="e.g. Bosphorus Lounge">
+              <input type="text" name="f_isletme" data-etiket="İşletme" required placeholder="e.g. Bosphorus Lounge">
             </div>
           </div>
 
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
             <div>
               <label>Phone Number *</label>
-              <input type="tel" required placeholder="+90 5XX XXX XX XX">
+              <input type="tel" name="f_tel" data-etiket="Telefon" required placeholder="+90 5XX XXX XX XX">
             </div>
             <div>
               <label>City / District *</label>
-              <input type="text" required placeholder="Istanbul / Besiktas">
+              <input type="text" name="f_sehir" data-etiket="Şehir" required placeholder="Istanbul / Besiktas">
             </div>
           </div>
 
           <div style="margin-bottom:16px">
+            <label>E-mail Address</label>
+            <input type="email" name="f_eposta" data-etiket="E-posta" placeholder="name@business.com">
+          </div>
+
+          <div style="margin-bottom:16px">
             <label>Number of Active Hookah Tables *</label>
-            <select>
+            <select name="f_masa" data-etiket="Masa sayısı">
               <option>10 – 20 tables</option>
               <option>20 – 40 tables</option>
               <option>40 – 80 tables</option>
@@ -292,7 +298,7 @@
 
           <div style="margin-bottom:24px">
             <label>Preferred Model</label>
-            <select>
+            <select name="f_model" data-etiket="Tercih edilen model">
               <option>Model A: HaaS rental (monthly)</option>
               <option>Model B: outright purchase</option>
               <option>I would like an on-site demo first</option>
@@ -397,5 +403,6 @@ function updateB2BCalc(daily) {
 
 
 <script src="../assets/menu.js?v=1" defer></script>
+<script src="../assets/form.js?v=2" defer></script>
 </body>
 </html>

@@ -178,26 +178,27 @@
           <div class="card card-gold" style="padding:36px">
             <h3 style="margin-bottom:20px">أرسل رسالة</h3>
             
-            <form id="contact-form" onsubmit="event.preventDefault(); document.getElementById('contact-form-ok').style.display='block'; this.style.display='none';">
+            <form id="contact-form" data-narion="iletisim" data-basari="contact-form-ok">
+              <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label>الموقع الإلكتروني<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
               <div style="margin-bottom:16px">
                 <label>الاسم الكامل *</label>
-                <input type="text" required placeholder="الاسم الكامل">
+                <input type="text" name="f_ad" data-etiket="Ad Soyad" required placeholder="الاسم الكامل">
               </div>
 
               <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
                 <div>
                   <label>البريد الإلكتروني *</label>
-                  <input type="email" required placeholder="name@example.com">
+                  <input type="email" name="f_eposta" data-etiket="E-posta" required placeholder="name@example.com">
                 </div>
                 <div>
                   <label>الهاتف</label>
-                  <input type="tel" placeholder="+90 5XX XXX XX XX">
+                  <input type="tel" name="f_tel" data-etiket="Telefon" placeholder="+90 5XX XXX XX XX">
                 </div>
               </div>
 
               <div style="margin-bottom:16px">
                 <label>الموضوع *</label>
-                <select>
+                <select name="f_konu" data-etiket="Konu">
                   <option>حجز للأفراد واستفسار</option>
                   <option>شراكة مع المقاهي والصالات (B2B)</option>
                   <option>التوزيع والوكالة</option>
@@ -207,7 +208,7 @@
 
               <div style="margin-bottom:24px">
                 <label>رسالتك *</label>
-                <textarea rows="4" required placeholder="اكتب رسالتك هنا…"></textarea>
+                <textarea rows="4" name="f_mesaj" data-etiket="Mesaj" required placeholder="اكتب رسالتك هنا…"></textarea>
               </div>
 
               <button type="submit" class="btn gold" style="width:100%;padding:14px;border:none">← إرسال الرسالة</button>
@@ -295,5 +296,6 @@
 
 
 <script src="../assets/menu.js?v=1" defer></script>
+<script src="../assets/form.js?v=2" defer></script>
 </body>
 </html>
