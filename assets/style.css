@@ -1183,18 +1183,22 @@ label {
 @media (max-width:440px){.sticky-cta .sc-name{display:none}.sticky-cta .btn.gold{flex:1;justify-content:center;text-align:center}}
 
 /* PARCALAR-NAV: 7. menü öğesi (Parçalar) sonrası başlık sığdırma */
-@media (min-width: 1025px) and (max-width: 1600px) {
+@media (min-width: 1025px) {
   .head-in { gap: 12px; }
   .menu { margin-right: 4px; gap: 0; }
   .menu > .mi > a { padding: 8px 8px; font-size: 13px; }
   .head-cta { gap: 8px; }
   .head-cta .langs a { padding-left: 6px; padding-right: 6px; }
 }
-@media (min-width: 1025px) and (max-width: 1360px) {
+@media (min-width: 1025px) and (max-width: 1560px) {
   .logo-txt small { display: none; }
   .head-cta .btn.glass { display: none; }
 }
 @media (min-width: 1025px) and (max-width: 1220px) {
   .logo-txt { display: none; }
   .menu > .mi > a { padding: 8px 6px; font-size: 12.5px; }
+}
+
+@media (min-width: 1561px) {
+  .site-head .head-in { max-width: 1520px; }
 }
