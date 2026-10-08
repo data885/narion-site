@@ -42,10 +42,10 @@ SAHNELER = [
     ("aile-salon.webp",          "yatay", 0.50, 0.40, 1.00, 1.06, None,          1.00),
     ("koza-perspektif-aci.webp", "dikey", 0.50, 0.50, 1.04, 1.00, "narion-koza", 1.00),
     ("bayonet-makro.webp",       "yatay", 0.50, 0.50, 1.06, 1.00, "45-bayonet",  0.74),
-    ("baz-istasyonu.jpg",        "yatay", 0.50, 0.50, 1.00, 1.05, "smart-hmd",   0.96),
-    ("kutu-luks-sunum.webp",     "yatay", 0.50, 0.50, 1.05, 1.00, None,          1.00),
+    ("smart-hmd-film.jpg",       "yatay", 0.50, 0.50, 1.00, 1.05, "smart-hmd",   1.00),
+    ("kutu-luks-sunum-v2.webp",  "yatay", 0.50, 0.50, 1.05, 1.00, None,          1.00),
     ("aile-tas.webp",            "yatay", 0.50, 0.45, 1.00, 1.05, None,          0.94),
-    ("lounge-uygulama.jpg",      "yatay", 0.45, 0.45, 1.04, 1.00, None,          1.00),
+    ("lounge-uygulama-v2.jpg",   "yatay", 0.45, 0.45, 1.04, 1.00, None,          1.00),
 ]
 
 

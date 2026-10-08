@@ -426,7 +426,7 @@
     } else if (viewMode === 'perspektif') {
       transitionTo('../gorsel/koza-perspektif-aci.webp', 'NARION ' + model.name + ' · 3/4 DİNAMİK PERSPEKTİF AÇISI');
     } else if (viewMode === 'kutu') {
-      var boxSrc = (currentModelId === 'narion-nomad') ? '../gorsel/nomad-travel-kutu.webp' : '../gorsel/kutu-luks-sunum.webp';
+      var boxSrc = (currentModelId === 'narion-nomad') ? '../gorsel/nomad-travel-kutu.webp' : '../gorsel/kutu-luks-sunum-v2.webp';
       var boxText = (currentModelId === 'narion-nomad') ? 'NARION NOMAD · TAKTİK SEYAHAT KUTUSU' : 'NARION · VIP SERT SUNUM KUTUSU & UNBOXING';
       transitionTo(boxSrc, boxText);
     } else if (viewMode === 'makro') {
