@@ -363,7 +363,7 @@ function updateSummary() {
 
   const ad = Object.keys(MODEL_GORSEL).find(k => selectedModel.includes(k));
   document.getElementById('sum-img').src = GORSEL_KOK +
-    (ad ? 'model-narion-' + MODEL_GORSEL[ad] + '.webp' : 'hmd-sarj.jpg');
+    (ad ? 'model-narion-' + MODEL_GORSEL[ad] + '.webp' : 'smart-hmd-tek.webp');
 
   if (isFullHmd) {
     document.getElementById('sum-hmd-status').innerText = 'Беспроводной Smart HMD (+14,8 В)';
