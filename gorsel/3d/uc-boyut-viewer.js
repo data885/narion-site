@@ -123,6 +123,176 @@
     'disbudak': { name: 'Siyah Dişbudak', spec: 'Siyah Ahşap Greni' }
   };
 
+  var lang = (document.documentElement.lang || 'tr').toLowerCase();
+  if (['en', 'ar', 'ru', 'tr'].indexOf(lang) === -1) {
+    lang = 'tr';
+  }
+
+  var I18N = {
+    tr: {
+      views: {
+        tam: 'Stüdyo Ön (3B)',
+        perspektif: '3/4 Perspektif',
+        kutu: 'Kutulama & VIP',
+        makro: 'Bayonet Makro'
+      },
+      zoomIn: 'Yakınlaştır',
+      zoomOut: 'Uzaklaştır',
+      perspectiveBadge: function (name) { return 'NARION ' + name + ' · 3/4 DİNAMİK PERSPEKTİF AÇISI'; },
+      boxBadgeNomad: 'NARION NOMAD · TAKTİK SEYAHAT KUTUSU',
+      boxBadgeDefault: 'NARION · VIP SERT SUNUM KUTUSU & UNBOXING',
+      macroBadge: 'NARION · CNC BAYONET KİLİT & CEVİZ İŞÇİLİĞİ',
+      woodNoteActive: 'Doğal fırınlanmış sert ağaç panel; suya ve ısıya karşı özel emprenye korumalıdır.',
+      woodNoteDisabledDefault: 'Bu modelde ahşap panel opsiyonu bulunmaz.',
+      noWoodSummary: 'Gövde Yekpare (Ahşap Yok)',
+      finishes: {
+        firca: { name: 'Fırçalı Paslanmaz', spec: 'AISI 304 / 316L Satin' },
+        sampanya: { name: 'PVD Şampanya', spec: 'Lüks Pirinç & Altın PVD' },
+        siyah: { name: 'Mat Siyah PVD', spec: 'Obsidyen Titanyum Kaplama' },
+        gun: { name: 'Gun Metal', spec: 'Koyu Grafit Metalik' }
+      },
+      woods: {
+        ceviz: { name: 'Doğal Amerikan Ceviz', spec: 'Derin Damarlı Ahşap' },
+        mese: { name: 'Füme Koyu Meşe', spec: 'Mat İsli Meşe Dokusu' },
+        disbudak: { name: 'Siyah Dişbudak', spec: 'Siyah Ahşap Greni' }
+      },
+      models: {
+        'narion-koza': { code: 'NARION KOZA · LOKOMOTİF SERİ', taban: 'Ø150 mm (Geniş Sarsılmaz Denge)', malzeme: 'AISI 304 Paslanmaz Çelik & Masif Ceviz' },
+        'narion-ladin': { code: 'NARION LADİN · LOKOMOTİF SERİ', taban: 'Ø160 mm', malzeme: 'AISI 304 Paslanmaz Çelik & Balıksırtı Ahşap' },
+        'narion-manolya': { code: 'NARION MANOLYA · LOKOMOTİF SERİ', taban: 'Ø155 mm', malzeme: 'AISI 304 / 316L Çelik & Ahşap Bilezik' },
+        'narion-servi': { code: 'NARION SERVİ · KLASİK & PRESTİJ', taban: 'Ø170 mm', malzeme: 'Tornalanmış Masif Ahşap Gövde & Çelik' },
+        'narion-prizma': { code: 'NARION PRİZMA · TEKNOLOJİ SERİSİ', taban: 'Ø150 mm (Altıgen Kaide)', malzeme: 'AISI 304 / Eloksallı Titanyum', woodNote: 'PRİZMA monolitik geometrik metal gövdedir (Ahşap panel içermez).' },
+        'narion-nomad': { code: 'NARION NOMAD · TEKNOLOJİ SERİSİ', taban: 'Ø140 mm (Alçak Denge)', malzeme: 'Hafifletilmiş Metal & Koruma Kılıfı', woodNote: 'NOMAD seyahat serisi yekpare hafifletilmiş metal alaşımdır (Ahşap panel içermez).' },
+        'narion-aura': { code: 'NARION AURA · KLASİK & PRESTİJ', taban: 'Ø160 mm', malzeme: 'PVD Pirinç Kanatlar & Ceviz İç Kaplama' },
+        'narion-monolit': { code: 'NARION MONOLİT · KLASİK & PRESTİJ', taban: 'Ø165 mm (Ağır Mermer Kaide)', malzeme: 'Masif Ahşap Kolon & Pirinç / Mermer Taban' },
+        'narion-inci': { code: 'NARION İNCİ · KLASİK & PRESTİJ', taban: 'Ø150 mm', malzeme: 'Fırınlanmış Teknik Seramik & Pirinç', woodNote: 'İNCİ modeli fırınlanmış teknik seramik gövdelidir (Ahşap panel içermez).' },
+        'narion-cakil': { code: 'NARION ÇAKIL · MODERN SERİ', taban: 'Ø165 mm (Alçak Denge)', malzeme: 'Yekpare Döküm Mineral / Gun Metal Gövde', woodNote: 'ÇAKIL akarsu taşından esinlenen tek kütle mineral/metal gövdedir (Ahşap panel içermez).' }
+      }
+    },
+    en: {
+      views: {
+        tam: 'Studio Front (3D)',
+        perspektif: '3/4 Perspective',
+        kutu: 'Packaging & VIP',
+        makro: 'Bayonet Macro'
+      },
+      zoomIn: 'Zoom in',
+      zoomOut: 'Zoom out',
+      perspectiveBadge: function (name) { return 'NARION ' + name + ' · 3/4 DYNAMIC PERSPECTIVE'; },
+      boxBadgeNomad: 'NARION NOMAD · TACTICAL TRAVEL CASE',
+      boxBadgeDefault: 'NARION · VIP RIGID PRESENTATION CASE & UNBOXING',
+      macroBadge: 'NARION · CNC BAYONET LOCK & WALNUT CRAFTSMANSHIP',
+      woodNoteActive: 'A kiln-dried hardwood panel, specially impregnated against water and heat.',
+      woodNoteDisabledDefault: 'This model does not feature wood panels.',
+      noWoodSummary: 'Solid Body (No Wood)',
+      finishes: {
+        firca: { name: 'Brushed Stainless', spec: 'AISI 304 / 316L satin' },
+        sampanya: { name: 'Champagne PVD', spec: 'Luxury brass & gold PVD' },
+        siyah: { name: 'Matte black PVD', spec: 'Obsidian titanium finish' },
+        gun: { name: 'Gunmetal', spec: 'Dark graphite metallic' }
+      },
+      woods: {
+        ceviz: { name: 'Natural American walnut', spec: 'Deep-grain timber' },
+        mese: { name: 'Smoked dark oak', spec: 'Matte smoked oak texture' },
+        disbudak: { name: 'Black ash', spec: 'Black wood grain' }
+      },
+      models: {
+        'narion-koza': { code: 'NARION KOZA · LEAD SERIES', taban: 'Ø150 mm (wide, stable footprint)', malzeme: 'AISI 304 stainless steel & solid walnut' },
+        'narion-ladin': { code: 'NARION LADİN · LEAD SERIES', taban: 'Ø160 mm', malzeme: 'AISI 304 stainless steel & herringbone wood' },
+        'narion-manolya': { code: 'NARION MANOLYA · LEAD SERIES', taban: 'Ø155 mm', malzeme: 'AISI 304 / 316L steel & wood collar' },
+        'narion-servi': { code: 'NARION SERVİ · CLASSIC & PRESTIGE', taban: 'Ø170 mm', malzeme: 'Turned solid wood column & steel' },
+        'narion-prizma': { code: 'NARION PRİZMA · TECHNOLOGY SERIES', taban: 'Ø150 mm (hexagonal footprint)', malzeme: 'AISI 304 / anodized titanium', woodNote: 'PRİZMA is a monolithic geometric metal body (no wood panel).' },
+        'narion-nomad': { code: 'NARION NOMAD · TECHNOLOGY SERIES', taban: 'Ø140 mm (low center of gravity)', malzeme: 'Lightweight alloy & protective pouch', woodNote: 'NOMAD travel series is a one-piece lightweight alloy (no wood panel).' },
+        'narion-aura': { code: 'NARION AURA · CLASSIC & PRESTIGE', taban: 'Ø160 mm', malzeme: 'PVD brass wings & walnut core' },
+        'narion-monolit': { code: 'NARION MONOLİT · CLASSIC & PRESTIGE', taban: 'Ø165 mm (heavy marble base)', malzeme: 'Solid wood column & brass / marble base' },
+        'narion-inci': { code: 'NARION İNCİ · CLASSIC & PRESTIGE', taban: 'Ø150 mm', malzeme: 'Kiln-fired technical ceramic & brass', woodNote: 'İNCİ features a kiln-fired technical ceramic body (no wood panel).' },
+        'narion-cakil': { code: 'NARION ÇAKIL · MODERN SERIES', taban: 'Ø165 mm (low profile)', malzeme: 'Cast mineral / gunmetal body', woodNote: 'ÇAKIL is a river-stone inspired single-mass mineral/metal body (no wood panel).' }
+      }
+    },
+    ar: {
+      views: {
+        tam: 'عرض الاستوديو (3B)',
+        perspektif: 'منظور 3/4',
+        kutu: 'التغليف وVIP',
+        makro: 'ماكرو البايونيت'
+      },
+      zoomIn: 'تكبير',
+      zoomOut: 'تصغير',
+      perspectiveBadge: function (name) { return 'NARION ' + name + ' · منظور ديناميكي 3/4'; },
+      boxBadgeNomad: 'NARION NOMAD · حقيبة سفر تكتيكية',
+      boxBadgeDefault: 'NARION · علبة تقديم صلبة VIP وفتح العلبة',
+      macroBadge: 'NARION · قفل بايونيت CNC وحرفية خشب الجوز',
+      woodNoteActive: 'لوح خشب صلب مجفف في الفرن؛ معالج خصيصًا ضد الرطوبة والحرارة.',
+      woodNoteDisabledDefault: 'لا يتوفر خيار الألواح الخشبية في هذا الطراز.',
+      noWoodSummary: 'هيكل متجانس (بدون خشب)',
+      finishes: {
+        firca: { name: 'فولاذ مقاوم للصدأ مصقول', spec: 'AISI 304 / 316L ساتان' },
+        sampanya: { name: 'شمبانيا PVD', spec: 'نحاس وذهب PVD فاخر' },
+        siyah: { name: 'أسود مطفي PVD', spec: 'طلاء تيتانيوم سبجي' },
+        gun: { name: 'جون ميتال', spec: 'غرافيت داكن معدني' }
+      },
+      woods: {
+        ceviz: { name: 'جوز أمريكي طبيعي', spec: 'خشب بحبيبات عميقة' },
+        mese: { name: 'بلوط داكن مدخن', spec: 'ملمس بلوط مدخن مطفي' },
+        disbudak: { name: 'مران أسود', spec: 'حبيبات خشبية سوداء' }
+      },
+      models: {
+        'narion-koza': { code: 'NARION KOZA · السلسلة الأولى', taban: 'Ø150 ملم (قاعدة عريضة ثابتة)', malzeme: 'فولاذ مقاوم للصدأ AISI 304 وجوز صلب' },
+        'narion-ladin': { code: 'NARION LADİN · السلسلة الأولى', taban: 'Ø160 ملم', malzeme: 'فولاذ AISI 304 وخشب متعرج' },
+        'narion-manolya': { code: 'NARION MANOLYA · السلسلة الأولى', taban: 'Ø155 ملم', malzeme: 'فولاذ AISI 304 / 316L وحلقة خشبية' },
+        'narion-servi': { code: 'NARION SERVİ · كلاسيك وبرستيج', taban: 'Ø170 ملم', malzeme: 'عمود خشب صلب مخروط وفولاذ' },
+        'narion-prizma': { code: 'NARION PRİZMA · سلسلة التكنولوجيا', taban: 'Ø150 ملم (قاعدة سداسية)', malzeme: 'AISI 304 / تيتانيوم مؤكسد', woodNote: 'PRİZMA هيكل معدني هندسي متجانس (بدون خشب).' },
+        'narion-nomad': { code: 'NARION NOMAD · سلسلة التكنولوجيا', taban: 'Ø140 ملم (توازن منخفض)', malzeme: 'سبائك معدنية خفيفة وحقيبة حماية', woodNote: 'NOMAD سلسلة السفر سبيكة معدنية خفيفة متجانسة (بدون خشب).' },
+        'narion-aura': { code: 'NARION AURA · كلاسيك وبرستيج', taban: 'Ø160 ملم', malzeme: 'أجنحة نحاس PVD وقلب جوز' },
+        'narion-monolit': { code: 'NARION MONOLİT · كلاسيك وبرستيج', taban: 'Ø165 ملم (قاعدة رخامية ثقيلة)', malzeme: 'عمود خشب صلب وقاعدة نحاس/رخام' },
+        'narion-inci': { code: 'NARION İNCİ · كلاسيك وبرستيج', taban: 'Ø150 ملم', malzeme: 'خزف تقني معالج بالحرارة ونحاس', woodNote: 'طراز İNCİ يتميز بهيكل خزفي تقني (بدون خشب).' },
+        'narion-cakil': { code: 'NARION ÇAKIL · السلسلة الحديثة', taban: 'Ø165 ملم (توازن منخفض)', malzeme: 'معدن مصبوب متجانس / جون ميتال', woodNote: 'ÇAKIL هيكل متجانس مستوحى من حصى النهر (بدون خشب).' }
+      }
+    },
+    ru: {
+      views: {
+        tam: 'Вид спереди (3D)',
+        perspektif: 'Перспектива 3/4',
+        kutu: 'Упаковка и VIP',
+        makro: 'Макро байонета'
+      },
+      zoomIn: 'Приблизить',
+      zoomOut: 'Отдалить',
+      perspectiveBadge: function (name) { return 'NARION ' + name + ' · ДИНАМИЧЕСКАЯ ПЕРСПЕКТИВА 3/4'; },
+      boxBadgeNomad: 'NARION NOMAD · ТАКТИЧЕСКИЙ КЕЙС ДЛЯ ПУТЕШЕСТВИЙ',
+      boxBadgeDefault: 'NARION · ЖЁСТКИЙ VIP-КЕЙС И РАСПАКОВКА',
+      macroBadge: 'NARION · CNC БАЙОНЕТНЫЙ ЗАМОК И ОРЕХОВАЯ ОТДЕЛКА',
+      woodNoteActive: 'Панель из массива твердых пород камерной сушки; специальная пропитка от влаги и тепла.',
+      woodNoteDisabledDefault: 'В этой модели деревянная панель не предусмотрена.',
+      noWoodSummary: 'Монолитный корпус (без дерева)',
+      finishes: {
+        firca: { name: 'Шлифованная нержавеющая сталь', spec: 'AISI 304 / 316L Satin' },
+        sampanya: { name: 'PVD Шампань', spec: 'Роскошная латунь и золото PVD' },
+        siyah: { name: 'Матовый черный PVD', spec: 'Обсидиановое титановое покрытие' },
+        gun: { name: 'Gun Metal', spec: 'Темный графитовый металлик' }
+      },
+      woods: {
+        ceviz: { name: 'Натуральный американский орех', spec: 'Глубокая текстура дерева' },
+        mese: { name: 'Темный мореный дуб', spec: 'Матовая текстура мореного дуба' },
+        disbudak: { name: 'Черный ясень', spec: 'Черные древесные волокна' }
+      },
+      models: {
+        'narion-koza': { code: 'NARION KOZA · ВЕДУЩАЯ СЕРИЯ', taban: 'Ø150 мм (широкое устойчивое основание)', malzeme: 'Нержавеющая сталь AISI 304 и массив ореха' },
+        'narion-ladin': { code: 'NARION LADİN · ВЕДУЩАЯ СЕРИЯ', taban: 'Ø160 мм', malzeme: 'Нержавеющая сталь AISI 304 и дерево «елочка»' },
+        'narion-manolya': { code: 'NARION MANOLYA · ВЕДУЩАЯ СЕРИЯ', taban: 'Ø155 мм', malzeme: 'Сталь AISI 304 / 316L и деревянное кольцо' },
+        'narion-servi': { code: 'NARION SERVİ · КЛАССИКА И ПРЕСТИЖ', taban: 'Ø170 мм', malzeme: 'Точеный массив дерева и сталь' },
+        'narion-prizma': { code: 'NARION PRİZMA · СЕРИЯ ТЕХНОЛОГИЙ', taban: 'Ø150 мм (шестигранное основание)', malzeme: 'AISI 304 / Анодированный титан', woodNote: 'PRİZMA — монолитный геометрический металлический корпус (без дерева).' },
+        'narion-nomad': { code: 'NARION NOMAD · СЕРИЯ ТЕХНОЛОГИЙ', taban: 'Ø140 мм (низкий центр тяжести)', malzeme: 'Облегченный металл и защитный чехол', woodNote: 'NOMAD — дорожная серия из цельного облегченного сплава (без дерева).' },
+        'narion-aura': { code: 'NARION AURA · КЛАССИКА И ПРЕСТИЖ', taban: 'Ø160 мм', malzeme: 'PVD-латунные ребра и сердцевина из ореха' },
+        'narion-monolit': { code: 'NARION MONOLİT · КЛАССИКА И ПРЕСТИЖ', taban: 'Ø165 мм (тяжелое мраморное основание)', malzeme: 'Колонна из массива дерева и основание из латуни/мрамора' },
+        'narion-inci': { code: 'NARION İNCİ · КЛАССИКА И ПРЕСТИЖ', taban: 'Ø150 мм', malzeme: 'Обожженная техническая керамика и латунь', woodNote: 'İNCİ имеет корпус из обожженной технической керамики (без дерева).' },
+        'narion-cakil': { code: 'NARION ÇAKIL · СОВРЕМЕННАЯ СЕРИЯ', taban: 'Ø165 мм (низкий профиль)', malzeme: 'Монолитный минерально-металлический корпус / Gun Metal', woodNote: 'ÇAKIL вдохновлен речной галькой — цельный корпус (без дерева).' }
+      }
+    }
+  };
+
+  var curI18n = I18N[lang] || I18N.tr;
+
   var stage = document.getElementById('sahne');
   if (!stage) return;
 
@@ -159,21 +329,21 @@
   var badge = document.createElement('span');
   badge.className = 'stage-badge';
   badge.id = 'stage-badge';
-  badge.textContent = 'NARION KOZA · FIRÇALI PASLANMAZ';
+  badge.textContent = 'NARION KOZA · ' + (curI18n.finishes.firca.name).toUpperCase();
   stage.appendChild(badge);
 
   var viewToggle = document.createElement('div');
   viewToggle.className = 'stage-view-toggle';
-  viewToggle.innerHTML = '<button type="button" class="stage-v-btn is-active" data-view="tam">Stüdyo Ön (3B)</button>' +
-                          '<button type="button" class="stage-v-btn" data-view="perspektif">3/4 Perspektif</button>' +
-                          '<button type="button" class="stage-v-btn" data-view="kutu">Kutulama & VIP</button>' +
-                          '<button type="button" class="stage-v-btn" data-view="makro">Bayonet Makro</button>';
+  viewToggle.innerHTML = '<button type="button" class="stage-v-btn is-active" data-view="tam">' + curI18n.views.tam + '</button>' +
+                          '<button type="button" class="stage-v-btn" data-view="perspektif">' + curI18n.views.perspektif + '</button>' +
+                          '<button type="button" class="stage-v-btn" data-view="kutu">' + curI18n.views.kutu + '</button>' +
+                          '<button type="button" class="stage-v-btn" data-view="makro">' + curI18n.views.makro + '</button>';
   stage.appendChild(viewToggle);
 
   var zoomControls = document.createElement('div');
   zoomControls.className = 'stage-zoom-controls';
-  zoomControls.innerHTML = '<button type="button" class="stage-z-btn" id="z-in" title="Yakınlaştır">+</button>' +
-                           '<button type="button" class="stage-z-btn" id="z-out" title="Uzaklaştır">&minus;</button>';
+  zoomControls.innerHTML = '<button type="button" class="stage-z-btn" id="z-in" title="' + curI18n.zoomIn + '">+</button>' +
+                           '<button type="button" class="stage-z-btn" id="z-out" title="' + curI18n.zoomOut + '">&minus;</button>';
   stage.appendChild(zoomControls);
   if (hmdCallout) stage.appendChild(hmdCallout);
 
@@ -424,13 +594,13 @@
     if (viewMode === 'tam') {
       updateProductVisual();
     } else if (viewMode === 'perspektif') {
-      transitionTo('../gorsel/koza-perspektif-aci.webp', 'NARION ' + model.name + ' · 3/4 DİNAMİK PERSPEKTİF AÇISI');
+      transitionTo('../gorsel/koza-perspektif-aci.webp', curI18n.perspectiveBadge(model.name));
     } else if (viewMode === 'kutu') {
       var boxSrc = (currentModelId === 'narion-nomad') ? '../gorsel/nomad-travel-kutu.webp' : '../gorsel/kutu-luks-sunum-v2.webp';
-      var boxText = (currentModelId === 'narion-nomad') ? 'NARION NOMAD · TAKTİK SEYAHAT KUTUSU' : 'NARION · VIP SERT SUNUM KUTUSU & UNBOXING';
+      var boxText = (currentModelId === 'narion-nomad') ? curI18n.boxBadgeNomad : curI18n.boxBadgeDefault;
       transitionTo(boxSrc, boxText);
     } else if (viewMode === 'makro') {
-      transitionTo('../gorsel/bayonet-iscilik-makro.webp', 'NARION · CNC BAYONET KİLİT & CEVİZ İŞÇİLİĞİ');
+      transitionTo('../gorsel/bayonet-iscilik-makro.webp', curI18n.macroBadge);
     }
   }
 
@@ -450,8 +620,9 @@
   // -------------------------------------------------------------
   function updateSummarySheet() {
     var model = MODELLER[currentModelId] || MODELLER['narion-koza'];
-    var finish = FINISHES[currentFinishId] || FINISHES['firca'];
-    var wood = WOODS[currentWoodId] || WOODS['ceviz'];
+    var modelI18n = (curI18n.models && curI18n.models[currentModelId]) || {};
+    var finish = (curI18n.finishes && curI18n.finishes[currentFinishId]) || FINISHES[currentFinishId] || FINISHES['firca'];
+    var wood = (curI18n.woods && curI18n.woods[currentWoodId]) || WOODS[currentWoodId] || WOODS['ceviz'];
 
     var elBadge = document.getElementById('stage-badge');
     if (elBadge) {
@@ -459,7 +630,7 @@
     }
 
     var elCode = document.getElementById('sum-code');
-    if (elCode) elCode.textContent = model.code;
+    if (elCode) elCode.textContent = modelI18n.code || model.code;
 
     var elTitle = document.getElementById('sum-title');
     if (elTitle) elTitle.textContent = model.name;
@@ -469,7 +640,7 @@
 
     var elAhs = document.getElementById('sum-ahsap');
     if (elAhs) {
-      elAhs.textContent = model.hasWood ? wood.name : (model.woodNote || 'Gövde Yekpare (Ahşap Yok)');
+      elAhs.textContent = model.hasWood ? wood.name : (modelI18n.woodNote || model.woodNote || curI18n.noWoodSummary);
     }
 
     var elYuk = document.getElementById('sum-yuk');
@@ -479,10 +650,10 @@
     if (elSise) elSise.textContent = model.sise;
 
     var elTab = document.getElementById('sum-taban');
-    if (elTab) elTab.textContent = model.taban;
+    if (elTab) elTab.textContent = modelI18n.taban || model.taban;
 
     var elMalz = document.getElementById('sum-malzeme');
-    if (elMalz) elMalz.textContent = model.malzeme;
+    if (elMalz) elMalz.textContent = modelI18n.malzeme || model.malzeme;
 
     // Adapt Step 3 (Wood Section) dynamically according to model capability
     var woodSwatches = document.querySelectorAll('[data-ahsap]');
@@ -494,7 +665,7 @@
       if (!model.hasWood) {
         if (woodNote) {
           woodNote.innerHTML = '<span style="display:inline-block; padding:6px 12px; background:#fff4e6; color:#9c4c00; border-radius:6px; font-weight:600; font-size:13px; line-height:1.4;">' +
-            'ℹ️ ' + (model.woodNote || 'Bu modelde ahşap panel opsiyonu bulunmaz.') + '</span>';
+            'ℹ️ ' + (modelI18n.woodNote || model.woodNote || curI18n.woodNoteDisabledDefault) + '</span>';
         }
         if (woodGrid) {
           woodGrid.style.opacity = '0.30';
@@ -503,7 +674,7 @@
         }
       } else {
         if (woodNote) {
-          woodNote.textContent = 'Doğal fırınlanmış sert ağaç panel; suya ve ısıya karşı özel emprenye korumalıdır.';
+          woodNote.textContent = curI18n.woodNoteActive;
         }
         if (woodGrid) {
           woodGrid.style.opacity = '1.0';

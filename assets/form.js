@@ -77,6 +77,35 @@
     k.textContent = metinIcerik;
   }
 
+  var DIL = (document.documentElement.lang || 'tr').toLowerCase();
+  var METINLER = {
+    tr: {
+      gonderiliyor: 'Gönderiliyor…',
+      hata: 'Gönderilemedi. Lütfen ' + ADRES + ' adresine yazın ya da tekrar deneyin.',
+      varsayilanBasari: 'Talebiniz alındı. En kısa sürede dönüş yapacağız.',
+      gonder: 'Gönder'
+    },
+    en: {
+      gonderiliyor: 'Sending…',
+      hata: 'Could not send. Please email ' + ADRES + ' or try again.',
+      varsayilanBasari: 'Your request has been received. We will get back to you shortly.',
+      gonder: 'Send'
+    },
+    ar: {
+      gonderiliyor: 'جارٍ الإرسال…',
+      hata: 'تعذر الإرسال. يُرجى مراسلتنا على ' + ADRES + ' أو إعادة المحاولة.',
+      varsayilanBasari: 'تم استلام طلبكم. سنتواصل معكم في أقرب وقت.',
+      gonder: 'إرسال'
+    },
+    ru: {
+      gonderiliyor: 'Отправка…',
+      hata: 'Не удалось отправить. Пожалуйста, напишите на ' + ADRES + ' или повторите попытку.',
+      varsayilanBasari: 'Ваш запрос получен. Мы свяжемся с вами в ближайшее время.',
+      gonder: 'Отправить'
+    }
+  };
+  var T = METINLER[DIL] || METINLER.tr;
+
   function basariyiGoster(f, yanit) {
     // Sayfa kendi başarı panelini dolduruyorsa (ön kayıt özeti gibi) ona haber ver
     if (typeof window.narionBasariOncesi === 'function') {
@@ -89,7 +118,7 @@
       f.style.display = 'none';
       if (panel.scrollIntoView) panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
     } else {
-      durum(f, 'Talebiniz alındı. En kısa sürede dönüş yapacağız.', false);
+      durum(f, T.varsayilanBasari, false);
     }
   }
 
@@ -104,8 +133,8 @@
 
       if (!UC) { mailtoAc(f, v); return; }
 
-      if (dugme) { dugme.disabled = true; dugme.dataset.eski = dugme.textContent; dugme.textContent = 'Gönderiliyor…'; }
-      durum(f, 'Gönderiliyor…', false);
+      if (dugme) { dugme.disabled = true; dugme.dataset.eski = dugme.textContent; dugme.textContent = T.gonderiliyor; }
+      durum(f, T.gonderiliyor, false);
 
       fetch(UC, {
         method: 'POST',
@@ -119,8 +148,8 @@
           throw new Error(y && y.neden ? y.neden : 'bilinmeyen');
         })
         .catch(function () {
-          durum(f, 'Gönderilemedi. Lütfen ' + ADRES + ' adresine yazın ya da tekrar deneyin.', true);
-          if (dugme) { dugme.disabled = false; dugme.textContent = dugme.dataset.eski || 'Gönder'; }
+          durum(f, T.hata, true);
+          if (dugme) { dugme.disabled = false; dugme.textContent = dugme.dataset.eski || T.gonder; }
         });
     });
   }
