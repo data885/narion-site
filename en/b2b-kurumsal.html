@@ -139,20 +139,20 @@
           <h3 style="margin-bottom:12px">Model A: HaaS Rental</h3>
           <p style="font-size:14px;color:var(--text-muted);margin-bottom:20px">No deposit, no capital risk. The consumables you stop buying cover the rental several times over.</p>
 
-          <div style="font-family:var(--f-serif);font-size:36px;color:var(--gold-light);margin-bottom:4px">
-            19.500 ₺ <span style="font-size:14px;font-family:var(--f-sans);color:var(--text-muted)">/ month (10-Table Package)</span>
+          <div style="font-family:var(--f-serif);font-size:28px;color:var(--gold-light);margin-bottom:4px">
+            Custom Quote by Table Count <span style="font-size:13px;font-family:var(--f-sans);color:var(--text-muted);display:block;margin-top:4px">Guaranteed fixed monthly rental below your current charcoal expense</span>
           </div>
-          <div style="font-family:var(--f-mono);font-size:12px;color:var(--accent-ok);margin-bottom:24px">✓ Unconditional return within the first 30 days</div>
+          <div style="font-family:var(--f-mono);font-size:12px;color:var(--accent-ok);margin-bottom:24px">✓ Zero Deposit • Unconditional return within the first 30 days</div>
 
           <ul style="padding-left:1.2rem;line-height:1.9;font-size:14px;color:var(--text-muted);margin-bottom:28px">
-            <li><strong>10 × NARION Smart HMD Heads:</strong>Universal bayonet compatible</li>
-            <li><strong>20 × 14.8V Spare Batteries:</strong>Uninterrupted two-session rotation</li>
-            <li><strong>2 × GaN Fast-Charging Stations:</strong>Fast-charging dock between tables</li>
-            <li><strong>Lounge OS Console:</strong>Licence for the server and table tracking software</li>
-            <li><strong>Unlimited One-for-One Replacement:</strong>A faulty unit is replaced within 24 hours</li>
+            <li><strong>NARION Smart HMD Heads:</strong> Universal bayonet compatible</li>
+            <li><strong>1-to-2 14.8V Spare Battery Cartridges:</strong> Uninterrupted shift rotation</li>
+            <li><strong>6-Slot GaN Fast-Charging Stations:</strong> Fast-charging dock at the bar</li>
+            <li><strong>Lounge OS Console:</strong> Licence for the server and table tracking software</li>
+            <li><strong>Unlimited One-for-One Replacement:</strong> A faulty unit is replaced within 24 hours</li>
           </ul>
 
-          <a class="btn gold" style="width:100%" href="#b2b-form">Apply for HaaS Rental →</a>
+          <a class="btn gold" style="width:100%" href="#b2b-form">Request a Custom HaaS Rental Quote →</a>
         </div>
 
         <!-- MODEL B: MÜLKİYET SATIŞI -->
@@ -161,10 +161,10 @@
           <h3 style="margin-bottom:12px">Model B: Outright Purchase</h3>
           <p style="font-size:14px;color:var(--text-muted);margin-bottom:20px">For fine hotels, rooftop lounges and international resorts that would rather own the hardware outright.</p>
 
-          <div style="font-family:var(--f-serif);font-size:36px;color:var(--text-main);margin-bottom:4px">
-            8.500 ₺ <span style="font-size:14px;font-family:var(--f-sans);color:var(--text-muted)">/ unit (min. 5 units)</span>
+          <div style="font-family:var(--f-serif);font-size:28px;color:var(--text-main);margin-bottom:4px">
+            Corporate Fleet Pricing <span style="font-size:13px;font-family:var(--f-sans);color:var(--text-muted);display:block;margin-top:4px">Volume discount tailored to table &amp; spare cartridge count</span>
           </div>
-          <div style="font-family:var(--f-mono);font-size:12px;color:var(--gold);margin-bottom:24px">Return on investment: payback in just 45 days</div>
+          <div style="font-family:var(--f-mono);font-size:12px;color:var(--gold);margin-bottom:24px">Rapid ROI payback via charcoal &amp; staff savings</div>
 
           <ul style="padding-left:1.2rem;line-height:1.9;font-size:14px;color:var(--text-muted);margin-bottom:28px">
             <li>Full ownership of the head and<strong>MCH ceramic core</strong></li>
@@ -214,14 +214,14 @@
 
         <div class="out">
           <div>
-            <small>Monthly Direct Charcoal Saving</small>
+            <small>Monthly Direct Charcoal &amp; Consumable Saving</small>
             <b id="monthlySaveVal">55.296 ₺</b>
           </div>
           <div class="line">
-            <small>Additional net profit per year (after the rental fee)</small>
-            <b id="yearlySaveVal" style="font-size:36px;color:#fff">429.550 ₺</b>
+            <small>Annual Direct Consumable Saving Potential</small>
+            <b id="yearlySaveVal" style="font-size:36px;color:#fff">663.552 ₺</b>
           </div>
-          <p style="font-size:12px;color:var(--text-muted);margin:0">* Calculated as the net amount left in your till after the 10-table rental fee (₺19,500/month).</p>
+          <p style="font-size:12px;color:var(--text-muted);margin:0">* Based on direct per-session consumable savings (₺23.04); total savings multiply when charcoal staff, burn damage, and HVAC savings are included.</p>
         </div>
       </div>
 
@@ -481,8 +481,7 @@ function updateB2BCalc(daily) {
   document.getElementById('dailyNum').innerText = daily + ' units';
   const savePerSession = 23.04;
   const monthlySave = Math.round(daily * 30 * savePerSession);
-  const rentCost = 19500;
-  const yearlyNet = Math.round((monthlySave - rentCost) * 12);
+  const yearlyNet = Math.round(monthlySave * 12);
 
   document.getElementById('monthlySaveVal').innerText = monthlySave.toLocaleString('en-GB') + ' ₺';
   document.getElementById('yearlySaveVal').innerText = yearlyNet.toLocaleString('en-GB') + ' ₺';

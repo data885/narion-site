@@ -143,22 +143,22 @@
             Sıfır peşinat, sıfır sermaye riski. Kömürden elde ettiğiniz hammadde tasarrufu ile kiranızı katlayarak ödeyin.
           </p>
 
-          <div style="font-family:var(--f-serif);font-size:36px;color:var(--gold-light);margin-bottom:4px">
-            19.500 ₺ <span style="font-size:14px;font-family:var(--f-sans);color:var(--text-muted)">/ ay (10 Masa Paketi)</span>
+          <div style="font-family:var(--f-serif);font-size:28px;color:var(--gold-light);margin-bottom:4px">
+            Masa Sayısına Özel Teklif <span style="font-size:13px;font-family:var(--f-sans);color:var(--text-muted);display:block;margin-top:4px">Mevcut kömür giderinizin altında sabit aylık kira garantisi</span>
           </div>
           <div style="font-family:var(--f-mono);font-size:12px;color:var(--accent-ok);margin-bottom:24px">
-            ✓ İlk 30 gün koşulsuz iade güvencesi
+            ✓ 0 ₺ Peşinat • İlk 30 gün koşulsuz iade güvencesi
           </div>
 
           <ul style="padding-left:1.2rem;line-height:1.9;font-size:14px;color:var(--text-muted);margin-bottom:28px">
-            <li><strong>10 Adet NARION Smart HMD Başlık:</strong> Evrensel bayonet uyumlu</li>
-            <li><strong>20 Adet 14.8V Yedek Batarya:</strong> Kesintisiz 2 seans rotasyonu</li>
-            <li><strong>2 Adet GaN Hızlı Şarj İstasyonu:</strong> Masalar arası hızlı şarj doku</li>
-            <li><strong>Lounge OS Konsolu:</strong> Garson & masa takip yazılımı lisansı</li>
-            <li><strong>Sınırsız Birebir Değişim:</strong> Arızalı ünite 24 saatte yenilenir</li>
+            <li><strong>Masa Adedine Göre NARION Smart HMD:</strong> Evrensel bayonet uyumlu</li>
+            <li><strong>1'e 2 Yedek 14.8V Batarya Kartuşu:</strong> Kesintisiz vardiya rotasyonu</li>
+            <li><strong>6'lı GaN Hızlı Şarj İstasyonları:</strong> Bar/hazırlık alanı hızlı şarj doku</li>
+            <li><strong>Lounge OS Konsolu:</strong> Garson &amp; masa takip yazılımı lisansı</li>
+            <li><strong>Sınırsız Birebir Değişim:</strong> Arızalı ünite 24 saatte ücretsiz yenilenir</li>
           </ul>
 
-          <a class="btn gold" style="width:100%" href="#b2b-form">HaaS Kiralama Başvurusu Yap →</a>
+          <a class="btn gold" style="width:100%" href="#b2b-form">İşletmenize Özel Kira Teklifi Al →</a>
         </div>
 
         <!-- MODEL B: MÜLKİYET SATIŞI -->
@@ -169,11 +169,11 @@
             Donanıma doğrudan sahip olmak isteyen seçkin oteller, çatı katı lounge'ları ve uluslararası resortlar için.
           </p>
 
-          <div style="font-family:var(--f-serif);font-size:36px;color:var(--text-main);margin-bottom:4px">
-            8.500 ₺ <span style="font-size:14px;font-family:var(--f-sans);color:var(--text-muted)">/ Adet (Min. 5 Adet)</span>
+          <div style="font-family:var(--f-serif);font-size:28px;color:var(--text-main);margin-bottom:4px">
+            Kurumsal Proje Fiyatlandırması <span style="font-size:13px;font-family:var(--f-sans);color:var(--text-muted);display:block;margin-top:4px">Masa &amp; yedek kartuş konfigürasyonuna göre filo iskontosu</span>
           </div>
           <div style="font-family:var(--f-mono);font-size:12px;color:var(--gold);margin-bottom:24px">
-            Yatırım Geri Dönüşü (ROI): Yalnızca 45 Günde Amortisman
+            Yatırım Geri Dönüşü (ROI): Kömür + Közcü Tasarrufuyla Hızlı Amortisman
           </div>
 
           <ul style="padding-left:1.2rem;line-height:1.9;font-size:14px;color:var(--text-muted);margin-bottom:28px">
@@ -224,15 +224,15 @@
 
         <div class="out">
           <div>
-            <small>Aylık Doğrudan Kömür Tasarrufu</small>
+            <small>Aylık Doğrudan Kömür &amp; Tütün Sarf Tasarrufu</small>
             <b id="monthlySaveVal">55.296 ₺</b>
           </div>
           <div class="line">
-            <small>Yıllık Ekstra Net Kâr (Kira Bedeli Düşüldükten Sonra)</small>
-            <b id="yearlySaveVal" style="font-size:36px;color:#fff">429.550 ₺</b>
+            <small>Yıllık Doğrudan Sarf Tasarruf Potansiyeli</small>
+            <b id="yearlySaveVal" style="font-size:36px;color:#fff">663.552 ₺</b>
           </div>
           <p style="font-size:12px;color:var(--text-muted);margin:0">
-            * 10 masa kiralama bedeli (19.500 ₺/ay) düşülerek kasanıza kalan net tutar hesaplanmıştır.
+            * Yalnızca seans başı sarf tasarrufu (23,04 ₺) baz alınmıştır; közcü personel, yanık ve havalandırma tasarrufu eklendiğinde kazanç katlanır. İşletmenize özel kira/satış teklifi için formdan ulaşın.
           </p>
         </div>
       </div>
@@ -513,8 +513,7 @@ function updateB2BCalc(daily) {
   document.getElementById('dailyNum').innerText = daily + ' Adet';
   const savePerSession = 23.04;
   const monthlySave = Math.round(daily * 30 * savePerSession);
-  const rentCost = 19500;
-  const yearlyNet = Math.round((monthlySave - rentCost) * 12);
+  const yearlyNet = Math.round(monthlySave * 12);
 
   document.getElementById('monthlySaveVal').innerText = monthlySave.toLocaleString('tr-TR') + ' ₺';
   document.getElementById('yearlySaveVal').innerText = yearlyNet.toLocaleString('tr-TR') + ' ₺';
