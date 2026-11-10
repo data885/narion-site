@@ -1,0 +1,863 @@
+<!doctype html>
+<html lang="tr" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Üç boyutlu görünüm · NARION</title>
+<meta name="description" content="NARION modellerini her açıdan döndürerek inceleyin: gövde oranları, bayonet bileziği, ahşap panel ve dört kaplama seçeneği.">
+<meta property="og:title" content="Üç boyutlu görünüm · NARION">
+<meta property="og:description" content="NARION modellerini her açıdan döndürerek inceleyin: gövde oranları, bayonet bileziği, ahşap panel ve dört kaplama seçeneği.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tr">
+<meta property="og:url" content="https://narionhookah.com/tr/uc-boyut.html">
+<meta property="og:site_name" content="NARION">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="index,follow">
+<link rel="icon" href="logo/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="logo/apple-touch-icon-180.png">
+<link rel="stylesheet" href="../font/narion-fontlar.css">
+<style>
+:root{
+  color-scheme: dark;
+      --bg: #09090b; --bg-2: #0f0f13; --surface: #141419; --surface-2: #1a1a22;
+      --line: rgba(255,255,255,.08); --line-2: rgba(255,255,255,.16);
+      --ink: #f5f5f7; --muted: #9c9ca4; --faint: #8b8b96;
+      --accent: #d4af37; --accent-2: #f3e5ab;
+      --steel: #9aa3ab; --gunmetal: #8a949c; --tritan: #9fb6c0;
+      --ok: #2fd47a; --warn: #e0a93a; --no: #ef5f5f;
+      --muted-2: #7e7e88; --line-strong: rgba(255,255,255,.16);
+      --accent-soft: rgba(212,175,55,.08);
+      --f-body: var(--f-sans); --f-display: var(--f-sans);
+  --f-sans: "IBM Plex Sans","IBM Plex Sans Arabic",-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-mono: "IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --w: 1140px;
+  --gut: 28px;
+}
+html[dir="rtl"]{ --f-mono: "IBM Plex Sans Arabic","IBM Plex Mono",monospace; }
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:var(--f-sans); font-size:16px; line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+img,svg{max-width:100%}
+a{color:var(--accent); text-underline-offset:3px}
+a:hover{color:#e0c79a}
+:focus-visible{outline:2px solid var(--accent); outline-offset:3px}
+.wrap{max-width:var(--w); margin:0 auto; padding-inline:var(--gut)}
+
+/* skip link */
+.skip{position:absolute; inset-inline-start:-9999px; top:0; background:var(--accent); color:#09090b;
+  padding:10px 16px; z-index:99; font-weight:600}
+.skip:focus{inset-inline-start:0}
+
+/* ---------- üst bar ---------- */
+.top{position:sticky; top:0; z-index:40; background:rgba(9,9,11,.88);
+  backdrop-filter:blur(10px); border-bottom:1px solid var(--line)}
+.topin{display:flex; align-items:center; gap:22px; height:62px}
+.brand{display:flex; align-items:center; gap:11px; text-decoration:none; color:var(--ink); flex:none}
+.brand-mark{width:26px; height:26px; flex:none; color:var(--accent)}
+.brand-mark svg{display:block; width:100%; height:100%}
+.brand-txt{display:flex; align-items:baseline; gap:9px}
+.brand b{font-size:19px; font-weight:600; letter-spacing:.20em}
+.brand span{font-family:var(--f-mono); font-size:10px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--faint)}
+nav.main{display:flex; gap:17px; margin-inline-start:auto; flex-wrap:wrap;
+  align-items:center}
+nav.main a{color:var(--muted); text-decoration:none; font-size:14px; white-space:nowrap}
+nav.main a:hover,nav.main a[aria-current]{color:var(--ink)}
+nav.main a[aria-current]{box-shadow:0 2px 0 var(--accent)}
+.nav-grup{position:relative; display:inline-flex}
+.nav-grup>a::after{content:"›"; display:inline-block; margin-inline-start:5px;
+  transform:rotate(90deg); font-size:11px; opacity:.55}
+.nav-alt{position:absolute; top:100%; inset-inline-start:-14px; min-width:190px;
+  background:var(--surface); border:1px solid var(--line); padding:6px 0;
+  display:none; flex-direction:column; z-index:50;
+  box-shadow:0 8px 24px rgba(0,0,0,.09)}
+.nav-grup:hover .nav-alt,.nav-grup:focus-within .nav-alt{display:flex}
+.nav-alt a{padding:8px 16px; font-size:13.5px; white-space:nowrap}
+.nav-alt a:hover{background:var(--surface-2); color:var(--ink)}
+.nav-alt .alt-baslik{padding:9px 16px 4px; font-size:10.5px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--muted-2); border-top:1px solid var(--line);
+  margin-top:5px}
+.nav-alt a.alt-ayrac{border-top:1px solid var(--line); margin-top:5px;
+  padding-top:11px; color:var(--accent)}
+@media(max-width:900px){
+  .nav-grup>a::after{display:none}
+  .nav-alt{display:none !important}
+}
+.langs{display:flex; gap:2px; flex:none; border:1px solid var(--line); padding:2px}
+.langs a{font-family:var(--f-mono); font-size:10.5px; letter-spacing:.09em; text-transform:uppercase;
+  color:var(--faint); text-decoration:none; padding:4px 7px}
+.langs a:hover{color:var(--ink)}
+.langs a[aria-current]{background:var(--accent); color:#09090b}
+@media(max-width:900px){
+  .topin{height:auto; flex-wrap:wrap; padding-block:12px; gap:10px 14px}
+  .brand{flex:1}
+  nav.main{order:3; width:100%; margin-inline-start:0; gap:8px 16px; font-size:13.5px}
+  .langs{margin-inline-start:0}
+  .status .wrap{flex-direction:column; gap:10px}
+}
+
+/* ---------- durum şeridi ---------- */
+.status{border-bottom:1px solid var(--line); background:var(--bg-2)}
+.status .wrap{display:flex; gap:16px; align-items:flex-start; padding-block:13px}
+.status b{font-family:var(--f-mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--warn); border:1px solid var(--warn); padding:3px 8px; flex:none; margin-top:2px}
+.status p{margin:0; font-size:13.5px; color:var(--muted); line-height:1.55; max-width:88ch}
+
+/* ---------- hero ---------- */
+.hero{border-bottom:1px solid var(--line); overflow:hidden}
+.hero .wrap{display:grid; grid-template-columns:1.25fr .75fr; gap:44px;
+  padding-block:clamp(48px,7vw,92px); align-items:center}
+.eyebrow{font-family:var(--f-mono); font-size:11px; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--muted); display:block; margin-bottom:22px}
+h1{font-size:clamp(40px,7.4vw,78px); line-height:1.02; letter-spacing:-.035em;
+  font-weight:600; margin:0 0 24px; white-space:pre-line; text-wrap:balance}
+.lede{font-size:clamp(16px,1.6vw,18.5px); color:var(--muted); max-width:56ch; margin:0; line-height:1.6}
+.herofig{display:flex; justify-content:center; align-items:center}
+.herofig figure.sh{width:100%}
+.herofig img{max-height:min(62vh,540px); width:auto; margin-inline:auto}
+/* geniş yatay render: metin üstte, görsel tam genişlik altta */
+.hero.wide .wrap{grid-template-columns:1fr; gap:36px; padding-bottom:0}
+.hero.wide .herofig{margin-inline:calc(50% - 50vw); max-width:100vw}
+.hero.wide .herofig img{max-height:min(66vh,640px); width:100%; object-fit:cover}
+.hero.wide .herofig figcaption{max-width:var(--w); margin:0 auto;
+  padding-inline:var(--gut); padding-bottom:22px}
+.herofig svg{width:100%; max-width:330px; max-height:430px; height:auto; color:var(--steel)}
+@media(max-width:900px){
+  .hero .wrap{grid-template-columns:1fr; gap:32px}
+  .herofig{order:-1; justify-content:flex-start}
+  .herofig svg{max-width:190px; max-height:300px}
+}
+/* iki sütunlu serbest bölüm — kart çerçevesi yok */
+.split{display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:start}
+@media(max-width:860px){.split{grid-template-columns:1fr; gap:26px}}
+.exploded{color:var(--steel); max-width:440px}
+
+/* ---------- görsel ---------- */
+figure.sh{margin:0}
+figure.sh img{display:block; width:100%; height:auto; background:var(--surface-2)}
+figure.sh figcaption{display:flex; flex-wrap:wrap; gap:6px 14px; align-items:baseline;
+  padding-top:11px; font-size:12.5px; color:var(--faint); line-height:1.5}
+figure.sh figcaption b{font-family:var(--f-mono); font-size:9.5px; font-weight:600;
+  letter-spacing:.13em; text-transform:uppercase; color:var(--accent);
+  border:1px solid var(--line-2); padding:3px 7px; flex:none}
+/* kenardan kenara görsel şeridi */
+.bleed{margin-inline:calc(50% - 50vw); max-width:100vw}
+.bleed img{width:100%; max-height:min(74vh,720px); object-fit:cover}
+.bleed figcaption{max-width:var(--w); margin:0 auto; padding-inline:var(--gut)}
+.figpair{display:grid; grid-template-columns:1fr 1fr; gap:22px; align-items:start}
+@media(max-width:860px){.figpair{grid-template-columns:1fr}}
+
+/* ---------- bölüm ---------- */
+section{padding-block:clamp(52px,6.5vw,86px); border-bottom:1px solid var(--line)}
+section:last-of-type{border-bottom:none}
+.shead{margin-bottom:30px; max-width:72ch}
+.shead .num{font-family:var(--f-mono); font-size:11px; letter-spacing:.14em; color:var(--accent);
+  display:block; margin-bottom:10px}
+h2{font-size:clamp(25px,3.1vw,34px); line-height:1.15; letter-spacing:-.024em;
+  font-weight:600; margin:0 0 14px; text-wrap:balance}
+h3{font-size:19px; letter-spacing:-.012em; font-weight:600; margin:0 0 8px}
+.shead p{margin:0; color:var(--muted); font-size:16px; max-width:70ch}
+.prose{max-width:68ch; color:var(--muted)}
+.prose p{margin:0 0 14px}
+.prose p:last-child{margin-bottom:0}
+.prose strong{color:var(--ink); font-weight:600}
+
+/* ---------- kart ızgaraları ---------- */
+.grid{display:grid; gap:1px; background:var(--line); border:1px solid var(--line)}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.cell{background:var(--surface); padding:26px 24px}
+.cell .k{font-family:var(--f-mono); font-size:10.5px; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--accent); display:block; margin-bottom:12px}
+.cell p{margin:0; color:var(--muted); font-size:14.5px; line-height:1.6}
+.cell .spec{font-family:var(--f-mono); font-size:11.5px; color:var(--faint); margin-top:14px;
+  display:block; letter-spacing:.03em; direction:ltr; unicode-bidi:isolate}
+html[dir="rtl"] .cell .spec{text-align:right}
+.road .when,.mcard .code,.market .reg,.eyebrow{unicode-bidi:isolate}
+@media(max-width:880px){.g3{grid-template-columns:1fr}.g2{grid-template-columns:1fr}}
+
+/* ---------- model kartı ---------- */
+/* Kart genisligi ~240-300 px arasinda tutulur; kolon sayisini tarayici secer.
+   Sabit 3 kolon, genis ekranda karti buyutup gorsel kutusunu da buyutuyordu. */
+.models{display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+  gap:20px; margin-top:8px}
+@media(max-width:560px){.models{grid-template-columns:1fr}}
+.mcard{border:1px solid var(--line); background:var(--surface); display:flex; flex-direction:column;
+  text-decoration:none; color:inherit; transition:border-color .15s, background .15s}
+.mcard:hover{border-color:var(--accent); background:var(--surface-2)}
+.mcard .fig{border-bottom:1px solid var(--line); overflow:hidden; background:var(--surface-2)}
+.mcard .fig figure.sh,.mcard .fig img{width:100%; display:block}
+/* Gorsel kutusunun orani = render'larin orani (2/3).
+   Onceden kutu 346x300 (yatay) idi, gorsel ise dikey: cover yuzunden
+   urunun yalnizca ince bir yatay seridi goruluyordu. Ayni oran = tam urun,
+   kirpma da yok, kenarlarda bosluk da yok. */
+.mcard .fig img{aspect-ratio:2/3; height:auto; object-fit:cover; object-position:center;
+  transition:transform .5s cubic-bezier(.2,.7,.3,1)}
+.mcard:hover .fig img{transform:scale(1.035)}
+.mcard .fig svg{height:168px; width:auto; margin:26px auto 14px; display:block}
+
+.mcard .body{padding:20px 22px 22px; display:flex; flex-direction:column; gap:6px; flex:1}
+.mcard .code{font-family:var(--f-mono); font-size:11.5px; letter-spacing:.11em; color:var(--accent)}
+.mcard .name{font-size:21px; font-weight:600; letter-spacing:-.016em}
+.mcard .who{font-size:14px; color:var(--muted); line-height:1.55; margin-top:2px}
+.mcard .foot{margin-top:auto; padding-top:16px; display:flex; justify-content:space-between;
+  align-items:baseline; gap:12px; font-family:var(--f-mono); font-size:11.5px; color:var(--faint)}
+.mcard .foot b{color:var(--ink); font-size:15px; font-weight:600}
+
+/* ---------- spec listesi ---------- */
+dl.specs{margin:0; border-top:1px solid var(--line)}
+dl.specs>div{display:flex; justify-content:space-between; gap:16px; align-items:baseline;
+  padding:11px 0; border-bottom:1px solid var(--line)}
+dl.specs dt{color:var(--muted); font-size:14px}
+dl.specs dd{margin:0; font-family:var(--f-mono); font-size:13px; text-align:end;
+  font-variant-numeric:tabular-nums; unicode-bidi:isolate}
+
+/* ---------- tablo ---------- */
+.tw{overflow-x:auto; border:1px solid var(--line); background:var(--surface)}
+table{border-collapse:collapse; width:100%; min-width:600px; font-size:14px}
+thead th{font-family:var(--f-mono); font-size:10px; font-weight:600; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--muted); text-align:start; padding:13px 16px;
+  border-bottom:1px solid var(--line-2); background:var(--surface-2); white-space:nowrap}
+tbody td{padding:12px 16px; border-bottom:1px solid var(--line); vertical-align:top; color:var(--muted)}
+tbody tr:last-child td{border-bottom:none}
+tbody td:first-child{color:var(--ink); font-weight:500}
+td.num{font-family:var(--f-mono); font-variant-numeric:tabular-nums; white-space:nowrap;
+  unicode-bidi:isolate}
+tr.pick td{background:rgba(212,175,55,.08)}
+.tag{display:inline-block; font-family:var(--f-mono); font-size:10px; font-weight:600;
+  letter-spacing:.08em; text-transform:uppercase; padding:3px 8px; border:1px solid; white-space:nowrap}
+.t-ok{color:var(--ok); border-color:var(--ok); background:rgba(47,212,122,.12)}
+.t-no{color:var(--no); border-color:var(--no); background:rgba(239,95,95,.12)}
+.t-warn{color:var(--warn); border-color:var(--warn); background:rgba(224,169,58,.12)}
+
+/* ---------- karşılaştırma tablosu ---------- */
+table.kiyas{min-width:640px}
+table.kiyas thead td{background:var(--surface-2); border-bottom:1px solid var(--line-2)}
+table.kiyas thead th{text-align:start; padding:15px 16px; vertical-align:bottom}
+table.kiyas thead th a{font-family:var(--f-mono); font-size:11px; letter-spacing:.1em;
+  color:var(--accent); text-decoration:none; display:block}
+table.kiyas thead th span{display:block; font-family:var(--f-sans); font-size:17px;
+  font-weight:600; color:var(--ink); letter-spacing:-.012em; text-transform:none;
+  margin-top:4px}
+table.kiyas tbody th[scope="row"]{text-align:start; font-weight:500; color:var(--ink);
+  padding:12px 16px; font-size:13.5px; background:var(--surface-2);
+  border-bottom:1px solid var(--line); white-space:nowrap}
+table.kiyas tbody td{font-family:var(--f-mono); font-size:12.5px; color:var(--ink);
+  unicode-bidi:isolate}
+table.kiyas tbody tr:nth-child(even) td,
+table.kiyas tbody tr:nth-child(even) th{background:var(--bg-2)}
+
+ul.ortak{list-style:none; padding:0; margin:0; display:grid;
+  grid-template-columns:repeat(2,1fr); gap:1px; background:var(--line);
+  border:1px solid var(--line); max-width:none}
+ul.ortak li{background:var(--surface); padding:16px 20px; font-size:14.5px;
+  color:var(--muted); display:flex; gap:11px; align-items:flex-start}
+ul.ortak li::before{content:"—"; color:var(--accent); flex:none}
+@media(max-width:760px){ul.ortak{grid-template-columns:1fr}}
+
+/* ---------- vurgu kutusu ---------- */
+.note{border-inline-start:3px solid var(--accent); background:var(--surface); padding:20px 24px;
+  max-width:72ch; margin-top:26px}
+.note .k{font-family:var(--f-mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--accent); display:block; margin-bottom:9px}
+.note p{margin:0; font-size:15px; color:var(--muted); line-height:1.6}
+.note p+p{margin-top:10px}
+.small{font-size:13px; color:var(--faint); margin-top:14px; max-width:72ch; line-height:1.55}
+.seri-basligi{font-family:var(--f-mono); font-size:11px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--muted); margin:38px 0 16px; padding-bottom:10px;
+  border-bottom:1px solid var(--line); font-weight:600}
+.seri-basligi:first-of-type{margin-top:4px}
+ul.liste{list-style:none; margin:0; padding:0; max-width:74ch; border-top:1px solid var(--line)}
+ul.liste li{padding:15px 0 15px 26px; border-bottom:1px solid var(--line); position:relative;
+  color:var(--muted); font-size:15px; line-height:1.55}
+ul.liste li::before{content:""; position:absolute; inset-inline-start:0; top:23px; width:9px;
+  height:1px; background:var(--accent)}
+[dir=rtl] ul.liste li{padding:15px 26px 15px 0}
+
+/* ---------- kapı (çift CTA) ---------- */
+.doors{display:grid; grid-template-columns:repeat(2,1fr); gap:20px}
+@media(max-width:820px){.doors{grid-template-columns:1fr}}
+.door{border:1px solid var(--line); background:var(--surface); padding:30px 28px;
+  display:flex; flex-direction:column; gap:12px}
+.door.lead{border-color:var(--accent)}
+.door h3{margin:0}
+.door p{margin:0; color:var(--muted); font-size:14.5px; line-height:1.6}
+.btn{display:inline-flex; align-items:center; gap:9px; margin-top:auto; padding-top:18px;
+  font-family:var(--f-mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--accent); text-decoration:none; font-weight:600}
+.btn:hover{color:var(--ink)}
+.ar{display:inline-block; transition:transform .15s}
+.btn:hover .ar,.mcard:hover .ar,.btnbox:hover .ar{transform:translateX(4px)}
+html[dir="rtl"] .ar{transform:scaleX(-1)}
+html[dir="rtl"] .btn:hover .ar,html[dir="rtl"] .mcard:hover .ar,
+html[dir="rtl"] .btnbox:hover .ar{transform:scaleX(-1) translateX(4px)}
+.btnbox{display:inline-flex; align-items:center; gap:10px; padding:13px 22px;
+  border:1px solid var(--accent); color:var(--accent); text-decoration:none;
+  font-family:var(--f-mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase;
+  font-weight:600; margin-top:22px}
+.btnbox:hover{background:var(--accent); color:#09090b}
+/* e-posta ve alan adı: uppercase YAPILMAZ.
+   Türkçe sayfada lang="tr" olduğu için tarayıcı i→İ dönüşümü uygular ve
+   info@… adresi İNFO@NARİONHOOKAH.COM olur; tıklanabilir adres bozulmuş görünür. */
+.btnbox.eposta,.btn.eposta{text-transform:none; letter-spacing:.02em; font-size:13px}
+
+/* ---------- pazar kartı ---------- */
+.markets{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
+@media(max-width:880px){.markets{grid-template-columns:1fr}}
+.market{border:1px solid var(--line); background:var(--surface)}
+.market .pat{height:150px; border-bottom:1px solid var(--line); color:var(--accent-2)}
+.market .pat svg{width:100%; height:100%; display:block}
+.market .body{padding:20px 22px}
+.market .reg{font-family:var(--f-mono); font-size:10.5px; letter-spacing:.11em;
+  text-transform:uppercase; color:var(--accent); display:block; margin-bottom:4px}
+.market .nm{font-size:18px; font-weight:600; letter-spacing:-.012em; display:block; margin-bottom:12px}
+
+/* ---------- yol haritası ---------- */
+.road{border-top:1px solid var(--line)}
+.road .step{display:grid; grid-template-columns:64px 1fr 140px; gap:22px; padding:20px 0;
+  border-bottom:1px solid var(--line); align-items:baseline}
+.road .id{font-family:var(--f-mono); font-size:13px; font-weight:600; color:var(--accent)}
+.road h3{font-size:16.5px; margin:0 0 5px}
+.road p{margin:0; color:var(--muted); font-size:14px; line-height:1.55}
+.road .when{font-family:var(--f-mono); font-size:11.5px; color:var(--faint); text-align:end;
+  white-space:nowrap}
+.road .when em{font-style:normal; display:block; margin-top:4px}
+.road .st-suruyor{color:var(--warn)}
+@media(max-width:700px){
+  .road .step{grid-template-columns:52px 1fr}
+  .road .when{grid-column:2; text-align:start; padding-top:8px}
+}
+
+/* ---------- palet ---------- */
+.palette{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+@media(max-width:860px){.palette{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.palette{grid-template-columns:1fr}}
+.sw{border:1px solid var(--line); background:var(--surface)}
+.sw .chip{height:74px; position:relative; border-bottom:1px solid var(--line)}
+.sw .chip i{position:absolute; inset:0; display:block;
+  background:linear-gradient(105deg,rgba(255,255,255,.34) 0%,rgba(255,255,255,0) 42%,rgba(0,0,0,.20) 100%)}
+.sw .body{padding:12px 15px 15px}
+.sw .nm{font-size:14px; font-weight:600; display:block}
+.sw .hx{font-family:var(--f-mono); font-size:11px; color:var(--accent); letter-spacing:.04em}
+
+/* ---------- sss ---------- */
+.faq{border-top:1px solid var(--line); max-width:80ch}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{padding:17px 0; cursor:pointer; font-weight:500; font-size:16px; list-style:none;
+  display:flex; justify-content:space-between; gap:16px; align-items:baseline}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+"; font-family:var(--f-mono); color:var(--accent); flex:none}
+.faq details[open] summary::after{content:"–"}
+.faq p{margin:0 0 17px; color:var(--muted); font-size:14.5px; line-height:1.6; max-width:68ch}
+
+/* ---------- liste (neden / yaklaşım) ---------- */
+.rows{border-top:1px solid var(--line)}
+.rows .row{display:grid; grid-template-columns:minmax(150px,.32fr) 1fr; gap:26px; padding:20px 0;
+  border-bottom:1px solid var(--line); align-items:baseline}
+.rows .row h3{margin:0; font-size:16px}
+.rows .row p{margin:0; color:var(--muted); font-size:14.5px; line-height:1.6}
+@media(max-width:700px){.rows .row{grid-template-columns:1fr; gap:6px}}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--line); background:var(--bg-2); padding-block:40px}
+footer .cols{display:grid; grid-template-columns:1.5fr 1fr 1fr 1.1fr; gap:30px; margin-bottom:30px}
+footer .kunye{font-size:12.5px; color:var(--faint); line-height:1.6; margin-top:14px}
+footer a.wa{display:inline-flex; align-items:center; gap:7px; color:var(--accent); font-weight:500}
+footer a.wa:hover{color:var(--ink)}
+@media(max-width:900px){footer .cols{grid-template-columns:1fr 1fr; gap:24px}}
+@media(max-width:620px){footer .cols{grid-template-columns:1fr; gap:22px}}
+footer h4{font-family:var(--f-mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--faint); margin:0 0 12px; font-weight:600}
+footer a{color:var(--muted); text-decoration:none; display:block; font-size:14px; padding:3px 0}
+footer a:hover{color:var(--ink)}
+footer .fine{border-top:1px solid var(--line); padding-top:20px; display:flex; flex-wrap:wrap;
+  gap:8px 26px; justify-content:space-between; font-family:var(--f-mono); font-size:11px;
+  color:var(--faint); letter-spacing:.03em}
+footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; line-height:1.6}
+
+
+/* --- form (Web3Forms) --- */
+.wform{margin-top:20px;max-width:640px}
+.fgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+@media(max-width:620px){.fgrid{grid-template-columns:1fr}}
+.fld{display:flex;flex-direction:column;gap:5px}
+.fld:has(textarea){grid-column:1/-1}
+.fld span{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.fld span i{font-style:normal;opacity:.7}
+.fld input,.fld textarea{font-family:var(--f-body);font-size:14px;padding:9px 11px;
+  background:var(--surface);border:1px solid var(--line);border-radius:0;color:var(--ink);width:100%}
+.fld input:focus,.fld textarea:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.wform .btnbox{margin-top:16px;border:none;cursor:pointer;font-family:var(--f-mono)}
+.hpot{position:absolute!important;left:-9999px;width:1px;height:1px;opacity:0}
+.fnote{font-size:12px;color:var(--faint);margin-top:12px;line-height:1.5}
+
+
+/* --- NARION Lüks Konfigüratör Stilleri (HBOT Mimarisi) --- */
+.configurator-layout{display:grid;grid-template-columns:1fr 420px;gap:36px;align-items:start;margin-top:20px}
+@media(max-width:960px){.configurator-layout{grid-template-columns:1fr}}
+.config-steps{display:flex;flex-direction:column;gap:24px}
+.config-step-card{background:var(--surface);border:1px solid var(--line);padding:22px 24px}
+.config-step-title{font-size:16.5px;font-weight:600;letter-spacing:-.01em;margin-bottom:4px}
+.config-step-note{font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.5}
+.config-model-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
+.config-m-card{border:1px solid var(--line);background:var(--bg);padding:10px 8px;cursor:pointer;display:flex;flex-direction:column;align-items:center;text-align:center;transition:border-color .15s,transform .15s}
+.config-m-card:hover{border-color:var(--line-2);transform:translateY(-2px)}
+.config-m-card.is-active{border-color:var(--accent);background:var(--surface-2)}
+.config-m-thumb{width:100%;height:94px;object-fit:contain;margin-bottom:6px}
+.config-m-name{font-size:12.5px;font-weight:600;line-height:1.2}
+.config-m-sub{font-family:var(--f-mono);font-size:10px;color:var(--faint);margin-top:2px}
+.config-swatch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
+.config-swatch-item{border:1px solid var(--line);background:var(--bg);padding:11px 13px;cursor:pointer;display:flex;align-items:center;gap:10px;transition:border-color .15s}
+.config-swatch-item:hover{border-color:var(--line-2)}
+.config-swatch-item.is-active{border-color:var(--accent);background:var(--surface-2)}
+.config-swatch-dot{width:20px;height:20px;border-radius:50%;flex-shrink:0;border:1px solid rgba(0,0,0,.2);box-shadow:inset 0 1px 3px rgba(0,0,0,.25)}
+.config-swatch-label{font-size:12.5px;font-weight:500;line-height:1.3}
+.config-addon-list{display:flex;flex-direction:column;gap:8px}
+.config-addon-item{border:1px solid var(--line);background:var(--bg);padding:11px 14px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:border-color .15s}
+.config-addon-item:hover{border-color:var(--line-2)}
+.config-addon-item.is-active{border-color:var(--accent);background:var(--surface-2)}
+.config-addon-left{display:flex;align-items:center;gap:10px}
+.config-addon-title{font-size:13px;font-weight:500}
+.config-addon-sub{font-size:11.5px;color:var(--muted)}
+.config-addon-price{font-family:var(--f-mono);font-size:11.5px;font-weight:600;color:var(--accent)}
+.config-stage-col{position:sticky;top:80px;display:flex;flex-direction:column;gap:18px}
+.config-stage{position:relative;width:100%;aspect-ratio:1/1;max-height:480px;background:radial-gradient(ellipse at 46% 30%, #322319 0%, #1c140f 45%, #0d0907 100%);border:1px solid var(--line);overflow:hidden;touch-action:none;user-select:none;perspective:1000px}
+.stage-spotlight{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 75% 55% at 50% 28%, rgba(216, 187, 138, 0.22), rgba(255, 255, 255, 0.06) 45%, transparent 72%);transition:background 0.1s ease}
+.stage-tilt{position:absolute;inset:6% 6% 12%;display:flex;align-items:center;justify-content:center;transform-style:preserve-3d;will-change:transform}
+.stage-img{position:absolute;width:100%;height:100%;object-fit:contain;opacity:0;transform:scale(0.96);filter:drop-shadow(0 24px 36px rgba(0,0,0,0.65));transition:opacity 0.45s cubic-bezier(.4,0,.2,1), transform 0.45s cubic-bezier(.4,0,.2,1);pointer-events:none}
+.stage-img.is-active{opacity:1;transform:scale(1)}
+.stage-floor{position:absolute;left:10%;right:10%;bottom:8%;height:14%;pointer-events:none;background:radial-gradient(ellipse 55% 100% at 50% 100%, rgba(216, 187, 138, 0.24), rgba(0, 0, 0, 0.6) 60%, transparent 80%)}
+.stage-badge{position:absolute;top:12px;inset-inline-start:12px;z-index:3;font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#d8bb8a;background:rgba(10,8,6,.75);border:1px solid rgba(216,187,138,.35);padding:5px 11px;backdrop-filter:blur(8px);border-radius:2px}
+.stage-hmd{position:absolute;top:46px;inset-inline-start:12px;z-index:3;display:flex;align-items:center;gap:8px;max-width:calc(100% - 24px);font-family:var(--f-mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;line-height:1.35;color:#f3e5ab;background:rgba(10,8,6,.8);border:1px solid rgba(216,187,138,.45);padding:4px 10px 4px 4px;border-radius:3px;text-decoration:none;backdrop-filter:blur(8px)}.stage-hmd img{width:30px;height:30px;object-fit:cover;border-radius:2px;flex:none}.stage-hmd:hover{border-color:#d8bb8a}
+.stage-view-toggle{position:absolute;bottom:12px;inset-inline-start:12px;z-index:3;display:flex;gap:4px;background:rgba(10,8,6,.85);padding:4px;border:1px solid rgba(216,187,138,.35);backdrop-filter:blur(10px);border-radius:3px;flex-wrap:wrap;max-width:calc(100% - 70px)}
+.stage-v-btn{background:none;border:none;color:rgba(255,255,255,.8);font-family:var(--f-mono);font-size:10.5px;letter-spacing:.04em;padding:5px 9px;cursor:pointer;transition:all .15s;border-radius:2px}
+.stage-v-btn:hover{background:rgba(216,187,138,.18);color:#fff}
+.stage-v-btn.is-active{background:#d8bb8a;color:#111;font-weight:600}
+.stage-zoom-controls{position:absolute;bottom:12px;inset-inline-end:12px;z-index:3;display:flex;flex-direction:column;gap:4px}
+.stage-z-btn{width:28px;height:28px;background:rgba(10,8,6,.75);color:#fff;border:1px solid rgba(255,255,255,.2);font-family:var(--f-mono);font-size:14px;display:flex;align-items:center;justify-content:center;cursor:pointer;backdrop-filter:blur(8px);border-radius:2px;transition:border-color .15s}
+.stage-z-btn:hover{border-color:var(--accent)}
+.config-summary{background:var(--surface);border:1px solid var(--line);padding:22px 24px}
+.summary-head{border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:14px}
+.summary-code{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;color:var(--accent);text-transform:uppercase}
+.summary-name{font-size:20px;font-weight:600;margin:2px 0 0;letter-spacing:-.015em}
+.summary-rows{display:flex;flex-direction:column;gap:9px;margin-bottom:18px}
+.summary-row{display:flex;justify-content:space-between;align-items:baseline;font-size:13px}
+.summary-row .k{color:var(--muted)}
+.summary-row .v{font-family:var(--f-mono);font-weight:500;text-align:end}
+.summary-actions{display:flex;flex-direction:column;gap:9px}
+.btn-dl{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;padding:11px;background:var(--bg);border:1px solid var(--line);color:var(--ink);font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;font-weight:600;transition:border-color .15s}
+.btn-dl:hover{border-color:var(--accent);color:var(--accent)}
+.btn-quote{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;background:var(--accent);color:#09090b;border:none;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;font-weight:600;text-decoration:none}
+.btn-quote:hover{opacity:.92}
+
+
+/* --- kafe hesaplayicisi --- */
+.hesap{margin-top:20px}
+.hesap table{min-width:0}
+.hesap input[type=number]{font-family:var(--f-mono);font-size:14px;width:100%;max-width:120px;
+  padding:6px 9px;background:var(--surface);border:1px solid var(--line);border-radius:0;
+  color:var(--ink);font-variant-numeric:tabular-nums;text-align:right}
+.hesap input:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.hesap td.birim{font-family:var(--f-mono);font-size:11.5px;color:var(--faint);white-space:nowrap}
+.hout{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);
+  border:1px solid var(--line);margin-top:18px}
+@media(max-width:700px){.hout{grid-template-columns:1fr}}
+.ho{background:var(--surface);padding:16px 18px;display:flex;flex-direction:column;gap:3px}
+.ho .l{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.ho .v{font-family:var(--f-display);font-size:23px;font-weight:600;font-variant-numeric:tabular-nums;
+  line-height:1.15;color:var(--accent)}
+.ho .s{font-size:12px;color:var(--muted);line-height:1.45;margin-top:2px}
+.htop{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);
+  border:1px solid var(--line);border-top:none}
+@media(max-width:700px){.htop{grid-template-columns:1fr}}
+.htop>div{background:var(--accent-soft);padding:16px 18px;
+  display:flex;flex-direction:column;gap:3px}
+.htop .l{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.htop .v{font-family:var(--f-display);font-size:27px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.1}
+@media print{.hesap input{border:none;border-bottom:1px dashed var(--line)}}
+
+
+/* --- kafe logosu onizleme --- */
+.lgrid{display:grid;grid-template-columns:1fr 250px;gap:22px;margin-top:20px;align-items:start}
+@media(max-width:820px){.lgrid{grid-template-columns:1fr}}
+#lg-tuval{width:100%;height:auto;display:block;border:1px solid var(--line);background:var(--surface-2)}
+.lg-sag{display:flex;flex-direction:column;gap:14px}
+.lg-yukle{display:block;cursor:pointer}
+.lg-yukle input{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}
+.lg-yukle span{display:block;text-align:center;font-family:var(--f-mono);font-size:12px;
+  letter-spacing:.05em;padding:13px 16px;border:1px dashed var(--line-strong);
+  background:var(--surface);color:var(--muted);transition:border-color .15s,color .15s}
+.lg-yukle:hover span{border-color:var(--accent);color:var(--accent)}
+.lg-yukle input:focus-visible+span{outline:2px solid var(--accent);outline-offset:2px}
+.lg-uyari{font-size:12.5px;color:#a33636;margin:0}
+.lg-kaydir{display:flex;flex-direction:column;gap:6px}
+.lg-kaydir span{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--faint)}
+.lg-kaydir input[type=range]{width:100%;accent-color:var(--accent)}
+.lg-sag .btnbox{border:1px solid var(--line);cursor:pointer;font-family:var(--f-mono);
+  font-size:12px;text-align:center;background:var(--surface)}
+.lg-sag .btnbox:disabled{opacity:.42;cursor:not-allowed}
+.lg-gizlilik{font-size:11.5px;color:var(--faint);line-height:1.5;margin:0}
+@media print{.lgrid{display:none}}
+
+</style>
+<link rel="canonical" href="https://narionhookah.com/tr/uc-boyut.html">
+<link rel="alternate" hreflang="tr" href="https://narionhookah.com/tr/uc-boyut.html">
+<link rel="alternate" hreflang="en" href="https://narionhookah.com/en/uc-boyut.html">
+<link rel="alternate" hreflang="ar" href="https://narionhookah.com/ar/uc-boyut.html">
+<link rel="alternate" hreflang="ru" href="https://narionhookah.com/ru/uc-boyut.html">
+<link rel="alternate" hreflang="x-default" href="https://narionhookah.com/tr/uc-boyut.html">
+
+<!-- MREDS-IYI:meta (Open Graph, Twitter, JSON-LD) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="NARION">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:title" content="Üç boyutlu görünüm · NARION">
+<meta property="og:description" content="NARION modellerini her açıdan döndürerek inceleyin: gövde oranları, bayonet bileziği, ahşap panel ve dört kaplama seçeneği.">
+<meta property="og:url" content="https://narionhookah.com/tr/uc-boyut.html">
+<meta property="og:image" content="https://narionhookah.com/film/narion-poster.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Üç boyutlu görünüm · NARION">
+<meta name="twitter:description" content="NARION modellerini her açıdan döndürerek inceleyin: gövde oranları, bayonet bileziği, ahşap panel ve dört kaplama seçeneği.">
+<meta name="twitter:image" content="https://narionhookah.com/film/narion-poster.jpg">
+<meta name="theme-color" content="#0b0b0f">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "NARION", "url": "https://narionhookah.com/", "logo": "https://narionhookah.com/logo/apple-touch-icon-180.png"}</script>
+</head>
+<body>
+<a class="skip" href="#main">İçeriğe geç</a>
+<header class="top">
+  <div class="wrap topin">
+    <a class="brand" href="index.html"><span class="brand-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"  role="img" aria-label="NARION"><mask id="mi" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100"><rect width="100" height="100" fill="#fff"/><g stroke="#000" stroke-width="9" fill="none" stroke-linecap="round"><path d="M50.00 0.00 L50.00 21.00"/><path d="M50.00 21.00 A35 35 0 0 0 28.45 22.42"/><path d="M6.70 75.00 L24.89 64.50"/><path d="M24.89 64.50 A35 35 0 0 0 36.89 82.45"/><path d="M93.30 75.00 L75.11 64.50"/><path d="M75.11 64.50 A35 35 0 0 0 84.66 45.13"/></g></mask><g mask="url(#mi)"><circle cx="50" cy="50" r="35" fill="none" stroke="currentColor" stroke-width="15"/></g></svg></span>
+      <span class="brand-txt"><b>NARION</b><span>Haute Hookah Systems</span></span></a>
+    <nav class="main" aria-label="Menü"><a href="index.html">Ana sayfa</a><span class="nav-grup"><a href="index.html#modeller" aria-haspopup="true">Modeller</a><span class="nav-alt"><a href="narion-koza.html">KOZA</a><a href="narion-ladin.html">LADİN</a><a href="narion-manolya.html">MANOLYA</a><span class="alt-baslik">Üretim programı</span><a href="narion-servi.html">SERVİ</a><a href="narion-prizma.html">PRİZMA</a><a href="narion-ocak.html">OCAK</a><a href="narion-fener.html">FENER</a><a href="narion-nomad.html">NOMAD</a><a href="narion-aura.html">AURA</a><a href="narion-monolit.html">MONOLİT</a><a href="narion-inci.html">İNCİ</a><a href="narion-yalin.html">YALIN</a><a href="narion-zeytin.html">ZEYTİN</a><a href="narion-ardic.html">ARDIÇ</a><a href="narion-kemer.html">KEMER</a><a href="narion-yorunge.html">YÖRÜNGE</a><a href="narion-cakil.html">ÇAKIL</a><a class="alt-ayrac" href="karsilastirma.html">Karşılaştırma</a></span></span><a href="teknoloji.html">Teknoloji</a><a href="uc-boyut.html" aria-current="page">3B</a><a href="parcalar.html">Parçalar</a><a href="distributorluk.html">Distribütörlük</a><a href="on-kayit.html">Ön kayıt</a><a href="hakkinda.html">Hakkında</a></nav>
+    <div class="langs" role="navigation" aria-label="Dil"><a href="uc-boyut.html" hreflang="tr" lang="tr" class="on" aria-current="true">TR</a><a href="en/uc-boyut.html" hreflang="en" lang="en">EN</a><a href="ar/uc-boyut.html" hreflang="ar" lang="ar">AR</a><a href="ru/uc-boyut.html" hreflang="ru" lang="ru">RU</a></div>
+  </div>
+</header>
+<div class="status">
+  <div class="wrap">
+    <b>İlk seri · 2026</b>
+    <p>Tasarım, mühendislik ve kalite kontrolü NARION'da; üretim sertifikalı üretim ortaklarıyla. İlk seri üretim hazırlığında: teknik dosya tamam, numune aşaması sürüyor. Sitedeki ölçüler ve performans değerleri üretim şartnamemizdir.</p>
+  </div>
+</div>
+<main id="main">
+
+<div class="hero"><div class="wrap">
+  <div>
+    <span class="eyebrow">Stüdyo Konfigüratör</span>
+    <h1>Kendi NARION Takımınızı Yapılandırın</h1>
+    <p class="lede">Modeli, kaplama yüzeyini ve ahşap detaylarını seçin — gerçek stüdyo render fotoğraflarıyla anında inceleyin ve yapılandırma dosyasını indirin.</p>
+  </div>
+</div></div>
+
+<section><div class="wrap">
+  <div class="configurator-layout">
+    
+    <!-- Sol Taraf: Adımlar -->
+    <div class="config-steps">
+      
+      <!-- 1. Model Seçimi -->
+      <div class="config-step-card">
+        <div class="config-step-title">1. Model Seçin</div>
+        <div class="config-step-note">Gövde formuna ve kullanım amacınıza en uygun NARION modelini belirleyin.</div>
+        <div class="config-model-grid">
+          <div class="config-m-card is-active" data-model="narion-koza">
+            <img class="config-m-thumb" src="gorsel/model-narion-koza.webp" alt="NARION KOZA" />
+            <div class="config-m-name">KOZA</div>
+            <div class="config-m-sub">420 mm · Kafe & Ev</div>
+          </div>
+          <div class="config-m-card" data-model="narion-ladin">
+            <img class="config-m-thumb" src="gorsel/model-narion-ladin.webp" alt="NARION LADİN" loading="lazy" decoding="async">
+            <div class="config-m-name">LADİN</div>
+            <div class="config-m-sub">580 mm · Lounge</div>
+          </div>
+          <div class="config-m-card" data-model="narion-manolya">
+            <img class="config-m-thumb" src="gorsel/model-narion-manolya.webp" alt="NARION MANOLYA" loading="lazy" decoding="async">
+            <div class="config-m-name">MANOLYA</div>
+            <div class="config-m-sub">620 mm · Kristal Klasik</div>
+          </div>
+          <div class="config-m-card" data-model="narion-servi">
+            <img class="config-m-thumb" src="gorsel/model-narion-servi.webp" alt="NARION SERVİ" loading="lazy" decoding="async">
+            <div class="config-m-name">SERVİ</div>
+            <div class="config-m-sub">680 mm · İnce Uzun</div>
+          </div>
+          <div class="config-m-card" data-model="narion-prizma">
+            <img class="config-m-thumb" src="gorsel/model-narion-prizma.webp" alt="NARION PRİZMA" loading="lazy" decoding="async">
+            <div class="config-m-name">PRİZMA</div>
+            <div class="config-m-sub">510 mm · Altıgen Prizma</div>
+          </div>
+          <div class="config-m-card" data-model="narion-nomad">
+            <img class="config-m-thumb" src="gorsel/model-narion-nomad.webp" alt="NARION NOMAD" loading="lazy" decoding="async">
+            <div class="config-m-name">NOMAD</div>
+            <div class="config-m-sub">350 mm · Seyahat</div>
+          </div>
+          <div class="config-m-card" data-model="narion-aura">
+            <img class="config-m-thumb" src="gorsel/model-narion-aura.webp" alt="NARION AURA" loading="lazy" decoding="async">
+            <div class="config-m-name">AURA</div>
+            <div class="config-m-sub">600 mm · Damla Prestij</div>
+          </div>
+          <div class="config-m-card" data-model="narion-monolit">
+            <img class="config-m-thumb" src="gorsel/model-narion-monolit.webp" alt="NARION MONOLİT" loading="lazy" decoding="async">
+            <div class="config-m-name">MONOLİT</div>
+            <div class="config-m-sub">550 mm · Monolitik Blok</div>
+          </div>
+          <div class="config-m-card" data-model="narion-inci">
+            <img class="config-m-thumb" src="gorsel/model-narion-inci.webp" alt="NARION İNCİ" loading="lazy" decoding="async">
+            <div class="config-m-name">İNCİ</div>
+            <div class="config-m-sub">480 mm · Oval Seramik</div>
+          </div>
+          <div class="config-m-card" data-model="narion-cakil">
+            <img class="config-m-thumb" src="gorsel/model-narion-cakil.webp" alt="NARION ÇAKIL" loading="lazy" decoding="async">
+            <div class="config-m-name">ÇAKIL</div>
+            <div class="config-m-sub">380 mm · Geniş Taban</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Kaplama Seçimi -->
+      <div class="config-step-card">
+        <div class="config-step-title">2. Metal & PVD Kaplama</div>
+        <div class="config-step-note">Tüm yüzeyler gıda temasına uygun, korozyona dayanıklı PVD ve satin finisajla işlenir.</div>
+        <div class="config-swatch-grid">
+          <div class="config-swatch-item is-active" data-kaplama="firca">
+            <span class="config-swatch-dot" style="background:linear-gradient(135deg,#eef2f5,#9aa0a6)"></span>
+            <div>
+              <div class="config-swatch-label">Fırçalı Paslanmaz</div>
+              <div class="config-m-sub">AISI 304 / 316L Satin</div>
+            </div>
+          </div>
+          <div class="config-swatch-item" data-kaplama="sampanya">
+            <span class="config-swatch-dot" style="background:linear-gradient(135deg,#f8e2be,#bf9f6f)"></span>
+            <div>
+              <div class="config-swatch-label">PVD Şampanya</div>
+              <div class="config-m-sub">Lüks Pirinç & Altın PVD</div>
+            </div>
+          </div>
+          <div class="config-swatch-item" data-kaplama="siyah">
+            <span class="config-swatch-dot" style="background:linear-gradient(135deg,#484d52,#1c1e20)"></span>
+            <div>
+              <div class="config-swatch-label">Mat Siyah PVD</div>
+              <div class="config-m-sub">Obsidyen Titanyum Kaplama</div>
+            </div>
+          </div>
+          <div class="config-swatch-item" data-kaplama="gun">
+            <span class="config-swatch-dot" style="background:linear-gradient(135deg,#7b8791,#404850)"></span>
+            <div>
+              <div class="config-swatch-label">Gun Metal</div>
+              <div class="config-m-sub">Koyu Grafit Metalik</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Ahşap Panel Seçimi -->
+      <div class="config-step-card">
+        <div class="config-step-title">3. Ahşap Panel & Kakma</div>
+        <div class="config-step-note">Doğal fırınlanmış sert ağaç panel; suya ve ısıya karşı özel emprenye korumalıdır.</div>
+        <div class="config-swatch-grid">
+          <div class="config-swatch-item is-active" data-ahsap="ceviz">
+            <span class="config-swatch-dot" style="background:linear-gradient(135deg,#7a4e32,#462c1d)"></span>
+            <div>
+              <div class="config-swatch-label">Doğal Amerikan Ceviz</div>
+              <div class="config-m-sub">Derin Damarlı Ahşap</div>
+            </div>
+          </div>
+          <div class="config-swatch-item" data-ahsap="mese">
+            <span class="config-swatch-dot" style="background:linear-gradient(135deg,#4a3d34,#2b231d)"></span>
+            <div>
+              <div class="config-swatch-label">Füme Koyu Meşe</div>
+              <div class="config-m-sub">Mat İsli Meşe Dokusu</div>
+            </div>
+          </div>
+          <div class="config-swatch-item" data-ahsap="disbudak">
+            <span class="config-swatch-dot" style="background:linear-gradient(135deg,#2e2e30,#18181a)"></span>
+            <div>
+              <div class="config-swatch-label">Siyah Dişbudak</div>
+              <div class="config-m-sub">Siyah Ahşap Greni</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Donanım & Opsiyonlar -->
+      <div class="config-step-card">
+        <div class="config-step-title">4. Parçalar & Özel Aksesuarlar</div>
+        <div class="config-step-note">İhtiyacınıza göre lüle durumunu ve özel B2B / perakende aksesuarlarını ekleyin.</div>
+        <div class="config-addon-list">
+          <div class="config-addon-item is-active" data-opt="lule">
+            <div class="config-addon-left">
+              <input type="checkbox" checked id="opt-lule" />
+              <div>
+                <div class="config-addon-title">NARION Smart HMD Akıllı Lüle</div>
+                <div class="config-addon-sub">Tüm modellerde standart · kablosuz, kömürsüz ısıtma</div>
+              </div>
+            </div>
+            <div class="config-addon-price">Standart</div>
+          </div>
+          <div class="config-addon-item" data-opt="logo">
+            <div class="config-addon-left">
+              <input type="checkbox" id="opt-logo" />
+              <div>
+                <div class="config-addon-title">Lazer Logo Kazıma (B2B)</div>
+                <div class="config-addon-sub">Ceviz veya çelik panele özel işletme logosu</div>
+              </div>
+            </div>
+            <div class="config-addon-price">Ücretsiz (B2B)</div>
+          </div>
+          <div class="config-addon-item" data-opt="marpuc">
+            <div class="config-addon-left">
+              <input type="checkbox" id="opt-marpuc" />
+              <div>
+                <div class="config-addon-title">Deri Sarımlı Çelik Marpuç</div>
+                <div class="config-addon-sub">Lüks el dikişi deri kaplama ahşap ağızlık</div>
+              </div>
+            </div>
+            <div class="config-addon-price">+ Opsiyonel</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Sağ Taraf: Sticky Sahne & Canlı Özet -->
+    <div class="config-stage-col">
+      <div class="config-stage" id="sahne" role="img" aria-label="NARION stüdyo ürün görünümü">
+        <span class="stage-badge" id="stage-badge">NARION KOZA</span>
+        <a class="stage-hmd" href="smart-hmd.html?v=2026c"><img src="gorsel/smart-hmd-tek-kare.webp" alt="" width="30" height="30" loading="lazy" decoding="async"><span>Smart HMD lüle · tüm modellerde standart</span></a>
+        <div class="stage-spotlight"></div>
+        <div class="stage-view-toggle">
+          <button type="button" class="stage-v-btn is-active" data-view="tam">Genel Görünüm</button>
+          <button type="button" class="stage-v-btn" data-view="yakin">Makro Yakın</button>
+        </div>
+        <div class="stage-zoom-controls">
+          <button type="button" class="stage-z-btn" id="z-in" title="Yakınlaştır">+</button>
+          <button type="button" class="stage-z-btn" id="z-out" title="Uzaklaştır">&minus;</button>
+        </div>
+      </div>
+
+      <!-- Canlı Özet Kartı -->
+      <aside class="config-summary">
+        <div class="summary-head">
+          <div class="summary-code" id="sum-code">NARION KOZA · LOKOMOTİF SERİ</div>
+          <h2 class="summary-name" id="sum-title">KOZA</h2>
+        </div>
+        <div class="summary-rows">
+          <div class="summary-row"><span class="k">Seçilen Kaplama</span><span class="v" id="sum-kaplama">Fırçalı Paslanmaz</span></div>
+          <div class="summary-row"><span class="k">Ahşap Detay</span><span class="v" id="sum-ahsap">Amerikan Ceviz</span></div>
+          <div class="summary-row"><span class="k">Toplam Yükseklik</span><span class="v" id="sum-yuk">420 mm</span></div>
+          <div class="summary-row"><span class="k">Gövde Malzemesi</span><span class="v" id="sum-malzeme">AISI 304 Paslanmaz Çelik</span></div>
+          <div class="summary-row"><span class="k">Şişe / Hazne</span><span class="v" id="sum-sise">750 ml</span></div>
+          <div class="summary-row"><span class="k">Taban Çapı</span><span class="v" id="sum-taban">Ø150 mm (Geniş Sarsılmaz Denge)</span></div>
+          <div class="summary-row"><span class="k">Bağlantı Tipi</span><span class="v">45° Bayonet</span></div>
+          <div class="summary-row"><span class="k">Lüle</span><span class="v">NARION Smart HMD (standart)</span></div>
+        </div>
+        <div class="summary-actions">
+          <button type="button" class="btn-dl" id="v3-indir">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Yapılandırma Görselini İndir
+          </button>
+          <a class="btn-quote" href="distributorluk.html">
+            Numune / Distribütör Teklifi Al &rarr;
+          </a>
+        </div>
+      </aside>
+    </div>
+
+  </div>
+</div></section>
+
+<!-- Ambalaj & Farklı Açı Galerisi -->
+<section class="section" style="border-top:1px solid var(--line); padding:64px 0 80px; background:var(--surface);">
+  <div class="wrap">
+    <div style="max-width:720px; margin-bottom:36px;">
+      <span style="font-family:var(--f-mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--faint);">Stüdyo Portföyü & Ambalaj</span>
+      <h2 style="font-size:28px; margin:8px 0 12px; font-weight:600;">Farklı Açılardan İnceleme & Lüks Kutulama</h2>
+      <p style="color:var(--muted); font-size:15px; line-height:1.65; margin:0;">
+        NARION gövdeleri sadece tek bir açıdan değil; 45° dinamik perspektif, mikrometre toleranslı CNC bayonet kilit makrosu ve teslimat anındaki VIP sunum ambalajıyla baştan sona eksiksiz bir endüstriyel tasarım objesidir.
+      </p>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:24px;">
+      
+      <!-- Kart 1: VIP Lüks Kutu -->
+      <div style="background:var(--surface); border:1px solid var(--line); border-radius:4px; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 2px 8px rgba(0,0,0,.03);">
+        <div style="aspect-ratio:4/3; background:#0d0d0f; overflow:hidden;">
+          <img src="gorsel/kutu-luks-sunum-v2.webp" alt="NARION VIP Lüks Kutu" style="width:100%; height:100%; object-fit:cover; display:block; transition:transform .3s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" loading="lazy" decoding="async">
+        </div>
+        <div style="padding:18px 20px 22px; flex:1; display:flex; flex-direction:column;">
+          <span style="font-family:var(--f-mono); font-size:11px; color:#9c783e; letter-spacing:.08em; text-transform:uppercase;">VIP Sunum Ambalajı</span>
+          <h3 style="font-size:17px; margin:6px 0 8px; font-weight:600;">Manyetik Sert Hediye Kutusu</h3>
+          <p style="color:var(--muted); font-size:13.5px; line-height:1.55; margin:0 0 14px;">Özel lazer kesim yüksek yoğunluklu kadife EVA köpük yataklama; sıcak yaldız kabartmalı "NARION" kapağı ve demonte koruma.</p>
+          <div style="margin-top:auto; font-family:var(--f-mono); font-size:11.5px; color:var(--faint);">Standart: Tüm Modeller (B2B / Perakende)</div>
+        </div>
+      </div>
+
+      <!-- Kart 2: 3/4 Dinamik Perspektif Açısı -->
+      <div style="background:var(--surface); border:1px solid var(--line); border-radius:4px; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 2px 8px rgba(0,0,0,.03);">
+        <div style="aspect-ratio:4/3; background:#0d0d0f; overflow:hidden;">
+          <img src="gorsel/koza-perspektif-aci.webp" alt="NARION KOZA 45 Derece Perspektif" style="width:100%; height:100%; object-fit:cover; display:block; transition:transform .3s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" loading="lazy" decoding="async">
+        </div>
+        <div style="padding:18px 20px 22px; flex:1; display:flex; flex-direction:column;">
+          <span style="font-family:var(--f-mono); font-size:11px; color:#9c783e; letter-spacing:.08em; text-transform:uppercase;">3/4 İzometrik Açı</span>
+          <h3 style="font-size:17px; margin:6px 0 8px; font-weight:600;">45° Derinlik & Hacim Açısı</h3>
+          <p style="color:var(--muted); font-size:13.5px; line-height:1.55; margin:0 0 14px;">Kapsül kafes formunun bombesi, masif Amerikan ceviz panel eğriliği, su penceresi ve ahşap-metal geçişlerindeki ışık oyunları.</p>
+          <div style="margin-top:auto; font-family:var(--f-mono); font-size:11.5px; color:var(--faint);">Model: NARION KOZA · 420 mm</div>
+        </div>
+      </div>
+
+      <!-- Kart 3: NOMAD Taktik Seyahat Kutusu -->
+      <div style="background:var(--surface); border:1px solid var(--line); border-radius:4px; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 2px 8px rgba(0,0,0,.03);">
+        <div style="aspect-ratio:4/3; background:#0d0d0f; overflow:hidden;">
+          <img src="gorsel/nomad-travel-kutu.webp" alt="NARION NOMAD Seyahat Kutusu" style="width:100%; height:100%; object-fit:cover; display:block; transition:transform .3s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" loading="lazy" decoding="async">
+        </div>
+        <div style="padding:18px 20px 22px; flex:1; display:flex; flex-direction:column;">
+          <span style="font-family:var(--f-mono); font-size:11px; color:#9c783e; letter-spacing:.08em; text-transform:uppercase;">Mobil Koruma Çantası</span>
+          <h3 style="font-size:17px; margin:6px 0 8px; font-weight:600;">NOMAD Darbe Emici Çanta</h3>
+          <p style="color:var(--muted); font-size:13.5px; line-height:1.55; margin:0 0 14px;">Dış mekân, seyahat ve lounge mobil servisine özel darbe emici polikarbonat sert çanta; 4 adet ağızlık ve silikon marpuç yuvalı.</p>
+          <div style="margin-top:auto; font-family:var(--f-mono); font-size:11.5px; color:var(--faint);">Model: NARION NOMAD · Seyahat Serisi</div>
+        </div>
+      </div>
+
+      <!-- Kart 4: Bayonet Mekanizma Makrosu -->
+      <div style="background:var(--surface); border:1px solid var(--line); border-radius:4px; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 2px 8px rgba(0,0,0,.03);">
+        <div style="aspect-ratio:4/3; background:#0d0d0f; overflow:hidden;">
+          <img src="gorsel/bayonet-iscilik-makro.webp" alt="NARION Bayonet Kilit ve İşçilik" style="width:100%; height:100%; object-fit:cover; display:block; transition:transform .3s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" loading="lazy" decoding="async">
+        </div>
+        <div style="padding:18px 20px 22px; flex:1; display:flex; flex-direction:column;">
+          <span style="font-family:var(--f-mono); font-size:11px; color:#9c783e; letter-spacing:.08em; text-transform:uppercase;">Hassas Makro Detay</span>
+          <h3 style="font-size:17px; margin:6px 0 8px; font-weight:600;">CNC Bayonet Kilit & Masif Ahşap</h3>
+          <p style="color:var(--muted); font-size:13.5px; line-height:1.55; margin:0 0 14px;">45° aletsiz söküm bileziği, CNC mikrometre toleranslı paslanmaz çelik kilit pimi ve doğal ceviz damar geçişi.</p>
+          <div style="margin-top:auto; font-family:var(--f-mono); font-size:11.5px; color:var(--faint);">Tolerans: &plusmn;0,02 mm · AISI 304 Paslanmaz</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<script src="gorsel/3d/uc-boyut-viewer.js"></script>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h4>NARION</h4>
+        <p>Ölçüler üretim şartnamemizden alınmıştır.</p>
+        <p class="kunye">Tuzla, İstanbul</p>
+      </div>
+      <div><h4>Modeller</h4><a href="narion-koza.html">KOZA</a><a href="narion-ladin.html">LADİN</a><a href="narion-manolya.html">MANOLYA</a><a href="narion-servi.html">SERVİ</a><a href="narion-prizma.html">PRİZMA</a><a href="narion-ocak.html">OCAK</a><a href="narion-fener.html">FENER</a><a href="narion-nomad.html">NOMAD</a><a href="narion-aura.html">AURA</a><a href="narion-monolit.html">MONOLİT</a><a href="narion-inci.html">İNCİ</a><a href="narion-yalin.html">YALIN</a><a href="narion-zeytin.html">ZEYTİN</a><a href="narion-ardic.html">ARDIÇ</a><a href="narion-kemer.html">KEMER</a><a href="narion-yorunge.html">YÖRÜNGE</a><a href="narion-cakil.html">ÇAKIL</a><a href="karsilastirma.html">Karşılaştırma</a></div>
+      <div><h4>Menü</h4><a href="index.html">Ana sayfa</a><a href="teknoloji.html">Teknoloji</a><a href="uc-boyut.html">3B</a><a href="parcalar.html">Parçalar</a><a href="distributorluk.html">Distribütörlük</a><a href="on-kayit.html">Ön kayıt</a><a href="hakkinda.html">Hakkında</a></div>
+      <div><h4>İletişim</h4><a href="mailto:info@narionhookah.com">info@narionhookah.com</a><a href="tel:+908508881679">+90 850 888 1679</a></div>
+    </div>
+    <div class="fine">
+      <span>NARION · 2026</span>
+      <span>Bu site çerez kullanmaz, ziyaretçi takibi yapmaz; yazı tipleri kendi sunucumuzdan yüklenir.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
