@@ -7,7 +7,7 @@
 <meta name="description" content="A smart ceramic heater producing 0.0 ppm carbon monoxide. A 14.8V cordless lithium battery, a PID thermal aroma lock and smartphone control.">
 <link rel="icon" type="image/svg+xml" href="../logo/favicon.svg">
 <link rel="apple-touch-icon" href="../logo/apple-touch-icon-180.png">
-<link rel="stylesheet" href="../assets/style.css?v=13">
+<link rel="stylesheet" href="../assets/style.css?v=15">
 <link rel="canonical" href="https://narionhookah.com/en/smart-hmd.html">
 <link rel="alternate" hreflang="tr" href="https://narionhookah.com/tr/smart-hmd.html">
 <link rel="alternate" hreflang="en" href="https://narionhookah.com/en/smart-hmd.html">
@@ -104,7 +104,7 @@
           <p class="lead">The headache and heaviness that come with a hookah are not from the tobacco but from the toxic gases given off by burning charcoal. The NARION Smart HMD replaces fire with smart ceramic heat held to micron precision. No ash, no burnt taste, and a full 90 uninterrupted minutes.</p>
           <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:26px">
             <a class="btn gold" href="#maliyet-raporu">📊 How Does It Cut Costs? (91% Savings Report)</a>
-            <a class="btn glass" href="../raporlar/NARION-Smart-HMD-Maliyet-ve-ROI-Raporu.pdf" target="_blank" rel="noopener">📄 Download Cost & ROI Report (PDF)</a>
+            <a class="btn glass" href="../raporlar/NARION-Smart-HMD-Maliyet-ve-ROI-Raporu.pdf?v=2026" target="_blank" rel="noopener">📄 Download Cost & ROI Report (PDF)</a>
           </div>
         </div>
 
@@ -235,8 +235,77 @@
     <div class="wrap">
       <div class="shead" style="text-align:center;max-width:780px;margin:0 auto 40px">
         <span class="eyebrow" style="justify-content:center">Financial Audit &amp; Operational Efficiency Report</span>
-        <h2>How Does Smart HMD Cut Lounge Costs by 91%?</h2>
-        <p>With traditional charcoal hookahs, venues lose money not only on coconut coal boxes, but also on dedicated charcoal staff (salary + social security), coal burner electricity, burnt tobacco waste, scorched furniture/carpets, and heavy HVAC exhaust loads. Below is the item-by-item financial breakdown.</p>
+        <h2>How Does Smart HMD Cut Costs by 91%–96%?</h2>
+        <p>Whether you enjoy hookah every evening at home or run a 30-table lounge, Smart HMD eliminates coconut coal boxes, coil burner electricity, burnt tobacco waste, and scorched carpets/furniture. Below is the financial breakdown for both <b>Home Users</b> and <b>Commercial Lounges</b>.</p>
+        <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:20px">
+          <a class="btn gold sm" href="#ev-maliyet-raporu">🏠 Individual Home User Savings</a>
+          <a class="btn glass sm" href="#kafe-maliyet-raporu" style="border-color:rgba(201,169,110,0.45);color:var(--gold-light)">🏢 Café &amp; Lounge ROI Report</a>
+          <a class="btn glass sm" href="#resmi-pdf-raporlar">📄 Official PDF Reports (4 Docs)</a>
+        </div>
+      </div>
+
+      <!-- HOME USER COST & SAVINGS SECTION -->
+      <div id="ev-maliyet-raporu" style="margin-bottom:56px;padding:30px;border-radius:20px;border:1px solid rgba(201,169,110,0.32);background:linear-gradient(145deg, rgba(201,169,110,0.07) 0%, rgba(15,15,20,0.92) 100%)">
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px;margin-bottom:22px">
+          <div>
+            <span class="eyebrow" style="margin-bottom:6px">🏠 Individual Home User Report (B2C)</span>
+            <h3 style="margin:0;font-size:25px">Home Hookah Cost, Health &amp; Comfort Breakdown</h3>
+            <p style="font-size:14px;color:var(--text-muted);margin:6px 0 0">At home, a 90-minute session on grid electricity costs just <b>0,21 ₺ (21 Kuruş)</b> instead of <b>32,00 ₺</b> in retail coal, electric coil stove power, and scorched tobacco.</p>
+          </div>
+          <a class="btn gold sm" href="../raporlar/NARION-Ev-Kullanicisi-Maliyet-ve-Tasarruf-Raporu.pdf?v=2026" target="_blank" rel="noopener">📄 Home User PDF Report →</a>
+        </div>
+
+        <div class="calc roi-sim" style="margin-bottom:0;background:rgba(10,10,14,0.9)">
+          <div class="in">
+            <span class="eyebrow" style="margin-bottom:8px">Interactive Home User Simulator</span>
+            <h4 style="margin:0 0 16px;font-size:20px">Calculate Your Personal Home Savings</h4>
+
+            <div class="field">
+              <label for="homeWeeklySlider"><span>How Many Hookah Bowls Do You Smoke Per Week at Home?</span> <b id="homeWeeklyLbl">7 / Week (1 / Day)</b></label>
+              <input type="range" id="homeWeeklySlider" min="1" max="21" step="1" value="7" oninput="calcHomeRoiEn()">
+            </div>
+
+            <div class="field">
+              <label for="homeDamageSlider"><span>Include Carpet/Sofa Burn &amp; Winter Heating Loss Protection?</span> <b id="homeDamageLbl">Yes (Included)</b></label>
+              <input type="range" id="homeDamageSlider" min="0" max="1" step="1" value="1" oninput="calcHomeRoiEn()">
+            </div>
+
+            <div style="font-size:13.5px;color:var(--text-muted);line-height:1.75;border-top:1px solid var(--line);padding-top:14px">
+              <div style="display:flex;justify-content:space-between;margin-bottom:5px">
+                <span>Monthly Retail Coal + Burner + Tobacco Waste Saved:</span>
+                <strong id="homeDirectSave" style="color:var(--gold-light)">924 ₺ / Mo</strong>
+              </div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:5px">
+                <span>Monthly Carpet/Sofa Burn &amp; Heating Loss Saved:</span>
+                <strong id="homeExtraSave" style="color:var(--accent-ok)">750 ₺ / Mo</strong>
+              </div>
+              <div style="display:flex;justify-content:space-between;padding-top:6px;border-top:1px dashed var(--line)">
+                <span>Kitchen Coal-Waiting Time Saved Per Year:</span>
+                <strong id="homeTimeSave" style="color:#fff">120 Hours / Yr</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="out">
+            <div>
+              <small>Monthly Net Home Savings</small>
+              <b id="homeMonthlyNet">1.674 ₺ / Mo</b>
+            </div>
+            <div class="line">
+              <small>Annual Net Home Savings</small>
+              <b id="homeYearlyNet" style="font-size:36px;color:var(--accent-ok)">20.084 ₺ / Yr</b>
+            </div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">
+              <a class="btn gold sm" style="flex:1" href="on-kayit.html">Pre-order Home Edition →</a>
+              <a class="btn glass sm" style="flex:1" href="../raporlar/NARION-Ev-Kullanicisi-Maliyet-ve-Tasarruf-Raporu.pdf?v=2026" target="_blank" rel="noopener">Home PDF →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="kafe-maliyet-raporu" style="margin-bottom:18px">
+        <span class="eyebrow" style="margin-bottom:6px">🏢 Commercial Café &amp; Lounge Report (B2B)</span>
+        <h3 style="margin:0 0 20px;font-size:25px">Commercial Lounge 91% Cost Reduction &amp; 52-Day ROI</h3>
       </div>
 
       <!-- 4 KPI KARTI -->
@@ -447,27 +516,34 @@
       </div>
 
       <!-- İNDİRİLEBİLİR RESMİ PDF RAPORLARI -->
-      <div style="margin-top:36px">
+      <div id="resmi-pdf-raporlar" style="margin-top:36px">
         <div style="font-family:var(--f-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.14em;color:var(--gold);margin-bottom:6px">Official Presentation &amp; Audit Documents (PDF)</div>
-        <h3 style="margin:0 0 4px;font-size:20px">Download Official Reports to Present to Lounge Partners &amp; Investors</h3>
+        <h3 style="margin:0 0 4px;font-size:20px">Download Official Reports (Home Users &amp; Commercial Lounges)</h3>
         <p style="font-size:13px;color:var(--text-muted);margin:0">Open immediately on your phone, tablet, or laptop during café meetings or share directly on WhatsApp.</p>
 
-        <div class="report-dl-grid">
-          <a class="report-dl-card" href="../raporlar/NARION-Smart-HMD-Maliyet-ve-ROI-Raporu.pdf" target="_blank" rel="noopener">
+        <div class="report-dl-grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+          <a class="report-dl-card" href="../raporlar/NARION-Ev-Kullanicisi-Maliyet-ve-Tasarruf-Raporu.pdf?v=2026" target="_blank" rel="noopener">
+            <span class="badge">HOME USER • 2 PAGES</span>
+            <h4>Individual Home User Cost &amp; Comfort Report</h4>
+            <p>0,21 ₺ home electricity per bowl vs 32,00 ₺ retail coal + stove + burnt tobacco, saving +20.080 ₺/year and 120 hours of kitchen waiting.</p>
+            <span class="dl-link">📄 Open / Download PDF →</span>
+          </a>
+
+          <a class="report-dl-card" href="../raporlar/NARION-Smart-HMD-Maliyet-ve-ROI-Raporu.pdf?v=2026" target="_blank" rel="noopener">
             <span class="badge">PDF REPORT • 2 PAGES</span>
             <h4>Smart HMD Cost &amp; 52-Day ROI Report</h4>
             <p>90-minute single-session micro-cost math (25,40 ₺ vs 2,36 ₺), 5-item monthly lounge expense comparison, and 10–60 table scale tables.</p>
             <span class="dl-link">📄 Open / Download PDF →</span>
           </a>
 
-          <a class="report-dl-card" href="../raporlar/NARION-B2B-Kafe-Kiralama-ve-Tasarruf-Teklifi.pdf" target="_blank" rel="noopener">
+          <a class="report-dl-card" href="../raporlar/NARION-B2B-Kafe-Kiralama-ve-Tasarruf-Teklifi.pdf?v=2026" target="_blank" rel="noopener">
             <span class="badge">B2B PROPOSAL • 1 PAGE</span>
             <h4>Café &amp; Lounge HaaS Rental Proposal</h4>
             <p>Zero-capex monthly rental packages (10, 20, and 30 tables), unlimited 24-hour hardware swap guarantee, and Lounge OS subscription terms.</p>
             <span class="dl-link">📄 Open / Download PDF →</span>
           </a>
 
-          <a class="report-dl-card" href="../raporlar/NARION-Tritan-vs-Cam-Sise-Maliyet-Raporu.pdf" target="_blank" rel="noopener">
+          <a class="report-dl-card" href="../raporlar/NARION-Tritan-vs-Cam-Sise-Maliyet-Raporu.pdf?v=2026" target="_blank" rel="noopener">
             <span class="badge">DURABILITY REPORT • 1 PAGE</span>
             <h4>Eastman Tritan™ vs Glass Base Breakage Report</h4>
             <p>Annual financial loss from broken crystal/Bohemian glass bases during washing and service vs shatterproof Tritan™ TX1001 armour.</p>
@@ -695,6 +771,32 @@ function calcHmdRoi() {
   document.getElementById('hmdCoalKg').innerText = fmt(coalKg) + ' kg / mo';
   document.getElementById('hmdPaybackDays').innerText = paybackDays + ' Days (' + paybackMonths.toFixed(1) + ' Mo)';
 }
+
+function calcHomeRoiEn() {
+  const weeklyEl = document.getElementById('homeWeeklySlider');
+  const dmgEl = document.getElementById('homeDamageSlider');
+  if (!weeklyEl || !dmgEl) return;
+
+  const weekly = parseInt(weeklyEl.value, 10) || 7;
+  const includeDmg = parseInt(dmgEl.value, 10) === 1;
+  const monthlySessions = Math.round(weekly * 4.33);
+  const yearlySessions = weekly * 52;
+
+  const directMonthlySave = Math.round(monthlySessions * 30.79);
+  const extraMonthlySave = includeDmg ? Math.round(250 + monthlySessions * 16.5) : 0;
+  const monthlyNet = directMonthlySave + extraMonthlySave;
+  const yearlyNet = monthlyNet * 12;
+  const hoursSavedYear = Math.round((yearlySessions * 20) / 60);
+
+  document.getElementById('homeWeeklyLbl').innerText = weekly + ' / Week (' + monthlySessions + ' Bowls/Mo)';
+  document.getElementById('homeDamageLbl').innerText = includeDmg ? 'Yes (Included)' : 'No (Coal + Tobacco Only)';
+  document.getElementById('homeDirectSave').innerText = directMonthlySave.toLocaleString('tr-TR') + ' ₺ / Mo';
+  document.getElementById('homeExtraSave').innerText = extraMonthlySave.toLocaleString('tr-TR') + ' ₺ / Mo';
+  document.getElementById('homeTimeSave').innerText = hoursSavedYear + ' Hours / Yr';
+  document.getElementById('homeMonthlyNet').innerText = monthlyNet.toLocaleString('tr-TR') + ' ₺ / Mo';
+  document.getElementById('homeYearlyNet').innerText = yearlyNet.toLocaleString('tr-TR') + ' ₺ / Yr';
+}
+calcHomeRoiEn();
 </script>
 
 
