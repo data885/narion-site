@@ -1312,6 +1312,15 @@ label {
     display: block;
     margin-bottom: 2px;
   }
+  .rtable-wrap .luxe-table td:nth-child(5)::before {
+    content: var(--label-5) ": ";
+    font-family: var(--f-mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 2px;
+  }
 }
 
 /* Brand-Consistent Range Controls & @supports not Fallback */
