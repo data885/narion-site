@@ -1026,12 +1026,10 @@ label {
   .calc .out { border-left: none; border-top: 1px solid var(--line); }
 }
 
-/* Responsive Menü */
-.burger { display: none; background: none; border: 1px solid var(--line); width: 42px; height: 38px; border-radius: 6px; cursor: pointer; }
+/* Responsive Menü (9 sekme için 1180px kırılma noktası) */
+.burger { display: none; background: none; border: 1px solid var(--line); width: 44px; height: 44px; border-radius: 6px; cursor: pointer; }
 .burger span { display: block; width: 20px; height: 2px; background: var(--text-main); margin: 4px auto; }
-@media (max-width: 1024px) {
-  /* Başlık tek satırdan iki satıra sarar: üstte logo + düğme, altta panel.
-     Mutlak konumlandırma yok — panel yüksekliğini hesaplamak gerekmiyor. */
+@media (max-width: 1180px) {
   .head-in { flex-wrap: wrap; height: auto; min-height: 76px; }
   .burger { display: block; margin-left: auto; }
 
@@ -1044,8 +1042,6 @@ label {
   }
   .head-in.acik .menu > .mi > a { padding: 13px 10px; font-size: 15px; }
 
-  /* Dil seçici ve iki CTA da panelde: önceden head-cta tümden gizliydi,
-     yani telefonda dil değiştirilemiyor ve ön kayıt düğmesi görünmüyordu. */
   .head-in.acik .head-cta {
     display: flex; flex-direction: column; align-items: stretch;
     gap: 10px; padding: 4px 0 18px;
@@ -1415,3 +1411,310 @@ label {
   margin-bottom: 18px;
 }
 
+
+/* =====================================================================
+   YENİLİKLER & MOBİL UYUM PAKETİ (2026):
+   1) Form-Factor Adaptation (Touch Targets, Safe-Area, Text-Wrap, Form Grid)
+   2) Sabit Lüks WhatsApp & Hızlı Demo Balonu (0532 627 99 98)
+   3) İnteraktif Altın Noktalar (Hotspot Native Popover)
+   4) Közlü Nargile vs. NARION Smart HMD Before/After Kaydırıcı
+   5) Kafe Masaüstü 0 ppm CO QR Prestij Standı
+   ===================================================================== */
+
+:root { --target-size: 24px; }
+@media (pointer: coarse) {
+  :root { --target-size: 44px; }
+}
+:where(button, select, textarea, input:not([type="checkbox"], [type="radio"]), [role="button"], nav a, label:has(input[type="checkbox"], input[type="radio"])) {
+  min-block-size: var(--target-size);
+  min-inline-size: var(--target-size);
+}
+h1, h2, h3 { text-wrap: balance; }
+p, li { text-wrap: pretty; }
+
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+@media (max-width: 640px) {
+  .form-grid-2 {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+
+@media (min-width: 1181px) {
+  .wa-menu-btn { display: none !important; }
+}
+
+/* 2) Sabit Lüks WhatsApp Balonu */
+.wa-float {
+  position: fixed;
+  right: max(18px, env(safe-area-inset-right, 0px));
+  bottom: max(18px, env(safe-area-inset-bottom, 0px));
+  z-index: 95;
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  background: linear-gradient(135deg, rgba(16, 20, 18, 0.96) 0%, rgba(10, 12, 14, 0.98) 100%);
+  border: 1px solid rgba(47, 212, 122, 0.55);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.78), 0 0 24px rgba(47, 212, 122, 0.18);
+  padding: 10px 16px 10px 12px;
+  border-radius: 999px;
+  color: var(--text-main);
+  text-decoration: none;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.wa-float:hover {
+  transform: translateY(-3px);
+  border-color: #2fd47a;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.88), 0 0 32px rgba(47, 212, 122, 0.32);
+}
+.wa-float .wa-ico {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2fd47a 0%, #179b52 100%);
+  color: #06130b;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 0 16px rgba(47, 212, 122, 0.45);
+}
+.wa-float .wa-txt {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+.wa-float .wa-txt b {
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+}
+.wa-float .wa-txt small {
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  color: #2fd47a;
+  letter-spacing: 0.04em;
+}
+@media (max-width: 768px) {
+  body[data-sticky-cta] .wa-float {
+    bottom: calc(78px + env(safe-area-inset-bottom, 0px));
+  }
+}
+@media (max-width: 480px) {
+  .wa-float {
+    padding: 8px 13px 8px 9px;
+    gap: 8px;
+  }
+  .wa-float .wa-ico {
+    width: 34px;
+    height: 34px;
+  }
+  .wa-float .wa-txt b { font-size: 12px; }
+  .wa-float .wa-txt small { font-size: 10px; }
+}
+
+/* WhatsApp Hesaplama Paylaşım Butonu */
+.btn-wa-share {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 13px 18px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(47, 212, 122, 0.18) 0%, rgba(23, 155, 82, 0.1) 100%);
+  border: 1px solid rgba(47, 212, 122, 0.6);
+  color: #2fd47a;
+  font-family: var(--f-sans);
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  margin-top: 10px;
+}
+.btn-wa-share:hover {
+  background: rgba(47, 212, 122, 0.26);
+  border-color: #2fd47a;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(47, 212, 122, 0.22);
+}
+
+/* 3) İnteraktif Altın Noktalar (Hotspot Native Popover) */
+.hotspot-pin {
+  position: absolute;
+  z-index: 6;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  background: var(--gold-gradient);
+  color: #09090b;
+  font-family: var(--f-mono);
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 0 0 6px rgba(212, 175, 55, 0.28), 0 8px 20px rgba(0, 0, 0, 0.8);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation: hsPulse 2.4s infinite ease-in-out;
+}
+.hotspot-pin::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+}
+.hotspot-pin:hover,
+.hotspot-pin:focus-visible {
+  transform: scale(1.14);
+  box-shadow: 0 0 0 10px rgba(212, 175, 55, 0.4), 0 10px 26px rgba(0, 0, 0, 0.9);
+  outline: none;
+}
+@keyframes hsPulse {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.24), 0 8px 20px rgba(0, 0, 0, 0.8); }
+  50% { box-shadow: 0 0 0 11px rgba(212, 175, 55, 0.42), 0 8px 24px rgba(0, 0, 0, 0.9); }
+}
+
+.hotspot-popover {
+  border: 1px solid var(--gold);
+  border-radius: 14px;
+  background: rgba(14, 14, 20, 0.97);
+  color: var(--text-main);
+  padding: 20px 22px;
+  max-width: min(360px, 90vw);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.92), 0 0 36px rgba(212, 175, 55, 0.22);
+  backdrop-filter: blur(18px);
+}
+.hotspot-popover[popover]:is(:popover-open, .\:popover-open) {
+  display: block;
+}
+.hotspot-popover::backdrop {
+  background: rgba(0, 0, 0, 0.45);
+}
+.hotspot-popover .hs-tag {
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 6px;
+}
+.hotspot-popover h4 {
+  font-size: 19px;
+  color: var(--gold-light);
+  margin: 0 0 8px;
+}
+.hotspot-popover p {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin: 0 0 12px;
+}
+.hotspot-popover .hs-close {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid var(--card-border);
+  color: var(--text-main);
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+/* 4) Közlü Nargile vs. NARION Smart HMD İnteraktif Before / After Kaydırıcı */
+.ba-wrap {
+  position: relative;
+  border-radius: 16px;
+  border: 1px solid var(--gold-border);
+  background: #0c0c11;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75);
+}
+.ba-stage {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 320px;
+}
+@media (max-width: 760px) {
+  .ba-stage { grid-template-columns: 1fr; }
+}
+.ba-side {
+  padding: 28px 26px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.ba-side.ba-old {
+  background: linear-gradient(135deg, rgba(224, 108, 117, 0.14) 0%, rgba(16, 14, 16, 0.96) 100%);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+.ba-side.ba-new {
+  background: linear-gradient(135deg, rgba(47, 212, 122, 0.14) 0%, rgba(212, 175, 55, 0.1) 100%);
+}
+.ba-slider-bar {
+  padding: 16px 24px;
+  background: #121218;
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.ba-slider-bar input[type="range"] {
+  flex: 1;
+  min-width: 180px;
+  accent-color: var(--gold);
+  cursor: pointer;
+}
+.ba-list {
+  list-style: none;
+  padding: 0;
+  margin: 14px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 14px;
+}
+.ba-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.5;
+}
+
+/* 5) Masaüstü 0 ppm CO QR Prestij Standı Kartı */
+.qr-stand-box {
+  background: linear-gradient(135deg, #0d0d13 0%, #171510 100%);
+  border: 2px solid var(--gold);
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8), 0 0 36px rgba(212, 175, 55, 0.15);
+  text-align: center;
+  max-width: 380px;
+  margin: 0 auto;
+}
+.qr-mock {
+  width: 116px;
+  height: 116px;
+  margin: 14px auto;
+  padding: 10px;
+  background: #ffffff;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+}
