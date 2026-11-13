@@ -90,4 +90,28 @@
       headCta.appendChild(mWa);
     }
   }
+
+  // 4. GA4 (G-ZJZ819TVPE) Dönüşüm & Etkileşim Takibi (WhatsApp, Form, Tanıtım Filmleri)
+  document.addEventListener('click', function (e) {
+    if (typeof window.gtag !== 'function') return;
+    var a = e.target.closest('a[href*="wa.me/"], a[href^="tel:"], a[download]');
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    if (href.indexOf('wa.me/') !== -1) {
+      window.gtag('event', 'generate_lead', { method: 'whatsapp', link_url: href });
+    } else if (href.indexOf('tel:') === 0) {
+      window.gtag('event', 'generate_lead', { method: 'phone_call', link_url: href });
+    } else if (a.hasAttribute('download')) {
+      window.gtag('event', 'file_download', { file_name: a.getAttribute('download') || href });
+    }
+  });
+
+  document.addEventListener('play', function (e) {
+    if (typeof window.gtag !== 'function') return;
+    var v = e.target;
+    if (v && v.tagName === 'VIDEO' && v.id && !v.dataset.gaPlayed) {
+      v.dataset.gaPlayed = '1';
+      window.gtag('event', 'video_start', { video_title: v.id });
+    }
+  }, true);
 })();
