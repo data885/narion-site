@@ -2,4 +2,14 @@ User-agent: *
 Allow: /
 Disallow: /_arac/
 
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-Video
+Allow: /
+
 Sitemap: https://narionhookah.com/sitemap.xml
+Sitemap: https://narionhookah.com/video-sitemap.xml
