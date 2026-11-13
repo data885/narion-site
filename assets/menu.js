@@ -1,4 +1,4 @@
-/* NARION — mobil menü, Popover polyfill ve Sabit Lüks WhatsApp Hattı (0532 627 99 98) */
+/* NARION — mobil menü, Popover polyfill ve Sabit Lüks WhatsApp Hattı (0546 733 1184) */
 (function () {
   'use strict';
 
@@ -36,28 +36,28 @@
     });
   }
 
-  // 3. Sabit (Floating) Lüks WhatsApp & Hızlı Demo Balonu (0532 627 99 98)
+  // 3. Sabit (Floating) Lüks WhatsApp & Hızlı Demo Balonu (0546 733 1184)
   if (!document.getElementById('narion-wa-float')) {
     var lang = (document.documentElement.lang || 'tr').toLowerCase();
     var labelMain = 'WhatsApp Hızlı Hat';
-    var labelSub = '0532 627 99 98 • Demo & Teklif';
-    var msg = 'Merhaba Mürsel Bey, NARION web sitesinden ulaşıyorum. Smart HMD ve nargile koleksiyonu hakkında bilgi / demo talep ediyorum.';
+    var labelSub = '0546 733 1184 • Demo & Teklif';
+    var msg = 'Merhaba NARION, NARION web sitesinden ulaşıyorum. Smart HMD ve nargile koleksiyonu hakkında bilgi / demo talep ediyorum.';
 
     if (lang.indexOf('en') === 0) {
       labelMain = 'WhatsApp Concierge';
-      labelSub = '+90 532 627 99 98 • Direct Line';
+      labelSub = '+90 546 733 1184 • Direct Line';
       msg = 'Hello NARION, I am reaching out from your website regarding Smart HMD and the hookah collection.';
     } else if (lang.indexOf('ar') === 0) {
       labelMain = 'واتساب المباشر';
-      labelSub = '+90 532 627 99 98';
+      labelSub = '+90 546 733 1184';
       msg = 'مرحباً ناريون، أتواصل معكم من الموقع الإلكتروني بخصوص Smart HMD ومجموعة النرجيلة.';
     } else if (lang.indexOf('ru') === 0) {
       labelMain = 'WhatsApp Линия';
-      labelSub = '+90 532 627 99 98';
+      labelSub = '+90 546 733 1184';
       msg = 'Здравствуйте, пишу с сайта NARION по поводу Smart HMD и коллекции кальянов.';
     }
 
-    var waUrl = 'https://wa.me/905326279998?text=' + encodeURIComponent(msg);
+    var waUrl = 'https://wa.me/905467331184?text=' + encodeURIComponent(msg);
 
     var waBtn = document.createElement('a');
     waBtn.id = 'narion-wa-float';
@@ -86,7 +86,7 @@
       mWa.target = '_blank';
       mWa.rel = 'noopener';
       mWa.style.cssText = 'background:rgba(47,212,122,0.14);border:1px solid rgba(47,212,122,0.5);color:#2fd47a;font-weight:700';
-      mWa.textContent = '💬 WhatsApp: 0532 627 99 98';
+      mWa.textContent = '💬 WhatsApp: 0546 733 1184';
       headCta.appendChild(mWa);
     }
   }
