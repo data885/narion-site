@@ -122,4 +122,29 @@
   <url><loc>https://narionhookah.com/ru/narion-yalin.html</loc><lastmod>2026-11-13</lastmod><xhtml:link rel="alternate" hreflang="tr" href="https://narionhookah.com/tr/narion-yalin.html"/><xhtml:link rel="alternate" hreflang="en" href="https://narionhookah.com/en/narion-yalin.html"/><xhtml:link rel="alternate" hreflang="ar" href="https://narionhookah.com/ar/narion-yalin.html"/><xhtml:link rel="alternate" hreflang="ru" href="https://narionhookah.com/ru/narion-yalin.html"/><xhtml:link rel="alternate" hreflang="x-default" href="https://narionhookah.com/tr/narion-yalin.html"/></url>
   <url><loc>https://narionhookah.com/ru/narion-yorunge.html</loc><lastmod>2026-11-13</lastmod><xhtml:link rel="alternate" hreflang="tr" href="https://narionhookah.com/tr/narion-yorunge.html"/><xhtml:link rel="alternate" hreflang="en" href="https://narionhookah.com/en/narion-yorunge.html"/><xhtml:link rel="alternate" hreflang="ar" href="https://narionhookah.com/ar/narion-yorunge.html"/><xhtml:link rel="alternate" hreflang="ru" href="https://narionhookah.com/ru/narion-yorunge.html"/><xhtml:link rel="alternate" hreflang="x-default" href="https://narionhookah.com/tr/narion-yorunge.html"/></url>
   <url><loc>https://narionhookah.com/ru/narion-zeytin.html</loc><lastmod>2026-11-13</lastmod><xhtml:link rel="alternate" hreflang="tr" href="https://narionhookah.com/tr/narion-zeytin.html"/><xhtml:link rel="alternate" hreflang="en" href="https://narionhookah.com/en/narion-zeytin.html"/><xhtml:link rel="alternate" hreflang="ar" href="https://narionhookah.com/ar/narion-zeytin.html"/><xhtml:link rel="alternate" hreflang="ru" href="https://narionhookah.com/ru/narion-zeytin.html"/><xhtml:link rel="alternate" hreflang="x-default" href="https://narionhookah.com/tr/narion-zeytin.html"/></url>
+  <url>
+    <loc>https://narionhookah.com/tr/connect.html</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://narionhookah.com/tr/connect.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://narionhookah.com/en/connect.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://narionhookah.com/ar/connect.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://narionhookah.com/ru/connect.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://narionhookah.com/tr/connect.html"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://narionhookah.com/en/connect.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://narionhookah.com/ar/connect.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://narionhookah.com/ru/connect.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
 </urlset>

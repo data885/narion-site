@@ -1,0 +1,539 @@
+/* ==========================================================================
+   NARION CONNECT — Mobile Companion Web App / BLE 5.0 & iOS Bridge Stylesheet
+   Hardware Spec: NRN-HMD-TF-002 (Rev R2.0) • TÜRKPATENT 2026/017041
+   ========================================================================== */
+
+.nc-shell {
+  padding-block: 28px calc(48px + env(safe-area-inset-bottom, 0px));
+}
+
+.nc-top-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: safe center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 16px 20px;
+  margin-block-end: 24px;
+  border-radius: 16px;
+  background: linear-gradient(145deg, rgba(212, 175, 55, 0.09) 0%, rgba(14, 15, 22, 0.96) 65%);
+  border: 1px solid rgba(212, 175, 55, 0.34);
+}
+
+.nc-conn-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: safe center;
+  gap: 10px;
+}
+
+.nc-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 13px;
+  border-radius: 999px;
+  font-family: var(--f-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #e2e8f0;
+}
+
+.nc-pill-dot {
+  inline-size: 9px;
+  block-size: 9px;
+  border-radius: 50%;
+  background: #2fd47a;
+  box-shadow: 0 0 10px #2fd47a;
+  flex: none;
+}
+
+.nc-pill[data-conn="ble"] .nc-pill-dot {
+  background: #38bdf8;
+  box-shadow: 0 0 12px #38bdf8;
+}
+
+.nc-pill[data-conn="fault"] .nc-pill-dot {
+  background: #ef4444;
+  box-shadow: 0 0 12px #ef4444;
+}
+
+/* Main 2-column app cockpit */
+.nc-cockpit {
+  display: grid;
+  grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+
+@media (max-width: 960px) {
+  .nc-cockpit {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Left Device Handset Card */
+.nc-handset {
+  background: radial-gradient(circle at 50% 8%, rgba(212, 175, 55, 0.14), rgba(9, 10, 15, 0.98) 58%);
+  border: 1px solid rgba(212, 175, 55, 0.38);
+  border-radius: 28px;
+  padding: 22px 20px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65);
+  min-inline-size: 0;
+}
+
+.nc-handset-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-block-end: 16px;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* 360 Halo Ring + Live OLED Dial */
+.nc-halo-ring {
+  --halo-color: #2fd47a;
+  --dial-pct: 68%;
+  position: relative;
+  inline-size: min(236px, 72dvw);
+  aspect-ratio: 1 / 1;
+  margin-inline: auto;
+  margin-block: 8px 18px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(closest-side, #0b0c12 79%, transparent 80% 100%),
+    conic-gradient(from 210deg, var(--halo-color) var(--dial-pct), rgba(255, 255, 255, 0.09) 0);
+  box-shadow:
+    0 0 34px color-mix(in srgb, var(--halo-color) 28%, transparent),
+    inset 0 0 24px rgba(0, 0, 0, 0.8);
+  transition: box-shadow 0.25s ease;
+}
+
+.nc-halo-inner {
+  text-align: center;
+  padding: 12px;
+}
+
+.nc-halo-state {
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--halo-color);
+  margin-block-end: 4px;
+}
+
+.nc-temp-actual {
+  font-family: var(--f-serif);
+  font-size: clamp(42px, 9vw, 54px);
+  font-weight: 700;
+  line-height: 1;
+  color: #ffffff;
+  font-variant-numeric: tabular-nums;
+}
+
+.nc-temp-target {
+  font-family: var(--f-mono);
+  font-size: 12px;
+  color: #cbd5e1;
+  margin-block-start: 6px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Native Brand-Consistent Range Slider (modern-web-guidance `slider`) */
+.nc-slider-box {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 16px;
+  padding: 14px 16px;
+  margin-block-end: 14px;
+}
+
+.nc-slider-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  margin-block-end: 6px;
+}
+
+.nc-slider-head label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.nc-slider-val {
+  font-family: var(--f-mono);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gold-light);
+  font-variant-numeric: tabular-nums;
+}
+
+.nc-range-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nc-step-btn {
+  inline-size: 40px;
+  block-size: 40px;
+  flex: none;
+  border-radius: 10px;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  background: rgba(212, 175, 55, 0.08);
+  color: var(--gold-light);
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.nc-step-btn:hover {
+  background: rgba(212, 175, 55, 0.2);
+}
+
+input[type="range"].nc-range {
+  --slider-track-size: 0.5rem;
+  --slider-thumb-size: 1.4rem;
+  --slider-track-radius: 999px;
+  --slider-thumb-radius: 50%;
+  --slider-track-color: rgba(255, 255, 255, 0.14);
+  --slider-fill-color: #d4af37;
+  --slider-thumb-color: #f3e5ab;
+  --slider-direction: to right;
+  --attr-min: attr(min type(<number>), 150);
+  --attr-max: attr(max type(<number>), 240);
+  --control-value: attr(value type(<number>), 215);
+  --slider-progress: calc(
+    progress(var(--control-value), var(--attr-min), var(--attr-max)) * 100%
+  );
+
+  appearance: none;
+  inline-size: 100%;
+  block-size: 2.75rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type="range"].nc-range:dir(rtl) {
+  --slider-direction: to left;
+}
+
+@supports not (opacity: progress(1, 0, 100)) {
+  input[type="range"].nc-range {
+    --slider-progress: calc(
+      (var(--control-value) - var(--attr-min)) /
+      (var(--attr-max) - var(--attr-min)) * 100%
+    );
+  }
+}
+
+input[type="range"].nc-range::-webkit-slider-runnable-track {
+  block-size: var(--slider-track-size);
+  border: 0;
+  border-radius: var(--slider-track-radius);
+  background: linear-gradient(
+    var(--slider-direction),
+    var(--slider-fill-color) var(--slider-progress),
+    var(--slider-track-color) var(--slider-progress)
+  );
+}
+
+input[type="range"].nc-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  inline-size: var(--slider-thumb-size);
+  block-size: var(--slider-thumb-size);
+  margin-block-start: calc((var(--slider-track-size) - var(--slider-thumb-size)) / 2);
+  border: 2px solid #090a0f;
+  border-radius: var(--slider-thumb-radius);
+  background: var(--slider-thumb-color);
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
+}
+
+input[type="range"].nc-range::-moz-range-track {
+  block-size: var(--slider-track-size);
+  border: 0;
+  border-radius: var(--slider-track-radius);
+  background: var(--slider-track-color);
+}
+
+input[type="range"].nc-range::-moz-range-progress {
+  block-size: var(--slider-track-size);
+  border-radius: var(--slider-track-radius);
+  background: var(--slider-fill-color);
+}
+
+input[type="range"].nc-range::-moz-range-thumb {
+  inline-size: var(--slider-thumb-size);
+  block-size: var(--slider-thumb-size);
+  border: 2px solid #090a0f;
+  border-radius: var(--slider-thumb-radius);
+  background: var(--slider-thumb-color);
+}
+
+input[type="range"].nc-range:focus-visible {
+  outline: 2px solid var(--gold-light);
+  outline-offset: 4px;
+}
+
+.nc-lock-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-block-start: 8px;
+  padding: 7px 10px;
+  border-radius: 8px;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  font-family: var(--f-mono);
+  font-size: 11px;
+  color: #bae6fd;
+}
+
+.nc-lock-banner[hidden] {
+  display: none;
+}
+
+/* Leaf Preset Grid (4 presets, constant font-weight + ::after active underline) */
+.nc-presets {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-block-end: 12px;
+}
+
+.nc-preset-btn {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  min-block-size: 52px;
+  padding: 9px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.03);
+  color: #e2e8f0;
+  font-weight: 600;
+  text-align: start;
+  cursor: pointer;
+}
+
+.nc-preset-btn small {
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.nc-preset-btn[aria-pressed="true"] {
+  border-color: rgba(212, 175, 55, 0.65);
+  background: rgba(212, 175, 55, 0.13);
+  color: #ffffff;
+}
+
+.nc-preset-btn[aria-pressed="true"]::after {
+  content: "";
+  position: absolute;
+  inset: auto 10px 0 10px;
+  border-block-end: 2px solid var(--gold);
+}
+
+/* Telemetry 6-Metric Grid */
+.nc-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-block-top: 14px;
+}
+
+.nc-metric {
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 10px 8px;
+  text-align: center;
+  min-inline-size: 0;
+}
+
+.nc-metric b {
+  display: block;
+  font-family: var(--f-mono);
+  font-size: 14.5px;
+  color: #ffffff;
+  font-variant-numeric: tabular-nums;
+}
+
+.nc-metric span {
+  display: block;
+  font-size: 10.5px;
+  color: var(--text-muted);
+  margin-block-start: 2px;
+}
+
+/* Switch Controls (modern-web-guidance `switch`) */
+.nc-switch-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-block-top: 14px;
+}
+
+.nc-switch-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.nc-switch-row label {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #f1f5f9;
+  cursor: pointer;
+}
+
+.nc-switch-row small {
+  display: block;
+  font-size: 11.5px;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin-block-start: 2px;
+}
+
+input[type="checkbox"][switch] {
+  accent-color: #d4af37;
+  margin: 0;
+  cursor: pointer;
+  flex: none;
+}
+
+input[type="checkbox"][switch]:focus-visible {
+  outline: 3px solid var(--gold-light);
+  outline-offset: 4px;
+}
+
+/* Live Thermal Curve SVG Chart & Interactive Hardware Testbench */
+.nc-panel-card {
+  background: rgba(12, 14, 20, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 22px;
+  margin-block-end: 20px;
+  min-inline-size: 0;
+}
+
+.nc-chart-box {
+  inline-size: 100%;
+  aspect-ratio: 16 / 6;
+  min-block-size: 150px;
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(212, 175, 55, 0.22);
+  border-radius: 12px;
+  padding: 10px;
+  margin-block-top: 12px;
+}
+
+.nc-chart-box svg {
+  inline-size: 100%;
+  block-size: 100%;
+  display: block;
+}
+
+.nc-sim-actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(185px, 100%), 1fr));
+  gap: 10px;
+  margin-block-top: 14px;
+}
+
+/* B2B Lounge Multi-Table Fleet Grid */
+.nc-fleet-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+  gap: 14px;
+}
+
+.nc-table-card {
+  background: rgba(15, 17, 25, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 16px;
+  padding: 16px;
+  min-inline-size: 0;
+}
+
+.nc-table-card[data-alert="swap"] {
+  border-color: rgba(239, 68, 68, 0.6);
+  background: linear-gradient(145deg, rgba(239, 68, 68, 0.1), rgba(15, 17, 25, 0.96));
+}
+
+/* Protocol Hex Inspector */
+.nc-hex-box {
+  font-family: var(--f-mono);
+  font-size: 12px;
+  line-height: 1.65;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: #06070b;
+  border: 1px solid rgba(56, 189, 248, 0.28);
+  color: #7dd3fc;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+/* Native Modal Dialog for Sommelier PIN (modern-web-guidance `dialog`) */
+dialog.nc-dialog {
+  max-inline-size: min(420px, calc(100dvw - 2rem));
+  inline-size: 100%;
+  margin: auto;
+  padding: 24px;
+  border-radius: 20px;
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  background: #10121a;
+  color: #f8fafc;
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.85);
+}
+
+dialog.nc-dialog:modal {
+  overscroll-behavior: contain;
+}
+
+dialog.nc-dialog::backdrop {
+  background: rgba(4, 5, 10, 0.76);
+  backdrop-filter: blur(5px);
+  overflow: hidden;
+  overscroll-behavior: contain;
+}
+
+.nc-pin-input {
+  inline-size: 100%;
+  min-block-size: 48px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  background: #07080d;
+  color: #ffffff;
+  font-family: var(--f-mono);
+  font-size: 22px;
+  letter-spacing: 0.35em;
+  text-align: center;
+}

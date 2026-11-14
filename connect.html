@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="tr" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>NARION Connect — Bluetooth BLE 5.0 & Akıllı Nargile Lülesi Kontrol Uygulaması</title>
+<meta name="description" content="NARION Smart HMD (TÜRKPATENT 2026/017041) mobil kontrol arayüzü: Gerçek Web Bluetooth BLE 5.0, iOS Wi-Fi köprüsü, 150–240°C ±1°C PID, 3-fazlı akıllı demleme, B2B garson kilidi ve kafe masa filo ekranı.">
+<link rel="icon" type="image/svg+xml" href="logo/favicon.svg">
+<link rel="apple-touch-icon" href="logo/apple-touch-icon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0b0b0f">
+<link rel="stylesheet" href="assets/style.css?v=22">
+<link rel="stylesheet" href="assets/narion-connect.css?v=1">
+<link rel="canonical" href="https://narionhookah.com/connect.html">
+<link rel="alternate" hreflang="tr" href="https://narionhookah.com/tr/connect.html">
+<link rel="alternate" hreflang="en" href="https://narionhookah.com/en/connect.html">
+<link rel="alternate" hreflang="ar" href="https://narionhookah.com/ar/connect.html">
+<link rel="alternate" hreflang="ru" href="https://narionhookah.com/ru/connect.html">
+<link rel="alternate" hreflang="x-default" href="https://narionhookah.com/tr/connect.html">
+<script async fetchpriority="low" src="https://www.googletagmanager.com/gtag/js?id=G-ZJZ819TVPE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-ZJZ819TVPE");</script>
+</head>
+<body>
+
+<div class="announce">
+  <div class="wrap">
+    <div>
+      <span class="announce-badge">PATENTLİ AKILLI ISI TEKNOLOJİSİ</span>
+      <span>Köz dumanındaki 1200+ ppm karbonmonoksiti sıfırlayan dünyanın ilk kablosuz seramik başlığı.</span>
+    </div>
+    <div>
+      <a href="on-kayit.html">Seri 01 HMD Paketini Rezerve Edin →</a>
+    </div>
+  </div>
+</div>
+
+<header class="site-head">
+  <div class="wrap head-in">
+    <a class="logo" href="index.html">
+      <span class="brand-mark">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="NARION">
+          <mask id="nl-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100">
+            <rect width="100" height="100" fill="#fff"/>
+            <g stroke="#000" stroke-width="9" fill="none" stroke-linecap="round">
+              <path d="M50.00 0.00 L50.00 21.00"/>
+              <path d="M50.00 21.00 A35 35 0 0 0 28.45 22.42"/>
+              <path d="M6.70 75.00 L24.89 64.50"/>
+              <path d="M24.89 64.50 A35 35 0 0 0 36.89 82.45"/>
+              <path d="M93.30 75.00 L75.11 64.50"/>
+              <path d="M75.11 64.50 A35 35 0 0 0 84.66 45.13"/>
+            </g>
+          </mask>
+          <g mask="url(#nl-mask)">
+            <circle cx="50" cy="50" r="35" fill="none" stroke="currentColor" stroke-width="15"/>
+          </g>
+        </svg>
+      </span>
+      <div class="logo-txt">
+        <b>NARION</b>
+        <small>SMART HOOKAH SYSTEMS • İSTANBUL</small>
+      </div>
+    </a>
+      <button class="burger" type="button" aria-label="Menü" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+
+    <nav class="menu" id="menu">
+      <div class="mi"><a href="index.html">Ana Sayfa</a></div>
+      <div class="mi"><a href="modeller.html">Koleksiyon (17 Model)</a></div>
+      <div class="mi"><a href="smart-hmd.html" class="on" aria-current="page">Smart HMD</a></div>
+      <div class="mi"><a href="parcalar.html">Parçalar</a></div>
+      <div class="mi"><a href="teknoloji.html">Mühendislik</a></div>
+      <div class="mi"><a href="karsilastirma.html">Karşılaştırma</a></div>
+      <div class="mi"><a href="sonraki-proje.html">Sonraki Proje (Tritan™)</a></div>
+      <div class="mi"><a href="hakkinda.html">Hakkında</a></div>
+    </nav>
+
+    <div class="head-cta">
+      <!-- DİL SEÇİCİ (YATAY BAR) -->
+      <div class="langs" role="navigation" aria-label="Dil"><a href="tr/connect.html" hreflang="tr" lang="tr" class="on" aria-current="true">TR</a><a href="en/connect.html" hreflang="en" lang="en">EN</a><a href="ar/connect.html" hreflang="ar" lang="ar">AR</a><a href="ru/connect.html" hreflang="ru" lang="ru">RU</a></div>
+      <a class="btn glass sm" href="on-kayit.html">Ön Kayıt</a>
+      <a class="btn gold sm" href="b2b-kurumsal.html">Kurumsal (B2B)</a>
+    </div>
+  </div>
+</header>
+
+<main class="nc-shell">
+  <div class="wrap">
+    <div class="crumbs" style="margin-bottom:14px">
+      <a href="index.html">Ana Sayfa</a> / <a href="smart-hmd.html">Smart HMD</a> / NARION Connect Uygulaması
+    </div>
+
+    <div style="max-width:860px;margin-bottom:22px">
+      <span class="eyebrow">BLE 5.0 GATT + iOS KÖPRÜSÜ • UYGULAMA İNDİRMEDEN ÇALIŞAN PWA</span>
+      <h1 style="font-size:clamp(28px,4.2vw,44px);margin:6px 0 10px">NARION Connect — <em>Akıllı Lüle Kontrol Merkezi</em></h1>
+      <p class="lead" style="font-size:15.5px;margin:0">QR okutarak veya doğrudan Bluetooth (BLE 5.0) üzerinden NARION Smart HMD başlığınıza bağlanın. Fiziksel cihaz yanınızda değilken bile gerçek 20-byte ikili telemetri protokolüyle çalışan Canlı Dijital İkiz üzerinde tüm özellikleri hemen test edebilirsiniz.</p>
+    </div>
+
+    <!-- TOP CONNECTION BAR -->
+    <div class="nc-top-strip">
+      <div class="nc-conn-group">
+        <span class="nc-pill" id="nc-conn-pill" data-conn="twin">
+          <span class="nc-pill-dot" aria-hidden="true"></span>
+          <span id="nc-conn-text">DİJİTAL İKİZ</span>
+        </span>
+        <span class="nc-pill">FW v2.1.0 • CRC-8 GATT</span>
+      </div>
+      <div class="nc-conn-group">
+        <button type="button" class="btn gold sm" id="nc-btn-ble">📡 Bluetooth (BLE 5.0) ile Lüleye Bağlan</button>
+        <button type="button" class="btn glass sm" id="nc-btn-ws">📱 iOS / Wi-Fi Köprüsü (192.168.4.1)</button>
+      </div>
+    </div>
+
+    <div id="nc-toast" role="status" aria-live="polite" hidden style="margin-bottom:18px;padding:12px 16px;border-radius:12px;background:rgba(212,175,55,0.16);border:1px solid rgba(212,175,55,0.5);color:#fef3c7;font-size:13.5px"></div>
+
+    <!-- APP WORKSPACE TABS -->
+    <div class="narion-tabs">
+      <div class="narion-tablist" id="nc-tablist" role="tablist" aria-label="NARION Connect">
+        <button type="button" role="tab" id="nc-tab-1" data-panel="nc-panel-1" aria-selected="true" tabindex="0">1 · Bireysel & Masa Kontrolü</button>
+        <button type="button" role="tab" id="nc-tab-2" data-panel="nc-panel-2" aria-selected="false" tabindex="-1">2 · B2B Kafe Bar Filo Paneli</button>
+        <button type="button" role="tab" id="nc-tab-3" data-panel="nc-panel-3" aria-selected="false" tabindex="-1">3 · Yeni Özellikler & BLE Protokolü</button>
+      </div>
+
+      <div class="narion-tabpanel-stack" style="margin-top:20px">
+        <!-- TAB 1: PERSONAL & TABLE COCKPIT -->
+        <div role="tabpanel" id="nc-panel-1" aria-labelledby="nc-tab-1" tabindex="0">
+          <div class="nc-cockpit">
+            <!-- LEFT: HANDSET CONTROLLER -->
+            <div class="nc-handset">
+              <div class="nc-handset-head">
+                <span>NRN-HMD-TF-002 R2.0</span>
+                <span style="color:var(--accent-ok)">0.0 ppm CO</span>
+              </div>
+
+              <div class="nc-halo-ring" id="nc-halo-ring">
+                <div class="nc-halo-inner">
+                  <div class="nc-halo-state" id="nc-halo-state">PID READY</div>
+                  <div class="nc-temp-actual" id="nc-temp-actual">215.0°</div>
+                  <div class="nc-temp-target" id="nc-temp-target">215°C</div>
+                </div>
+              </div>
+
+              <div id="nc-fault-banner" hidden style="margin-bottom:14px;padding:12px;border-radius:12px;background:rgba(239,68,68,0.16);border:1px solid rgba(239,68,68,0.55);color:#fecaca;font-size:12.5px">
+                <div style="margin-bottom:8px;font-weight:600">⚠️ Güvenlik Kesicisi Devrede (MOSFET %0) — Başlığı düzeltip kilidi sıfırlayın:</div>
+                <button type="button" class="btn gold sm" id="nc-btn-clear-fault" style="width:100%">✅ Dik Konuma Alındı — Kilidi Sıfırla</button>
+              </div>
+
+              <div class="nc-slider-box">
+                <div class="nc-slider-head">
+                  <label for="nc-temp-slider">Hassas PID Hedef Sıcaklığı (150°C – 240°C)</label>
+                  <span class="nc-slider-val" id="nc-slider-val">215°C</span>
+                </div>
+                <div class="nc-range-row">
+                  <button type="button" class="nc-step-btn" id="nc-step-minus" aria-label="-1°C">−</button>
+                  <input type="range" class="nc-range" id="nc-temp-slider" min="150" max="240" step="1" value="215">
+                  <button type="button" class="nc-step-btn" id="nc-step-plus" aria-label="+1°C">+</button>
+                </div>
+                <div class="nc-lock-banner" id="nc-lock-banner" hidden>
+                  <span>🔒 Garson Sommelier Kilidi Aktif (Misafir İzin Aralığı: 185–205°C)</span>
+                </div>
+              </div>
+
+              <div class="nc-presets">
+                <button type="button" class="nc-preset-btn" data-mode="1" aria-pressed="false">
+                  <span>Blonde Leaf</span>
+                  <small>190°C • Sarı Yaprak / Meyve</small>
+                </button>
+                <button type="button" class="nc-preset-btn" data-mode="2" aria-pressed="true">
+                  <span>Medium Dengeli</span>
+                  <small>215°C • Klasik Yoğun Buhar</small>
+                </button>
+                <button type="button" class="nc-preset-btn" data-mode="3" aria-pressed="false">
+                  <span>Dark Leaf</span>
+                  <small>235°C • Siyah Yaprak / Burley</small>
+                </button>
+                <button type="button" class="nc-preset-btn" data-mode="4" aria-pressed="false">
+                  <span>Herbal / 0 Nikotin</span>
+                  <small>180°C • Bitkisel & Buhar Taşı</small>
+                </button>
+              </div>
+
+              <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px">
+                <button type="button" class="btn gold sm" id="nc-btn-boost" style="width:100%">🔥 +15°C Duman Boost (90 sn)</button>
+                <button type="button" class="btn glass sm" id="nc-btn-clean" style="width:100%">🧼 65°C Ön-Temizlik (45 sn)</button>
+              </div>
+              <button type="button" class="btn glass sm" id="nc-btn-standby" style="width:100%;margin-top:8px">⏻ Bekleme / Aç-Kapat</button>
+
+              <div class="nc-metrics">
+                <div class="nc-metric"><b id="nc-m-bat">%91</b><span>Batarya SOC</span></div>
+                <div class="nc-metric"><b id="nc-m-rem">91 dk</b><span>Kalan Süre</span></div>
+                <div class="nc-metric"><b id="nc-m-pwm">%34</b><span>MOSFET Güç</span></div>
+                <div class="nc-metric"><b id="nc-m-draw">0 Pa</b><span>SDP31 Çekiş</span></div>
+                <div class="nc-metric"><b id="nc-m-puff">14</b><span>Nefes Sayısı</span></div>
+                <div class="nc-metric"><b id="nc-m-volt">16.12V</b><span>4S Paket V</span></div>
+              </div>
+            </div>
+
+            <!-- RIGHT: TELEMETRY CURVE, SWITCHES & HARDWARE TESTBENCH -->
+            <div>
+              <div class="nc-panel-card">
+                <h3 style="font-size:19px;margin:0 0 4px">Canlı PT1000 RTD Sıcaklık & PID Takip Grafiği</h3>
+                <p style="font-size:13px;color:var(--text-muted);margin:0">Altın çizgi: Gerçek seramik çekirdek °C • Kesikli çizgi: PID hedef °C (4 Hz örnekleme)</p>
+                <div class="nc-chart-box">
+                  <svg viewBox="0 0 480 140" preserveAspectRatio="none" role="img" aria-label="PID Thermal Curve">
+                    <line x1="0" y1="35" x2="480" y2="35" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+                    <line x1="0" y1="70" x2="480" y2="70" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+                    <line x1="0" y1="105" x2="480" y2="105" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+                    <polyline id="nc-svg-target" fill="none" stroke="rgba(56,189,248,0.65)" stroke-width="1.8" stroke-dasharray="5,4" points="0,40 480,40"/>
+                    <polyline id="nc-svg-actual" fill="none" stroke="#d4af37" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" points="0,42 480,42"/>
+                  </svg>
+                </div>
+
+                <div class="nc-switch-list">
+                  <div class="nc-switch-row">
+                    <label for="nc-sw-steep">
+                      3-Fazlı Otomatik Demleme Eğrisi (Auto-Steep)
+                      <small>Ön ısıtma (+10°C) → Sabit plato → 55. dk sonrası gliserin kurtarma (+6°C)</small>
+                    </label>
+                    <input id="nc-sw-steep" type="checkbox" switch checked>
+                  </div>
+
+                  <div class="nc-switch-row">
+                    <label for="nc-sw-lock">
+                      B2B Kafe Sommelier / Garson Kilidi (PIN: 1453)
+                      <small>Müşterinin 240°C'ye alıp tütünü yakmasını önler; 185–205°C güvenli aralıkta tutar</small>
+                    </label>
+                    <input id="nc-sw-lock" type="checkbox" switch>
+                  </div>
+                </div>
+              </div>
+
+              <div class="nc-panel-card">
+                <h3 style="font-size:18px;margin:0 0 4px">Canlı Donanım & Sensör Test Laboratuvarı (Simülasyon Tetikleyicileri)</h3>
+                <p style="font-size:13px;color:var(--text-muted);margin:0">ESP32-S3 üzerindeki Sensirion SDP31 basınç sensörünü, 6-eksen IMU devrilme kesicisini ve tütün kuruma korumasını canlı test edin:</p>
+                <div class="nc-sim-actions">
+                  <button type="button" class="btn gold sm" id="nc-sim-puff">💨 Basılı Tut: Nefes Çek (-48 Pa)</button>
+                  <button type="button" class="btn glass sm" id="nc-sim-tilt">⚠️ >35° Devrilme Testi (<200 ms)</button>
+                  <button type="button" class="btn glass sm" id="nc-sim-scorch">🍂 Kuru Tütün (Scorch Guard) Testi</button>
+                  <button type="button" class="btn glass sm" id="nc-sim-sleep">🌙 180 sn Eko-Uyku (185°C) Aç/Kapat</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 2: B2B LOUNGE MULTI-TABLE FLEET -->
+        <div role="tabpanel" id="nc-panel-2" aria-labelledby="nc-tab-2" hidden="until-found">
+          <div class="nc-panel-card">
+            <h3 style="font-size:22px;margin:0 0 6px">NARION Lounge OS — Canlı Masa & Batarya Filo Ekranı</h3>
+            <p style="font-size:14px;color:var(--text-muted);margin:0 0 20px">ESP32-S3 Wi-Fi/BLE ağ geçidi üzerinden bardaki tablette hangi masanın kaç derecede olduğu ve hangi masaya 5 sn Hot-Swap yedek kartuş gideceği canlı izlenir:</p>
+
+            <div class="nc-fleet-grid">
+              <div class="nc-table-card">
+                <div style="display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:11.5px;color:var(--accent-ok)"><span>MASA 01 • VIP TERAS</span><span>● %86 (78 dk)</span></div>
+                <div style="font-family:var(--f-serif);font-size:28px;color:#fff;margin:8px 0 4px">195.0°C <span style="font-size:13px;color:var(--gold-light);font-family:var(--f-sans)">Blonde • Kilitli</span></div>
+                <div style="font-size:12.5px;color:var(--text-muted)">42 Nefes • 0.0 ppm CO • Sommelier Kilidi: 185–205°C</div>
+              </div>
+
+              <div class="nc-table-card">
+                <div style="display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:11.5px;color:var(--accent-ok)"><span>MASA 02 • SALON</span><span>● %74 (66 dk)</span></div>
+                <div style="font-family:var(--f-serif);font-size:28px;color:#fff;margin:8px 0 4px">225.2°C <span style="font-size:13px;color:var(--gold-light);font-family:var(--f-sans)">Dark Leaf</span></div>
+                <div style="font-size:12.5px;color:var(--text-muted)">68 Nefes • +%15 SDP31 Boost Aktif</div>
+              </div>
+
+              <div class="nc-table-card">
+                <div style="display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:11.5px;color:#38bdf8"><span>MASA 03 • LOCA A</span><span>● %94 (88 dk)</span></div>
+                <div style="font-family:var(--f-serif);font-size:28px;color:#fff;margin:8px 0 4px">180.0°C <span style="font-size:13px;color:#38bdf8;font-family:var(--f-sans)">Herbal Wellness</span></div>
+                <div style="font-size:12.5px;color:var(--text-muted)">19 Nefes • %0 Nikotin • 0.0 ppm CO</div>
+              </div>
+
+              <div class="nc-table-card" data-alert="swap">
+                <div style="display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:11.5px;color:#f87171;font-weight:700"><span>MASA 04 • BAHÇE</span><span>⚡ %9 HOT-SWAP!</span></div>
+                <div style="font-family:var(--f-serif);font-size:28px;color:#fff;margin:8px 0 4px">214.8°C <span style="font-size:13px;color:#fca5a5;font-family:var(--f-sans)">8 dk Kaldı</span></div>
+                <div style="font-size:12.5px;color:#fecaca">88. Dakika • 5'li Şarj Dock'tan Yedek Kartuş #07 Hazır (%100)</div>
+              </div>
+
+              <div class="nc-table-card">
+                <div style="display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:11.5px;color:#f59e0b"><span>MASA 05 • SALON</span><span>◐ ÖN ISITMA (2:10)</span></div>
+                <div style="font-family:var(--f-serif);font-size:28px;color:#fff;margin:8px 0 4px">168.4°C <span style="font-size:13px;color:#fcd34d;font-family:var(--f-sans)">→ 215°C Hedef</span></div>
+                <div style="font-size:12.5px;color:var(--text-muted)">%100 Tam Şarj • 1 dk 20 sn içinde içime hazır</div>
+              </div>
+
+              <div class="nc-table-card">
+                <div style="display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:11.5px;color:#94a3b8"><span>5'Lİ BAR DOCK #01</span><span>65W GaN POGO</span></div>
+                <div style="font-family:var(--f-serif);font-size:28px;color:var(--accent-ok);margin:8px 0 4px">4 / 5 Dolu</div>
+                <div style="font-size:12.5px;color:var(--text-muted)">Bugün Toplam: 74 Seans • Tüketilen Elektrik: 37,00 ₺ (Kömür Tasarrufu: 2.397 ₺)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 3: NEW FEATURES & LIVE BINARY WIRE FRAME INSPECTOR -->
+        <div role="tabpanel" id="nc-panel-3" aria-labelledby="nc-tab-3" hidden="until-found">
+          <div class="nc-panel-card">
+            <h3 style="font-size:22px;margin:0 0 16px">Akıllı Lüleye Eklenen 6 Yeni Mühendislik Özelliği & Canlı 20-Byte BLE Paketi</h3>
+            <div class="grid3" style="margin-bottom:22px">
+              <div class="card" style="padding:20px">
+              <div style="font-family:var(--f-mono);font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:6px">01 · $0 EK MALİYET (YAZILIM)</div>
+              <h4 style="font-size:17px;margin:0 0 8px;color:#fff">3-Fazlı Akıllı Demleme Eğrisi (Auto-Steep)</h4>
+              <p style="font-size:13.5px;color:#cbd5e1;margin:0;line-height:1.6">Sabit termostat yerine ilk 3,5 dk kontrollü seramik demleme (+10°C), orta seansta ±1°C düz plato, 55. dakikadan sonra ise alt katmandaki gliserini kurtaran kademeli +6°C artış.</p>
+            </div>
+<div class="card" style="padding:20px">
+              <div style="font-family:var(--f-mono);font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:6px">02 · $0 EK MALİYET (YAZILIM)</div>
+              <h4 style="font-size:17px;margin:0 0 8px;color:#fff">Tütün Kuruma & Yanık Önleyici (Scorch Guard)</h4>
+              <p style="font-size:13.5px;color:#cbd5e1;margin:0;line-height:1.6">ESP32-S3, PWM görev döngüsü ile PT1000 sıcaklık artış hızını (dT/dt) karşılaştırır. Tütündeki nem bittiğinde termal sığa düştüğü an ısıyı kesip acı yanık dumanı önler.</p>
+            </div>
+<div class="card" style="padding:20px">
+              <div style="font-family:var(--f-mono);font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:6px">03 · $0 EK MALİYET (B2B KAFE)</div>
+              <h4 style="font-size:17px;margin:0 0 8px;color:#fff">Sommelier / Garson PIN Kilidi</h4>
+              <p style="font-size:13.5px;color:#cbd5e1;margin:0;line-height:1.6">Kafede müşterinin uygulamadan 240°C'ye basıp Blonde tütünü yakmasını engeller. Garson PIN (1453) ile güvenli aralığı (185–205°C) kilitler; müşteri bu aralıkta özgürce ayar yapar.</p>
+            </div>
+<div class="card" style="padding:20px">
+              <div style="font-family:var(--f-mono);font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:6px">04 · $0 EK MALİYET (iOS + ANDROID)</div>
+              <h4 style="font-size:17px;margin:0 0 8px;color:#fff">Çift Modlu BLE 5.0 + iOS QR Wi-Fi Köprüsü</h4>
+              <p style="font-size:13.5px;color:#cbd5e1;margin:0;line-height:1.6">Android/Masaüstü Chrome doğrudan Web Bluetooth GATT ile bağlanır; Web Bluetooth desteklemeyen iPhone Safari ise ESP32-S3'ün yerel WebSocket köprüsüyle uygulama indirmeden çalışır.</p>
+            </div>
+<div class="card" style="padding:20px">
+              <div style="font-family:var(--f-mono);font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:6px">05 · $0 EK MALİYET (YAZILIM)</div>
+              <h4 style="font-size:17px;margin:0 0 8px;color:#fff">65°C Pyro-Soft Ön-Temizlik & Eko-Uyku</h4>
+              <p style="font-size:13.5px;color:#cbd5e1;margin:0;line-height:1.6">Seans sonrası soğuyan haznedeki melas kalıntısını kazımadan yıkamak için 45 sn 65°C ılık yumuşatma modu + 180 sn çekilmediğinde 185°C otomatik uyku ve ilk nefeste uyanma.</p>
+            </div>
+<div class="card" style="padding:20px">
+              <div style="font-family:var(--f-mono);font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:6px">06 · OPSİYONEL R2.1 DONANIM (~$2.90 BOM)</div>
+              <h4 style="font-size:17px;margin:0 0 8px;color:#fff">NFC Tap-to-Pair + Piezo Akustik + Çift Bölgeli MCH</h4>
+              <p style="font-size:13.5px;color:#cbd5e1;margin:0;line-height:1.6">Soğuk üst bileziğe gömülü NTAG213 NFC ile telefonu dokundurunca anında açılan ekran, gürültülü lounge için mikro piezo sesli onay ve iç/dış çift halkalı seramik ısıtıcı.</p>
+            </div>
+            </div>
+
+            <h4 style="font-family:var(--f-mono);font-size:12px;color:var(--gold-light);letter-spacing:0.08em;text-transform:uppercase;margin:0 0 8px">
+              CANLI BLE GATT TELEMETRİ &amp; KOMUT PAKET İNCELEYİCİ (SERVICE: 4e415249-4f4e-484d-4432-000000000001)
+            </h4>
+            <div class="nc-hex-box" id="nc-wire-hex">TX CMD (12B) : --
+RX TEL (20B) : --</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- NATIVE MODAL DIALOG: B2B SOMMELIER PIN (modern-web-guidance `dialog` Rule 1: no role/aria-modal) -->
+<dialog class="nc-dialog" id="nc-pin-dialog" closedby="any" aria-labelledby="nc-pin-title">
+  <h3 id="nc-pin-title" style="font-size:20px;margin:0 0 8px;color:#fff">B2B Sommelier / Garson PIN Doğrulaması</h3>
+  <p style="font-size:13.5px;color:#cbd5e1;margin:0 0 16px;line-height:1.55">Müşteri ısı sınır kilidini (185–205°C) açmak veya kapatmak için 4 haneli işletme PIN kodunu girin (Demo PIN: 1453):</p>
+  <form method="dialog">
+    <label for="nc-pin-input" class="sr-only">PIN</label>
+    <input type="password" inputmode="numeric" maxlength="4" id="nc-pin-input" class="nc-pin-input" value="1453" autocomplete="off">
+    <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:18px">
+      <button type="submit" value="cancel" class="btn glass sm" autofocus>Vazgeç</button>
+      <button type="submit" value="confirm" class="btn gold sm">Onayla</button>
+    </div>
+  </form>
+</dialog>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <a class="logo" href="index.html">
+          <span class="brand-mark">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="NARION">
+              <mask id="nl-mask-foot" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100">
+                <rect width="100" height="100" fill="#fff"/>
+                <g stroke="#000" stroke-width="9" fill="none" stroke-linecap="round">
+                  <path d="M50.00 0.00 L50.00 21.00"/>
+                  <path d="M50.00 21.00 A35 35 0 0 0 28.45 22.42"/>
+                  <path d="M6.70 75.00 L24.89 64.50"/>
+                  <path d="M24.89 64.50 A35 35 0 0 0 36.89 82.45"/>
+                  <path d="M93.30 75.00 L75.11 64.50"/>
+                  <path d="M75.11 64.50 A35 35 0 0 0 84.66 45.13"/>
+                </g>
+              </mask>
+              <g mask="url(#nl-mask-foot)">
+                <circle cx="50" cy="50" r="35" fill="none" stroke="currentColor" stroke-width="15"/>
+              </g>
+            </svg>
+          </span>
+          <div class="logo-txt">
+            <b>NARION</b>
+            <small>SMART HOOKAH SYSTEMS • İSTANBUL</small>
+          </div>
+        </a>
+        <p style="margin-top:16px;font-size:13.5px;color:var(--text-muted);line-height:1.7">
+          Endüstriyel hassasiyet, zamansız heykel estetiği ve 0 ppm Karbonmonoksit devrimi. İstanbul'daki 5 eksenli CNC tezgahlarda tasarlandı ve üretildi.
+        </p>
+      </div>
+
+      <div class="foot-col">
+        <h4>Koleksiyon</h4>
+        <ul>
+          <li><a href="modeller.html">Tüm Modeller (17 Takım)</a></li>
+          <li><a href="narion-koza.html">NARION KOZA (Amiral Gemisi)</a></li>
+          <li><a href="smart-hmd.html">Smart HMD Elektrikli Közlük</a></li>
+          <li><a href="karsilastirma.html">Model Karşılaştırması</a></li>
+          <li><a href="parcalar.html">Nargile Yedek Parça &amp; Şişe</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h4>Mühendislik</h4>
+        <ul>
+          <li><a href="teknoloji.html">Teknoloji & İnovasyon</a></li>
+          <li><a href="sonraki-proje.html">Sonraki Proje: Eastman Tritan™</a></li>
+          <li><a href="teknoloji.html#bayonet">45° Bayonet Mekanizması</a></li>
+          <li><a href="smart-hmd.html#karbonmonoksit">0 ppm CO Bilimsel Analizi</a></li>
+          <li><a href="nargile-rehberi.html">Nargile &amp; Akıllı Lüle Rehberi</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h4>Kurumsal</h4>
+        <ul>
+          <li><a href="b2b-kurumsal.html">Lounge & Kafe Çözümleri (B2B)</a></li>
+          <li><a href="b2b-kurumsal.html#roi-hesaplayici">Canlı ROI Hesaplayıcı</a></li>
+          <li><a href="distributorluk.html">Toptan Nargile &amp; Bayilik</a></li>
+          <li><a href="on-kayit.html">Bireysel Ön Kayıt</a></li>
+          <li><a href="hakkinda.html">Hakkımızda & İletişim</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot-bar">
+      <span>© 2026 NARION Hookah Systems. Tüm hakları saklıdır.</span>
+      <span>Tuzla, İSTANBUL</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/menu.js?v=6" defer></script>
+<script src="assets/narion-connect.js?v=1" defer></script>
+</body>
+</html>
