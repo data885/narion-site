@@ -8,7 +8,7 @@
 <meta name="description" content="Patent-protected cordless electric hookah bowl and smart heat management device (HMD). Works with 100% real shisha leaf, 0.0 ppm carbon monoxide, ±1°C PID ceramic core, 74 Wh battery, and BLE app.">
 <link rel="icon" type="image/svg+xml" href="../logo/favicon.svg">
 <link rel="apple-touch-icon" href="../logo/apple-touch-icon-180.png">
-<link rel="stylesheet" href="../assets/style.css?v=21">
+<link rel="stylesheet" href="../assets/style.css?v=22">
 <link rel="canonical" href="https://narionhookah.com/en/smart-hmd.html">
 <link rel="alternate" hreflang="tr" href="https://narionhookah.com/tr/smart-hmd.html">
 <link rel="alternate" hreflang="en" href="https://narionhookah.com/en/smart-hmd.html">
@@ -81,7 +81,7 @@
     <nav class="menu" id="menu">
       <div class="mi"><a href="index.html">Home</a></div>
       <div class="mi"><a href="modeller.html">Collection (17 Models)</a></div>
-      <div class="mi"><a href="smart-hmd.html" class="on">Smart HMD</a></div>
+      <div class="mi"><a href="smart-hmd.html" class="on" aria-current="page">Smart HMD</a></div>
       <div class="mi"><a href="parcalar.html">Parts Shop</a></div>
       <div class="mi"><a href="teknoloji.html">Engineering</a></div>
       <div class="mi"><a href="karsilastirma.html">Compare</a></div>
@@ -1156,6 +1156,7 @@
 
 <script>
 let currentTemp = 215;
+let currentMode = 'med';
 let isBoost = false;
 
 function setMode(mode, temp, btn) {
@@ -1168,10 +1169,12 @@ function setMode(mode, temp, btn) {
   btn.classList.add('on');
 
   currentTemp = temp;
+  currentMode = mode;
   document.getElementById('ph-temp').innerText = temp + '°';
   // Etiketi parcali kurmuyoruz: kelime sirasi dile gore degisir
   // (RU'da "REJIM HARD"). Her mod kendi tam metni olarak cevrilsin.
-  const MOD_ETIKET = { soft: 'SOFT MODE', medium: 'MEDIUM MODE', hard: 'HARD MODE' };
+  const MOD_ETIKET = { soft: 'SOFT MODE', med: 'MEDIUM MODE', medium: 'MEDIUM MODE', hard: 'HARD MODE' };
+  window.__NARION_MOD_ETIKET = MOD_ETIKET;
   document.getElementById('ph-mode-title').innerText = MOD_ETIKET[mode] || mode.toUpperCase();
 
   let p = 60;
@@ -1193,8 +1196,10 @@ function toggleBoost() {
     btn.classList.remove('on');
     btn.innerText = '🔥 SMOKE BOOST (+15°C)';
     document.getElementById('ph-temp').innerText = currentTemp + '°';
-    document.getElementById('ph-mode-title').innerText = 'MEDIUM MODE';
-    document.getElementById('ph-dial').style.setProperty('--p', '60%');
+    const etiketMap = window.__NARION_MOD_ETIKET || {};
+    document.getElementById('ph-mode-title').innerText = etiketMap[currentMode] || 'MEDIUM MODE';
+    const pRestore = currentMode === 'soft' ? 45 : (currentMode === 'hard' ? 85 : 60);
+    document.getElementById('ph-dial').style.setProperty('--p', pRestore + '%');
   }
 }
 
@@ -1383,6 +1388,6 @@ calcHomeRoiEn();
 </script>
 
 
-<script src="../assets/menu.js?v=5" defer></script>
+<script src="../assets/menu.js?v=6" defer></script>
 </body>
 </html>

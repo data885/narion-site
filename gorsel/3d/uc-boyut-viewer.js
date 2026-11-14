@@ -292,6 +292,7 @@
   };
 
   var curI18n = I18N[lang] || I18N.tr;
+  var gorselBase = /\/(tr|en|ar|ru)\//.test(window.location.pathname) ? '../gorsel/' : 'gorsel/';
 
   var stage = document.getElementById('sahne');
   if (!stage) return;
@@ -326,11 +327,16 @@
   floor.className = 'stage-floor';
   stage.appendChild(floor);
 
+  var topStack = document.createElement('div');
+  topStack.className = 'stage-top-stack';
+
   var badge = document.createElement('span');
   badge.className = 'stage-badge';
   badge.id = 'stage-badge';
   badge.textContent = 'NARION KOZA · ' + (curI18n.finishes.firca.name).toUpperCase();
-  stage.appendChild(badge);
+  topStack.appendChild(badge);
+  if (hmdCallout) topStack.appendChild(hmdCallout);
+  stage.appendChild(topStack);
 
   var viewToggle = document.createElement('div');
   viewToggle.className = 'stage-view-toggle';
@@ -345,7 +351,6 @@
   zoomControls.innerHTML = '<button type="button" class="stage-z-btn" id="z-in" title="' + curI18n.zoomIn + '">+</button>' +
                            '<button type="button" class="stage-z-btn" id="z-out" title="' + curI18n.zoomOut + '">&minus;</button>';
   stage.appendChild(zoomControls);
-  if (hmdCallout) stage.appendChild(hmdCallout);
 
   // State
   var currentModelId = 'narion-koza';
@@ -484,7 +489,7 @@
   }
 
   function resolveImageSrc(modelId, finishId) {
-    return '../gorsel/renkler/' + modelId + '-' + finishId + '.webp';
+    return gorselBase + 'renkler/' + modelId + '-' + finishId + '.webp';
   }
 
   // Load initial image
@@ -594,13 +599,13 @@
     if (viewMode === 'tam') {
       updateProductVisual();
     } else if (viewMode === 'perspektif') {
-      transitionTo('../gorsel/koza-perspektif-aci.webp', curI18n.perspectiveBadge(model.name));
+      transitionTo(gorselBase + 'koza-perspektif-aci.webp', curI18n.perspectiveBadge(model.name));
     } else if (viewMode === 'kutu') {
-      var boxSrc = (currentModelId === 'narion-nomad') ? '../gorsel/nomad-travel-kutu.webp' : '../gorsel/kutu-luks-sunum-v2.webp';
+      var boxSrc = (currentModelId === 'narion-nomad') ? (gorselBase + 'nomad-travel-kutu.webp') : (gorselBase + 'kutu-luks-sunum-v2.webp');
       var boxText = (currentModelId === 'narion-nomad') ? curI18n.boxBadgeNomad : curI18n.boxBadgeDefault;
       transitionTo(boxSrc, boxText);
     } else if (viewMode === 'makro') {
-      transitionTo('../gorsel/bayonet-iscilik-makro.webp', curI18n.macroBadge);
+      transitionTo(gorselBase + 'bayonet-iscilik-makro.webp', curI18n.macroBadge);
     }
   }
 
@@ -640,7 +645,7 @@
 
     var elAhs = document.getElementById('sum-ahsap');
     if (elAhs) {
-      elAhs.textContent = model.hasWood ? wood.name : (modelI18n.woodNote || model.woodNote || curI18n.noWoodSummary);
+      elAhs.textContent = model.hasWood ? wood.name : curI18n.noWoodSummary;
     }
 
     var elYuk = document.getElementById('sum-yuk');
@@ -664,7 +669,7 @@
     if (woodParent) {
       if (!model.hasWood) {
         if (woodNote) {
-          woodNote.innerHTML = '<span style="display:inline-block; padding:6px 12px; background:#fff4e6; color:#9c4c00; border-radius:6px; font-weight:600; font-size:13px; line-height:1.4;">' +
+          woodNote.innerHTML = '<span style="display:block; max-inline-size:100%; padding:8px 12px; background:rgba(212,175,55,0.1); border:1px solid rgba(212,175,55,0.35); color:#f3e5ab; border-radius:6px; font-weight:500; font-size:12.5px; line-height:1.45;">' +
             'ℹ️ ' + (modelI18n.woodNote || model.woodNote || curI18n.woodNoteDisabledDefault) + '</span>';
         }
         if (woodGrid) {

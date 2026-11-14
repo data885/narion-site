@@ -41,6 +41,7 @@ body{
   margin:0; background:var(--bg); color:var(--ink);
   font-family:var(--f-sans); font-size:16px; line-height:1.65;
   -webkit-font-smoothing:antialiased;
+  overflow-x:clip; overflow-wrap:anywhere;
 }
 img,svg{max-width:100%}
 a{color:var(--accent); text-underline-offset:3px}
@@ -56,7 +57,8 @@ a:hover{color:#e0c79a}
 /* ---------- üst bar ---------- */
 .top{position:sticky; top:0; z-index:40; background:rgba(9,9,11,.88);
   backdrop-filter:blur(10px); border-bottom:1px solid var(--line)}
-.topin{display:flex; align-items:center; gap:22px; height:62px}
+.top .wrap{max-width:min(1480px,100%)}
+.topin{display:flex; align-items:center; gap:10px 18px; min-height:62px; height:auto; padding-block:10px; flex-wrap:wrap}
 .brand{display:flex; align-items:center; gap:11px; text-decoration:none; color:var(--ink); flex:none}
 .brand-mark{width:26px; height:26px; flex:none; color:var(--accent)}
 .brand-mark svg{display:block; width:100%; height:100%}
@@ -64,7 +66,7 @@ a:hover{color:#e0c79a}
 .brand b{font-size:19px; font-weight:600; letter-spacing:.20em}
 .brand span{font-family:var(--f-mono); font-size:10px; letter-spacing:.14em;
   text-transform:uppercase; color:var(--faint)}
-nav.main{display:flex; gap:17px; margin-inline-start:auto; flex-wrap:wrap;
+nav.main{display:flex; gap:10px 16px; margin-inline-start:auto; flex-wrap:wrap; flex-wrap:balance;
   align-items:center}
 nav.main a{color:var(--muted); text-decoration:none; font-size:14px; white-space:nowrap}
 nav.main a:hover,nav.main a[aria-current]{color:var(--ink)}
@@ -73,6 +75,7 @@ nav.main a[aria-current]{box-shadow:0 2px 0 var(--accent)}
 .nav-grup>a::after{content:"›"; display:inline-block; margin-inline-start:5px;
   transform:rotate(90deg); font-size:11px; opacity:.55}
 .nav-alt{position:absolute; top:100%; inset-inline-start:-14px; min-width:190px;
+  max-inline-size:calc(100dvw - 24px); max-block-size:calc(100dvh - 86px); overflow-y:auto; overscroll-behavior:contain;
   background:var(--surface); border:1px solid var(--line); padding:6px 0;
   display:none; flex-direction:column; z-index:50;
   box-shadow:0 8px 24px rgba(0,0,0,.09)}
@@ -109,8 +112,8 @@ nav.main a[aria-current]{box-shadow:0 2px 0 var(--accent)}
 .status p{margin:0; font-size:13.5px; color:var(--muted); line-height:1.55; max-width:88ch}
 
 /* ---------- hero ---------- */
-.hero{border-bottom:1px solid var(--line); overflow:hidden}
-.hero .wrap{display:grid; grid-template-columns:1.25fr .75fr; gap:44px;
+.hero{border-bottom:1px solid var(--line); overflow-x:clip}
+.hero .wrap{display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr); gap:44px;
   padding-block:clamp(48px,7vw,92px); align-items:center}
 .eyebrow{font-family:var(--f-mono); font-size:11px; letter-spacing:.18em;
   text-transform:uppercase; color:var(--muted); display:block; margin-bottom:22px}
@@ -122,7 +125,7 @@ h1{font-size:clamp(40px,7.4vw,78px); line-height:1.02; letter-spacing:-.035em;
 .herofig img{max-height:min(62vh,540px); width:auto; margin-inline:auto}
 /* geniş yatay render: metin üstte, görsel tam genişlik altta */
 .hero.wide .wrap{grid-template-columns:1fr; gap:36px; padding-bottom:0}
-.hero.wide .herofig{margin-inline:calc(50% - 50vw); max-width:100vw}
+.hero.wide .herofig{margin-inline:calc(50% - 50dvw); max-width:100dvw}
 .hero.wide .herofig img{max-height:min(66vh,640px); width:100%; object-fit:cover}
 .hero.wide .herofig figcaption{max-width:var(--w); margin:0 auto;
   padding-inline:var(--gut); padding-bottom:22px}
@@ -133,7 +136,7 @@ h1{font-size:clamp(40px,7.4vw,78px); line-height:1.02; letter-spacing:-.035em;
   .herofig svg{max-width:190px; max-height:300px}
 }
 /* iki sütunlu serbest bölüm — kart çerçevesi yok */
-.split{display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:start}
+.split{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:40px; align-items:start}
 @media(max-width:860px){.split{grid-template-columns:1fr; gap:26px}}
 .exploded{color:var(--steel); max-width:440px}
 
@@ -146,10 +149,10 @@ figure.sh figcaption b{font-family:var(--f-mono); font-size:9.5px; font-weight:6
   letter-spacing:.13em; text-transform:uppercase; color:var(--accent);
   border:1px solid var(--line-2); padding:3px 7px; flex:none}
 /* kenardan kenara görsel şeridi */
-.bleed{margin-inline:calc(50% - 50vw); max-width:100vw}
+.bleed{margin-inline:calc(50% - 50dvw); max-width:100dvw}
 .bleed img{width:100%; max-height:min(74vh,720px); object-fit:cover}
 .bleed figcaption{max-width:var(--w); margin:0 auto; padding-inline:var(--gut)}
-.figpair{display:grid; grid-template-columns:1fr 1fr; gap:22px; align-items:start}
+.figpair{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:22px; align-items:start}
 @media(max-width:860px){.figpair{grid-template-columns:1fr}}
 
 /* ---------- bölüm ---------- */
@@ -169,8 +172,9 @@ h3{font-size:19px; letter-spacing:-.012em; font-weight:600; margin:0 0 8px}
 
 /* ---------- kart ızgaraları ---------- */
 .grid{display:grid; gap:1px; background:var(--line); border:1px solid var(--line)}
-.g2{grid-template-columns:repeat(2,1fr)}
-.g3{grid-template-columns:repeat(3,1fr)}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cell{min-inline-size:0}
 .cell{background:var(--surface); padding:26px 24px}
 .cell .k{font-family:var(--f-mono); font-size:10.5px; letter-spacing:.12em; text-transform:uppercase;
   color:var(--accent); display:block; margin-bottom:12px}
@@ -253,7 +257,7 @@ table.kiyas tbody tr:nth-child(even) td,
 table.kiyas tbody tr:nth-child(even) th{background:var(--bg-2)}
 
 ul.ortak{list-style:none; padding:0; margin:0; display:grid;
-  grid-template-columns:repeat(2,1fr); gap:1px; background:var(--line);
+  grid-template-columns:repeat(2,minmax(0,1fr)); gap:1px; background:var(--line);
   border:1px solid var(--line); max-width:none}
 ul.ortak li{background:var(--surface); padding:16px 20px; font-size:14.5px;
   color:var(--muted); display:flex; gap:11px; align-items:flex-start}
@@ -280,7 +284,7 @@ ul.liste li::before{content:""; position:absolute; inset-inline-start:0; top:23p
 [dir=rtl] ul.liste li{padding:15px 26px 15px 0}
 
 /* ---------- kapı (çift CTA) ---------- */
-.doors{display:grid; grid-template-columns:repeat(2,1fr); gap:20px}
+.doors{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px}
 @media(max-width:820px){.doors{grid-template-columns:1fr}}
 .door{border:1px solid var(--line); background:var(--surface); padding:30px 28px;
   display:flex; flex-direction:column; gap:12px}
@@ -307,7 +311,7 @@ html[dir="rtl"] .btnbox:hover .ar{transform:scaleX(-1) translateX(4px)}
 .btnbox.eposta,.btn.eposta{text-transform:none; letter-spacing:.02em; font-size:13px}
 
 /* ---------- pazar kartı ---------- */
-.markets{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
+.markets{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px}
 @media(max-width:880px){.markets{grid-template-columns:1fr}}
 .market{border:1px solid var(--line); background:var(--surface)}
 .market .pat{height:150px; border-bottom:1px solid var(--line); color:var(--accent-2)}
@@ -334,7 +338,7 @@ html[dir="rtl"] .btnbox:hover .ar{transform:scaleX(-1) translateX(4px)}
 }
 
 /* ---------- palet ---------- */
-.palette{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+.palette{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px}
 @media(max-width:860px){.palette{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:520px){.palette{grid-template-columns:1fr}}
 .sw{border:1px solid var(--line); background:var(--surface)}
@@ -365,7 +369,7 @@ html[dir="rtl"] .btnbox:hover .ar{transform:scaleX(-1) translateX(4px)}
 
 /* ---------- footer ---------- */
 footer{border-top:1px solid var(--line); background:var(--bg-2); padding-block:40px}
-footer .cols{display:grid; grid-template-columns:1.5fr 1fr 1fr 1.1fr; gap:30px; margin-bottom:30px}
+footer .cols{display:grid; grid-template-columns:minmax(0,1.5fr) minmax(0,1fr) minmax(0,1fr) minmax(0,1.1fr); gap:30px; margin-bottom:30px}
 footer .kunye{font-size:12.5px; color:var(--faint); line-height:1.6; margin-top:14px}
 footer a.wa{display:inline-flex; align-items:center; gap:7px; color:var(--accent); font-weight:500}
 footer a.wa:hover{color:var(--ink)}
@@ -383,7 +387,7 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
 
 /* --- form (Web3Forms) --- */
 .wform{margin-top:20px;max-width:640px}
-.fgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.fgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
 @media(max-width:620px){.fgrid{grid-template-columns:1fr}}
 .fld{display:flex;flex-direction:column;gap:5px}
 .fld:has(textarea){grid-column:1/-1}
@@ -398,8 +402,9 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
 
 
 /* --- NARION Lüks Konfigüratör Stilleri (HBOT Mimarisi) --- */
-.configurator-layout{display:grid;grid-template-columns:1fr 420px;gap:36px;align-items:start;margin-top:20px}
-@media(max-width:960px){.configurator-layout{grid-template-columns:1fr}}
+.configurator-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,400px);gap:32px;align-items:start;margin-top:20px}
+.configurator-layout>*{min-inline-size:0}
+@media(max-width:960px){.configurator-layout{grid-template-columns:minmax(0,1fr)}}
 .config-steps{display:flex;flex-direction:column;gap:24px}
 .config-step-card{background:var(--surface);border:1px solid var(--line);padding:22px 24px}
 .config-step-title{font-size:16.5px;font-weight:600;letter-spacing:-.01em;margin-bottom:4px}
@@ -432,12 +437,17 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
 .stage-img{position:absolute;width:100%;height:100%;object-fit:contain;opacity:0;transform:scale(0.96);filter:drop-shadow(0 24px 36px rgba(0,0,0,0.65));transition:opacity 0.45s cubic-bezier(.4,0,.2,1), transform 0.45s cubic-bezier(.4,0,.2,1);pointer-events:none}
 .stage-img.is-active{opacity:1;transform:scale(1)}
 .stage-floor{position:absolute;left:10%;right:10%;bottom:8%;height:14%;pointer-events:none;background:radial-gradient(ellipse 55% 100% at 50% 100%, rgba(216, 187, 138, 0.24), rgba(0, 0, 0, 0.6) 60%, transparent 80%)}
-.stage-badge{position:absolute;top:12px;inset-inline-start:12px;z-index:3;font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#d8bb8a;background:rgba(10,8,6,.75);border:1px solid rgba(216,187,138,.35);padding:5px 11px;backdrop-filter:blur(8px);border-radius:2px}
-.stage-hmd{position:absolute;top:46px;inset-inline-start:12px;z-index:3;display:flex;align-items:center;gap:8px;max-width:calc(100% - 24px);font-family:var(--f-mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;line-height:1.35;color:#f3e5ab;background:rgba(10,8,6,.8);border:1px solid rgba(216,187,138,.45);padding:4px 10px 4px 4px;border-radius:3px;text-decoration:none;backdrop-filter:blur(8px)}.stage-hmd img{width:30px;height:30px;object-fit:cover;border-radius:2px;flex:none}.stage-hmd:hover{border-color:#d8bb8a}
+.stage-top-stack{position:absolute;top:12px;inset-inline:12px;z-index:3;display:flex;flex-direction:column;align-items:flex-start;gap:6px;pointer-events:none}
+.stage-badge{position:absolute;top:12px;inset-inline-start:12px;z-index:3;max-inline-size:calc(100% - 24px);white-space:normal;line-height:1.35;font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#d8bb8a;background:rgba(10,8,6,.78);border:1px solid rgba(216,187,138,.35);padding:5px 11px;backdrop-filter:blur(8px);border-radius:2px}
+.stage-top-stack .stage-badge{position:static;max-inline-size:100%}
+.stage-hmd{position:absolute;top:46px;inset-inline-start:12px;z-index:3;display:flex;align-items:center;gap:8px;max-inline-size:calc(100% - 24px);font-family:var(--f-mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;line-height:1.35;color:#f3e5ab;background:rgba(10,8,6,.82);border:1px solid rgba(216,187,138,.45);padding:4px 10px 4px 4px;border-radius:3px;text-decoration:none;backdrop-filter:blur(8px);pointer-events:auto}
+.stage-top-stack .stage-hmd{position:static;max-inline-size:100%}
+.stage-hmd img{width:30px;height:30px;object-fit:cover;border-radius:2px;flex:none}.stage-hmd:hover{border-color:#d8bb8a}
 .stage-view-toggle{position:absolute;bottom:12px;inset-inline-start:12px;z-index:3;display:flex;gap:4px;background:rgba(10,8,6,.85);padding:4px;border:1px solid rgba(216,187,138,.35);backdrop-filter:blur(10px);border-radius:3px;flex-wrap:wrap;max-width:calc(100% - 70px)}
 .stage-v-btn{background:none;border:none;color:rgba(255,255,255,.8);font-family:var(--f-mono);font-size:10.5px;letter-spacing:.04em;padding:5px 9px;cursor:pointer;transition:all .15s;border-radius:2px}
 .stage-v-btn:hover{background:rgba(216,187,138,.18);color:#fff}
-.stage-v-btn.is-active{background:#d8bb8a;color:#111;font-weight:600}
+.stage-v-btn{font-weight:600}
+.stage-v-btn.is-active{background:#d8bb8a;color:#111}
 .stage-zoom-controls{position:absolute;bottom:12px;inset-inline-end:12px;z-index:3;display:flex;flex-direction:column;gap:4px}
 .stage-z-btn{width:28px;height:28px;background:rgba(10,8,6,.75);color:#fff;border:1px solid rgba(255,255,255,.2);font-family:var(--f-mono);font-size:14px;display:flex;align-items:center;justify-content:center;cursor:pointer;backdrop-filter:blur(8px);border-radius:2px;transition:border-color .15s}
 .stage-z-btn:hover{border-color:var(--accent)}
@@ -446,9 +456,9 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
 .summary-code{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;color:var(--accent);text-transform:uppercase}
 .summary-name{font-size:20px;font-weight:600;margin:2px 0 0;letter-spacing:-.015em}
 .summary-rows{display:flex;flex-direction:column;gap:9px;margin-bottom:18px}
-.summary-row{display:flex;justify-content:space-between;align-items:baseline;font-size:13px}
-.summary-row .k{color:var(--muted)}
-.summary-row .v{font-family:var(--f-mono);font-weight:500;text-align:end}
+.summary-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;min-inline-size:0;font-size:13px}
+.summary-row .k{color:var(--muted);flex-shrink:0}
+.summary-row .v{font-family:var(--f-mono);font-weight:500;text-align:end;min-inline-size:0;overflow-wrap:anywhere}
 .summary-actions{display:flex;flex-direction:column;gap:9px}
 .btn-dl{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;padding:11px;background:var(--bg);border:1px solid var(--line);color:var(--ink);font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;font-weight:600;transition:border-color .15s}
 .btn-dl:hover{border-color:var(--accent);color:var(--accent)}
@@ -464,7 +474,7 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
   color:var(--ink);font-variant-numeric:tabular-nums;text-align:right}
 .hesap input:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
 .hesap td.birim{font-family:var(--f-mono);font-size:11.5px;color:var(--faint);white-space:nowrap}
-.hout{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);
+.hout{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);
   border:1px solid var(--line);margin-top:18px}
 @media(max-width:700px){.hout{grid-template-columns:1fr}}
 .ho{background:var(--surface);padding:16px 18px;display:flex;flex-direction:column;gap:3px}
@@ -472,7 +482,7 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
 .ho .v{font-family:var(--f-display);font-size:23px;font-weight:600;font-variant-numeric:tabular-nums;
   line-height:1.15;color:var(--accent)}
 .ho .s{font-size:12px;color:var(--muted);line-height:1.45;margin-top:2px}
-.htop{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);
+.htop{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);
   border:1px solid var(--line);border-top:none}
 @media(max-width:700px){.htop{grid-template-columns:1fr}}
 .htop>div{background:var(--accent-soft);padding:16px 18px;
@@ -483,7 +493,7 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
 
 
 /* --- kafe logosu onizleme --- */
-.lgrid{display:grid;grid-template-columns:1fr 250px;gap:22px;margin-top:20px;align-items:start}
+.lgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,250px);gap:22px;margin-top:20px;align-items:start}
 @media(max-width:820px){.lgrid{grid-template-columns:1fr}}
 #lg-tuval{width:100%;height:auto;display:block;border:1px solid var(--line);background:var(--surface-2)}
 .lg-sag{display:flex;flex-direction:column;gap:14px}
@@ -841,7 +851,7 @@ footer p{margin:0 0 10px; color:var(--muted); font-size:14px; max-width:44ch; li
     </div>
   </div>
 </section>
-<script src="../gorsel/3d/uc-boyut-viewer.js"></script>
+<script src="../gorsel/3d/uc-boyut-viewer.js?v=2"></script>
 </main>
 <footer>
   <div class="wrap">

@@ -9,7 +9,7 @@
 <meta name="description" content="TÜRKPATENT 2026/017041 korumalı kömürsüz elektrikli akıllı nargile lülesi. %100 gerçek yaprak tütün, 0.0 ppm karbonmonoksit, ~3,5 dk ön ısıtma, 74 Wh kablosuz batarya ve Bluetooth telefon kontrolü.">
 <link rel="icon" type="image/svg+xml" href="logo/favicon.svg">
 <link rel="apple-touch-icon" href="logo/apple-touch-icon-180.png">
-<link rel="stylesheet" href="assets/style.css?v=21">
+<link rel="stylesheet" href="assets/style.css?v=22">
 <link rel="canonical" href="https://narionhookah.com/tr/smart-hmd.html">
 <link rel="alternate" hreflang="tr" href="https://narionhookah.com/tr/smart-hmd.html">
 <link rel="alternate" hreflang="en" href="https://narionhookah.com/en/smart-hmd.html">
@@ -82,9 +82,8 @@
     <nav class="menu" id="menu">
       <div class="mi"><a href="index.html">Ana Sayfa</a></div>
       <div class="mi"><a href="modeller.html">Koleksiyon (17 Model)</a></div>
-      <div class="mi"><a href="smart-hmd.html" class="on">Smart HMD</a></div>
+      <div class="mi"><a href="smart-hmd.html" class="on" aria-current="page">Smart HMD</a></div>
       <div class="mi"><a href="parcalar.html">Parçalar</a></div>
-      <div class="mi"><a href="b2b-kurumsal.html">Kurumsal (B2B)</a></div>
       <div class="mi"><a href="teknoloji.html">Mühendislik</a></div>
       <div class="mi"><a href="karsilastirma.html">Karşılaştırma</a></div>
       <div class="mi"><a href="sonraki-proje.html">Sonraki Proje (Tritan™)</a></div>
@@ -1509,6 +1508,7 @@
 
 <script>
 let currentTemp = 215;
+let currentMode = 'med';
 let isBoost = false;
 
 function setMode(mode, temp, btn) {
@@ -1521,10 +1521,12 @@ function setMode(mode, temp, btn) {
   btn.classList.add('on');
 
   currentTemp = temp;
+  currentMode = mode;
   document.getElementById('ph-temp').innerText = temp + '°';
   // Etiketi parcali kurmuyoruz: kelime sirasi dile gore degisir
   // (RU'da "REJIM HARD"). Her mod kendi tam metni olarak cevrilsin.
-  const MOD_ETIKET = { soft: 'SOFT MOD', medium: 'MEDIUM MOD', hard: 'HARD MOD' };
+  const MOD_ETIKET = { soft: 'SOFT MOD', med: 'MEDIUM MOD', medium: 'MEDIUM MOD', hard: 'HARD MOD' };
+  window.__NARION_MOD_ETIKET = MOD_ETIKET;
   document.getElementById('ph-mode-title').innerText = MOD_ETIKET[mode] || mode.toUpperCase();
 
   let p = 60;
@@ -1546,8 +1548,10 @@ function toggleBoost() {
     btn.classList.remove('on');
     btn.innerText = '🔥 DUMAN BOOST (+15°C)';
     document.getElementById('ph-temp').innerText = currentTemp + '°';
-    document.getElementById('ph-mode-title').innerText = 'MEDIUM MOD';
-    document.getElementById('ph-dial').style.setProperty('--p', '60%');
+    const etiketMap = window.__NARION_MOD_ETIKET || {};
+    document.getElementById('ph-mode-title').innerText = etiketMap[currentMode] || 'MEDIUM MOD';
+    const pRestore = currentMode === 'soft' ? 45 : (currentMode === 'hard' ? 85 : 60);
+    document.getElementById('ph-dial').style.setProperty('--p', pRestore + '%');
   }
 }
 
@@ -1759,6 +1763,6 @@ calcHomeRoi();
 </script>
 
 
-<script src="assets/menu.js?v=5" defer></script>
+<script src="assets/menu.js?v=6" defer></script>
 </body>
 </html>
