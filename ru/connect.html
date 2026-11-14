@@ -9,7 +9,7 @@
 <link rel="apple-touch-icon" href="../logo/apple-touch-icon-180.png">
 <link rel="manifest" href="../manifest.webmanifest">
 <meta name="theme-color" content="#0b0b0f">
-<link rel="stylesheet" href="../assets/style.css?v=22">
+<link rel="stylesheet" href="../assets/style.css?v=23">
 <link rel="stylesheet" href="../assets/narion-connect.css?v=2">
 <link rel="canonical" href="https://narionhookah.com/ru/connect.html">
 <link rel="alternate" hreflang="tr" href="https://narionhookah.com/tr/connect.html">
@@ -185,7 +185,10 @@
                 <button type="button" class="btn gold sm" id="nc-btn-boost" style="width:100%">🔥 +15°C Буст пара (90 с)</button>
                 <button type="button" class="btn glass sm" id="nc-btn-clean" style="width:100%">🧼 65°C Мягкая очистка (45 с)</button>
               </div>
-              <button type="button" class="btn glass sm" id="nc-btn-standby" style="width:100%;margin-top:8px">⏻ Ожидание / Питание</button>
+              <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:8px">
+                <button type="button" class="btn glass sm" id="nc-btn-nfc-pod" style="width:100%;border-color:rgba(16,185,129,0.45);color:#6ee7b7">🏷️ NFC 13 г Eco-Pod (208°C)</button>
+                <button type="button" class="btn glass sm" id="nc-btn-standby" style="width:100%">⏻ Ожидание / Питание</button>
+              </div>
 
               <div class="nc-metrics">
                 <div class="nc-metric"><b id="nc-m-bat">%91</b><span>Заряд АКБ</span></div>
@@ -236,6 +239,7 @@
                 <p style="font-size:13px;color:var(--text-muted);margin:0">Проверьте датчик тяги Sensirion SDP31, отсечку при наклоне >35° (<200 мс) и защиту от пересыхания табака:</p>
                 <div class="nc-sim-actions">
                   <button type="button" class="btn gold sm" id="nc-sim-puff">💨 Удерживать: Затяжка (-48 Pa)</button>
+                  <button type="button" class="btn glass sm" id="nc-sim-purge" style="border-color:rgba(6,182,212,0.5);color:#67e8f9">🌬️ Продувка Smart Purge (+45 Pa)</button>
                   <button type="button" class="btn glass sm" id="nc-sim-tilt">⚠️ Тест наклона >35° (<200 мс)</button>
                   <button type="button" class="btn glass sm" id="nc-sim-scorch">🍂 Тест сухой чаши (Scorch Guard)</button>
                   <button type="button" class="btn glass sm" id="nc-sim-sleep">🌙 Эко-сон 185°C Вкл/Выкл</button>
@@ -443,6 +447,6 @@ RX TEL (20B) : --</div>
   </div>
 </footer>
 <script src="../assets/menu.js?v=6" defer></script>
-<script src="../assets/narion-connect.js?v=2" defer></script>
+<script src="../assets/narion-connect.js?v=3" defer></script>
 </body>
 </html>

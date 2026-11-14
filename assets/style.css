@@ -1488,7 +1488,7 @@ label {
   accent-color: var(--gold);
 }
 
-@supports not (accent-color: var(--gold)) {
+@supports not (accent-color: #d4af37) {
   .calc input[type="range"],
   .roi-sim input[type="range"] {
     -webkit-appearance: none;

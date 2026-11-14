@@ -1,13 +1,13 @@
 /**
  * NARION CONNECT — Mobile Companion Web App & BLE 5.0 / Local HTTP-WS Client
- * Hardware Contract: NRN-HMD-TF-002 (Rev R2.1) • Patent-Pending TR 2026/017041
+ * Hardware Contract: NRN-HMD-TF-002 (Rev R2.2) • Patent-Pending TR 2026/017041
  *
  * Implements:
  *  1. Bit-exact 20-byte Telemetry (v0x03) & 12-byte Command codec + keyed authTag + CRC-8 (0x07)
  *  2. Web Bluetooth GATT Client (Android / Desktop Chrome / Edge)
  *  3. Same-Origin iOS Safari Local HTTP/WS Flow (blocks HTTPS->ws:// Mixed Content & opens explicit modal guide)
  *  4. Conserved Closed-Loop Lumped-Thermal Digital Twin (explicitly badged as Simulator when unconnected)
- *  5. B2B Lounge Sommelier PIN Lock (PIN: 1453) & Dual-Sensor / Hardware Comparator Fault Diagnostics
+ *  5. Rev R2.2 Smart Purge Relief (+35 Pa -> 12s 0% PWM & -5°C), NFC 13g Eco-Pod (208°C) & Sommelier PIN Lock
  */
 (function () {
   'use strict';
@@ -73,6 +73,7 @@
       stPreheat: 'SERAMİK ÖN ISITMA',
       stReady: 'PID HEDEF ISIDA KİLİTLİ',
       stDraw: 'SDP31 NEFES BOOST (+%15)',
+      stPurge: 'SMART PURGE TAHLİYE (0% PWM • -5°C)',
       stSleep: 'EKO UYKU (185°C KORUMA)',
       stClean: '65°C ÖN-TEMİZLİK AKTİF',
       stFaultTilt: 'ACİL KESİCİ: >35° DEVRİLME!',
@@ -87,7 +88,9 @@
       wsUnreachable: '192.168.4.1:81 üzerinde fiziksel NARION başlığına ulaşılamadı. Lütfen cihazda 3 sn basılı tutup Wi-Fi AP modunu açtığınızdan emin olun. (Şu an Simülatör Modundasınız.)',
       pinErr: 'Hatalı Sommelier PIN kodu! (Varsayılan Demo PIN: 1453)',
       lockBlocked: 'Garson Sommelier Kilidi aktif: Sıcaklık yalnızca izin verilen aralıkta (185–205°C) değiştirilebilir.',
-      cleanTooHot: 'Ön-temizlik modu için haznenin 95°C altında olması gerekir.'
+      cleanTooHot: 'Ön-temizlik modu için haznenin 95°C altında olması gerekir.',
+      purgeToast: 'Smart Purge (+45 Pa) algılandı: 12 sn ısıtıcı kesildi (%0 PWM) ve hedef -5°C düşürüldü.',
+      nfcPodToast: 'NFC 13g Eco-Pod okundu (0x09): 208°C reçetesi ve 3 kademeli aroma merdiveni yüklendi (%41 tütün tasarrufu).'
     },
     en: {
       connTwin: 'SIMULATOR MODE (NO DEVICE CONNECTED)',
@@ -97,6 +100,7 @@
       stPreheat: 'CERAMIC PRE-HEATING',
       stReady: 'PID LOCKED AT TARGET',
       stDraw: 'SDP31 DRAW BOOST (+15%)',
+      stPurge: 'SMART PURGE RELIEF (0% PWM • -5°C)',
       stSleep: 'ECO AUTO-SLEEP (185°C)',
       stClean: '65°C WARM SELF-CLEAN',
       stFaultTilt: 'SAFETY CUTOFF: >35° TILT!',
@@ -111,7 +115,9 @@
       wsUnreachable: 'Could not reach a physical NARION head at 192.168.4.1:81. Hold the HMD button for 3s to enable WPA2 Wi-Fi AP mode. (Remaining in Simulator Mode.)',
       pinErr: 'Invalid Sommelier PIN! (Default Demo PIN: 1453)',
       lockBlocked: 'Sommelier Lock active: Guest adjustments are clamped to 185–205°C.',
-      cleanTooHot: 'Bowl must cool below 95°C before starting 65°C Self-Clean.'
+      cleanTooHot: 'Bowl must cool below 95°C before starting 65°C Self-Clean.',
+      purgeToast: 'Smart Purge (+45 Pa) detected: Heater cut to 0% PWM for 12s and target stepped down by -5°C.',
+      nfcPodToast: 'NFC 13g Eco-Pod synced (0x09): 208°C curve & 3-stage flavor ramp loaded (41% tobacco savings).'
     },
     ar: {
       connTwin: 'وضع المحاكاة (لا يوجد جهاز متصل)',
@@ -121,6 +127,7 @@
       stPreheat: 'تسخين سيراميك تمهيدي',
       stReady: 'ثبات حراري PID جاهز',
       stDraw: 'تعزيز السحب SDP31 (+15%)',
+      stPurge: 'تفريغ ذكي SMART PURGE (0% PWM • -5°C)',
       stSleep: 'سكون ذكي (185°C)',
       stClean: 'تنظيف دافئ 65°C',
       stFaultTilt: 'فصل أمان فوري: ميلان >35°!',
@@ -135,7 +142,9 @@
       wsUnreachable: 'تعذر الوصول إلى جهاز فعلي على 192.168.4.1:81. (أنت الآن في وضع المحاكاة).',
       pinErr: 'رمز PIN غير صحيح! (الرمز الافتراضي: 1453)',
       lockBlocked: 'قفل الساقي مفعل: يُسمح بضبط الحرارة بين 185–205°C فقط.',
-      cleanTooHot: 'يجب أن تنخفض حرارة الحجرة دون 95°C قبل التنظيف.'
+      cleanTooHot: 'يجب أن تنخفض حرارة الحجرة دون 95°C قبل التنظيف.',
+      purgeToast: 'تم رصد النفخ العكسي (+45 Pa): إيقاف السخان 12 ثانية وخفض الهدف -5°C.',
+      nfcPodToast: 'تمت قراءة كبسولة NFC الاقتصادية 13 جم (208°C) — توفير 41% من المعسل.'
     },
     ru: {
       connTwin: 'РЕЖИМ СИМУЛЯТОРА (БЕЗ УСТРОЙСТВА)',
@@ -145,6 +154,7 @@
       stPreheat: 'ПРОГРЕВ КЕРАМИКИ',
       stReady: 'PID СТАБИЛИЗИРОВАН',
       stDraw: 'SDP31 ТЯГА BOOST (+15%)',
+      stPurge: 'SMART PURGE ПРОДУВКА (0% PWM • -5°C)',
       stSleep: 'ЭКО-СОН (185°C)',
       stClean: '65°C МЯГКАЯ ОЧИСТКА',
       stFaultTilt: 'АВАРИЙНЫЙ СТОП: НАКЛОН >35°!',
@@ -159,7 +169,9 @@
       wsUnreachable: 'Устройство на 192.168.4.1:81 не найдено. Удерживайте кнопку чаши 3 сек для включения Wi-Fi AP. (Активен режим симулятора.)',
       pinErr: 'Неверный PIN сомелье! (Демо PIN: 1453)',
       lockBlocked: 'Активна блокировка кальянщика: гостю доступен диапазон 185–205°C.',
-      cleanTooHot: 'Для очистки чаша должна остыть ниже 95°C.'
+      cleanTooHot: 'Для очистки чаша должна остыть ниже 95°C.',
+      purgeToast: 'Smart Purge (+45 Па): нагрев отключён на 12 сек (0% PWM), цель снижена на -5°C.',
+      nfcPodToast: 'NFC 13 г Eco-Pod (208°C): загружен 3-ступенчатый профиль (экономия 41% табака).'
     }
   };
   var T = I18N[LANG] || I18N.tr;
@@ -285,7 +297,10 @@
     sommelierPin: 1453,
     simInhaling: false,
     inhaleStartedAt: 0,
-    syrupGrams: 13.4,
+    purgeUntil: 0,
+    simPurgingUntil: 0,
+    purgeTrimC: 0,
+    syrupGrams: 13.0,
     integral: 4.5
   };
 
@@ -378,6 +393,8 @@
       twin.modeId = p1;
       twin.baseTargetC = nextT;
       twin.manualBoost = false;
+      twin.purgeTrimC = 0;
+      twin.purgeUntil = 0;
       twin.autoSleep = false;
     } else if (opcode === CMD.SET_TARGET_TEMP) {
       var reqC = p1 / 10;
@@ -388,6 +405,8 @@
       }
       twin.modeId = MODE.CUSTOM;
       twin.baseTargetC = Math.max(150, Math.min(240, reqC));
+      twin.purgeTrimC = 0;
+      twin.purgeUntil = 0;
       twin.autoSleep = false;
     } else if (opcode === CMD.SET_MANUAL_BOOST) {
       if (twin.loungeLock && pin !== twin.sommelierPin && (twin.baseTargetC + 15 > twin.lockMaxC)) {
@@ -405,6 +424,20 @@
       }
       twin.modeId = MODE.SELF_CLEAN;
       twin.baseTargetC = 65;
+    } else if (opcode === CMD.RFID_POD_SYNC) {
+      var podPresets = { 1: 190, 2: 215, 3: 235, 4: 208 };
+      var podT = podPresets[p1] || 208;
+      if (twin.loungeLock && pin !== twin.sommelierPin) {
+        podT = Math.max(twin.lockMinC, Math.min(twin.lockMaxC, podT));
+      }
+      twin.modeId = MODE.CUSTOM;
+      twin.baseTargetC = podT;
+      twin.autoSteep = true;
+      twin.purgeTrimC = 0;
+      twin.purgeUntil = 0;
+      twin.autoSleep = false;
+      syncSwitches();
+      showToast(T.nfcPodToast);
     }
   }
 
@@ -412,11 +445,16 @@
     if (transport !== 'twin') return;
 
     var dt = 0.25; // 4 Hz tick
-    if (twin.manualBoost && Date.now() > twin.manualBoostUntil) {
+    var now = Date.now();
+    if (twin.manualBoost && now > twin.manualBoostUntil) {
       twin.manualBoost = false;
     }
+    var purgeActive = (now < twin.purgeUntil);
 
-    if (twin.simInhaling) {
+    if (now < twin.simPurgingUntil) {
+      twin.drawPa = 44 + Math.round(Math.random() * 6); // +44..+50 Pa reverse purge blow
+      twin.autoSleep = false;
+    } else if (twin.simInhaling) {
       twin.drawPa = -48 - Math.round(Math.random() * 8);
       twin.autoSleep = false;
     } else {
@@ -430,16 +468,17 @@
       } else if (twin.autoSleep) {
         effTarget = Math.min(twin.baseTargetC, 185);
       } else {
-        effTarget = twin.baseTargetC + (twin.manualBoost ? 15 : 0);
+        effTarget = twin.baseTargetC - (twin.purgeTrimC || 0) + (twin.manualBoost ? 15 : 0);
+        if (effTarget < 150) effTarget = 150;
         if (effTarget > 240) effTarget = 240;
       }
     }
     twin.targetC = effTarget;
 
     // Conserved Closed-Loop Thermal Model (C_heater = 112 J/K -> max dT/dt <= 1.18 °C/s @ 132W)
-    if (twin.faultCode !== FAULT.NONE || twin.modeId === MODE.STANDBY) {
+    if (twin.faultCode !== FAULT.NONE || twin.modeId === MODE.STANDBY || purgeActive) {
       twin.pwmDutyPct = 0;
-      var pPassiveLoss = (twin.actualC - 24.5) * 0.19;
+      var pPassiveLoss = (twin.actualC - 24.5) * (purgeActive ? 0.34 : 0.19);
       twin.actualC -= (pPassiveLoss / 112.0) * dt;
     } else {
       var wetFrac = Math.max(0, Math.min(1, twin.syrupGrams / 14.0));
@@ -663,6 +702,9 @@
     } else if (f.modeId === MODE.SELF_CLEAN) {
       haloColor = '#38bdf8';
       stateLabel = T.stClean;
+    } else if ((transport === 'twin' && Date.now() < twin.purgeUntil) || f.drawPa >= 35) {
+      haloColor = '#06b6d4';
+      stateLabel = T.stPurge;
     } else if (f.flags & FLAG.DRAW_BOOST) {
       haloColor = '#38bdf8';
       stateLabel = T.stDraw;
@@ -810,6 +852,9 @@
     onClick('nc-btn-clean', function () {
       sendCommand(CMD.START_SELF_CLEAN, 0, 0, 0);
     });
+    onClick('nc-btn-nfc-pod', function () {
+      sendCommand(CMD.RFID_POD_SYNC, 4, 0, 0);
+    });
     onClick('nc-btn-clear-fault', function () {
       sendCommand(CMD.CLEAR_FAULT, 0, 0, 0);
     });
@@ -840,6 +885,14 @@
       });
     }
 
+    onClick('nc-sim-purge', function () {
+      if (twin.faultCode !== FAULT.NONE || twin.modeId === MODE.STANDBY) return;
+      twin.simPurgingUntil = Date.now() + 900;
+      twin.purgeUntil = Date.now() + 12000;
+      twin.purgeTrimC = Math.min(10, (twin.purgeTrimC || 0) + 5);
+      twin.manualBoost = false;
+      showToast(T.purgeToast);
+    });
     onClick('nc-sim-tilt', function () {
       twin.faultCode = FAULT.IMU_TILT;
       twin.pwmDutyPct = 0;

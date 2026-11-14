@@ -9,7 +9,7 @@
 <link rel="apple-touch-icon" href="logo/apple-touch-icon-180.png">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#0b0b0f">
-<link rel="stylesheet" href="assets/style.css?v=22">
+<link rel="stylesheet" href="assets/style.css?v=23">
 <link rel="stylesheet" href="assets/narion-connect.css?v=2">
 <link rel="canonical" href="https://narionhookah.com/connect.html">
 <link rel="alternate" hreflang="tr" href="https://narionhookah.com/tr/connect.html">
@@ -186,7 +186,10 @@
                 <button type="button" class="btn gold sm" id="nc-btn-boost" style="width:100%">🔥 +15°C Duman Boost (90 sn)</button>
                 <button type="button" class="btn glass sm" id="nc-btn-clean" style="width:100%">🧼 65°C Ön-Temizlik (45 sn)</button>
               </div>
-              <button type="button" class="btn glass sm" id="nc-btn-standby" style="width:100%;margin-top:8px">⏻ Bekleme / Aç-Kapat</button>
+              <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:8px">
+                <button type="button" class="btn glass sm" id="nc-btn-nfc-pod" style="width:100%;border-color:rgba(16,185,129,0.45);color:#6ee7b7">🏷️ NFC 13g Eco-Pod (208°C)</button>
+                <button type="button" class="btn glass sm" id="nc-btn-standby" style="width:100%">⏻ Bekleme / Aç-Kapat</button>
+              </div>
 
               <div class="nc-metrics">
                 <div class="nc-metric"><b id="nc-m-bat">%91</b><span>Batarya SOC</span></div>
@@ -237,6 +240,7 @@
                 <p style="font-size:13px;color:var(--text-muted);margin:0">ESP32-S3 üzerindeki Sensirion SDP31 basınç sensörünü, 6-eksen IMU devrilme kesicisini ve tütün kuruma korumasını canlı test edin:</p>
                 <div class="nc-sim-actions">
                   <button type="button" class="btn gold sm" id="nc-sim-puff">💨 Basılı Tut: Nefes Çek (-48 Pa)</button>
+                  <button type="button" class="btn glass sm" id="nc-sim-purge" style="border-color:rgba(6,182,212,0.5);color:#67e8f9">🌬️ Smart Purge Üfle (+45 Pa)</button>
                   <button type="button" class="btn glass sm" id="nc-sim-tilt">⚠️ >35° Devrilme Testi (<200 ms)</button>
                   <button type="button" class="btn glass sm" id="nc-sim-scorch">🍂 Kuru Tütün (Scorch Guard) Testi</button>
                   <button type="button" class="btn glass sm" id="nc-sim-sleep">🌙 180 sn Eko-Uyku (185°C) Aç/Kapat</button>
@@ -286,7 +290,7 @@
               <div class="nc-table-card">
                 <div style="display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:11.5px;color:#94a3b8"><span>5'Lİ BAR DOCK #01</span><span>65W GaN POGO</span></div>
                 <div style="font-family:var(--f-serif);font-size:28px;color:var(--accent-ok);margin:8px 0 4px">4 / 5 Dolu</div>
-                <div style="font-size:12.5px;color:var(--text-muted)">Bugün Toplam: 74 Seans • Tüketilen Elektrik: 37,00 ₺ (Kömür Tasarrufu: 2.397 ₺)</div>
+                <div style="font-size:12.5px;color:var(--text-muted)">Bugün: 74 Seans • Priz Elektriği: 35,52 ₺ (Köz + 9g Tütün Kazancı: +3.441 ₺)</div>
               </div>
             </div>
           </div>
@@ -446,6 +450,6 @@ RX TEL (20B) : --</div>
   </div>
 </footer>
 <script src="assets/menu.js?v=6" defer></script>
-<script src="assets/narion-connect.js?v=2" defer></script>
+<script src="assets/narion-connect.js?v=3" defer></script>
 </body>
 </html>
