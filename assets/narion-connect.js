@@ -1,13 +1,13 @@
 /**
- * NARION CONNECT — Production Mobile Web App & BLE 5.0 / iOS WebSocket Client
- * Hardware Contract: NRN-HMD-TF-002 (Rev R2.0) • TÜRKPATENT 2026/017041
+ * NARION CONNECT — Mobile Companion Web App & BLE 5.0 / Local HTTP-WS Client
+ * Hardware Contract: NRN-HMD-TF-002 (Rev R2.1) • Patent-Pending TR 2026/017041
  *
  * Implements:
- *  1. Bit-exact 20-byte Telemetry & 12-byte Command binary codec + CRC-8 (poly 0x07)
+ *  1. Bit-exact 20-byte Telemetry (v0x03) & 12-byte Command codec + keyed authTag + CRC-8 (0x07)
  *  2. Web Bluetooth GATT Client (Android / Desktop Chrome / Edge)
- *  3. iOS Safari Captive Wi-Fi WebSocket Bridge (ws://192.168.4.1:81 / narion-hmd.local)
- *  4. Real-Time Lumped-Thermal Digital Twin (runs through identical 20-byte binary frames!)
- *  5. B2B Lounge Sommelier PIN Lock (PIN: 1453) & 6-Table Live Bar Fleet Monitor
+ *  3. Same-Origin iOS Safari Local HTTP/WS Flow (blocks HTTPS->ws:// Mixed Content & opens explicit modal guide)
+ *  4. Conserved Closed-Loop Lumped-Thermal Digital Twin (explicitly badged as Simulator when unconnected)
+ *  5. B2B Lounge Sommelier PIN Lock (PIN: 1453) & Dual-Sensor / Hardware Comparator Fault Diagnostics
  */
 (function () {
   'use strict';
@@ -18,7 +18,7 @@
   }
 
   // -------------------------------------------------------------------------
-  // 1. BLE UUIDs & Wire Constants (Matches include/narion_protocol.h 1:1)
+  // 1. BLE UUIDs & Wire Constants (Matches include/narion_protocol.h Rev R2.1)
   // -------------------------------------------------------------------------
   var UUID_SERVICE_HMD      = '4e415249-4f4e-484d-4432-000000000001';
   var UUID_CHAR_TELEMETRY   = '4e415249-4f4e-484d-4432-000000000002';
@@ -37,7 +37,16 @@
     FAULT:        1 << 7
   };
   var FAULT = {
-    NONE: 0, IMU_TILT: 1, OVERTEMP: 2, SENSOR: 3, HOUSING: 4, LOW_BAT: 5, SCORCH: 6
+    NONE: 0,
+    IMU_TILT: 1,
+    OVERTEMP: 2,
+    SENSOR: 3,
+    HOUSING: 4,
+    LOW_BAT: 5,
+    SCORCH: 6,
+    SENSOR_DIV: 7,
+    HW_COMP: 8,
+    STARVATION: 9
   };
   var CMD = {
     SET_MODE:         0x01,
@@ -57,9 +66,9 @@
   var LANG = (document.documentElement.lang || 'tr').slice(0, 2).toLowerCase();
   var I18N = {
     tr: {
-      connTwin: 'DİJİTAL İKİZ SİMÜLASYON (CANLI)',
-      connBle: 'BLUETOOTH BLE 5.0 BAĞLI',
-      connWs: 'WI-FI KÖPRÜSÜ BAĞLI (iOS)',
+      connTwin: 'SİMÜLATÖR MODU (CİHAZ BAĞLI DEĞİL)',
+      connBle: 'FİZİKSEL CİHAZ BAĞLI (BLE 5.0)',
+      connWs: 'YEREL CİHAZ BAĞLI (HTTP/WS)',
       stStandby: 'BEKLEME MODU',
       stPreheat: 'SERAMİK ÖN ISITMA',
       stReady: 'PID HEDEF ISIDA KİLİTLİ',
@@ -67,19 +76,23 @@
       stSleep: 'EKO UYKU (185°C KORUMA)',
       stClean: '65°C ÖN-TEMİZLİK AKTİF',
       stFaultTilt: 'ACİL KESİCİ: >35° DEVRİLME!',
-      stFaultScorch: 'KORUMA: TÜTÜN KURUDU (SCORCH GUARD)',
+      stFaultScorch: 'KORUMA: DUTY-DROP KURU HAZNE!',
+      stFaultSensorDiv: 'SENSÖR FARK HATASI (|PT1000-NTC|>15°C)',
+      stFaultHwComp: '248°C DONANIM KOMPARATÖR KESİCİ!',
       stFaultBat: 'BATARYA DÜŞÜK: 5 SN HOT-SWAP YAPIN',
       targetFmt: 'Hedef: {t}°C • {m}',
       modes: ['Bekleme', 'Blonde (190°C)', 'Medium (215°C)', 'Dark (235°C)', 'Herbal (180°C)', 'Özel PID', 'Ön-Temizlik'],
-      bleUnsupported: 'Bu tarayıcıda Web Bluetooth kapalı (ör. iPhone Safari). Lülenin kendi Wi-Fi ağına (NARION-HMD) bağlıysanız otomatik iOS Köprüsü kullanılır; şu an Canlı Dijital İkiz aktif.',
+      bleUnsupported: 'Bu tarayıcıda Web Bluetooth kapalı (ör. iPhone Safari). Fiziksel başlığa bağlanmak için açılan penceredeki 3 adımlı yerel Wi-Fi (http://192.168.4.1) yolunu izleyin.',
+      wsMixedBlocked: 'HTTPS sayfasından yerel ws://192.168.4.1 adresine doğrudan soket açılması tarayıcı güvenlik kuralı (Mixed Content) gereği engellenir. Cihazın kendi Wi-Fi ağına bağlanıp http://192.168.4.1 yerel arayüzünü açın.',
+      wsUnreachable: '192.168.4.1:81 üzerinde fiziksel NARION başlığına ulaşılamadı. Lütfen cihazda 3 sn basılı tutup Wi-Fi AP modunu açtığınızdan emin olun. (Şu an Simülatör Modundasınız.)',
       pinErr: 'Hatalı Sommelier PIN kodu! (Varsayılan Demo PIN: 1453)',
       lockBlocked: 'Garson Sommelier Kilidi aktif: Sıcaklık yalnızca izin verilen aralıkta (185–205°C) değiştirilebilir.',
       cleanTooHot: 'Ön-temizlik modu için haznenin 95°C altında olması gerekir.'
     },
     en: {
-      connTwin: 'DIGITAL TWIN SIMULATOR (LIVE)',
-      connBle: 'BLUETOOTH BLE 5.0 CONNECTED',
-      connWs: 'WI-FI BRIDGE CONNECTED (iOS)',
+      connTwin: 'SIMULATOR MODE (NO DEVICE CONNECTED)',
+      connBle: 'PHYSICAL HMD CONNECTED (BLE 5.0)',
+      connWs: 'LOCAL HMD CONNECTED (HTTP/WS)',
       stStandby: 'STANDBY MODE',
       stPreheat: 'CERAMIC PRE-HEATING',
       stReady: 'PID LOCKED AT TARGET',
@@ -87,19 +100,23 @@
       stSleep: 'ECO AUTO-SLEEP (185°C)',
       stClean: '65°C WARM SELF-CLEAN',
       stFaultTilt: 'SAFETY CUTOFF: >35° TILT!',
-      stFaultScorch: 'GUARD: DRY BOWL DETECTED',
+      stFaultScorch: 'GUARD: DUTY-DROP DRY BOWL!',
+      stFaultSensorDiv: 'DUAL-SENSOR DIVERGENCE (>15°C)',
+      stFaultHwComp: '248°C HW COMPARATOR TRIP!',
       stFaultBat: 'LOW BATTERY: 5s HOT-SWAP NEEDED',
       targetFmt: 'Target: {t}°C • {m}',
       modes: ['Standby', 'Blonde (190°C)', 'Medium (215°C)', 'Dark (235°C)', 'Herbal (180°C)', 'Custom PID', 'Self-Clean'],
-      bleUnsupported: 'Web Bluetooth is unavailable in this browser (e.g. iOS Safari). Connect to the HMD Wi-Fi AP for iOS Bridge, or test right here in the Live Digital Twin.',
+      bleUnsupported: 'Web Bluetooth is unavailable in this browser (e.g. iPhone Safari). Follow the 3-step local Wi-Fi guide (http://192.168.4.1) in the modal to connect to a physical head.',
+      wsMixedBlocked: 'Browsers block ws://192.168.4.1 sockets from an HTTPS page (Mixed Content). Join the HMD Wi-Fi AP and open http://192.168.4.1 directly.',
+      wsUnreachable: 'Could not reach a physical NARION head at 192.168.4.1:81. Hold the HMD button for 3s to enable WPA2 Wi-Fi AP mode. (Remaining in Simulator Mode.)',
       pinErr: 'Invalid Sommelier PIN! (Default Demo PIN: 1453)',
       lockBlocked: 'Sommelier Lock active: Guest adjustments are clamped to 185–205°C.',
       cleanTooHot: 'Bowl must cool below 95°C before starting 65°C Self-Clean.'
     },
     ar: {
-      connTwin: 'محاكي التوأم الرقمي (مباشر)',
-      connBle: 'متصل عبر بلوتوث BLE 5.0',
-      connWs: 'متصل عبر جسر Wi-Fi (iOS)',
+      connTwin: 'وضع المحاكاة (لا يوجد جهاز متصل)',
+      connBle: 'متصل فعلياً عبر بلوتوث BLE 5.0',
+      connWs: 'متصل محلياً بالجهاز (HTTP/WS)',
       stStandby: 'وضع الاستعداد',
       stPreheat: 'تسخين سيراميك تمهيدي',
       stReady: 'ثبات حراري PID جاهز',
@@ -107,19 +124,23 @@
       stSleep: 'سكون ذكي (185°C)',
       stClean: 'تنظيف دافئ 65°C',
       stFaultTilt: 'فصل أمان فوري: ميلان >35°!',
-      stFaultScorch: 'حماية: جفاف المعسل',
+      stFaultScorch: 'حماية: جفاف المعسل (انخفاض الحمل)',
+      stFaultSensorDiv: 'خطأ تباين المستشعرين (>15°C)',
+      stFaultHwComp: 'فصل مقارن الأمان المادي 248°C!',
       stFaultBat: 'بطارية منخفضة: تبديل خلال 5 ثوانٍ',
       targetFmt: 'الهدف: {t}°C • {m}',
       modes: ['استعداد', 'بلوند (190°C)', 'متوسط (215°C)', 'دارك (235°C)', 'أعشاب (180°C)', 'مخصص PID', 'تنظيف'],
-      bleUnsupported: 'متصفحك لا يدعم Web Bluetooth مباشرة (مثل Safari على iPhone). استخدم جسر Wi-Fi المحلي أو جرّب التوأم الرقمي المباشر.',
+      bleUnsupported: 'متصفحك لا يدعم Web Bluetooth (مثل Safari على iPhone). اتبع خطوات Wi-Fi المحلية (http://192.168.4.1) في النافذة المنبثقة.',
+      wsMixedBlocked: 'يمنع المتصفح فتح اتصال ws:// محلي من صفحة HTTPS. اتصل بشبكة الجهاز وافتح http://192.168.4.1 مباشرة.',
+      wsUnreachable: 'تعذر الوصول إلى جهاز فعلي على 192.168.4.1:81. (أنت الآن في وضع المحاكاة).',
       pinErr: 'رمز PIN غير صحيح! (الرمز الافتراضي: 1453)',
       lockBlocked: 'قفل الساقي مفعل: يُسمح بضبط الحرارة بين 185–205°C فقط.',
       cleanTooHot: 'يجب أن تنخفض حرارة الحجرة دون 95°C قبل التنظيف.'
     },
     ru: {
-      connTwin: 'ЦИФРОВОЙ ДВОЙНИК (LIVE)',
-      connBle: 'BLUETOOTH BLE 5.0 ПОДКЛЮЧЕН',
-      connWs: 'WI-FI МОСТ ПОДКЛЮЧЕН (iOS)',
+      connTwin: 'РЕЖИМ СИМУЛЯТОРА (БЕЗ УСТРОЙСТВА)',
+      connBle: 'УСТРОЙСТВО ПОДКЛЮЧЕНО (BLE 5.0)',
+      connWs: 'ЛОКАЛЬНОЕ ПОДКЛЮЧЕНИЕ (HTTP/WS)',
       stStandby: 'РЕЖИМ ОЖИДАНИЯ',
       stPreheat: 'ПРОГРЕВ КЕРАМИКИ',
       stReady: 'PID СТАБИЛИЗИРОВАН',
@@ -127,11 +148,15 @@
       stSleep: 'ЭКО-СОН (185°C)',
       stClean: '65°C МЯГКАЯ ОЧИСТКА',
       stFaultTilt: 'АВАРИЙНЫЙ СТОП: НАКЛОН >35°!',
-      stFaultScorch: 'ЗАЩИТА: СУХАЯ ЧАША',
+      stFaultScorch: 'ЗАЩИТА: СУХАЯ ЧАША (DUTY-DROP)',
+      stFaultSensorDiv: 'РАСХОЖДЕНИЕ ДАТЧИКОВ (>15°C)',
+      stFaultHwComp: 'АППАРАТНАЯ ОТСЕЧКА 248°C!',
       stFaultBat: 'НИЗКИЙ ЗАРЯД: HOT-SWAP 5 СЕК',
       targetFmt: 'Цель: {t}°C • {m}',
       modes: ['Ожидание', 'Blonde (190°C)', 'Medium (215°C)', 'Dark (235°C)', 'Herbal (180°C)', 'Свой PID', 'Очистка'],
-      bleUnsupported: 'Web Bluetooth недоступен в этом браузере (например, iOS Safari). Используйте локальный Wi-Fi мост или интерактивный цифровой двойник.',
+      bleUnsupported: 'Web Bluetooth недоступен в этом браузере (например, iOS Safari). Следуйте инструкции в окне для входа на http://192.168.4.1.',
+      wsMixedBlocked: 'Браузер блокирует ws://192.168.4.1 со страницы HTTPS (Mixed Content). Подключитесь к Wi-Fi чаши и откройте http://192.168.4.1.',
+      wsUnreachable: 'Устройство на 192.168.4.1:81 не найдено. Удерживайте кнопку чаши 3 сек для включения Wi-Fi AP. (Активен режим симулятора.)',
       pinErr: 'Неверный PIN сомелье! (Демо PIN: 1453)',
       lockBlocked: 'Активна блокировка кальянщика: гостю доступен диапазон 185–205°C.',
       cleanTooHot: 'Для очистки чаша должна остыть ниже 95°C.'
@@ -140,10 +165,10 @@
   var T = I18N[LANG] || I18N.tr;
 
   // -------------------------------------------------------------------------
-  // 3. CRC-8-CCITT (Poly 0x07) & Binary Wire Codec
+  // 3. CRC-8-CCITT (Poly 0x07), Session Auth Tag & Binary Wire Codec
   // -------------------------------------------------------------------------
-  function crc8(bytes, len) {
-    var crc = 0x00;
+  function crc8(bytes, len, init) {
+    var crc = (init === undefined) ? 0x00 : (init & 0xFF);
     for (var i = 0; i < len; i++) {
       crc ^= bytes[i];
       for (var b = 0; b < 8; b++) {
@@ -151,6 +176,14 @@
       }
     }
     return crc;
+  }
+
+  function computeAuthTag(cmdBytes10, sessionKey) {
+    if (!sessionKey) return 0x00;
+    var keyBytes = new Uint8Array([sessionKey & 0xFF, (sessionKey >> 8) & 0xFF]);
+    var c = crc8(keyBytes, 2, 0xA5);
+    c = crc8(cmdBytes10, 10, c);
+    return crc8(keyBytes, 2, c);
   }
 
   var seqCounter = 1;
@@ -164,8 +197,9 @@
     dv.setUint16(4, (param1 || 0) & 0xFFFF, true);
     dv.setUint16(6, (param2 || 0) & 0xFFFF, true);
     dv.setUint16(8, (pinCode || 0) & 0xFFFF, true);
-    dv.setUint8(10, 0);
-    dv.setUint8(11, crc8(u8, 11));
+    var sessionKey = Number(window.__NARION_SESSION_KEY || 0) & 0xFFFF;
+    dv.setUint8(10, computeAuthTag(u8, sessionKey));
+    dv.setUint8(11, crc8(u8, 11, 0x00));
     return u8;
   }
 
@@ -174,7 +208,7 @@
     var dv = new DataView(buf);
     var u8 = new Uint8Array(buf);
     dv.setUint8(0, 0x4E); // 'N'
-    dv.setUint8(1, 0x02); // Rev 2
+    dv.setUint8(1, 0x03); // Rev R2.1 (0x03)
     dv.setUint16(2, Math.max(0, Math.round(state.actualC * 10)), true);
     dv.setUint16(4, Math.max(0, Math.round(state.targetC * 10)), true);
     dv.setUint16(6, Math.round(state.packMv), true);
@@ -186,13 +220,13 @@
     dv.setUint8(14, state.faultCode & 0xFF);
     dv.setUint16(15, state.puffCount & 0xFFFF, true);
     dv.setUint16(17, Math.max(0, Math.round(state.remainSec)), true);
-    dv.setUint8(19, crc8(u8, 19));
+    dv.setUint8(19, crc8(u8, 19, 0x00));
     return u8;
   }
 
   function decodeTelemetry(u8) {
     if (!u8 || u8.byteLength !== 20) return null;
-    if (u8[0] !== 0x4E || crc8(u8, 19) !== u8[19]) return null;
+    if (u8[0] !== 0x4E || crc8(u8, 19, 0x00) !== u8[19]) return null;
     var dv = new DataView(u8.buffer, u8.byteOffset, u8.byteLength);
     return {
       version:    dv.getUint8(1),
@@ -220,7 +254,7 @@
   }
 
   // -------------------------------------------------------------------------
-  // 4. Transport State & Digital Twin Physics Engine
+  // 4. Transport State & Conserved Closed-Loop Digital Twin Engine
   // -------------------------------------------------------------------------
   var transport = 'twin'; // 'twin' | 'ble' | 'ws'
   var bleDevice = null;
@@ -229,13 +263,13 @@
   var lastCmdHex = '43 01 01 00 02 00 00 00 00 00 00 --';
 
   var twin = {
-    actualC: 209.4,
+    actualC: 213.8,
     baseTargetC: 215.0,
     targetC: 215.0,
     packMv: 16120,
     drawPa: 0,
     batteryPct: 91,
-    pwmDutyPct: 34,
+    pwmDutyPct: 35,
     modeId: MODE.MEDIUM,
     flags: FLAG.READY | FLAG.AUTO_STEEP,
     faultCode: FAULT.NONE,
@@ -251,12 +285,13 @@
     sommelierPin: 1453,
     simInhaling: false,
     inhaleStartedAt: 0,
-    integral: 4.0
+    syrupGrams: 13.4,
+    integral: 4.5
   };
 
   var chartHistory = [];
   for (var h = 0; h < 48; h++) {
-    chartHistory.push({ actual: 208 + Math.sin(h / 5) * 1.2, target: 215 });
+    chartHistory.push({ actual: 213.5 + Math.sin(h / 5) * 0.8, target: 215 });
   }
 
   function showToast(msg) {
@@ -265,10 +300,19 @@
     el.textContent = msg;
     el.hidden = false;
     clearTimeout(showToast._t);
-    showToast._t = setTimeout(function () { el.hidden = true; }, 4200);
+    showToast._t = setTimeout(function () { el.hidden = true; }, 5200);
   }
 
-  // Send command over active transport (BLE -> WS -> Twin)
+  function openIosGuideModal() {
+    var iosDialog = document.getElementById('nc-ios-dialog');
+    if (iosDialog && typeof iosDialog.showModal === 'function') {
+      if (!iosDialog.open) iosDialog.showModal();
+    } else {
+      showToast(T.wsMixedBlocked);
+    }
+  }
+
+  // Send command over active transport (BLE -> WS -> Digital Twin)
   function sendCommand(opcode, p1, p2, pin) {
     var pkt = encodeCommand(opcode, p1, p2, pin);
     lastCmdHex = bytesToHex(pkt);
@@ -311,6 +355,7 @@
 
     if (opcode === CMD.CLEAR_FAULT) {
       twin.faultCode = FAULT.NONE;
+      twin.syrupGrams = 13.4;
       return;
     }
 
@@ -356,7 +401,6 @@
     } else if (opcode === CMD.START_SELF_CLEAN) {
       if (twin.actualC > 95) {
         showToast(T.cleanTooHot);
-        // Offer instant cool-down in Digital Twin so user can test Self-Clean immediately
         twin.actualC = 58.0;
       }
       twin.modeId = MODE.SELF_CLEAN;
@@ -392,27 +436,31 @@
     }
     twin.targetC = effTarget;
 
-    // Lumped PID + 21.8 kJ thermal mass physics
+    // Conserved Closed-Loop Thermal Model (C_heater = 112 J/K -> max dT/dt <= 1.18 °C/s @ 132W)
     if (twin.faultCode !== FAULT.NONE || twin.modeId === MODE.STANDBY) {
       twin.pwmDutyPct = 0;
-      twin.actualC += (24.5 - twin.actualC) * 0.025;
+      var pPassiveLoss = (twin.actualC - 24.5) * 0.19;
+      twin.actualC -= (pPassiveLoss / 112.0) * dt;
     } else {
+      var wetFrac = Math.max(0, Math.min(1, twin.syrupGrams / 14.0));
       var err = effTarget - twin.actualC;
-      twin.integral = Math.max(-15, Math.min(35, twin.integral + err * 0.18 * dt));
-      var ff = (effTarget - 24) * 0.14 + (twin.simInhaling ? 15 : 0);
-      var duty = Math.max(0, Math.min(100, ff + 5.2 * err + twin.integral));
+      twin.integral = Math.max(-15, Math.min(35, twin.integral + err * 0.16 * dt));
+      var ff = (effTarget - 24.5) * (0.14 + 0.05 * wetFrac) + (twin.simInhaling ? 15 : 0);
+      var duty = Math.max(0, Math.min(100, ff + 5.0 * err + twin.integral));
       twin.pwmDutyPct = Math.round(duty);
 
       var pIn = (duty / 100) * 132.0;
-      var pCool = (twin.actualC - 24.0) * 0.13 + (twin.simInhaling ? 14.5 : 0);
-      twin.actualC += ((pIn - pCool) / 48.0) * dt;
+      var pHousing = (twin.actualC - 24.5) * 0.19;
+      var pWetCond = wetFrac * Math.max(0, twin.actualC - 105.0) * 0.095;
+      var pPuffConv = twin.simInhaling ? (11.5 + 8.5 * wetFrac) : 0;
+      twin.actualC += ((pIn - pHousing - pWetCond - pPuffConv) / 112.0) * dt;
     }
 
     var flags = 0;
     if (twin.faultCode !== FAULT.NONE) {
       flags |= FLAG.FAULT;
     } else if (twin.modeId !== MODE.STANDBY) {
-      if (Math.abs(twin.actualC - effTarget) <= 2.2) flags |= FLAG.READY;
+      if (Math.abs(twin.actualC - effTarget) <= 2.0) flags |= FLAG.READY;
       else flags |= FLAG.PREHEATING;
     }
     if (twin.simInhaling && twin.faultCode === FAULT.NONE && twin.modeId !== MODE.STANDBY) flags |= FLAG.DRAW_BOOST;
@@ -433,12 +481,12 @@
   }
 
   // -------------------------------------------------------------------------
-  // 5. Real Web Bluetooth & iOS WebSocket Connection Handlers
+  // 5. Real Web Bluetooth & Same-Origin Local HTTP/WS Connection Handlers
   // -------------------------------------------------------------------------
   async function connectWebBluetooth() {
     if (!navigator.bluetooth) {
       showToast(T.bleUnsupported);
-      connectIosWebSocket(true);
+      openIosGuideModal();
       return;
     }
     try {
@@ -486,22 +534,35 @@
     }
   }
 
-  function connectIosWebSocket(silentFallback) {
+  function connectLocalWebSocket() {
+    // CRITICAL FIX: Never initiate `ws://192.168.4.1:81` from an `https:` origin!
+    // Browsers block HTTPS -> ws:// under Mixed Content rules, and silently falling back
+    // to Simulator Mode would deceive users into thinking they control a physical heater.
+    if (location.protocol === 'https:') {
+      openIosGuideModal();
+      return;
+    }
+
     try {
-      var host = (location.hostname && location.hostname.indexOf('192.168.') === 0)
+      var host = (location.hostname && (location.hostname.indexOf('192.168.') === 0 || location.hostname.indexOf('10.') === 0))
         ? location.hostname
         : '192.168.4.1';
       var ws = new WebSocket('ws://' + host + ':81');
       ws.binaryType = 'arraybuffer';
+      var opened = false;
       var timer = setTimeout(function () {
-        if (ws.readyState !== 1) ws.close();
-      }, 2200);
+        if (!opened) {
+          try { ws.close(); } catch (_) {}
+          showToast(T.wsUnreachable);
+        }
+      }, 2400);
 
       ws.onopen = function () {
+        opened = true;
         clearTimeout(timer);
         wsConn = ws;
         transport = 'ws';
-        updateTransportBadge('iOS Wi-Fi AP');
+        updateTransportBadge(host);
       };
       ws.onmessage = function (ev) {
         if (ev.data instanceof ArrayBuffer && ev.data.byteLength === 20) {
@@ -512,17 +573,19 @@
       ws.onclose = function () {
         if (transport === 'ws') {
           transport = 'twin';
+          wsConn = null;
           updateTransportBadge();
+          showToast(T.wsUnreachable);
         }
       };
       ws.onerror = function () {
         clearTimeout(timer);
-        if (!silentFallback) {
-          showToast(T.bleUnsupported);
+        if (!opened) {
+          showToast(T.wsUnreachable);
         }
       };
     } catch (_) {
-      if (!silentFallback) showToast(T.bleUnsupported);
+      showToast(T.wsUnreachable);
     }
   }
 
@@ -560,16 +623,21 @@
   function updateTransportBadge(devName) {
     var pill = document.getElementById('nc-conn-pill');
     var txt = document.getElementById('nc-conn-text');
-    if (!pill || !txt) return;
-    if (transport === 'ble') {
-      pill.setAttribute('data-conn', 'ble');
-      txt.textContent = T.connBle + (devName ? ' • ' + devName : '');
-    } else if (transport === 'ws') {
-      pill.setAttribute('data-conn', 'ble');
-      txt.textContent = T.connWs;
-    } else {
-      pill.setAttribute('data-conn', 'twin');
-      txt.textContent = T.connTwin;
+    var simRibbon = document.getElementById('nc-sim-ribbon');
+    if (pill && txt) {
+      if (transport === 'ble') {
+        pill.setAttribute('data-conn', 'ble');
+        txt.textContent = T.connBle + (devName ? ' • ' + devName : '');
+      } else if (transport === 'ws') {
+        pill.setAttribute('data-conn', 'ws');
+        txt.textContent = T.connWs + (devName ? ' • ' + devName : '');
+      } else {
+        pill.setAttribute('data-conn', 'twin');
+        txt.textContent = T.connTwin;
+      }
+    }
+    if (simRibbon) {
+      simRibbon.hidden = (transport !== 'twin');
     }
   }
 
@@ -586,6 +654,8 @@
       haloColor = '#ef4444';
       if (f.faultCode === FAULT.IMU_TILT) stateLabel = T.stFaultTilt;
       else if (f.faultCode === FAULT.SCORCH) stateLabel = T.stFaultScorch;
+      else if (f.faultCode === FAULT.SENSOR_DIV) stateLabel = T.stFaultSensorDiv;
+      else if (f.faultCode === FAULT.HW_COMP) stateLabel = T.stFaultHwComp;
       else stateLabel = T.stFaultBat;
     } else if (f.modeId === MODE.STANDBY) {
       haloColor = '#94a3b8';
@@ -616,7 +686,6 @@
       elTarget.textContent = T.targetFmt.replace('{t}', Math.round(f.targetC)).replace('{m}', mName);
     }
 
-    // Metrics
     setText('nc-m-bat', '%' + f.batteryPct);
     setText('nc-m-rem', Math.round(f.remainSec / 60) + ' dk');
     setText('nc-m-pwm', '%' + f.pwmDutyPct);
@@ -624,26 +693,22 @@
     setText('nc-m-puff', String(f.puffCount));
     setText('nc-m-volt', (f.packMv / 1000).toFixed(2) + 'V');
 
-    // Preset active state
     var presetBtns = document.querySelectorAll('.nc-preset-btn[data-mode]');
     presetBtns.forEach(function (btn) {
       var m = Number(btn.getAttribute('data-mode'));
       btn.setAttribute('aria-pressed', m === f.modeId ? 'true' : 'false');
     });
 
-    // Manual Boost button
     var boostBtn = document.getElementById('nc-btn-boost');
     if (boostBtn) {
       boostBtn.classList.toggle('on', Boolean(f.flags & FLAG.MANUAL_BOOST));
     }
 
-    // Sommelier Lock Banner & Slider Clamping visual cue
     var lockBanner = document.getElementById('nc-lock-banner');
     if (lockBanner) {
       lockBanner.hidden = !(f.flags & FLAG.LOUNGE_LOCK);
     }
 
-    // Fault Banner
     var faultBanner = document.getElementById('nc-fault-banner');
     if (faultBanner) {
       faultBanner.hidden = !(f.flags & FLAG.FAULT);
@@ -651,17 +716,16 @@
 
     if (f.targetC >= 150) syncSliderToTarget(f.targetC - ((f.flags & FLAG.MANUAL_BOOST) ? 15 : 0));
 
-    // Rolling SVG Thermal Curve
     chartHistory.push({ actual: f.actualC, target: f.targetC || 25 });
     if (chartHistory.length > 48) chartHistory.shift();
     renderSvgCurve();
 
-    // Live Wire Hex Inspector
     var hexEl = document.getElementById('nc-wire-hex');
     if (hexEl && f.rawBytes) {
       hexEl.textContent =
+        'MODE         : ' + (transport === 'twin' ? 'SIMULATOR (NO HW)' : transport.toUpperCase()) + '\n' +
         'TX CMD (12B) : ' + lastCmdHex + '\n' +
-        'RX TEL (20B) : ' + bytesToHex(f.rawBytes) + '  [CRC-8 OK: 0x' + f.rawBytes[19].toString(16).toUpperCase().padStart(2, '0') + ']\n' +
+        'RX TEL (20B) : ' + bytesToHex(f.rawBytes) + '  [v0x0' + f.version + ' • CRC-8 OK: 0x' + f.rawBytes[19].toString(16).toUpperCase().padStart(2, '0') + ']\n' +
         'DECODED      : T_act=' + f.actualC.toFixed(1) + '°C | T_set=' + f.targetC.toFixed(1) + '°C | Duty=' + f.pwmDutyPct + '% | SDP31=' + f.drawPa + 'Pa | Vpack=' + (f.packMv / 1000).toFixed(2) + 'V';
     }
   }
@@ -733,7 +797,8 @@
     });
 
     onClick('nc-btn-ble', connectWebBluetooth);
-    onClick('nc-btn-ws', function () { connectIosWebSocket(false); });
+    onClick('nc-btn-ws', connectLocalWebSocket);
+    onClick('nc-btn-ios-guide', openIosGuideModal);
     onClick('nc-btn-boost', function () {
       var next = !(twin.manualBoost);
       sendCommand(CMD.SET_MANUAL_BOOST, next ? 1 : 0, 0, 0);
@@ -749,7 +814,7 @@
       sendCommand(CMD.CLEAR_FAULT, 0, 0, 0);
     });
 
-    // Interactive Hardware Testbench buttons (Inhale, Tilt >35°, Dry-Bowl Scorch, Sleep)
+    // Interactive Hardware Testbench buttons
     var puffBtn = document.getElementById('nc-sim-puff');
     if (puffBtn) {
       var startPuff = function (e) {
@@ -780,6 +845,7 @@
       twin.pwmDutyPct = 0;
     });
     onClick('nc-sim-scorch', function () {
+      twin.syrupGrams = 0;
       twin.faultCode = FAULT.SCORCH;
       twin.pwmDutyPct = 0;
     });
@@ -795,14 +861,13 @@
       });
     }
 
-    // Sommelier PIN Modal Dialog (modern-web-guidance `dialog`)
+    // Sommelier PIN Modal Dialog & iOS Local Connection Modal (modern-web-guidance `dialog`)
     var pinDialog = document.getElementById('nc-pin-dialog');
     var pinInput = document.getElementById('nc-pin-input');
     var swLock = document.getElementById('nc-sw-lock');
 
     if (swLock && pinDialog) {
       swLock.addEventListener('change', function () {
-        // Revert visual toggle until PIN modal confirms
         var desired = swLock.checked;
         swLock.checked = !desired;
         pinDialog.setAttribute('data-desired', desired ? '1' : '0');
@@ -821,22 +886,30 @@
           syncSwitches();
         }
       });
-
-      // Fallback light-dismiss when `closedBy` is unsupported (e.g. Safari)
-      if (!('closedBy' in HTMLDialogElement.prototype)) {
-        var outside = function (e, dlg) {
-          var r = dlg.getBoundingClientRect();
-          return e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom;
-        };
-        var pressedOut = false;
-        pinDialog.addEventListener('pointerdown', function (e) { pressedOut = outside(e, pinDialog); });
-        pinDialog.addEventListener('pointerup', function (e) {
-          if (pressedOut && outside(e, pinDialog)) pinDialog.close();
-        });
-      }
     }
 
-    // Tabs inside Connect App (Control / B2B Lounge Fleet / BLE Protocol)
+    var iosDialog = document.getElementById('nc-ios-dialog');
+    if (iosDialog) {
+      iosDialog.addEventListener('close', function () {
+        iosDialog.returnValue = ''; // Mandatory reset per `dialog` guide
+      });
+    }
+
+    // Fallback light-dismiss for all `dialog[closedby="any"]` when `closedBy` is unsupported (e.g. Safari)
+    if (typeof HTMLDialogElement !== 'undefined' && !('closedBy' in HTMLDialogElement.prototype)) {
+      var outside = function (e, dlg) {
+        var r = dlg.getBoundingClientRect();
+        return e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom;
+      };
+      document.querySelectorAll('dialog[closedby="any"]').forEach(function (dlg) {
+        var pressedOut = false;
+        dlg.addEventListener('pointerdown', function (e) { pressedOut = outside(e, dlg); });
+        dlg.addEventListener('pointerup', function (e) {
+          if (pressedOut && outside(e, dlg)) dlg.close();
+        });
+      });
+    }
+
     initConnectTabs();
 
     updateTransportBadge();

@@ -1,6 +1,6 @@
 /* ==========================================================================
-   NARION CONNECT — Mobile Companion Web App / BLE 5.0 & iOS Bridge Stylesheet
-   Hardware Spec: NRN-HMD-TF-002 (Rev R2.0) • TÜRKPATENT 2026/017041
+   NARION CONNECT — Mobile Companion Web App / BLE 5.0 & Local HTTP Bridge
+   Hardware Spec: NRN-HMD-TF-002 (Rev R2.1) • Patent Başvurusu TR 2026/017041
    ========================================================================== */
 
 .nc-shell {
@@ -50,14 +50,62 @@
   flex: none;
 }
 
+.nc-pill[data-conn="twin"] {
+  border-color: rgba(245, 158, 11, 0.52);
+  background: rgba(245, 158, 11, 0.13);
+  color: #fde68a;
+}
+
+.nc-pill[data-conn="twin"] .nc-pill-dot {
+  background: #f59e0b;
+  box-shadow: 0 0 10px #f59e0b;
+}
+
 .nc-pill[data-conn="ble"] .nc-pill-dot {
   background: #38bdf8;
   box-shadow: 0 0 12px #38bdf8;
 }
 
+.nc-pill[data-conn="ws"] .nc-pill-dot {
+  background: #2fd47a;
+  box-shadow: 0 0 12px #2fd47a;
+}
+
 .nc-pill[data-conn="fault"] .nc-pill-dot {
   background: #ef4444;
   box-shadow: 0 0 12px #ef4444;
+}
+
+.nc-sim-ribbon {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 11px 16px;
+  margin-block-end: 18px;
+  border-radius: 12px;
+  background: rgba(245, 158, 11, 0.14);
+  border: 1px solid rgba(245, 158, 11, 0.48);
+  color: #fef3c7;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.nc-sim-ribbon[hidden] {
+  display: none;
+}
+
+.nc-ios-steps {
+  margin: 12px 0 16px;
+  padding-inline-start: 1.25rem;
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: #e2e8f0;
+}
+
+.nc-ios-steps li + li {
+  margin-block-start: 6px;
 }
 
 /* Main 2-column app cockpit */

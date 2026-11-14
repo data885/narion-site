@@ -10,7 +10,7 @@
 <link rel="manifest" href="../manifest.webmanifest">
 <meta name="theme-color" content="#0b0b0f">
 <link rel="stylesheet" href="../assets/style.css?v=22">
-<link rel="stylesheet" href="../assets/narion-connect.css?v=1">
+<link rel="stylesheet" href="../assets/narion-connect.css?v=2">
 <link rel="canonical" href="https://narionhookah.com/ar/connect.html">
 <link rel="alternate" hreflang="tr" href="https://narionhookah.com/tr/connect.html">
 <link rel="alternate" hreflang="en" href="https://narionhookah.com/en/connect.html">
@@ -25,7 +25,7 @@
 <div class="announce">
   <div class="wrap">
     <div>
-      <span class="announce-badge">تقنية تسخين ذكية مسجّلة</span>
+      <span class="announce-badge">تقنية تسخين ذكية بطلب براءة اختراع (2026/017041)</span>
       <span>أول رأس خزفي لاسلكي في العالم يُصفّر أكثر من 1200 ppm من أول أكسيد الكربون في دخان الفحم.</span>
     </div>
     <div>
@@ -98,14 +98,19 @@
       <div class="nc-conn-group">
         <span class="nc-pill" id="nc-conn-pill" data-conn="twin">
           <span class="nc-pill-dot" aria-hidden="true"></span>
-          <span id="nc-conn-text">DİJİTAL İKİZ</span>
+          <span id="nc-conn-text">وضع المحاكاة (لا يوجد جهاز متصل)</span>
         </span>
-        <span class="nc-pill">FW v2.1.0 • CRC-8 GATT</span>
+        <span class="nc-pill">FW v2.1.1 • Rev R2.1 GATT</span>
       </div>
       <div class="nc-conn-group">
         <button type="button" class="btn gold sm" id="nc-btn-ble">📡 اتصال عبر بلوتوث (BLE 5.0)</button>
         <button type="button" class="btn glass sm" id="nc-btn-ws">📱 جسر iOS / Wi-Fi (192.168.4.1)</button>
       </div>
+    </div>
+
+    <div class="nc-sim-ribbon" id="nc-sim-ribbon">
+      <span>🧪 <strong>وضع المحاكاة التجريبي (لا يوجد جهاز فعلي متصل):</strong> القيم المعروضة ناتجة عن المحاكي الحراري. للاتصال برأس فعلي اختر بلوتوث BLE 5.0 أو واجهة iOS المحلية.</span>
+      <button type="button" class="btn glass sm" id="nc-btn-ios-guide" style="padding:6px 12px;font-size:12px">دليل اتصال iPhone</button>
     </div>
 
     <div id="nc-toast" role="status" aria-live="polite" hidden style="margin-bottom:18px;padding:12px 16px;border-radius:12px;background:rgba(212,175,55,0.16);border:1px solid rgba(212,175,55,0.5);color:#fef3c7;font-size:13.5px"></div>
@@ -125,7 +130,7 @@
             <!-- LEFT: HANDSET CONTROLLER -->
             <div class="nc-handset">
               <div class="nc-handset-head">
-                <span>NRN-HMD-TF-002 R2.0</span>
+                <span>NRN-HMD-TF-002 R2.1</span>
                 <span style="color:var(--accent-ok)">0.0 ppm CO</span>
               </div>
 
@@ -297,9 +302,9 @@
               <p style="font-size:13.5px;color:#cbd5e1;margin:0;line-height:1.6">Replaces flat thermostat control with a +10°C initial ceramic soak, ±1°C mid-session plateau, and automatic +6°C late-session glycerin recovery ramp after minute 55.</p>
             </div>
 <div class="card" style="padding:20px">
-              <div style="font-family:var(--f-mono);font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:6px">02 · $0 EXTRA BOM (FIRMWARE)</div>
-              <h4 style="font-size:17px;margin:0 0 8px;color:#fff">Dry-Bowl Scorch Guard (dT/dt Observer)</h4>
-              <p style="font-size:13.5px;color:#cbd5e1;margin:0;line-height:1.6">ESP32-S3 monitors PT1000 dT/dt thermal impedance against MOSFET PWM duty. When shisha moisture depletes, it halts heating before harsh burnt smoke occurs.</p>
+              <div style="font-family:var(--f-mono);font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:6px">02 · CLOSED-LOOP OBSERVER (R2.1)</div>
+              <h4 style="font-size:17px;margin:0 0 8px;color:#fff">Duty-Drop + SDP31 Dry-Bowl Scorch Guard</h4>
+              <p style="font-size:13.5px;color:#cbd5e1;margin:0;line-height:1.6">Detects steady-state PWM duty drop when glycerin/water vaporization load ends, cross-checked against SDP31 normalized puff cooling to halt power before scorching.</p>
             </div>
 <div class="card" style="padding:20px">
               <div style="font-family:var(--f-mono);font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:6px">03 · $0 EXTRA BOM (B2B LOUNGE)</div>
@@ -307,9 +312,9 @@
               <p style="font-size:13.5px;color:#cbd5e1;margin:0;line-height:1.6">Prevents lounge guests from cranking heat to 240°C and scorching Blonde leaf. Staff locks a safe window (e.g. 185–205°C via PIN 1453) while preserving guest fine-tuning.</p>
             </div>
 <div class="card" style="padding:20px">
-              <div style="font-family:var(--f-mono);font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:6px">04 · $0 EXTRA BOM (iOS + ANDROID)</div>
-              <h4 style="font-size:17px;margin:0 0 8px;color:#fff">Dual-Stack BLE 5.0 + iOS Safari Wi-Fi Bridge</h4>
-              <p style="font-size:13.5px;color:#cbd5e1;margin:0;line-height:1.6">Android/Chrome pairs natively via Web Bluetooth GATT, while iPhone Safari connects zero-install via ESP32-S3's local RFC6455 WebSocket bridge.</p>
+              <div style="font-family:var(--f-mono);font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:6px">04 · BLE 5.0 + LOCAL HTTP + ESP-NOW</div>
+              <h4 style="font-size:17px;margin:0 0 8px;color:#fff">Same-Origin iOS Local UI &amp; B2B ESP-NOW</h4>
+              <p style="font-size:13.5px;color:#cbd5e1;margin:0;line-height:1.6">Android pairs via Web Bluetooth; iPhone Safari opens the local WPA2 device UI at http://192.168.4.1 without Mixed Content blocks. B2B lounges use encrypted ESP-NOW.</p>
             </div>
 <div class="card" style="padding:20px">
               <div style="font-family:var(--f-mono);font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:6px">05 · $0 EXTRA BOM (FIRMWARE)</div>
@@ -317,9 +322,9 @@
               <p style="font-size:13.5px;color:#cbd5e1;margin:0;line-height:1.6">45-second 65°C post-session cycle loosens molasses before rinsing + automatic 185°C idle eco-sleep after 180s with instant wake on inhale.</p>
             </div>
 <div class="card" style="padding:20px">
-              <div style="font-family:var(--f-mono);font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:6px">06 · OPTIONAL R2.1 HW (~$2.90 BOM)</div>
-              <h4 style="font-size:17px;margin:0 0 8px;color:#fff">NFC Tap-to-Pair + Piezo Haptics + Dual-Zone MCH</h4>
-              <p style="font-size:13.5px;color:#cbd5e1;margin:0;line-height:1.6">Top-collar NTAG213 NFC tag for instant tap pairing, subtle acoustic ready chime for loud lounges, and concentric inner/outer MCH ceramic zones.</p>
+              <div style="font-family:var(--f-mono);font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:6px">06 · MANDATORY SERIES 01 4-LAYER HW SAFETY (&lt;$2 BOM)</div>
+              <h4 style="font-size:17px;margin:0 0 8px;color:#fff">250°C TCO Fuse + Dual Sensor + 248°C Comparator</h4>
+              <p style="font-size:13.5px;color:#cbd5e1;margin:0;line-height:1.6">250°C series thermal fuse, independent 100k NTC cross-check (&gt;15°C divergence latch), 248°C TLV3012 analog gate kill, and 10 kΩ MOSFET gate pull-down.</p>
             </div>
             </div>
 
@@ -347,6 +352,23 @@ RX TEL (20B) : --</div>
       <button type="submit" value="confirm" class="btn gold sm">تأكيد</button>
     </div>
   </form>
+</dialog>
+
+<!-- NATIVE MODAL DIALOG: iOS SAFARI SAME-ORIGIN LOCAL HTTP/WS GUIDE (modern-web-guidance `dialog` Rule 1) -->
+<dialog class="nc-dialog" id="nc-ios-dialog" closedby="any" aria-labelledby="nc-ios-title">
+  <h3 id="nc-ios-title" style="font-size:19px;margin:0 0 8px;color:#fff">اتصال جهاز iPhone الفعلي (iOS Safari)</h3>
+  <p style="font-size:13px;color:#cbd5e1;margin:0;line-height:1.55">لا يدعم Safari على iOS ميزة Web Bluetooth، كما يمنع المتصفح اتصال <code>ws://192.168.4.1</code> من صفحات <code>https://</code>. للاتصال بدون تطبيق:</p>
+  <ol class="nc-ios-steps">
+    <li>اضغط مطولاً على زر الجهاز لمدة <b>3 ثوانٍ</b> لتفعيل شبكة Wi-Fi المشفرة (<b>NARION-HMD-XXXX</b>).</li>
+    <li>اتصل بالشبكة عبر كلمة مرور WPA2 الظاهرة على شاشة OLED.</li>
+    <li>افتح واجهة التحكم المحلية المستضافة مباشرة داخل الجهاز:</li>
+  </ol>
+  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;margin-top:14px">
+    <a class="btn gold sm" href="http://192.168.4.1/" rel="noopener" style="flex:1;text-align:center">🔗 فتح الواجهة المحلية http://192.168.4.1</a>
+    <form method="dialog" style="margin:0">
+      <button type="submit" value="close" class="btn glass sm" autofocus>البقاء في المحاكي</button>
+    </form>
+  </div>
 </dialog>
 
 <footer class="site-foot">
@@ -421,6 +443,6 @@ RX TEL (20B) : --</div>
   </div>
 </footer>
 <script src="../assets/menu.js?v=6" defer></script>
-<script src="../assets/narion-connect.js?v=1" defer></script>
+<script src="../assets/narion-connect.js?v=2" defer></script>
 </body>
 </html>

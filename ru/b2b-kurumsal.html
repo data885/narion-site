@@ -121,7 +121,7 @@
               <div style="font-family:var(--f-mono);font-size:11px;color:var(--text-muted);text-transform:uppercase;margin-top:6px">Экономия на одной подаче</div>
             </div>
             <div>
-              <div style="font-family:var(--f-serif);font-size:38px;color:var(--accent-ok);line-height:1">160.120 ₺</div>
+              <div style="font-family:var(--f-serif);font-size:38px;color:var(--accent-ok);line-height:1">116.370 ₺</div>
               <div style="font-family:var(--f-mono);font-size:11px;color:var(--text-muted);text-transform:uppercase;margin-top:6px">Окупаемость при покупке в собственность</div>
             </div>
           </div>
@@ -228,7 +228,7 @@
           <div style="font-family:var(--f-serif);font-size:36px;color:var(--text-main);margin-bottom:4px">
             Корпоративный тариф <span style="font-size:14px;font-family:var(--f-sans);color:var(--text-muted)">/ шт. (от 5 шт.)</span>
           </div>
-          <div style="font-family:var(--f-mono);font-size:12px;color:var(--gold);margin-bottom:24px">Возврат инвестиций: окупаемость всего за 160.120 ₺</div>
+          <div style="font-family:var(--f-mono);font-size:12px;color:var(--gold);margin-bottom:24px">Возврат инвестиций: окупаемость всего за 116.370 ₺</div>
 
           <ul style="padding-left:1.2rem;line-height:1.9;font-size:14px;color:var(--text-muted);margin-bottom:28px">
             <li>Полная собственность на головку<strong>и керамическое ядро MCH</strong></li>
@@ -285,7 +285,8 @@
             <small>Дополнительная чистая прибыль в год (за вычетом аренды)</small>
             <b id="yearlySaveVal" style="font-size:36px;color:#fff">663.552 ₺</b>
           </div>
-          <p style="font-size:12px;color:var(--text-muted);margin:0">* Рассчитана чистая сумма, остающаяся в кассе после вычета аренды на 10 столов (индивидуальному тарифу/мес.).</p>
+          <p style="font-size:12px;color:var(--text-muted);margin:0 0 12px">* С учётом 10% годового резерва на амортизацию оборудования и батарей (~15 000 ₺ на стол).</p>
+          <a class="btn gold sm" style="width:100%" href="https://wa.me/905467331184?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%2C%20NARION!%20%D0%A5%D0%BE%D1%82%D0%B8%D0%BC%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%2020-%D0%BC%D0%B8%D0%BD%D1%83%D1%82%D0%BD%D1%83%D1%8E%20%D0%B4%D0%B5%D0%BC%D0%BE%D0%BD%D1%81%D1%82%D1%80%D0%B0%D1%86%D0%B8%D1%8E%20Smart%20HMD." target="_blank" rel="noopener">📅 Записаться на 20-мин демо в WhatsApp →</a>
         </div>
       </div>
     </div>
@@ -308,7 +309,7 @@
             <div>✓ <strong>Предупреждение о разряде:</strong>Когда заряд падает ниже 15%, официант получает уведомление; запасной аккумулятор ставится за пять секунд, не прерывая подачу.</div>
             <div>✓ <strong>Таймер замены табака:</strong>После 70 минут система напоминает официанту, и оборачиваемость столов растёт на 35%.</div>
             <div>✓ <strong>Ноль повреждений столов и ковров:</strong>Ковры, обивка и деревянные столы больше не прожигаются упавшими углями.</div>
-            <div>✓ <strong>Эффективность персонала:</strong>Отдельный сотрудник на углях больше не нужен — это экономия как минимум на двух людях в месяц.</div>
+            <div>✓ <strong>Эффективность персонала:</strong>Чистая экономия 50% фонда оплаты угольщиков с учётом ротации картриджей и мойки чаш (1 полная смена в месяц).</div>
           </div>
         </div>
       </div>
@@ -485,14 +486,17 @@
 
 <script>
 function updateB2BCalc(daily) {
-  document.getElementById('dailyNum').innerText = daily + ' шт.';
-  const savePerSession = 23.04;
-  const monthlySave = Math.round(daily * 30 * savePerSession);
-  const yearlyNet = Math.round(monthlySave * 12);
+  const d = parseInt(daily, 10) || 80;
+  document.getElementById('dailyNum').innerText = d + ' шт.';
+  const estTables = Math.max(6, Math.round(d * 0.3));
+  const wearReserve = Math.round((estTables * 15000 * 0.10) / 12);
+  const monthlySave = Math.max(0, Math.round(d * 30 * 23.04) - wearReserve);
+  const yearlyNet = monthlySave * 12;
 
   document.getElementById('monthlySaveVal').innerText = monthlySave.toLocaleString('ru-RU') + ' ₺';
   document.getElementById('yearlySaveVal').innerText = yearlyNet.toLocaleString('ru-RU') + ' ₺';
 }
+updateB2BCalc(80);
 
 </script>
 

@@ -121,7 +121,7 @@
               <div style="font-family:var(--f-mono);font-size:11px;color:var(--text-muted);text-transform:uppercase;margin-top:6px">التوفير في تكلفة الجلسة</div>
             </div>
             <div>
-              <div style="font-family:var(--f-serif);font-size:38px;color:var(--accent-ok);line-height:1">160.120 ₺</div>
+              <div style="font-family:var(--f-serif);font-size:38px;color:var(--accent-ok);line-height:1">116.370 ₺</div>
               <div style="font-family:var(--f-mono);font-size:11px;color:var(--text-muted);text-transform:uppercase;margin-top:6px">استرداد رأس المال عند الشراء</div>
             </div>
           </div>
@@ -228,7 +228,7 @@
           <div style="font-family:var(--f-serif);font-size:36px;color:var(--text-main);margin-bottom:4px">
             سعر المؤسسات <span style="font-size:14px;font-family:var(--f-sans);color:var(--text-muted)">/ للقطعة (5 قطع كحد أدنى)</span>
           </div>
-          <div style="font-family:var(--f-mono);font-size:12px;color:var(--gold);margin-bottom:24px">العائد على الاستثمار: استرداد خلال 160.120 ₺ فقط</div>
+          <div style="font-family:var(--f-mono);font-size:12px;color:var(--gold);margin-bottom:24px">العائد على الاستثمار: استرداد خلال 116.370 ₺ فقط</div>
 
           <ul style="padding-left:1.2rem;line-height:1.9;font-size:14px;color:var(--text-muted);margin-bottom:28px">
             <li>ملكية كاملة للرأس<strong>وللنواة الخزفية MCH</strong></li>
@@ -285,7 +285,8 @@
             <small>صافي الربح الإضافي سنويًا (بعد خصم الإيجار)</small>
             <b id="yearlySaveVal" style="font-size:36px;color:#fff">663.552 ₺</b>
           </div>
-          <p style="font-size:12px;color:var(--text-muted);margin:0">* المبلغ محسوب كصافٍ يبقى في صندوقك بعد خصم إيجار 10 طاولات (عرض خاص شهريًا).</p>
+          <p style="font-size:12px;color:var(--text-muted);margin:0 0 12px">* يشمل خصم احتياطي استهلاك وصيانة سنوي بنسبة 10% على تكلفة الأسطول التقديرية (~15,000 ₺ للطاولة).</p>
+          <a class="btn gold sm" style="width:100%" href="https://wa.me/905467331184?text=%D9%85%D8%B1%D8%AD%D8%A8%D9%8B%D8%A7%20NARION%D8%8C%20%D9%86%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%AD%D8%AC%D8%B2%20%D8%AA%D8%AC%D8%B1%D8%A8%D8%A9%20%D8%AD%D9%8A%D8%A9%20%D9%84%D9%85%D8%AF%D8%A9%2020%20%D8%AF%D9%82%D9%8A%D9%82%D8%A9%20%D9%84%D9%85%D9%86%D8%B4%D8%A3%D8%AA%D9%86%D8%A7." target="_blank" rel="noopener">📅 احجز عرضًا عمليًا لمدة 20 دقيقة عبر واتساب →</a>
         </div>
       </div>
     </div>
@@ -308,7 +309,7 @@
             <div>✓ <strong>تنبيه انخفاض البطارية:</strong>عند هبوط الشحن دون 15% يصل تنبيه إلى النادل، فتُركَّب بطارية احتياطية خلال خمس ثوانٍ دون قطع الجلسة.</div>
             <div>✓ <strong>مؤقّت تجديد المعسّل:</strong>بعد 70 دقيقة ينبّه النظام النادل، فترتفع سرعة دوران الطلبات بنسبة 35%.</div>
             <div>✓ <strong>صفر أضرار على الطاولات والسجاد:</strong>لم يعد السجاد والمفروشات والطاولات الخشبية تحترق بجمرة ساقطة.</div>
-            <div>✓ <strong>كفاءة الفريق:</strong>تنتفي الحاجة إلى موظف مخصّص للفحم، وهو ما يوفّر تكلفة شخصين على الأقل شهريًا.</div>
+            <div>✓ <strong>كفاءة الفريق:</strong>ينخفض عبء تحضير الفحم بنسبة 50% صافيًا بعد احتساب تبديل البطاريات وغسل الحجرات (توفير وردية كاملة شهريًا).</div>
           </div>
         </div>
       </div>
@@ -485,14 +486,17 @@
 
 <script>
 function updateB2BCalc(daily) {
-  document.getElementById('dailyNum').innerText = daily + ' قطعة';
-  const savePerSession = 23.04;
-  const monthlySave = Math.round(daily * 30 * savePerSession);
-  const yearlyNet = Math.round(monthlySave * 12);
+  const d = parseInt(daily, 10) || 80;
+  document.getElementById('dailyNum').innerText = d + ' قطعة';
+  const estTables = Math.max(6, Math.round(d * 0.3));
+  const wearReserve = Math.round((estTables * 15000 * 0.10) / 12);
+  const monthlySave = Math.max(0, Math.round(d * 30 * 23.04) - wearReserve);
+  const yearlyNet = monthlySave * 12;
 
   document.getElementById('monthlySaveVal').innerText = monthlySave.toLocaleString('ar-AE') + ' ₺';
   document.getElementById('yearlySaveVal').innerText = yearlyNet.toLocaleString('ar-AE') + ' ₺';
 }
+updateB2BCalc(80);
 
 </script>
 

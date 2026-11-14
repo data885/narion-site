@@ -121,8 +121,8 @@
               <div style="font-family:var(--f-mono);font-size:11px;color:var(--text-muted);text-transform:uppercase;margin-top:6px">Cost Saving Per Session</div>
             </div>
             <div>
-              <div style="font-family:var(--f-serif);font-size:38px;color:var(--accent-ok);line-height:1">160.120 ₺</div>
-              <div style="font-family:var(--f-mono);font-size:11px;color:var(--text-muted);text-transform:uppercase;margin-top:6px">Payback on Outright Purchase (ROI)</div>
+              <div style="font-family:var(--f-serif);font-size:38px;color:var(--accent-ok);line-height:1">116.370 ₺</div>
+              <div style="font-family:var(--f-mono);font-size:11px;color:var(--text-muted);text-transform:uppercase;margin-top:6px">30-Table Net Monthly Gain (~3.9 Mo Payback)</div>
             </div>
           </div>
         </div>
@@ -269,23 +269,28 @@
               <span>Cost of a NARION electric session (0.08 kWh of electricity + battery share):</span>
               <strong style="color:var(--accent-ok)">2.36 ₺</strong>
             </div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px">
+              <span>10% Annual Fleet Wear &amp; Battery Reserve:</span>
+              <strong id="enWearVal" style="color:#f59e0b">-3.000 ₺ / mo</strong>
+            </div>
             <div style="display:flex;justify-content:space-between;padding-top:8px;border-top:1px dashed var(--line)">
-              <span>Net Consumable Saving Per Session:</span>
-              <strong style="color:var(--gold-light)">₺23.04 (91% saving)</strong>
+              <span>Est. Fleet CAPEX (~15,000 ₺/table) &amp; Payback:</span>
+              <strong id="enCapexVal" style="color:var(--gold-light)">~360.000 ₺ (24 Tables) • ~6.9 Mo</strong>
             </div>
           </div>
         </div>
 
         <div class="out">
           <div>
-            <small>Monthly Direct Charcoal &amp; Consumable Saving</small>
-            <b id="monthlySaveVal">55.296 ₺</b>
+            <small>Net Monthly Consumable Gain (After 10% Wear Reserve)</small>
+            <b id="monthlySaveVal">52.296 ₺</b>
           </div>
           <div class="line">
-            <small>Annual Direct Consumable Saving Potential</small>
-            <b id="yearlySaveVal" style="font-size:36px;color:#fff">663.552 ₺</b>
+            <small>Annual Net Consumable Gain (Excl. Staff &amp; HVAC)</small>
+            <b id="yearlySaveVal" style="font-size:36px;color:#fff">627.552 ₺</b>
           </div>
-          <p style="font-size:12px;color:var(--text-muted);margin:0">* Based on direct per-session consumable savings (₺23.04); total savings multiply when charcoal staff, burn damage, and HVAC savings are included.</p>
+          <p style="font-size:12px;color:var(--text-muted);margin:0 0 12px">* Includes a 10% annual hardware/battery wear reserve on estimated fleet CAPEX; adding 50% net coal-staff and HVAC savings accelerates payback to ~3.9 months.</p>
+          <a class="btn gold sm" style="width:100%" id="enWaDemoBtn" href="https://wa.me/905467331184?text=Hello%20NARION%2C%20we%20would%20like%20to%20book%20a%2020-minute%20live%20tabletop%20Smart%20HMD%20demo%20for%20our%20lounge." target="_blank" rel="noopener">📅 Book 20-Min Live Tabletop Demo (WhatsApp) →</a>
         </div>
       </div>
 
@@ -293,7 +298,7 @@
       <div style="margin-top:44px">
         <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px;margin-bottom:16px">
           <div>
-            <span class="eyebrow" style="margin-bottom:6px">5-Item Venue Financial Audit</span>
+            <span class="eyebrow" style="margin-bottom:6px">6-Item Realistic Venue Financial Audit</span>
             <h3 style="margin:0;font-size:24px">Monthly Operating Expense Comparison (100 Bowls/Day = 3,000 Bowls/Month)</h3>
           </div>
           <a href="smart-hmd.html#maliyet-raporu" style="font-family:var(--f-mono);font-size:12px;color:var(--gold);text-decoration:underline">Single-Session Micro-Cost Table →</a>
@@ -317,10 +322,10 @@
                 <td class="num gold">+47.520 ₺ / mo</td>
               </tr>
               <tr>
-                <th scope="row"><b>2. Dedicated Charcoal Staff (2 Shifts)</b><span class="sub">2 full-time coal attendants (Salary + Social Security + Meals); servers swap cartridges in 5 sec</span></th>
+                <th scope="row"><b>2. Charcoal vs Cartridge/Bowl Prep Staff (2 Shifts)</b><span class="sub">50% realistic net saving after accounting for dock rotation &amp; Pyro-Soft bowl rinsing (1 full shift saved)</span></th>
                 <td class="num bad">80.000 ₺</td>
-                <td class="num ok">0 ₺</td>
-                <td class="num gold">+80.000 ₺ / mo</td>
+                <td class="num ok">40.000 ₺</td>
+                <td class="num gold">+40.000 ₺ / mo</td>
               </tr>
               <tr>
                 <th scope="row"><b>3. Coal Burner / Brazier Electricity &amp; Gas</b><span class="sub">Industrial 3–5 kW coil stoves running 12 hours non-stop</span></th>
@@ -340,11 +345,17 @@
                 <td class="num ok">3.000 ₺</td>
                 <td class="num gold">+17.000 ₺ / mo</td>
               </tr>
+              <tr>
+                <th scope="row"><b>6. 10% Annual Fleet Wear &amp; Battery Reserve</b><span class="sub">Conservative 10%/yr maintenance &amp; drop reserve on est. 450,000 ₺ 30-table fleet CAPEX</span></th>
+                <td class="num">0 ₺</td>
+                <td class="num">3.750 ₺</td>
+                <td class="num">-3.750 ₺ / mo</td>
+              </tr>
               <tr class="total-row">
-                <th scope="row"><b>TOTAL MONTHLY OPERATING COST</b><span class="sub" style="color:var(--gold-light)">Annual Total Savings: 1.921.440 ₺ / Year • 30-Table Purchase ROI: 85 Sec</span></th>
+                <th scope="row"><b>TOTAL MONTHLY OPERATING COST</b><span class="sub" style="color:var(--gold-light)">Annual Net Savings: 1.396.440 ₺ / Year • Est. 450.000 ₺ 30-Table CAPEX → ~3.9 Months Payback</span></th>
                 <td class="num bad">164.200 ₺ / mo</td>
-                <td class="num ok">4.080 ₺ / mo</td>
-                <td class="num ok">+160.120 ₺ / mo</td>
+                <td class="num ok">47.830 ₺ / mo</td>
+                <td class="num ok">+116.370 ₺ / mo</td>
               </tr>
             </tbody>
           </table>
@@ -353,7 +364,7 @@
         <div class="report-dl-grid" style="margin-top:24px">
           <a class="report-dl-card" href="../raporlar/NARION-Smart-HMD-Maliyet-ve-ROI-Raporu.pdf?v=2026u" target="_blank" rel="noopener">
             <span class="badge">PDF REPORT • 2 PAGES</span>
-            <h4>Smart HMD Cost &amp; 52-Day ROI Report</h4>
+            <h4>Smart HMD Cost &amp; Fleet ROI Report</h4>
             <p>90-minute single-session micro-cost math (25,40 ₺ vs 2,36 ₺), 5-item monthly lounge expense comparison, and 10–60 table scale tables.</p>
             <span class="dl-link">📄 Open / Download PDF →</span>
           </a>
@@ -393,7 +404,7 @@
             <div>✓ <strong>Critical Battery Alert:</strong>When a battery drops below 15% the server is notified; a spare goes in within five seconds, without breaking the session.</div>
             <div>✓ <strong>Tobacco Refresh Timer:</strong>Past 70 minutes on a bowl the system prompts the server, lifting table turnover by 35%.</div>
             <div>✓ <strong>Zero Table and Carpet Damage:</strong>Carpets, upholstery and wooden tables no longer get burned by dropped coals.</div>
-            <div>✓ <strong>Labour Efficiency:</strong>There is no longer a need for dedicated coal staff, saving the cost of at least two people a month.</div>
+            <div>✓ <strong>Labour Efficiency:</strong>There is no longer a need for dedicated coal staff, saving 50% net coal-attendant labor (one full shift per month after cartridge/bowl prep).</div>
           </div>
         </div>
       </div>
@@ -570,14 +581,31 @@
 
 <script>
 function updateB2BCalc(daily) {
-  document.getElementById('dailyNum').innerText = daily + ' units';
-  const savePerSession = 23.04;
-  const monthlySave = Math.round(daily * 30 * savePerSession);
-  const yearlyNet = Math.round(monthlySave * 12);
+  const d = parseInt(daily, 10) || 80;
+  document.getElementById('dailyNum').innerText = d + ' units';
+  const estTables = Math.max(6, Math.round(d * 0.3));
+  const estCapex = estTables * 15000;
+  const wearReserve = Math.round((estCapex * 0.10) / 12);
+  const grossSave = Math.round(d * 30 * 23.04);
+  const monthlySave = Math.max(0, grossSave - wearReserve);
+  const yearlyNet = monthlySave * 12;
+  const paybackMo = monthlySave > 0 ? (estCapex / monthlySave).toFixed(1) : '—';
 
+  if (document.getElementById('enWearVal')) {
+    document.getElementById('enWearVal').innerText = '-' + wearReserve.toLocaleString('en-GB') + ' ₺ / mo';
+  }
+  if (document.getElementById('enCapexVal')) {
+    document.getElementById('enCapexVal').innerText = '~' + estCapex.toLocaleString('en-GB') + ' ₺ (' + estTables + ' Tables) • ~' + paybackMo + ' Mo';
+  }
   document.getElementById('monthlySaveVal').innerText = monthlySave.toLocaleString('en-GB') + ' ₺';
   document.getElementById('yearlySaveVal').innerText = yearlyNet.toLocaleString('en-GB') + ' ₺';
+  const wa = document.getElementById('enWaDemoBtn');
+  if (wa) {
+    const msg = 'Hello NARION, we would like to book a 20-minute live tabletop demo (' + d + ' bowls/day, ~' + estTables + ' tables, est. CAPEX ~' + estCapex.toLocaleString('en-GB') + ' TL).';
+    wa.href = 'https://wa.me/905467331184?text=' + encodeURIComponent(msg);
+  }
 }
+updateB2BCalc(80);
 
 </script>
 
