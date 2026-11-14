@@ -1,12 +1,13 @@
 <!doctype html>
-<html lang="tr" dir="ltr">
+<html lang="tr" dir="ltr" translate="no" class="notranslate">
 <head>
   <meta charset="utf-8">
+  <meta name="google" content="notranslate">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, follow">
+  <meta name="robots" content="noindex, follow">
   <title>404 — Sayfa Bulunamadı | NARION Smart Hookah Systems • İstanbul</title>
-  <link rel="icon" type="image/svg+xml" href="logo/favicon.svg">
-  <link rel="apple-touch-icon" href="logo/apple-touch-icon-180.png">
+  <link rel="icon" type="image/svg+xml" href="/logo/favicon.svg">
+  <link rel="apple-touch-icon" href="/logo/apple-touch-icon-180.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Cinzel:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -191,10 +192,12 @@
     }
 
     .langs-nav a:hover,
-    .langs-nav a.active {
+    .langs-nav a.active,
+    .langs-nav a[aria-current="page"] {
       color: var(--gold-light);
-      border-color: rgba(212, 175, 55, 0.3);
-      background: rgba(212, 175, 55, 0.06);
+      border-color: rgba(212, 175, 55, 0.65);
+      background: rgba(212, 175, 55, 0.08);
+      font-weight: 600;
     }
 
     .foot {
@@ -217,7 +220,7 @@
 </head>
 <body>
 
-  <div class="container">
+  <main class="container">
     <div class="brand-mark">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="NARION">
         <mask id="nl-mask-404" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100">
@@ -245,79 +248,89 @@
     </p>
 
     <div class="actions" id="actions">
-      <a href="tr/index.html" class="btn btn-gold" id="btn-home">Ana Sayfaya Dön →</a>
-      <a href="tr/modeller.html" class="btn btn-glass" id="btn-models">17 Modeli İncele</a>
-      <a href="tr/smart-hmd.html" class="btn btn-glass" id="btn-tech">Smart HMD Teknolojisi</a>
+      <a href="/tr/index.html" class="btn btn-gold" id="btn-home">Ana Sayfaya Dön →</a>
+      <a href="/tr/modeller.html" class="btn btn-glass" id="btn-models">17 Modeli İncele</a>
+      <a href="/tr/smart-hmd.html" class="btn btn-glass" id="btn-tech">Smart HMD Teknolojisi</a>
     </div>
 
     <div class="langs-box">
-      <div class="langs-label">DİL SEÇİMİ / LANGUAGE / لغة / ЯЗЫК</div>
-      <nav class="langs-nav" aria-label="Diller">
-        <a href="tr/index.html" class="active" onclick="switchLang('tr', event)">TR Türkçe</a>
-        <a href="en/index.html" onclick="switchLang('en', event)">EN English</a>
-        <a href="ar/index.html" onclick="switchLang('ar', event)">AR العربية</a>
-        <a href="ru/index.html" onclick="switchLang('ru', event)">RU Русский</a>
+      <div class="langs-label">DİL SEÇİMİ / LANGUAGE / اللغة / ЯЗЫК</div>
+      <nav class="langs-nav" aria-label="Language">
+        <a href="/tr/index.html" lang="tr" data-lang="tr" class="active" aria-current="page" onclick="switchLang('tr', event)">TR Türkçe</a>
+        <a href="/en/index.html" lang="en" data-lang="en" onclick="switchLang('en', event)">EN English</a>
+        <a href="/ar/index.html" lang="ar" data-lang="ar" onclick="switchLang('ar', event)">AR العربية</a>
+        <a href="/ru/index.html" lang="ru" data-lang="ru" onclick="switchLang('ru', event)">RU Русский</a>
       </nav>
     </div>
-  </div>
+  </main>
 
-  <div class="foot">
+  <footer class="foot" id="foot-copy">
     © 2026 NARION Hookah Systems. Tüm hakları saklıdır.
-  </div>
+  </footer>
 
   <script>
     const i18n = {
       tr: {
+        docTitle: "404 — Sayfa Bulunamadı | NARION Smart Hookah Systems",
         badge: "HATA 404 • SAYFA BULUNAMADI",
         title: "Aradığınız Sayfa Mevcut Değil",
         desc: "Talep ettiğiniz sayfa taşınmış, silinmiş veya geçici olarak yayından kaldırılmış olabilir. Koleksiyonumuzu keşfetmek veya ana sayfaya dönmek için aşağıdaki bağlantıları kullanabilirsiniz.",
         home: "Ana Sayfaya Dön →",
         models: "17 Modeli İncele",
         tech: "Smart HMD Teknolojisi",
-        homeUrl: "tr/index.html",
-        modelsUrl: "tr/modeller.html",
-        techUrl: "tr/smart-hmd.html"
+        foot: "© 2026 NARION Hookah Systems. Tüm hakları saklıdır.",
+        homeUrl: "/tr/index.html",
+        modelsUrl: "/tr/modeller.html",
+        techUrl: "/tr/smart-hmd.html"
       },
       en: {
+        docTitle: "404 — Page Not Found | NARION Smart Hookah Systems",
         badge: "ERROR 404 • PAGE NOT FOUND",
         title: "The Page You Are Looking For Does Not Exist",
-        desc: "The requested page may have been moved, removed, or is temporarily unavailable. You can explore our collection or return home using the links below.",
+        desc: "The requested page may have been moved, removed, or is temporarily unavailable. Explore our 17-model collection or return home using the links below.",
         home: "Back to Home →",
         models: "Explore 17 Models",
         tech: "Smart HMD Technology",
-        homeUrl: "en/index.html",
-        modelsUrl: "en/modeller.html",
-        techUrl: "en/smart-hmd.html"
+        foot: "© 2026 NARION Hookah Systems. All rights reserved.",
+        homeUrl: "/en/index.html",
+        modelsUrl: "/en/modeller.html",
+        techUrl: "/en/smart-hmd.html"
       },
       ar: {
+        docTitle: "404 — الصفحة غير موجودة | NARION Smart Hookah Systems",
         badge: "خطأ 404 • الصفحة غير موجودة",
         title: "الصفحة التي تبحث عنها غير موجودة",
         desc: "ربما تم نقل الصفحة المطلوبة أو حذفها أو أنها غير متاحة مؤقتاً. يمكنك استكشاف مجموعتنا أو العودة للرئيسية عبر الروابط أدناه.",
         home: "العودة للرئيسية →",
         models: "استكشف 17 طرازاً",
         tech: "تقنية Smart HMD",
-        homeUrl: "ar/index.html",
-        modelsUrl: "ar/modeller.html",
-        techUrl: "ar/smart-hmd.html"
+        foot: "© 2026 NARION Hookah Systems. جميع الحقوق محفوظة.",
+        homeUrl: "/ar/index.html",
+        modelsUrl: "/ar/modeller.html",
+        techUrl: "/ar/smart-hmd.html"
       },
       ru: {
+        docTitle: "404 — Страница не найдена | NARION Smart Hookah Systems",
         badge: "ОШИБКА 404 • СТРАНИЦА НЕ НАЙДЕНА",
         title: "Запрашиваемая страница не существует",
         desc: "Запрошенная страница могла быть перемещена, удалена или временно недоступна. Вы можете ознакомиться с коллекцией или вернуться на главную.",
         home: "На главную →",
         models: "Смотреть 17 моделей",
         tech: "Технология Smart HMD",
-        homeUrl: "ru/index.html",
-        modelsUrl: "ru/modeller.html",
-        techUrl: "ru/smart-hmd.html"
+        foot: "© 2026 NARION Hookah Systems. Все права защищены.",
+        homeUrl: "/ru/index.html",
+        modelsUrl: "/ru/modeller.html",
+        techUrl: "/ru/smart-hmd.html"
       }
     };
 
     function setLanguage(lang) {
       const data = i18n[lang] || i18n.tr;
+      document.title = data.docTitle;
       document.querySelector('.code-badge').textContent = data.badge;
       document.getElementById('title').textContent = data.title;
       document.getElementById('desc').textContent = data.desc;
+      document.getElementById('foot-copy').textContent = data.foot;
       const bHome = document.getElementById('btn-home');
       const bModels = document.getElementById('btn-models');
       const bTech = document.getElementById('btn-tech');
@@ -331,10 +344,12 @@
       document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
 
       document.querySelectorAll('.langs-nav a').forEach(a => {
-        if (a.getAttribute('onclick') && a.getAttribute('onclick').includes("'" + lang + "'")) {
+        if (a.getAttribute('data-lang') === lang) {
           a.classList.add('active');
+          a.setAttribute('aria-current', 'page');
         } else {
           a.classList.remove('active');
+          a.removeAttribute('aria-current');
         }
       });
     }
@@ -344,12 +359,18 @@
       setLanguage(lang);
     }
 
-    // Auto-detect browser language if available
+    // Priority 1: URL path locale (/en/, /ar/, /ru/, /tr/). Priority 2: Browser language.
     (function() {
+      const p = (window.location.pathname || '').toLowerCase();
+      if (p === '/en' || p.startsWith('/en/')) { setLanguage('en'); return; }
+      if (p === '/ar' || p.startsWith('/ar/')) { setLanguage('ar'); return; }
+      if (p === '/ru' || p.startsWith('/ru/')) { setLanguage('ru'); return; }
+      if (p === '/tr' || p.startsWith('/tr/')) { setLanguage('tr'); return; }
       const navLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
       if (navLang.startsWith('ar')) setLanguage('ar');
       else if (navLang.startsWith('ru')) setLanguage('ru');
       else if (navLang.startsWith('en')) setLanguage('en');
+      else setLanguage('tr');
     })();
   </script>
 </body>

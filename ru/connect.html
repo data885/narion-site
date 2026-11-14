@@ -1,7 +1,8 @@
 <!doctype html>
-<html lang="ru" dir="ltr">
+<html lang="ru" dir="ltr" translate="no" class="notranslate">
 <head>
 <meta charset="utf-8">
+<meta name="google" content="notranslate">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>NARION Connect — Приложение управления умной чашей по Bluetooth BLE 5.0</title>
 <meta name="description" content="Мобильное веб-приложение NARION Smart HMD: Web Bluetooth BLE 5.0, Wi-Fi мост для iOS, точный PID 150–240°C (±1°C), 3-фазный профиль прогрева, PIN-блокировка кальянщика и мониторинг столов.">
@@ -9,7 +10,7 @@
 <link rel="apple-touch-icon" href="../logo/apple-touch-icon-180.png">
 <link rel="manifest" href="../manifest.webmanifest">
 <meta name="theme-color" content="#0b0b0f">
-<link rel="stylesheet" href="../assets/style.css?v=23">
+<link rel="stylesheet" href="../assets/style.css?v=24">
 <link rel="stylesheet" href="../assets/narion-connect.css?v=2">
 <link rel="canonical" href="https://narionhookah.com/ru/connect.html">
 <link rel="alternate" hreflang="tr" href="https://narionhookah.com/tr/connect.html">
@@ -62,19 +63,20 @@
     </a>
       <button class="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
 
-    <nav class="menu" id="menu">
+    <nav class="menu" id="menu" aria-label="Основное">
       <div class="mi"><a href="index.html">Главная</a></div>
       <div class="mi"><a href="modeller.html">Коллекция (17 моделей)</a></div>
       <div class="mi"><a href="smart-hmd.html" class="on" aria-current="page">Smart HMD</a></div>
       <div class="mi"><a href="parcalar.html">Детали</a></div>
       <div class="mi"><a href="teknoloji.html">Инженерия</a></div>
       <div class="mi"><a href="karsilastirma.html">Сравнение</a></div>
+      <div class="mi"><a href="sonraki-proje.html">Фаза 2 (Tritan™)</a></div>
       <div class="mi"><a href="hakkinda.html">О нас</a></div>
     </nav>
 
     <div class="head-cta">
       <!-- DİL SEÇİCİ (YATAY BAR) -->
-      <div class="langs" role="navigation" aria-label="Dil"><a href="../tr/connect.html" hreflang="tr" lang="tr">TR</a><a href="../en/connect.html" hreflang="en" lang="en">EN</a><a href="../ar/connect.html" hreflang="ar" lang="ar">AR</a><a href="connect.html" hreflang="ru" lang="ru" class="on" aria-current="true">RU</a></div>
+      <nav class="langs" aria-label="Язык"><a href="../tr/connect.html" hreflang="tr" lang="tr">TR</a><a href="../en/connect.html" hreflang="en" lang="en">EN</a><a href="../ar/connect.html" hreflang="ar" lang="ar">AR</a><a href="connect.html" hreflang="ru" lang="ru" class="on" aria-current="page">RU</a></nav>
       <a class="btn glass sm" href="on-kayit.html">Предзаказ</a>
       <a class="btn gold sm" href="b2b-kurumsal.html">Для бизнеса (B2B)</a>
     </div>
@@ -191,9 +193,9 @@
               </div>
 
               <div class="nc-metrics">
-                <div class="nc-metric"><b id="nc-m-bat">%91</b><span>Заряд АКБ</span></div>
-                <div class="nc-metric"><b id="nc-m-rem">91 dk</b><span>Остаток времени</span></div>
-                <div class="nc-metric"><b id="nc-m-pwm">%34</b><span>Мощность ШИМ</span></div>
+                <div class="nc-metric"><b id="nc-m-bat">91%</b><span>Заряд АКБ</span></div>
+                <div class="nc-metric"><b id="nc-m-rem">91 мин</b><span>Остаток времени</span></div>
+                <div class="nc-metric"><b id="nc-m-pwm">34%</b><span>Мощность ШИМ</span></div>
                 <div class="nc-metric"><b id="nc-m-draw">0 Pa</b><span>Тяга SDP31</span></div>
                 <div class="nc-metric"><b id="nc-m-puff">14</b><span>Затяжки</span></div>
                 <div class="nc-metric"><b id="nc-m-volt">16.12V</b><span>Пакет 4S</span></div>
@@ -257,39 +259,39 @@
 
             <div class="nc-fleet-grid">
               <div class="nc-table-card">
-                <div style="display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:11.5px;color:var(--accent-ok)"><span>MASA 01 • VIP TERAS</span><span>● %86 (78 dk)</span></div>
-                <div style="font-family:var(--f-serif);font-size:28px;color:#fff;margin:8px 0 4px">195.0°C <span style="font-size:13px;color:var(--gold-light);font-family:var(--f-sans)">Blonde • Kilitli</span></div>
-                <div style="font-size:12.5px;color:var(--text-muted)">42 Nefes • 0.0 ppm CO • Sommelier Kilidi: 185–205°C</div>
+                <div style="display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:11.5px;color:var(--accent-ok)"><span>СТОЛ 01 • VIP ТЕРРАСА</span><span>● 86% (78 мин)</span></div>
+                <div style="font-family:var(--f-serif);font-size:28px;color:#fff;margin:8px 0 4px">195.0°C <span style="font-size:13px;color:var(--gold-light);font-family:var(--f-sans)">Blonde • Блок.</span></div>
+                <div style="font-size:12.5px;color:var(--text-muted)">42 затяжки • 0.0 ppm CO • Лимит кальянщика: 185–205°C</div>
               </div>
 
               <div class="nc-table-card">
-                <div style="display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:11.5px;color:var(--accent-ok)"><span>MASA 02 • SALON</span><span>● %74 (66 dk)</span></div>
+                <div style="display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:11.5px;color:var(--accent-ok)"><span>СТОЛ 02 • ЗАЛ</span><span>● 74% (66 мин)</span></div>
                 <div style="font-family:var(--f-serif);font-size:28px;color:#fff;margin:8px 0 4px">225.2°C <span style="font-size:13px;color:var(--gold-light);font-family:var(--f-sans)">Dark Leaf</span></div>
-                <div style="font-size:12.5px;color:var(--text-muted)">68 Nefes • +%15 SDP31 Boost Aktif</div>
+                <div style="font-size:12.5px;color:var(--text-muted)">68 затяжек • Активен +15% SDP31 Boost</div>
               </div>
 
               <div class="nc-table-card">
-                <div style="display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:11.5px;color:#38bdf8"><span>MASA 03 • LOCA A</span><span>● %94 (88 dk)</span></div>
+                <div style="display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:11.5px;color:#38bdf8"><span>СТОЛ 03 • ЛОЖА A</span><span>● 94% (88 мин)</span></div>
                 <div style="font-family:var(--f-serif);font-size:28px;color:#fff;margin:8px 0 4px">180.0°C <span style="font-size:13px;color:#38bdf8;font-family:var(--f-sans)">Herbal Wellness</span></div>
-                <div style="font-size:12.5px;color:var(--text-muted)">19 Nefes • %0 Nikotin • 0.0 ppm CO</div>
+                <div style="font-size:12.5px;color:var(--text-muted)">19 затяжек • 0% никотина • 0.0 ppm CO</div>
               </div>
 
               <div class="nc-table-card" data-alert="swap">
-                <div style="display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:11.5px;color:#f87171;font-weight:700"><span>MASA 04 • BAHÇE</span><span>⚡ %9 HOT-SWAP!</span></div>
-                <div style="font-family:var(--f-serif);font-size:28px;color:#fff;margin:8px 0 4px">214.8°C <span style="font-size:13px;color:#fca5a5;font-family:var(--f-sans)">8 dk Kaldı</span></div>
-                <div style="font-size:12.5px;color:#fecaca">88. Dakika • 5'li Şarj Dock'tan Yedek Kartuş #07 Hazır (%100)</div>
+                <div style="display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:11.5px;color:#f87171;font-weight:700"><span>СТОЛ 04 • САД</span><span>⚡ 9% HOT-SWAP!</span></div>
+                <div style="font-family:var(--f-serif);font-size:28px;color:#fff;margin:8px 0 4px">214.8°C <span style="font-size:13px;color:#fca5a5;font-family:var(--f-sans)">Осталось 8 мин</span></div>
+                <div style="font-size:12.5px;color:#fecaca">88-я минута • Картридж #07 на 5-слотовой док-станции готов (100%)</div>
               </div>
 
               <div class="nc-table-card">
-                <div style="display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:11.5px;color:#f59e0b"><span>MASA 05 • SALON</span><span>◐ ÖN ISITMA (2:10)</span></div>
-                <div style="font-family:var(--f-serif);font-size:28px;color:#fff;margin:8px 0 4px">168.4°C <span style="font-size:13px;color:#fcd34d;font-family:var(--f-sans)">→ 215°C Hedef</span></div>
-                <div style="font-size:12.5px;color:var(--text-muted)">%100 Tam Şarj • 1 dk 20 sn içinde içime hazır</div>
+                <div style="display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:11.5px;color:#f59e0b"><span>СТОЛ 05 • ЗАЛ</span><span>◐ ПРОГРЕВ (2:10)</span></div>
+                <div style="font-family:var(--f-serif);font-size:28px;color:#fff;margin:8px 0 4px">168.4°C <span style="font-size:13px;color:#fcd34d;font-family:var(--f-sans)">→ Цель 215°C</span></div>
+                <div style="font-size:12.5px;color:var(--text-muted)">100% заряд • Готовность к подаче через 1 мин 20 с</div>
               </div>
 
               <div class="nc-table-card">
-                <div style="display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:11.5px;color:#94a3b8"><span>5'Lİ BAR DOCK #01</span><span>65W GaN POGO</span></div>
-                <div style="font-family:var(--f-serif);font-size:28px;color:var(--accent-ok);margin:8px 0 4px">4 / 5 Dolu</div>
-                <div style="font-size:12.5px;color:var(--text-muted)">Bugün Toplam: 74 Seans • Tüketilen Elektrik: 37,00 ₺ (Kömür Tasarrufu: 2.397 ₺)</div>
+                <div style="display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:11.5px;color:#94a3b8"><span>БАРНАЯ ДОК-СТАНЦИЯ #01</span><span>65W GaN POGO</span></div>
+                <div style="font-family:var(--f-serif);font-size:28px;color:var(--accent-ok);margin:8px 0 4px">4 / 5 Заряжено</div>
+                <div style="font-size:12.5px;color:var(--text-muted)">Сегодня: 74 сессии • Расход электроэнергии: $0.88 (экономия на угле: $57.00)</div>
               </div>
             </div>
           </div>
@@ -301,39 +303,39 @@
             <h3 style="font-size:22px;margin:0 0 16px">6 новых инженерных функций Smart HMD и инспектор 20-байтных BLE пакетов</h3>
             <div class="grid3" style="margin-bottom:22px">
               <div class="card" style="padding:20px">
-              <div style="font-family:var(--f-mono);font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:6px">01 · $0 EXTRA BOM (FIRMWARE)</div>
-              <h4 style="font-size:17px;margin:0 0 8px;color:#fff">3-Phase Auto-Steep Session Curve</h4>
-              <p style="font-size:13.5px;color:#cbd5e1;margin:0;line-height:1.6">Replaces flat thermostat control with a +10°C initial ceramic soak, ±1°C mid-session plateau, and automatic +6°C late-session glycerin recovery ramp after minute 55.</p>
+              <div style="font-family:var(--f-mono);font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:6px">01 · ПРОШИВКА ($0 К BOM)</div>
+              <h4 style="font-size:17px;margin:0 0 8px;color:#fff">3-фазная кривая прогрева Auto-Steep</h4>
+              <p style="font-size:13.5px;color:#cbd5e1;margin:0;line-height:1.6">Заменяет плоский термостат стартовым прогревом +10°C, стабильным плато ±1°C и плавной компенсацией +6°C после 55-й минуты сессии.</p>
             </div>
 <div class="card" style="padding:20px">
-              <div style="font-family:var(--f-mono);font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:6px">02 · CLOSED-LOOP OBSERVER (R2.1)</div>
-              <h4 style="font-size:17px;margin:0 0 8px;color:#fff">Duty-Drop + SDP31 Dry-Bowl Scorch Guard</h4>
-              <p style="font-size:13.5px;color:#cbd5e1;margin:0;line-height:1.6">Detects steady-state PWM duty drop when glycerin/water vaporization load ends, cross-checked against SDP31 normalized puff cooling to halt power before scorching.</p>
+              <div style="font-family:var(--f-mono);font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:6px">02 · НАБЛЮДАТЕЛЬ R2.1</div>
+              <h4 style="font-size:17px;margin:0 0 8px;color:#fff">Защита от пересушивания чаши (Duty-Drop + SDP31)</h4>
+              <p style="font-size:13.5px;color:#cbd5e1;margin:0;line-height:1.6">Фиксирует падение скважности PWM по мере испарения глицерина и сверяет его с откликом датчика тяги SDP31, снижая нагрев до появления гари.</p>
             </div>
 <div class="card" style="padding:20px">
-              <div style="font-family:var(--f-mono);font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:6px">03 · $0 EXTRA BOM (B2B LOUNGE)</div>
-              <h4 style="font-size:17px;margin:0 0 8px;color:#fff">Sommelier / Staff PIN Range Lock</h4>
-              <p style="font-size:13.5px;color:#cbd5e1;margin:0;line-height:1.6">Prevents lounge guests from cranking heat to 240°C and scorching Blonde leaf. Staff locks a safe window (e.g. 185–205°C via PIN 1453) while preserving guest fine-tuning.</p>
+              <div style="font-family:var(--f-mono);font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:6px">03 · B2B ЛАУНЖ-РЕЖИМ</div>
+              <h4 style="font-size:17px;margin:0 0 8px;color:#fff">PIN-блокировка диапазона кальянщика</h4>
+              <p style="font-size:13.5px;color:#cbd5e1;margin:0;line-height:1.6">Не даёт гостям поднять температуру до 240°C и сжечь лёгкий табак: мастер задаёт коридор (например, 185–205°C по PIN 1453).</p>
             </div>
 <div class="card" style="padding:20px">
               <div style="font-family:var(--f-mono);font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:6px">04 · BLE 5.0 + LOCAL HTTP + ESP-NOW</div>
-              <h4 style="font-size:17px;margin:0 0 8px;color:#fff">Same-Origin iOS Local UI &amp; B2B ESP-NOW</h4>
-              <p style="font-size:13.5px;color:#cbd5e1;margin:0;line-height:1.6">Android pairs via Web Bluetooth; iPhone Safari opens the local WPA2 device UI at http://192.168.4.1 without Mixed Content blocks. B2B lounges use encrypted ESP-NOW.</p>
+              <h4 style="font-size:17px;margin:0 0 8px;color:#fff">Локальный интерфейс iOS и сеть ESP-NOW</h4>
+              <p style="font-size:13.5px;color:#cbd5e1;margin:0;line-height:1.6">Android подключается по Web Bluetooth, iPhone Safari открывает встроенный веб-пульт http://192.168.4.1 по WPA2 без блокировок Mixed Content.</p>
             </div>
 <div class="card" style="padding:20px">
-              <div style="font-family:var(--f-mono);font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:6px">05 · $0 EXTRA BOM (FIRMWARE)</div>
-              <h4 style="font-size:17px;margin:0 0 8px;color:#fff">65°C Warm Self-Clean & 180s Auto-Sleep</h4>
-              <p style="font-size:13.5px;color:#cbd5e1;margin:0;line-height:1.6">45-second 65°C post-session cycle loosens molasses before rinsing + automatic 185°C idle eco-sleep after 180s with instant wake on inhale.</p>
+              <div style="font-family:var(--f-mono);font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:6px">05 · УХОД И ЭНЕРГОСБЕРЕЖЕНИЕ</div>
+              <h4 style="font-size:17px;margin:0 0 8px;color:#fff">Самоочистка 65°C и эко-сон через 180 с</h4>
+              <p style="font-size:13.5px;color:#cbd5e1;margin:0;line-height:1.6">45-секундный цикл 65°C размягчает сироп перед промывкой водой, а авто-сон 185°C экономит заряд и мгновенно просыпается по затяжке.</p>
             </div>
 <div class="card" style="padding:20px">
-              <div style="font-family:var(--f-mono);font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:6px">06 · MANDATORY SERIES 01 4-LAYER HW SAFETY (&lt;$2 BOM)</div>
-              <h4 style="font-size:17px;margin:0 0 8px;color:#fff">250°C TCO Fuse + Dual Sensor + 248°C Comparator</h4>
-              <p style="font-size:13.5px;color:#cbd5e1;margin:0;line-height:1.6">250°C series thermal fuse, independent 100k NTC cross-check (&gt;15°C divergence latch), 248°C TLV3012 analog gate kill, and 10 kΩ MOSFET gate pull-down.</p>
+              <div style="font-family:var(--f-mono);font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:6px">06 · 4-УРОВНЕВАЯ АППАРАТНАЯ ЗАЩИТА SERIES 01</div>
+              <h4 style="font-size:17px;margin:0 0 8px;color:#fff">Термопредохранитель 250°C + 2 датчика + компаратор 248°C</h4>
+              <p style="font-size:13.5px;color:#cbd5e1;margin:0;line-height:1.6">Независимая от МК защита: термопредохранитель 250°C, второй NTC-датчик (&gt;15°C), аналоговый компаратор TLV3012 на 248°C и pull-down затвора 10 кОм.</p>
             </div>
             </div>
 
             <h4 style="font-family:var(--f-mono);font-size:12px;color:var(--gold-light);letter-spacing:0.08em;text-transform:uppercase;margin:0 0 8px">
-              CANLI BLE GATT TELEMETRİ &amp; KOMUT PAKET İNCELEYİCİ (SERVICE: 4e415249-4f4e-484d-4432-000000000001)
+              ИНСПЕКТОР ПАКЕТОВ ТЕЛЕМЕТРИИ И КОМАНД BLE GATT (SERVICE: 4e415249-4f4e-484d-4432-000000000001)
             </h4>
             <div class="nc-hex-box" id="nc-wire-hex">TX CMD (12B) : --
 RX TEL (20B) : --</div>
@@ -421,7 +423,7 @@ RX TEL (20B) : --</div>
         <h4>Инженерия</h4>
         <ul>
           <li><a href="teknoloji.html">Технологии и инновации</a></li>
-          <li><a href="../tr/sonraki-proje.html">Проект Фазы 2: Eastman Tritan™</a></li>
+          <li><a href="sonraki-proje.html">Проект Фазы 2: Eastman Tritan™</a></li>
           <li><a href="teknoloji.html#bayonet">Байонетный механизм 45°</a></li>
           <li><a href="smart-hmd.html#karbonmonoksit">Научный анализ 0 ppm CO</a></li>
           <li><a href="nargile-rehberi.html">Гид по кальянам и Smart HMD</a></li>
@@ -446,7 +448,7 @@ RX TEL (20B) : --</div>
     </div>
   </div>
 </footer>
-<script src="../assets/menu.js?v=6" defer></script>
-<script src="../assets/narion-connect.js?v=3" defer></script>
+<script src="../assets/menu.js?v=7" defer></script>
+<script src="../assets/narion-connect.js?v=5" defer></script>
 </body>
 </html>

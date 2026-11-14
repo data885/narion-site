@@ -10,10 +10,10 @@
     document.head.appendChild(s);
   }
 
-  // 2. Aktif Sekme Erişilebilirlik Eşitlemesi (aria-current="page")
-  var aktifBaglantilar = document.querySelectorAll('.menu a.on');
+  // 2. Aktif Sekme & Dil Seçici Erişilebilirlik Eşitlemesi (aria-current="page")
+  var aktifBaglantilar = document.querySelectorAll('.menu a.on, .langs a.on');
   for (var i = 0; i < aktifBaglantilar.length; i++) {
-    if (!aktifBaglantilar[i].hasAttribute('aria-current')) {
+    if (aktifBaglantilar[i].getAttribute('aria-current') !== 'page') {
       aktifBaglantilar[i].setAttribute('aria-current', 'page');
     }
   }

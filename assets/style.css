@@ -255,10 +255,19 @@ a { color: inherit; text-decoration: none; }
   color: var(--text-main);
   background: rgba(255, 255, 255, 0.08);
 }
-.langs a.on {
+.langs a.on,
+.langs a[aria-current="page"] {
   background: var(--gold-glow);
   color: var(--gold-light);
-  border-color: var(--gold-border);
+  border-color: rgba(212, 175, 55, 0.72);
+  font-weight: 700;
+  box-shadow: inset 0 -2px 0 var(--gold);
+}
+.menu > .mi > a:focus-visible,
+.langs a:focus-visible,
+.burger:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
 }
 
 /* Dil Bildirim Toastı */
@@ -1231,6 +1240,32 @@ label {
   .site-head.is-wide .head-cta .btn.glass,
   .site-head:not(.nav-measured) .head-cta .btn.glass {
     display: none;
+  }
+}
+@media (max-width: 1480px) {
+  .site-head.is-wide .head-in,
+  .site-head:not(.nav-measured) .head-in {
+    padding-inline: 20px;
+    gap: 8px;
+  }
+  .site-head.is-wide .menu,
+  .site-head:not(.nav-measured) .menu {
+    gap: 1px;
+    margin-inline-end: 4px;
+  }
+  .site-head.is-wide .menu > .mi > a,
+  .site-head:not(.nav-measured) .menu > .mi > a {
+    padding: 7px 6.5px;
+    font-size: 12.2px;
+  }
+  .site-head.is-wide .head-cta,
+  .site-head:not(.nav-measured) .head-cta {
+    gap: 6px;
+  }
+  .site-head.is-wide .head-cta .btn.sm,
+  .site-head:not(.nav-measured) .head-cta .btn.sm {
+    padding: 7px 12px;
+    font-size: 11.5px;
   }
 }
 

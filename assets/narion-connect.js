@@ -728,9 +728,11 @@
       elTarget.textContent = T.targetFmt.replace('{t}', Math.round(f.targetC)).replace('{m}', mName);
     }
 
-    setText('nc-m-bat', '%' + f.batteryPct);
-    setText('nc-m-rem', Math.round(f.remainSec / 60) + ' dk');
-    setText('nc-m-pwm', '%' + f.pwmDutyPct);
+    var minUnit = LANG === 'en' ? ' min' : (LANG === 'ar' ? ' د' : (LANG === 'ru' ? ' мин' : ' dk'));
+    var fmtPct = function (n) { return LANG === 'tr' ? ('%' + n) : (n + '%'); };
+    setText('nc-m-bat', fmtPct(f.batteryPct));
+    setText('nc-m-rem', Math.round(f.remainSec / 60) + minUnit);
+    setText('nc-m-pwm', fmtPct(f.pwmDutyPct));
     setText('nc-m-draw', f.drawPa + ' Pa');
     setText('nc-m-puff', String(f.puffCount));
     setText('nc-m-volt', (f.packMv / 1000).toFixed(2) + 'V');
