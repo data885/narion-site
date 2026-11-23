@@ -7,7 +7,7 @@
  *  2. Web Bluetooth GATT Client (Android / Desktop Chrome / Edge)
  *  3. Same-Origin iOS Safari Local HTTP/WS Flow (blocks HTTPS->ws:// Mixed Content & opens explicit modal guide)
  *  4. Conserved Closed-Loop Lumped-Thermal Digital Twin (explicitly badged as Simulator when unconnected)
- *  5. Rev R2.2 Smart Purge Relief (+35 Pa -> 12s 0% PWM & -5°C), NFC 13g Eco-Pod (208°C) & Sommelier PIN Lock
+ *  5. Rev R2.2 Smart Purge Relief (+35 Pa -> 12s 0% PWM & -5°C), NFC 13g Eco-Pod (275°C) & Sommelier PIN Lock
  */
 (function () {
   'use strict';
@@ -79,7 +79,7 @@
       stFaultTilt: 'ACİL KESİCİ: >35° DEVRİLME!',
       stFaultScorch: 'KORUMA: DUTY-DROP KURU HAZNE!',
       stFaultSensorDiv: 'SENSÖR FARK HATASI (|PT1000-NTC|>15°C)',
-      stFaultHwComp: '248°C DONANIM KOMPARATÖR KESİCİ!',
+      stFaultHwComp: '335°C DONANIM KOMPARATÖR KESİCİ!',
       stFaultBat: 'BATARYA DÜŞÜK: 5 SN HOT-SWAP YAPIN',
       targetFmt: 'Hedef: {t}°C • {m}',
       modes: ['Bekleme', 'Az Şerbetli (252°C)', 'Standart Blonde (278°C)', 'Bol Şerbetli (294°C)', 'Herbal (234°C)', 'Özel Reçete', 'Ön-Temizlik'],
@@ -87,10 +87,10 @@
       wsMixedBlocked: 'HTTPS sayfasından yerel ws://192.168.4.1 adresine doğrudan soket açılması tarayıcı güvenlik kuralı (Mixed Content) gereği engellenir. Cihazın kendi Wi-Fi ağına bağlanıp http://192.168.4.1 yerel arayüzünü açın.',
       wsUnreachable: '192.168.4.1:81 üzerinde fiziksel NARION başlığına ulaşılamadı. Lütfen cihazda 3 sn basılı tutup Wi-Fi AP modunu açtığınızdan emin olun. (Şu an Simülatör Modundasınız.)',
       pinErr: 'Hatalı Sommelier PIN kodu! (Varsayılan Demo PIN: 1453)',
-      lockBlocked: 'Garson Sommelier Kilidi aktif: Sıcaklık yalnızca izin verilen aralıkta (185–205°C) değiştirilebilir.',
+      lockBlocked: 'Garson Sommelier Kilidi aktif: Sıcaklık yalnızca izin verilen aralıkta (245–295°C) değiştirilebilir.',
       cleanTooHot: 'Ön-temizlik modu için haznenin 95°C altında olması gerekir.',
       purgeToast: 'Smart Purge (+45 Pa) algılandı: 12 sn ısıtıcı kesildi (%0 PWM) ve hedef -5°C düşürüldü.',
-      nfcPodToast: 'NFC 13g Eco-Pod okundu (0x09): 208°C reçetesi ve 3 kademeli aroma merdiveni yüklendi (%41 tütün tasarrufu).'
+      nfcPodToast: 'NFC 13g Eco-Pod okundu (0x09): 275°C reçetesi ve 3 kademeli aroma merdiveni yüklendi (%41 tütün tasarrufu).'
     },
     en: {
       connTwin: 'SIMULATOR MODE (NO DEVICE CONNECTED)',
@@ -106,7 +106,7 @@
       stFaultTilt: 'SAFETY CUTOFF: >35° TILT!',
       stFaultScorch: 'GUARD: DUTY-DROP DRY BOWL!',
       stFaultSensorDiv: 'DUAL-SENSOR DIVERGENCE (>15°C)',
-      stFaultHwComp: '248°C HW COMPARATOR TRIP!',
+      stFaultHwComp: '335°C HW COMPARATOR TRIP!',
       stFaultBat: 'LOW BATTERY: 5s HOT-SWAP NEEDED',
       targetFmt: 'Target: {t}°C • {m}',
       modes: ['Standby', 'Low-Syrup (252°C)', 'Classic Blonde (278°C)', 'Juicy Blonde (294°C)', 'Herbal (234°C)', 'Custom Recipe', 'Self-Clean'],
@@ -114,10 +114,10 @@
       wsMixedBlocked: 'Browsers block ws://192.168.4.1 sockets from an HTTPS page (Mixed Content). Join the HMD Wi-Fi AP and open http://192.168.4.1 directly.',
       wsUnreachable: 'Could not reach a physical NARION head at 192.168.4.1:81. Hold the HMD button for 3s to enable WPA2 Wi-Fi AP mode. (Remaining in Simulator Mode.)',
       pinErr: 'Invalid Sommelier PIN! (Default Demo PIN: 1453)',
-      lockBlocked: 'Sommelier Lock active: Guest adjustments are clamped to 185–205°C.',
+      lockBlocked: 'Sommelier Lock active: Guest adjustments are clamped to 245–295°C.',
       cleanTooHot: 'Bowl must cool below 95°C before starting 65°C Self-Clean.',
       purgeToast: 'Smart Purge (+45 Pa) detected: Heater cut to 0% PWM for 12s and target stepped down by -5°C.',
-      nfcPodToast: 'NFC 13g Eco-Pod synced (0x09): 208°C curve & 3-stage flavor ramp loaded (41% tobacco savings).'
+      nfcPodToast: 'NFC 13g Eco-Pod synced (0x09): 275°C curve & 3-stage flavor ramp loaded (41% tobacco savings).'
     },
     ar: {
       connTwin: 'وضع المحاكاة (لا يوجد جهاز متصل)',
@@ -133,7 +133,7 @@
       stFaultTilt: 'فصل أمان فوري: ميلان >35°!',
       stFaultScorch: 'حماية: جفاف المعسل (انخفاض الحمل)',
       stFaultSensorDiv: 'خطأ تباين المستشعرين (>15°C)',
-      stFaultHwComp: 'فصل مقارن الأمان المادي 248°C!',
+      stFaultHwComp: 'فصل مقارن الأمان المادي 335°C!',
       stFaultBat: 'بطارية منخفضة: تبديل خلال 5 ثوانٍ',
       targetFmt: 'الهدف: {t}°C • {m}',
       modes: ['استعداد', 'بلوند (190°C)', 'متوسط (215°C)', 'دارك (235°C)', 'أعشاب (180°C)', 'مخصص PID', 'تنظيف'],
@@ -141,10 +141,10 @@
       wsMixedBlocked: 'يمنع المتصفح فتح اتصال ws:// محلي من صفحة HTTPS. اتصل بشبكة الجهاز وافتح http://192.168.4.1 مباشرة.',
       wsUnreachable: 'تعذر الوصول إلى جهاز فعلي على 192.168.4.1:81. (أنت الآن في وضع المحاكاة).',
       pinErr: 'رمز PIN غير صحيح! (الرمز الافتراضي: 1453)',
-      lockBlocked: 'قفل الساقي مفعل: يُسمح بضبط الحرارة بين 185–205°C فقط.',
+      lockBlocked: 'قفل الساقي مفعل: يُسمح بضبط الحرارة بين 245–295°C فقط.',
       cleanTooHot: 'يجب أن تنخفض حرارة الحجرة دون 95°C قبل التنظيف.',
       purgeToast: 'تم رصد النفخ العكسي (+45 Pa): إيقاف السخان 12 ثانية وخفض الهدف -5°C.',
-      nfcPodToast: 'تمت قراءة كبسولة NFC الاقتصادية 13 جم (208°C) — توفير 41% من المعسل.'
+      nfcPodToast: 'تمت قراءة كبسولة NFC الاقتصادية 13 جم (275°C) — توفير 41% من المعسل.'
     },
     ru: {
       connTwin: 'РЕЖИМ СИМУЛЯТОРА (БЕЗ УСТРОЙСТВА)',
@@ -160,7 +160,7 @@
       stFaultTilt: 'АВАРИЙНЫЙ СТОП: НАКЛОН >35°!',
       stFaultScorch: 'ЗАЩИТА: СУХАЯ ЧАША (DUTY-DROP)',
       stFaultSensorDiv: 'РАСХОЖДЕНИЕ ДАТЧИКОВ (>15°C)',
-      stFaultHwComp: 'АППАРАТНАЯ ОТСЕЧКА 248°C!',
+      stFaultHwComp: 'АППАРАТНАЯ ОТСЕЧКА 335°C!',
       stFaultBat: 'НИЗКИЙ ЗАРЯД: HOT-SWAP 5 СЕК',
       targetFmt: 'Цель: {t}°C • {m}',
       modes: ['Ожидание', 'Blonde (190°C)', 'Medium (215°C)', 'Dark (235°C)', 'Herbal (180°C)', 'Свой PID', 'Очистка'],
@@ -168,10 +168,10 @@
       wsMixedBlocked: 'Браузер блокирует ws://192.168.4.1 со страницы HTTPS (Mixed Content). Подключитесь к Wi-Fi чаши и откройте http://192.168.4.1.',
       wsUnreachable: 'Устройство на 192.168.4.1:81 не найдено. Удерживайте кнопку чаши 3 сек для включения Wi-Fi AP. (Активен режим симулятора.)',
       pinErr: 'Неверный PIN сомелье! (Демо PIN: 1453)',
-      lockBlocked: 'Активна блокировка кальянщика: гостю доступен диапазон 185–205°C.',
+      lockBlocked: 'Активна блокировка кальянщика: гостю доступен диапазон 245–295°C.',
       cleanTooHot: 'Для очистки чаша должна остыть ниже 95°C.',
       purgeToast: 'Smart Purge (+45 Па): нагрев отключён на 12 сек (0% PWM), цель снижена на -5°C.',
-      nfcPodToast: 'NFC 13 г Eco-Pod (208°C): загружен 3-ступенчатый профиль (экономия 41% табака).'
+      nfcPodToast: 'NFC 13 г Eco-Pod (275°C): загружен 3-ступенчатый профиль (экономия 41% табака).'
     }
   };
   var T = I18N[LANG] || I18N.tr;
