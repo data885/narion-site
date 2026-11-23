@@ -100,11 +100,11 @@
     <div class="nc-usp-strip">
       <div class="nc-usp-chip">
         <span style="font-size:20px;flex:none" aria-hidden="true">❄️</span>
-        <div><strong>Cool-Touch™ ≤39°C Armor</strong><span>Dual-wall Aerogel + Maglev micro-fan never burns hands; 90s rapid cool-down.</span></div>
+        <div><strong>Cool-Touch™ ≤39°C Armor</strong><span>Dual-wall Thermal Armor + Sessiz Aktif micro-fan never burns hands; 90s rapid cool-down.</span></div>
       </div>
       <div class="nc-usp-chip">
         <span style="font-size:20px;flex:none" aria-hidden="true">⚡</span>
-        <div><strong>28-Min Fast Charge LiFePO4</strong><span>3,500+ cycle non-flammable LFP battery + included spare Hot-Swap cartridge.</span></div>
+        <div><strong>28-Min Super Fast Charge</strong><span>3,500+ cycle non-flammable LFP battery + included spare Hot-Swap cartridge.</span></div>
       </div>
       <div class="nc-usp-chip">
         <span style="font-size:20px;flex:none" aria-hidden="true">🍂</span>
@@ -123,7 +123,7 @@
           <span class="nc-pill-dot" aria-hidden="true"></span>
           <span id="nc-conn-text">SIMULATOR MODE (NO DEVICE CONNECTED)</span>
         </span>
-        <span class="nc-pill">FW v2.2.0 • Cool-Touch & LiFePO4</span>
+        <span class="nc-pill">NARION Smart OS</span>
       </div>
       <div class="nc-conn-group">
         <button type="button" class="btn gold sm" id="nc-btn-ble">📡 Pair via Bluetooth (BLE 5.0)</button>
@@ -153,7 +153,7 @@
             <!-- LEFT: HANDSET CONTROLLER -->
             <div class="nc-handset">
               <div class="nc-handset-head">
-                <span>NRN-HMD-TF-002 R2.2</span>
+                <span>NARION SMART HMD</span>
                 <span style="color:var(--accent-ok)">0.0 ppm CO</span>
               </div>
 
@@ -166,7 +166,7 @@
               </div>
 
               <div id="nc-fault-banner" hidden style="margin-bottom:14px;padding:12px;border-radius:12px;background:rgba(239,68,68,0.16);border:1px solid rgba(239,68,68,0.55);color:#fecaca;font-size:12.5px">
-                <div style="margin-bottom:8px;font-weight:600">⚠️ Safety Cutoff Latched (MOSFET 0%) — Stand upright & clear latch:</div>
+                <div style="margin-bottom:8px;font-weight:600">⚠️ Safety Cutoff Latched (Güç Ünitesi 0%) — Stand upright & clear latch:</div>
                 <button type="button" class="btn gold sm" id="nc-btn-clear-fault" style="width:100%">✅ Upright Confirmed — Clear Safety Latch</button>
               </div>
 
@@ -255,17 +255,17 @@
               <div class="nc-metrics">
                 <div class="nc-metric"><b id="nc-m-bat">91%</b><span>Battery SOC</span></div>
                 <div class="nc-metric"><b id="nc-m-rem">91 min</b><span>Est. Runtime</span></div>
-                <div class="nc-metric"><b id="nc-m-pwm">34%</b><span>MOSFET Duty</span></div>
-                <div class="nc-metric"><b id="nc-m-draw">0 Pa</b><span>SDP31 Draw</span></div>
+                <div class="nc-metric"><b id="nc-m-pwm">34%</b><span>Güç Ünitesi Duty</span></div>
+                <div class="nc-metric"><b id="nc-m-draw">0 Pa</b><span>Draw Sensor</span></div>
                 <div class="nc-metric"><b id="nc-m-puff">14</b><span>Puff Count</span></div>
-                <div class="nc-metric"><b id="nc-m-volt">13.34V</b><span>4S LiFePO4 V</span></div>
+                <div class="nc-metric"><b id="nc-m-volt">13.34V</b><span>Batarya Gücü</span></div>
               </div>
             </div>
 
             <!-- RIGHT: TELEMETRY CURVE, SWITCHES & HARDWARE TESTBENCH -->
             <div>
               <div class="nc-panel-card">
-                <h3 style="font-size:19px;margin:0 0 4px">Live PT1000 RTD Temperature & PID Tracking Curve</h3>
+                <h3 style="font-size:19px;margin:0 0 4px">Live Hassas Sıcaklık Sensörü Temperature & PID Tracking Curve</h3>
                 <p style="font-size:13px;color:var(--text-muted);margin:0">Solid gold: Actual ceramic core °C • Dashed: PID target °C (4 Hz telemetry)</p>
                 <div class="nc-chart-box">
                   <svg viewBox="0 0 480 140" preserveAspectRatio="none" role="img" aria-label="PID Thermal Curve">
@@ -298,7 +298,7 @@
 
               <div class="nc-panel-card">
                 <h3 style="font-size:18px;margin:0 0 4px">Interactive Sensor & Safety Testbench (Digital Twin Triggers)</h3>
-                <p style="font-size:13px;color:var(--text-muted);margin:0">Trigger Sensirion SDP31 inhale pressure, >35° 6-axis IMU tilt cutoff, and Dry-Bowl Scorch Guard live:</p>
+                <p style="font-size:13px;color:var(--text-muted);margin:0">Trigger Akıllı Nefes Sensörü inhale pressure, >35° 6-axis IMU tilt cutoff, and Dry-Bowl Scorch Guard live:</p>
                 <div class="nc-sim-actions">
                   <button type="button" class="btn gold sm" id="nc-sim-puff">💨 Hold: Inhale Puff (-48 Pa)</button>
                   <button type="button" class="btn glass sm" id="nc-sim-purge" style="border-color:rgba(6,182,212,0.5);color:#67e8f9">🌬️ Smart Purge Blow (+45 Pa)</button>
@@ -315,7 +315,7 @@
         <div role="tabpanel" id="nc-panel-2" aria-labelledby="nc-tab-2" hidden="until-found">
           <div class="nc-panel-card">
             <h3 style="font-size:22px;margin:0 0 6px">NARION Lounge OS — Live Multi-Table Bar Dashboard</h3>
-            <p style="font-size:14px;color:var(--text-muted);margin:0 0 20px">In 30-table lounge mode, SoftAP stays 100% OFF (zero Wi-Fi beacon congestion); heads stream encrypted ESP-NOW telemetry to an Ethernet Bar Gateway with live 5-second Hot-Swap alerts:</p>
+            <p style="font-size:14px;color:var(--text-muted);margin:0 0 20px">In 30-table lounge mode, SoftAP stays 100% OFF (zero Wi-Fi beacon congestion); heads stream encrypted Kablosuz Lounge Ağı telemetry to an Ethernet Bar Gateway with live 5-second Hot-Swap alerts:</p>
 
             <div class="nc-fleet-grid">
               <div class="nc-table-card">
@@ -327,7 +327,7 @@
               <div class="nc-table-card">
                 <div style="display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:11.5px;color:var(--accent-ok)"><span>TABLE 02 • MAIN LOUNGE</span><span>● 74% (66 min)</span></div>
                 <div style="font-family:var(--f-serif);font-size:28px;color:#fff;margin:8px 0 4px">225.2°C <span style="font-size:13px;color:var(--gold-light);font-family:var(--f-sans)">Dark Leaf</span></div>
-                <div style="font-size:12.5px;color:var(--text-muted)">68 Puffs • +15% SDP31 Boost Active</div>
+                <div style="font-size:12.5px;color:var(--text-muted)">68 Puffs • +15% Akıllı Nefes Boost Active</div>
               </div>
 
               <div class="nc-table-card">
@@ -369,8 +369,8 @@
             </div>
 <div class="card" style="padding:20px">
               <div style="font-family:var(--f-mono);font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:6px">02 · CLOSED-LOOP OBSERVER (R2.1)</div>
-              <h4 style="font-size:17px;margin:0 0 8px;color:#fff">Duty-Drop + SDP31 Dry-Bowl Scorch Guard</h4>
-              <p style="font-size:13.5px;color:#cbd5e1;margin:0;line-height:1.6">While PID holds steady temperature, depleting glycerin/water removes latent vaporization load and drops steady-state PWM duty; cross-checked via normalized SDP31 puff cooling (ΔT / ∫|Pa|dt) to cut power before scorching.</p>
+              <h4 style="font-size:17px;margin:0 0 8px;color:#fff">Akıllı Kuru Tütün Dry-Bowl Scorch Guard</h4>
+              <p style="font-size:13.5px;color:#cbd5e1;margin:0;line-height:1.6">While PID holds steady temperature, depleting glycerin/water removes latent vaporization load and drops steady-state heating output; cross-checked via normalized Akıllı Nefes puff cooling  to cut power before scorching.</p>
             </div>
 <div class="card" style="padding:20px">
               <div style="font-family:var(--f-mono);font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:6px">03 · $0 EXTRA BOM (B2B LOUNGE)</div>
@@ -378,9 +378,9 @@
               <p style="font-size:13.5px;color:#cbd5e1;margin:0;line-height:1.6">Prevents lounge guests from cranking heat to 240°C and scorching Blonde leaf. Staff locks a safe window (e.g. 245–295°C via PIN 1453) while preserving guest fine-tuning.</p>
             </div>
 <div class="card" style="padding:20px">
-              <div style="font-family:var(--f-mono);font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:6px">04 · BLE 5.0 + LOCAL HTTP + ESP-NOW</div>
-              <h4 style="font-size:17px;margin:0 0 8px;color:#fff">Same-Origin iOS Local UI &amp; B2B ESP-NOW</h4>
-              <p style="font-size:13.5px;color:#cbd5e1;margin:0;line-height:1.6">Android uses Web Bluetooth GATT; iPhone Safari opens the self-contained UI served directly by ESP32-S3 over http://192.168.4.1 (WPA2 on-demand AP, zero Mixed Content issues). 30-table lounges run encrypted ESP-NOW.</p>
+              <div style="font-family:var(--f-mono);font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:6px">04 · BLE 5.0 + LOCAL HTTP + Kablosuz Lounge Ağı</div>
+              <h4 style="font-size:17px;margin:0 0 8px;color:#fff">Same-Origin iOS Local UI &amp; B2B Kablosuz Lounge Ağı</h4>
+              <p style="font-size:13.5px;color:#cbd5e1;margin:0;line-height:1.6">Android uses Web Bluetooth GATT; iPhone Safari opens the self-contained UI served directly by NARION Akıllı İşlemci over http://192.168.4.1 (WPA2 on-demand AP, zero Mixed Content issues). 30-table lounges run encrypted Kablosuz Lounge Ağı.</p>
             </div>
 <div class="card" style="padding:20px">
               <div style="font-family:var(--f-mono);font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:6px">05 · $0 EXTRA BOM (FIRMWARE)</div>
@@ -390,15 +390,11 @@
 <div class="card" style="padding:20px">
               <div style="font-family:var(--f-mono);font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:6px">06 · MANDATORY SERIES 01 4-LAYER HW SAFETY (&lt;$2 BOM)</div>
               <h4 style="font-size:17px;margin:0 0 8px;color:#fff">355°C TCO Fuse + Dual Sensor + 335°C Comparator</h4>
-              <p style="font-size:13.5px;color:#cbd5e1;margin:0;line-height:1.6">Hardware-independent thermal runaway protection: 250°C series thermal cutoff fuse, secondary 100k NTC cross-check (&gt;15°C fault), 335°C TLV3012 analog gate kill, and 10 kΩ MOSFET gate pull-down.</p>
+              <p style="font-size:13.5px;color:#cbd5e1;margin:0;line-height:1.6">Hardware-independent thermal runaway protection: 250°C series thermal cutoff fuse, secondary Yedek Emniyet Sensörü cross-check (&gt;15°C fault), 335°C Bağımsız Emniyet Kesicisi analog gate kill, and 10 kΩ Güç Ünitesi gate pull-down.</p>
             </div>
             </div>
 
-            <h4 style="font-family:var(--f-mono);font-size:12px;color:var(--gold-light);letter-spacing:0.08em;text-transform:uppercase;margin:0 0 8px">
-              LIVE BLE GATT TELEMETRY &amp; COMMAND PACKET INSPECTOR (SERVICE: 4e415249-4f4e-484d-4432-000000000001)
-            </h4>
-            <div class="nc-hex-box" id="nc-wire-hex">TX CMD (12B) : --
-RX TEL (20B) : --</div>
+            
           </div>
         </div>
       </div>

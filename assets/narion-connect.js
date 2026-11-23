@@ -7,7 +7,7 @@
  *  2. Web Bluetooth GATT Client (Android / Desktop Chrome / Edge)
  *  3. Same-Origin iOS Safari Local HTTP/WS Flow (blocks HTTPS->ws:// Mixed Content & opens explicit modal guide)
  *  4. Conserved Closed-Loop Lumped-Thermal Digital Twin (explicitly badged as Simulator when unconnected)
- *  5. Rev R2.2 Smart Purge Relief (+35 Pa -> 12s 0% PWM & -5°C), NFC 13g Eco-Pod (275°C) & Sommelier PIN Lock
+ *  5. Rev R2.2 Smart Purge Relief (+35 Pa -> 12s AKILLI TAHLİYE & -5°C), NFC 13g Eco-Pod (275°C) & Sommelier PIN Lock
  */
 (function () {
   'use strict';
@@ -72,13 +72,13 @@
       stStandby: 'BEKLEME MODU',
       stPreheat: 'SERAMİK ÖN ISITMA',
       stReady: 'PID HEDEF ISIDA KİLİTLİ',
-      stDraw: 'SDP31 NEFES BOOST (+%15)',
-      stPurge: 'SMART PURGE TAHLİYE (0% PWM • -5°C)',
+      stDraw: 'AKILLI NEFES BOOST (+%15)',
+      stPurge: 'SMART PURGE TAHLİYE (AKILLI TAHLİYE • -5°C)',
       stSleep: 'EKO UYKU (185°C KORUMA)',
       stClean: '65°C ÖN-TEMİZLİK AKTİF',
       stFaultTilt: 'ACİL KESİCİ: >35° DEVRİLME!',
-      stFaultScorch: 'KORUMA: DUTY-DROP KURU HAZNE!',
-      stFaultSensorDiv: 'SENSÖR FARK HATASI (|PT1000-NTC|>15°C)',
+      stFaultScorch: 'KORUMA: AKILLI KURU TÜTÜN KORUMASI!',
+      stFaultSensorDiv: 'SENSÖR FARK HATASI (ÇİFT SENSÖR EMNİYETİ)',
       stFaultHwComp: '335°C DONANIM KOMPARATÖR KESİCİ!',
       stFaultBat: 'BATARYA DÜŞÜK: 5 SN HOT-SWAP YAPIN',
       targetFmt: 'Hedef: {t}°C • {m}',
@@ -89,7 +89,7 @@
       pinErr: 'Hatalı Sommelier PIN kodu! (Varsayılan Demo PIN: 1453)',
       lockBlocked: 'Garson Sommelier Kilidi aktif: Sıcaklık yalnızca izin verilen aralıkta (245–295°C) değiştirilebilir.',
       cleanTooHot: 'Ön-temizlik modu için haznenin 95°C altında olması gerekir.',
-      purgeToast: 'Smart Purge (+45 Pa) algılandı: 12 sn ısıtıcı kesildi (%0 PWM) ve hedef -5°C düşürüldü.',
+      purgeToast: 'Smart Purge (+45 Pa) algılandı: 12 sn ısıtıcı kesildi (AKILLI KESİCİ) ve hedef -5°C düşürüldü.',
       nfcPodToast: 'NFC 13g Eco-Pod okundu (0x09): 275°C reçetesi ve 3 kademeli aroma merdiveni yüklendi (%41 tütün tasarrufu).'
     },
     en: {
@@ -99,12 +99,12 @@
       stStandby: 'STANDBY MODE',
       stPreheat: 'CERAMIC PRE-HEATING',
       stReady: 'PID LOCKED AT TARGET',
-      stDraw: 'SDP31 DRAW BOOST (+15%)',
-      stPurge: 'SMART PURGE RELIEF (0% PWM • -5°C)',
+      stDraw: 'SMART DRAW BOOST (+15%)',
+      stPurge: 'SMART PURGE RELIEF (AKILLI TAHLİYE • -5°C)',
       stSleep: 'ECO AUTO-SLEEP (185°C)',
       stClean: '65°C WARM SELF-CLEAN',
       stFaultTilt: 'SAFETY CUTOFF: >35° TILT!',
-      stFaultScorch: 'GUARD: DUTY-DROP DRY BOWL!',
+      stFaultScorch: 'GUARD: SMART DRY-BOWL GUARD!',
       stFaultSensorDiv: 'DUAL-SENSOR DIVERGENCE (>15°C)',
       stFaultHwComp: '335°C HW COMPARATOR TRIP!',
       stFaultBat: 'LOW BATTERY: 5s HOT-SWAP NEEDED',
@@ -116,7 +116,7 @@
       pinErr: 'Invalid Sommelier PIN! (Default Demo PIN: 1453)',
       lockBlocked: 'Sommelier Lock active: Guest adjustments are clamped to 245–295°C.',
       cleanTooHot: 'Bowl must cool below 95°C before starting 65°C Self-Clean.',
-      purgeToast: 'Smart Purge (+45 Pa) detected: Heater cut to 0% PWM for 12s and target stepped down by -5°C.',
+      purgeToast: 'Smart Purge (+45 Pa) detected: Heater cut to AKILLI TAHLİYE for 12s and target stepped down by -5°C.',
       nfcPodToast: 'NFC 13g Eco-Pod synced (0x09): 275°C curve & 3-stage flavor ramp loaded (41% tobacco savings).'
     },
     ar: {
@@ -126,8 +126,8 @@
       stStandby: 'وضع الاستعداد',
       stPreheat: 'تسخين سيراميك تمهيدي',
       stReady: 'ثبات حراري PID جاهز',
-      stDraw: 'تعزيز السحب SDP31 (+15%)',
-      stPurge: 'تفريغ ذكي SMART PURGE (0% PWM • -5°C)',
+      stDraw: 'تعزيز السحب الذكي (+15%)',
+      stPurge: 'تفريغ ذكي SMART PURGE (AKILLI TAHLİYE • -5°C)',
       stSleep: 'سكون ذكي (185°C)',
       stClean: 'تنظيف دافئ 65°C',
       stFaultTilt: 'فصل أمان فوري: ميلان >35°!',
@@ -154,7 +154,7 @@
       stPreheat: 'ПРОГРЕВ КЕРАМИКИ',
       stReady: 'PID СТАБИЛИЗИРОВАН',
       stDraw: 'SDP31 ТЯГА BOOST (+15%)',
-      stPurge: 'SMART PURGE ПРОДУВКА (0% PWM • -5°C)',
+      stPurge: 'SMART PURGE ПРОДУВКА (AKILLI TAHLİYE • -5°C)',
       stSleep: 'ЭКО-СОН (185°C)',
       stClean: '65°C МЯГКАЯ ОЧИСТКА',
       stFaultTilt: 'АВАРИЙНЫЙ СТОП: НАКЛОН >35°!',
@@ -170,7 +170,7 @@
       pinErr: 'Неверный PIN сомелье! (Демо PIN: 1453)',
       lockBlocked: 'Активна блокировка кальянщика: гостю доступен диапазон 245–295°C.',
       cleanTooHot: 'Для очистки чаша должна остыть ниже 95°C.',
-      purgeToast: 'Smart Purge (+45 Па): нагрев отключён на 12 сек (0% PWM), цель снижена на -5°C.',
+      purgeToast: 'Smart Purge (+45 Па): нагрев отключён на 12 сек (AKILLI TAHLİYE), цель снижена на -5°C.',
       nfcPodToast: 'NFC 13 г Eco-Pod (275°C): загружен 3-ступенчатый профиль (экономия 41% табака).'
     }
   };
@@ -1101,8 +1101,8 @@
       sendCommand(CMD.POWER_STANDBY, 0, 0, 0);
       twin.purgeUntil = Date.now() + 90000;
       var msg = LANG === 'tr'
-        ? '❄️ Cool-Touch™ Maglev Mikro-Fan %100 devirde: Dış kasa 90 saniyede el değecek sıcaklığa (<38°C) indiriliyor.'
-        : '❄️ Cool-Touch™ Maglev Micro-Blower active: Rapidly cooling outer shell below 38°C in 90 seconds.';
+        ? '❄️ Cool-Touch™ Cool-Touch Soğutma %100 devirde: Dış kasa 90 saniyede el değecek sıcaklığa (<38°C) indiriliyor.'
+        : '❄️ Cool-Touch™ Cool-Touch Cooling active: Rapidly cooling outer shell below 38°C in 90 seconds.';
       showToast(msg);
     });
   }

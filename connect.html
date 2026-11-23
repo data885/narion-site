@@ -100,11 +100,11 @@
     <div class="nc-usp-strip">
       <div class="nc-usp-chip">
         <span style="font-size:20px;flex:none" aria-hidden="true">❄️</span>
-        <div><strong>Cool-Touch™ ≤39°C Zırh</strong><span>Çift cidarlı Aerojel + Maglev fan ile asla el yakmaz; 90 sn hızlı soğur.</span></div>
+        <div><strong>Cool-Touch™ ≤39°C Zırh</strong><span>Çift cidarlı Termal Zırh + aktif soğutma ile asla el yakmaz; 90 sn hızlı soğur.</span></div>
       </div>
       <div class="nc-usp-chip">
         <span style="font-size:20px;flex:none" aria-hidden="true">⚡</span>
-        <div><strong>28 Dk Hızlı Şarj LiFePO4</strong><span>2 saat bekletmez; 3.500+ döngü ömürlü yanmaz pil + kutuda yedek kartuş.</span></div>
+        <div><strong>28 Dk Süper Hızlı Şarj</strong><span>2 saat bekletmez; 3.500+ döngü ömürlü yanmaz pil + kutuda yedek kartuş.</span></div>
       </div>
       <div class="nc-usp-chip">
         <span style="font-size:20px;flex:none" aria-hidden="true">🍂</span>
@@ -123,7 +123,7 @@
           <span class="nc-pill-dot" aria-hidden="true"></span>
           <span id="nc-conn-text">SİMÜLATÖR MODU (CİHAZ BAĞLI DEĞİL)</span>
         </span>
-        <span class="nc-pill">FW v2.2.0 • Cool-Touch & LiFePO4</span>
+        <span class="nc-pill">NARION Smart OS</span>
       </div>
       <div class="nc-conn-group">
         <button type="button" class="btn gold sm" id="nc-btn-ble">📡 Bluetooth (BLE 5.0) ile Lüleye Bağlan</button>
@@ -153,7 +153,7 @@
             <!-- LEFT: HANDSET CONTROLLER -->
             <div class="nc-handset">
               <div class="nc-handset-head">
-                <span>NRN-HMD-TF-002 R2.2</span>
+                <span>NARION SMART HMD</span>
                 <span style="color:var(--accent-ok)">0.0 ppm CO</span>
               </div>
 
@@ -166,7 +166,7 @@
               </div>
 
               <div id="nc-fault-banner" hidden style="margin-bottom:14px;padding:12px;border-radius:12px;background:rgba(239,68,68,0.16);border:1px solid rgba(239,68,68,0.55);color:#fecaca;font-size:12.5px">
-                <div style="margin-bottom:8px;font-weight:600">⚠️ Güvenlik Kesicisi Devrede (MOSFET %0) — Başlığı düzeltip kilidi sıfırlayın:</div>
+                <div style="margin-bottom:8px;font-weight:600">⚠️ Güvenlik Kesicisi Devrede (Güç Ünitesi %0) — Başlığı düzeltip kilidi sıfırlayın:</div>
                 <button type="button" class="btn gold sm" id="nc-btn-clear-fault" style="width:100%">✅ Dik Konuma Alındı — Kilidi Sıfırla</button>
               </div>
 
@@ -255,17 +255,17 @@
               <div class="nc-metrics">
                 <div class="nc-metric"><b id="nc-m-bat">%91</b><span>Batarya SOC</span></div>
                 <div class="nc-metric"><b id="nc-m-rem">91 dk</b><span>Kalan Süre</span></div>
-                <div class="nc-metric"><b id="nc-m-pwm">%34</b><span>MOSFET Güç</span></div>
-                <div class="nc-metric"><b id="nc-m-draw">0 Pa</b><span>SDP31 Çekiş</span></div>
+                <div class="nc-metric"><b id="nc-m-pwm">%34</b><span>Isıtma Gücü</span></div>
+                <div class="nc-metric"><b id="nc-m-draw">0 Pa</b><span>Nefes Algılama</span></div>
                 <div class="nc-metric"><b id="nc-m-puff">14</b><span>Nefes Sayısı</span></div>
-                <div class="nc-metric"><b id="nc-m-volt">13.34V</b><span>4S LiFePO4 V</span></div>
+                <div class="nc-metric"><b id="nc-m-volt">13.34V</b><span>Batarya Gücü</span></div>
               </div>
             </div>
 
             <!-- RIGHT: TELEMETRY CURVE, SWITCHES & HARDWARE TESTBENCH -->
             <div>
               <div class="nc-panel-card">
-                <h3 style="font-size:19px;margin:0 0 4px">Canlı PT1000 RTD Sıcaklık & PID Takip Grafiği</h3>
+                <h3 style="font-size:19px;margin:0 0 4px">Canlı Hassas Sıcaklık Sensörü Sıcaklık & PID Takip Grafiği</h3>
                 <p style="font-size:13px;color:var(--text-muted);margin:0">Altın çizgi: Gerçek seramik çekirdek °C • Kesikli çizgi: PID hedef °C (4 Hz örnekleme)</p>
                 <div class="nc-chart-box">
                   <svg viewBox="0 0 480 140" preserveAspectRatio="none" role="img" aria-label="PID Thermal Curve">
@@ -298,7 +298,7 @@
 
               <div class="nc-panel-card">
                 <h3 style="font-size:18px;margin:0 0 4px">Canlı Donanım & Sensör Test Laboratuvarı (Simülasyon Tetikleyicileri)</h3>
-                <p style="font-size:13px;color:var(--text-muted);margin:0">ESP32-S3 üzerindeki Sensirion SDP31 basınç sensörünü, 6-eksen IMU devrilme kesicisini ve tütün kuruma korumasını canlı test edin:</p>
+                <p style="font-size:13px;color:var(--text-muted);margin:0">NARION Akıllı İşlemci üzerindeki Akıllı Nefes Sensörü basınç sensörünü, 6-eksen IMU devrilme kesicisini ve tütün kuruma korumasını canlı test edin:</p>
                 <div class="nc-sim-actions">
                   <button type="button" class="btn gold sm" id="nc-sim-puff">💨 Basılı Tut: Nefes Çek (-48 Pa)</button>
                   <button type="button" class="btn glass sm" id="nc-sim-purge" style="border-color:rgba(6,182,212,0.5);color:#67e8f9">🌬️ Smart Purge Üfle (+45 Pa)</button>
@@ -315,7 +315,7 @@
         <div role="tabpanel" id="nc-panel-2" aria-labelledby="nc-tab-2" hidden="until-found">
           <div class="nc-panel-card">
             <h3 style="font-size:22px;margin:0 0 6px">NARION Lounge OS — Canlı Masa & Batarya Filo Ekranı</h3>
-            <p style="font-size:14px;color:var(--text-muted);margin:0 0 20px">30 masalı lounge modunda SoftAP tamamen kapalıdır (0 Wi-Fi beacon kirliliği); başlıklar şifreli ESP-NOW yıldız topolojisiyle Ethernet Bar Gateway'e bağlanır ve 5 sn Hot-Swap uyarıları anlık izlenir:</p>
+            <p style="font-size:14px;color:var(--text-muted);margin:0 0 20px">30 masalı lounge modunda SoftAP tamamen kapalıdır (0 Wi-Fi beacon kirliliği); başlıklar şifreli Kablosuz Lounge Ağı yıldız topolojisiyle Ethernet Bar Gateway'e bağlanır ve 5 sn Hot-Swap uyarıları anlık izlenir:</p>
 
             <div class="nc-fleet-grid">
               <div class="nc-table-card">
@@ -327,7 +327,7 @@
               <div class="nc-table-card">
                 <div style="display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:11.5px;color:var(--accent-ok)"><span>MASA 02 • SALON</span><span>● %74 (66 dk)</span></div>
                 <div style="font-family:var(--f-serif);font-size:28px;color:#fff;margin:8px 0 4px">225.2°C <span style="font-size:13px;color:var(--gold-light);font-family:var(--f-sans)">Dark Leaf</span></div>
-                <div style="font-size:12.5px;color:var(--text-muted)">68 Nefes • +%15 SDP31 Boost Aktif</div>
+                <div style="font-size:12.5px;color:var(--text-muted)">68 Nefes • +%15 Akıllı Nefes Boost Aktif</div>
               </div>
 
               <div class="nc-table-card">
@@ -369,8 +369,8 @@
             </div>
 <div class="card" style="padding:20px">
               <div style="font-family:var(--f-mono);font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:6px">02 · KAPALI ÇEVRİM GÖZLEMCİ (R2.1)</div>
-              <h4 style="font-size:17px;margin:0 0 8px;color:#fff">Duty-Drop + SDP31 Kuru Tütün Koruması</h4>
-              <p style="font-size:13.5px;color:#cbd5e1;margin:0;line-height:1.6">PID hedef ısıda kilitliyken gliserin/su tükendiğinde buharlaşma entalpisi biter ve kararlı hal PWM görev döngüsü düşer; SDP31 nefes soğuma katsayısıyla (ΔT / ∫|Pa|dt) çapraz doğrulanarak acı yanık oluşmadan ısı kesilir.</p>
+              <h4 style="font-size:17px;margin:0 0 8px;color:#fff">Akıllı Kuru Tütün Kuru Tütün Koruması</h4>
+              <p style="font-size:13.5px;color:#cbd5e1;margin:0;line-height:1.6">PID hedef ısıda kilitliyken gliserin/su tükendiğinde buharlaşma entalpisi biter ve kararlı hal ısıtma gücü düşer; Akıllı Nefes nefes soğuma katsayısıyla  çapraz doğrulanarak acı yanık oluşmadan ısı kesilir.</p>
             </div>
 <div class="card" style="padding:20px">
               <div style="font-family:var(--f-mono);font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:6px">03 · $0 EK MALİYET (B2B KAFE)</div>
@@ -378,9 +378,9 @@
               <p style="font-size:13.5px;color:#cbd5e1;margin:0;line-height:1.6">Kafede müşterinin uygulamadan 240°C'ye basıp Blonde tütünü yakmasını engeller. Garson PIN (1453) ile güvenli aralığı (245–295°C) kilitler; müşteri bu aralıkta özgürce ayar yapar.</p>
             </div>
 <div class="card" style="padding:20px">
-              <div style="font-family:var(--f-mono);font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:6px">04 · BLE 5.0 + YEREL HTTP + ESP-NOW</div>
-              <h4 style="font-size:17px;margin:0 0 8px;color:#fff">Same-Origin iOS Sunucusu &amp; B2B ESP-NOW</h4>
-              <p style="font-size:13.5px;color:#cbd5e1;margin:0;line-height:1.6">Android Web Bluetooth ile bağlanır; iPhone Safari ise HTTPS Mixed Content engeline takılmadan doğrudan ESP32-S3'ün sunduğu şifreli WPA2 yerel arayüzünden (http://192.168.4.1) çalışır. Kafelerde ESP-NOW kullanılır.</p>
+              <div style="font-family:var(--f-mono);font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:6px">04 · BLE 5.0 + YEREL HTTP + Kablosuz Lounge Ağı</div>
+              <h4 style="font-size:17px;margin:0 0 8px;color:#fff">Same-Origin iOS Sunucusu &amp; B2B Kablosuz Lounge Ağı</h4>
+              <p style="font-size:13.5px;color:#cbd5e1;margin:0;line-height:1.6">Android Web Bluetooth ile bağlanır; iPhone Safari ise HTTPS Mixed Content engeline takılmadan doğrudan NARION Akıllı İşlemci'ün sunduğu şifreli WPA2 yerel arayüzünden (http://192.168.4.1) çalışır. Kafelerde Kablosuz Lounge Ağı kullanılır.</p>
             </div>
 <div class="card" style="padding:20px">
               <div style="font-family:var(--f-mono);font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:6px">05 · $0 EK MALİYET (YAZILIM)</div>
@@ -390,15 +390,11 @@
 <div class="card" style="padding:20px">
               <div style="font-family:var(--f-mono);font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:6px">06 · SERİ 01 ZORUNLU 4'LÜ DONANIM KORUMASI (&lt;$2 BOM)</div>
               <h4 style="font-size:17px;margin:0 0 8px;color:#fff">355°C TCO Sigorta + Çift Sensör + 335°C Komparatör</h4>
-              <p style="font-size:13.5px;color:#cbd5e1;margin:0;line-height:1.6">250°C seri termal sigorta, PT1000 + bağımsız 100k NTC fark denetimi (&gt;15°C hata), MCU'dan bağımsız 335°C TLV3012 analog gate kesici ve 10 kΩ MOSFET pull-down direnciyle donanımsal termal kaçak koruması.</p>
+              <p style="font-size:13.5px;color:#cbd5e1;margin:0;line-height:1.6">250°C seri termal sigorta, Hassas Sensör + bağımsız Yedek Emniyet Sensörü fark denetimi (&gt;15°C hata), MCU'dan bağımsız 335°C Bağımsız Emniyet Kesicisi analog gate kesici ve otomatik donanım korumasıyla donanımsal termal kaçak koruması.</p>
             </div>
             </div>
 
-            <h4 style="font-family:var(--f-mono);font-size:12px;color:var(--gold-light);letter-spacing:0.08em;text-transform:uppercase;margin:0 0 8px">
-              CANLI BLE GATT TELEMETRİ &amp; KOMUT PAKET İNCELEYİCİ (SERVICE: 4e415249-4f4e-484d-4432-000000000001)
-            </h4>
-            <div class="nc-hex-box" id="nc-wire-hex">TX CMD (12B) : --
-RX TEL (20B) : --</div>
+            
           </div>
         </div>
       </div>
