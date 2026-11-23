@@ -102,7 +102,7 @@
           <span class="nc-pill-dot" aria-hidden="true"></span>
           <span id="nc-conn-text">РЕЖИМ СИМУЛЯТОРА (БЕЗ УСТРОЙСТВА)</span>
         </span>
-        <span class="nc-pill">FW v2.1.1 • Rev R2.1 GATT</span>
+        <span class="nc-pill">FW v2.2.0 • Cool-Touch & LiFePO4</span>
       </div>
       <div class="nc-conn-group">
         <button type="button" class="btn gold sm" id="nc-btn-ble">📡 Подключить по Bluetooth (BLE 5.0)</button>
@@ -132,15 +132,15 @@
             <!-- LEFT: HANDSET CONTROLLER -->
             <div class="nc-handset">
               <div class="nc-handset-head">
-                <span>NRN-HMD-TF-002 R2.1</span>
+                <span>NRN-HMD-TF-002 R2.2</span>
                 <span style="color:var(--accent-ok)">0.0 ppm CO</span>
               </div>
 
               <div class="nc-halo-ring" id="nc-halo-ring">
                 <div class="nc-halo-inner">
                   <div class="nc-halo-state" id="nc-halo-state">PID READY</div>
-                  <div class="nc-temp-actual" id="nc-temp-actual">215.0°</div>
-                  <div class="nc-temp-target" id="nc-temp-target">215°C</div>
+                  <div class="nc-temp-actual" id="nc-temp-actual">277.5°</div>
+                  <div class="nc-temp-target" id="nc-temp-target">278°C</div>
                 </div>
               </div>
 
@@ -151,12 +151,12 @@
 
               <div class="nc-slider-box">
                 <div class="nc-slider-head">
-                  <label for="nc-temp-slider">Целевая температура PID (150°C – 240°C)</label>
-                  <span class="nc-slider-val" id="nc-slider-val">215°C</span>
+                  <label for="nc-temp-slider">Целевая температура PID (170°C – 320°C)</label>
+                  <span class="nc-slider-val" id="nc-slider-val">278°C</span>
                 </div>
                 <div class="nc-range-row">
                   <button type="button" class="nc-step-btn" id="nc-step-minus" aria-label="-1°C">−</button>
-                  <input type="range" class="nc-range" id="nc-temp-slider" min="150" max="240" step="1" value="215">
+                  <input type="range" class="nc-range" id="nc-temp-slider" min="170" max="320" step="1" value="278">
                   <button type="button" class="nc-step-btn" id="nc-step-plus" aria-label="+1°C">+</button>
                 </div>
                 <div class="nc-lock-banner" id="nc-lock-banner" hidden>
@@ -164,22 +164,61 @@
                 </div>
               </div>
 
+              
+              <!-- R2.2 SMART TOBACCO BRAND & MOLASSES ASSISTANT -->
+              <div class="nc-tobacco-box" style="margin:14px 0;padding:14px;border-radius:14px;background:rgba(212,175,55,0.08);border:1px solid rgba(212,175,55,0.35)">
+                <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px">
+                  <strong style="font-size:13.5px;color:#fef3c7">🍂 Умный подбор температуры по бренду и сиропистости табака</strong>
+                  <span style="font-size:11px;padding:2px 8px;border-radius:99px;background:rgba(16,185,129,0.18);color:#6ee7b7;font-weight:700">Эксклюзив R2.2</span>
+                </div>
+                <div style="display:grid;grid-template-columns:1fr;gap:8px;margin-bottom:9px">
+                  <select id="nc-tobacco-brand" aria-label="Бренд табака" style="width:100%;padding:9px 11px;border-radius:10px;background:#111318;color:#f8fafc;border:1px solid rgba(255,255,255,0.16);font-size:13px">
+                    <option value="adalya">Adalya / Jibiar / Holster (Сиропистый Blonde)</option>
+                    <option value="alfakher" selected>Al Fakher / Serbetli (Классический Blonde)</option>
+                    <option value="nakhla">Nakhla (Мало сиропа / Сухой лист)</option>
+                    <option value="darkside">Darkside / Musthave / Blackburn (Dark Leaf)</option>
+                    <option value="tangiers">Tangiers Noir / Birquq (Чувствительный Dark Leaf)</option>
+                    <option value="starbuzz">Starbuzz / Fumari (Высокий глицерин VG)</option>
+                    <option value="herbal">Бестабачная смесь / Паровые камни</option>
+                  </select>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+                    <select id="nc-syrup-level" aria-label="Сиропистость" style="width:100%;padding:8px 10px;border-radius:10px;background:#111318;color:#f8fafc;border:1px solid rgba(255,255,255,0.16);font-size:12.5px">
+                      <option value="low">Сироп: Мало / Сухой (-10°C)</option>
+                      <option value="normal" selected>Сироп: Средний</option>
+                      <option value="high">Сироп: Очень влажный (+8°C)</option>
+                    </select>
+                    <select id="nc-pack-style" aria-label="Забивка" style="width:100%;padding:8px 10px;border-radius:10px;background:#111318;color:#f8fafc;border:1px solid rgba(255,255,255,0.16);font-size:12.5px">
+                      <option value="fluffy" selected>Забивка: Воздушная</option>
+                      <option value="semi">Забивка: Средняя</option>
+                      <option value="dense">Забивка: Плотная (Dense)</option>
+                    </select>
+                  </div>
+                </div>
+                <div id="nc-recipe-summary" style="font-size:12px;color:#e2e8f0;background:rgba(0,0,0,0.32);padding:8px 10px;border-radius:9px;margin-bottom:9px;line-height:1.45">
+                  Рекомендуемый профиль: <b>Прогрев 294°C (3.5 мин)</b> → <b>Сессия 278°C</b> → <b>Защита 266°C</b>
+                </div>
+                <div style="display:grid;grid-template-columns:1.35fr 1fr;gap:8px">
+                  <button type="button" class="btn gold sm" id="nc-btn-apply-recipe" style="width:100%">🎯 Применить профиль</button>
+                  <button type="button" class="btn glass sm" id="nc-btn-cooltouch" style="width:100%;border-color:rgba(56,189,248,0.5);color:#7dd3fc">❄️ 90с Cool-Touch обдув</button>
+                </div>
+              </div>
+
               <div class="nc-presets">
                 <button type="button" class="nc-preset-btn" data-mode="1" aria-pressed="false">
                   <span>Blonde Leaf</span>
-                  <small>190°C • Светлый лист / Фрукты</small>
+                  <small>252°C • Светлый лист / Фрукты</small>
                 </button>
                 <button type="button" class="nc-preset-btn" data-mode="2" aria-pressed="true">
                   <span>Medium Баланс</span>
-                  <small>215°C • Густой белый пар</small>
+                  <small>278°C • Густой белый пар</small>
                 </button>
                 <button type="button" class="nc-preset-btn" data-mode="3" aria-pressed="false">
                   <span>Dark Leaf</span>
-                  <small>235°C • Темный лист / Крепкий</small>
+                  <small>294°C • Темный лист / Крепкий</small>
                 </button>
                 <button type="button" class="nc-preset-btn" data-mode="4" aria-pressed="false">
                   <span>Herbal / 0% Ник.</span>
-                  <small>180°C • Бестабачные смеси</small>
+                  <small>234°C • Бестабачные смеси</small>
                 </button>
               </div>
 
@@ -198,7 +237,7 @@
                 <div class="nc-metric"><b id="nc-m-pwm">34%</b><span>Мощность ШИМ</span></div>
                 <div class="nc-metric"><b id="nc-m-draw">0 Pa</b><span>Тяга SDP31</span></div>
                 <div class="nc-metric"><b id="nc-m-puff">14</b><span>Затяжки</span></div>
-                <div class="nc-metric"><b id="nc-m-volt">16.12V</b><span>Пакет 4S</span></div>
+                <div class="nc-metric"><b id="nc-m-volt">13.34V</b><span>Пакет 4S</span></div>
               </div>
             </div>
 
@@ -284,7 +323,7 @@
 
               <div class="nc-table-card">
                 <div style="display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:11.5px;color:#f59e0b"><span>СТОЛ 05 • ЗАЛ</span><span>◐ ПРОГРЕВ (2:10)</span></div>
-                <div style="font-family:var(--f-serif);font-size:28px;color:#fff;margin:8px 0 4px">168.4°C <span style="font-size:13px;color:#fcd34d;font-family:var(--f-sans)">→ Цель 215°C</span></div>
+                <div style="font-family:var(--f-serif);font-size:28px;color:#fff;margin:8px 0 4px">168.4°C <span style="font-size:13px;color:#fcd34d;font-family:var(--f-sans)">→ Цель 278°C</span></div>
                 <div style="font-size:12.5px;color:var(--text-muted)">100% заряд • Готовность к подаче через 1 мин 20 с</div>
               </div>
 

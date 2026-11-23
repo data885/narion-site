@@ -82,7 +82,7 @@
       stFaultHwComp: '248°C DONANIM KOMPARATÖR KESİCİ!',
       stFaultBat: 'BATARYA DÜŞÜK: 5 SN HOT-SWAP YAPIN',
       targetFmt: 'Hedef: {t}°C • {m}',
-      modes: ['Bekleme', 'Blonde (190°C)', 'Medium (215°C)', 'Dark (235°C)', 'Herbal (180°C)', 'Özel PID', 'Ön-Temizlik'],
+      modes: ['Bekleme', 'Az Şerbetli (252°C)', 'Standart Blonde (278°C)', 'Bol Şerbetli (294°C)', 'Herbal (234°C)', 'Özel Reçete', 'Ön-Temizlik'],
       bleUnsupported: 'Bu tarayıcıda Web Bluetooth kapalı (ör. iPhone Safari). Fiziksel başlığa bağlanmak için açılan penceredeki 3 adımlı yerel Wi-Fi (http://192.168.4.1) yolunu izleyin.',
       wsMixedBlocked: 'HTTPS sayfasından yerel ws://192.168.4.1 adresine doğrudan soket açılması tarayıcı güvenlik kuralı (Mixed Content) gereği engellenir. Cihazın kendi Wi-Fi ağına bağlanıp http://192.168.4.1 yerel arayüzünü açın.',
       wsUnreachable: '192.168.4.1:81 üzerinde fiziksel NARION başlığına ulaşılamadı. Lütfen cihazda 3 sn basılı tutup Wi-Fi AP modunu açtığınızdan emin olun. (Şu an Simülatör Modundasınız.)',
@@ -109,7 +109,7 @@
       stFaultHwComp: '248°C HW COMPARATOR TRIP!',
       stFaultBat: 'LOW BATTERY: 5s HOT-SWAP NEEDED',
       targetFmt: 'Target: {t}°C • {m}',
-      modes: ['Standby', 'Blonde (190°C)', 'Medium (215°C)', 'Dark (235°C)', 'Herbal (180°C)', 'Custom PID', 'Self-Clean'],
+      modes: ['Standby', 'Low-Syrup (252°C)', 'Classic Blonde (278°C)', 'Juicy Blonde (294°C)', 'Herbal (234°C)', 'Custom Recipe', 'Self-Clean'],
       bleUnsupported: 'Web Bluetooth is unavailable in this browser (e.g. iPhone Safari). Follow the 3-step local Wi-Fi guide (http://192.168.4.1) in the modal to connect to a physical head.',
       wsMixedBlocked: 'Browsers block ws://192.168.4.1 sockets from an HTTPS page (Mixed Content). Join the HMD Wi-Fi AP and open http://192.168.4.1 directly.',
       wsUnreachable: 'Could not reach a physical NARION head at 192.168.4.1:81. Hold the HMD button for 3s to enable WPA2 Wi-Fi AP mode. (Remaining in Simulator Mode.)',
@@ -275,10 +275,10 @@
   var lastCmdHex = '43 01 01 00 02 00 00 00 00 00 00 --';
 
   var twin = {
-    actualC: 213.8,
-    baseTargetC: 215.0,
-    targetC: 215.0,
-    packMv: 16120,
+    actualC: 277.4,
+    baseTargetC: 278.0,
+    targetC: 278.0,
+    packMv: 13320,
     drawPa: 0,
     batteryPct: 91,
     pwmDutyPct: 35,
@@ -292,8 +292,8 @@
     manualBoostUntil: 0,
     autoSleep: false,
     loungeLock: false,
-    lockMinC: 185,
-    lockMaxC: 205,
+    lockMinC: 245,
+    lockMaxC: 295,
     sommelierPin: 1453,
     simInhaling: false,
     inhaleStartedAt: 0,
@@ -306,7 +306,7 @@
 
   var chartHistory = [];
   for (var h = 0; h < 48; h++) {
-    chartHistory.push({ actual: 213.5 + Math.sin(h / 5) * 0.8, target: 215 });
+    chartHistory.push({ actual: 277.2 + Math.sin(h / 5) * 0.8, target: 278 });
   }
 
   function showToast(msg) {
@@ -384,7 +384,7 @@
     }
 
     if (opcode === CMD.SET_MODE) {
-      var modeTemps = { 1: 190, 2: 215, 3: 235, 4: 180 };
+      var modeTemps = { 1: 252, 2: 278, 3: 294, 4: 234 };
       var nextT = modeTemps[p1] || twin.baseTargetC;
       if (twin.loungeLock && pin !== twin.sommelierPin && (nextT < twin.lockMinC || nextT > twin.lockMaxC)) {
         showToast(T.lockBlocked);
@@ -404,7 +404,7 @@
         return;
       }
       twin.modeId = MODE.CUSTOM;
-      twin.baseTargetC = Math.max(150, Math.min(240, reqC));
+      twin.baseTargetC = Math.max(170, Math.min(320, reqC));
       twin.purgeTrimC = 0;
       twin.purgeUntil = 0;
       twin.autoSleep = false;
@@ -425,8 +425,8 @@
       twin.modeId = MODE.SELF_CLEAN;
       twin.baseTargetC = 65;
     } else if (opcode === CMD.RFID_POD_SYNC) {
-      var podPresets = { 1: 190, 2: 215, 3: 235, 4: 208 };
-      var podT = podPresets[p1] || 208;
+      var podPresets = { 1: 252, 2: 278, 3: 294, 4: 275 };
+      var podT = podPresets[p1] || 275;
       if (twin.loungeLock && pin !== twin.sommelierPin) {
         podT = Math.max(twin.lockMinC, Math.min(twin.lockMaxC, podT));
       }
@@ -469,8 +469,8 @@
         effTarget = Math.min(twin.baseTargetC, 185);
       } else {
         effTarget = twin.baseTargetC - (twin.purgeTrimC || 0) + (twin.manualBoost ? 15 : 0);
-        if (effTarget < 150) effTarget = 150;
-        if (effTarget > 240) effTarget = 240;
+        if (effTarget < 170) effTarget = 170;
+        if (effTarget > 320) effTarget = 320;
       }
     }
     twin.targetC = effTarget;
@@ -488,7 +488,7 @@
       var duty = Math.max(0, Math.min(100, ff + 5.0 * err + twin.integral));
       twin.pwmDutyPct = Math.round(duty);
 
-      var pIn = (duty / 100) * 132.0;
+      var pIn = (duty / 100) * 165.0;
       var pHousing = (twin.actualC - 24.5) * 0.19;
       var pWetCond = wetFrac * Math.max(0, twin.actualC - 105.0) * 0.095;
       var pPuffConv = twin.simInhaling ? (11.5 + 8.5 * wetFrac) : 0;
@@ -511,7 +511,7 @@
 
     twin.remainSec = Math.max(60, twin.remainSec - (twin.pwmDutyPct > 0 ? 0.25 : 0.02));
     twin.batteryPct = Math.max(5, Math.min(100, Math.round((twin.remainSec / 6000) * 100)));
-    twin.packMv = 12500 + twin.batteryPct * 42 - twin.pwmDutyPct * 2.5;
+    twin.packMv = 12400 + twin.batteryPct * 11.5 - twin.pwmDutyPct * 1.8;
 
     // Encode -> Decode through real 20-byte wire format + CRC-8!
     var wireFrame = encodeTelemetry(twin);
@@ -633,8 +633,8 @@
   // -------------------------------------------------------------------------
   function syncSliderCssVars(slider) {
     if (!slider) return;
-    slider.style.setProperty('--attr-min', slider.min || 150);
-    slider.style.setProperty('--attr-max', slider.max || 240);
+    slider.style.setProperty('--attr-min', slider.min || 170);
+    slider.style.setProperty('--attr-max', slider.max || 320);
     slider.style.setProperty('--control-value', slider.value);
     var modeLabel = T.modes[twin.modeId] || '';
     slider.setAttribute('aria-valuetext', slider.value + '°C — ' + modeLabel);
@@ -716,7 +716,7 @@
       stateLabel = T.stPreheat;
     }
 
-    var pct = Math.max(8, Math.min(98, Math.round(((f.actualC - 25) / (240 - 25)) * 100)));
+    var pct = Math.max(8, Math.min(98, Math.round(((f.actualC - 25) / (320 - 25)) * 100)));
     if (ring) {
       ring.style.setProperty('--halo-color', haloColor);
       ring.style.setProperty('--dial-pct', pct + '%');
@@ -758,7 +758,7 @@
       faultBanner.hidden = !(f.flags & FLAG.FAULT);
     }
 
-    if (f.targetC >= 150) syncSliderToTarget(f.targetC - ((f.flags & FLAG.MANUAL_BOOST) ? 15 : 0));
+    if (f.targetC >= 170) syncSliderToTarget(f.targetC - ((f.flags & FLAG.MANUAL_BOOST) ? 15 : 0));
 
     chartHistory.push({ actual: f.actualC, target: f.targetC || 25 });
     if (chartHistory.length > 48) chartHistory.shift();
@@ -783,8 +783,8 @@
     var ptsAct = [], ptsSet = [];
     for (var i = 0; i < chartHistory.length; i++) {
       var x = (i / (chartHistory.length - 1)) * w;
-      var yAct = h - ((Math.max(20, Math.min(255, chartHistory[i].actual)) - 20) / 235) * (h - 16) - 8;
-      var ySet = h - ((Math.max(20, Math.min(255, chartHistory[i].target)) - 20) / 235) * (h - 16) - 8;
+      var yAct = h - ((Math.max(20, Math.min(335, chartHistory[i].actual)) - 20) / 315) * (h - 16) - 8;
+      var ySet = h - ((Math.max(20, Math.min(335, chartHistory[i].target)) - 20) / 315) * (h - 16) - 8;
       ptsAct.push(x.toFixed(1) + ',' + yAct.toFixed(1));
       ptsSet.push(x.toFixed(1) + ',' + ySet.toFixed(1));
     }
@@ -817,7 +817,7 @@
     var btnPlus = document.getElementById('nc-step-plus');
     if (btnMinus && slider) {
       btnMinus.addEventListener('click', function () {
-        var v = Math.max(150, Number(slider.value) - 1);
+        var v = Math.max(170, Number(slider.value) - 1);
         slider.value = String(v);
         syncSliderCssVars(slider);
         setText('nc-slider-val', v + '°C');
@@ -826,7 +826,7 @@
     }
     if (btnPlus && slider) {
       btnPlus.addEventListener('click', function () {
-        var v = Math.min(240, Number(slider.value) + 1);
+        var v = Math.min(320, Number(slider.value) + 1);
         slider.value = String(v);
         syncSliderCssVars(slider);
         setText('nc-slider-val', v + '°C');
@@ -936,7 +936,7 @@
         if (choice === 'confirm') {
           var pinVal = Number((pinInput && pinInput.value) || 0);
           var enable = pinDialog.getAttribute('data-desired') === '1' ? 1 : 0;
-          var rangePacked = (185 << 8) | 205;
+          var rangePacked = (245 << 8) | 255;
           sendCommand(CMD.SET_LOUNGE_LOCK, enable, rangePacked, pinVal);
           syncSwitches();
         }
@@ -966,6 +966,7 @@
     }
 
     initConnectTabs();
+    initR22TobaccoAssistant();
 
     updateTransportBadge();
     stepDigitalTwin();
@@ -1025,6 +1026,85 @@
   function onClick(id, fn) {
     var el = document.getElementById(id);
     if (el) el.addEventListener('click', fn);
+  }
+
+
+  // -------------------------------------------------------------------------
+  // 8. Rev R2.2 Tobacco Brand & Molasses Smart Assistant + Cool-Touch Fan
+  // -------------------------------------------------------------------------
+  var TOBACCO_DB = {
+    adalya:   { name: 'Adalya / Jibiar / Holster', preC: 310, preMin: 3.8, sessionC: 292, guardC: 280, syrupG: 14.2 },
+    alfakher: { name: 'Al Fakher / Serbetli',      preC: 294, preMin: 3.5, sessionC: 278, guardC: 266, syrupG: 12.8 },
+    nakhla:   { name: 'Nakhla (Az Şerbetli/Kuru)', preC: 268, preMin: 2.5, sessionC: 252, guardC: 242, syrupG: 8.5  },
+    darkside: { name: 'Darkside / Musthave',       preC: 296, preMin: 3.5, sessionC: 282, guardC: 270, syrupG: 13.5 },
+    tangiers: { name: 'Tangiers Noir / Birquq',    preC: 262, preMin: 3.0, sessionC: 248, guardC: 240, syrupG: 11.0 },
+    starbuzz: { name: 'Starbuzz / Fumari (VG)',    preC: 312, preMin: 3.8, sessionC: 295, guardC: 282, syrupG: 14.8 },
+    herbal:   { name: 'Bitkisel / 0 Nikotin',      preC: 248, preMin: 3.0, sessionC: 234, guardC: 225, syrupG: 13.0 }
+  };
+
+  function computeSelectedRecipe() {
+    var bEl = document.getElementById('nc-tobacco-brand');
+    var sEl = document.getElementById('nc-syrup-level');
+    var pEl = document.getElementById('nc-pack-style');
+    if (!bEl) return null;
+    var base = TOBACCO_DB[bEl.value] || TOBACCO_DB.alfakher;
+    var syrupAdj = (sEl && sEl.value === 'low') ? -10 : ((sEl && sEl.value === 'high') ? 8 : 0);
+    var packAdj = (pEl && pEl.value === 'dense') ? -4 : ((pEl && pEl.value === 'semi') ? 3 : 0);
+    var delta = syrupAdj + packAdj;
+    var clamp = function (x) { return Math.max(170, Math.min(320, Math.round(x))); };
+    return {
+      name: base.name,
+      preC: clamp(base.preC + delta),
+      preMin: base.preMin,
+      sessionC: clamp(base.sessionC + delta),
+      guardC: clamp(base.guardC + delta),
+      syrupG: Math.max(6.0, base.syrupG + (syrupAdj < 0 ? -3.0 : (syrupAdj > 0 ? 1.5 : 0)))
+    };
+  }
+
+  function refreshRecipeSummaryUI() {
+    var rec = computeSelectedRecipe();
+    var box = document.getElementById('nc-recipe-summary');
+    if (!rec || !box) return;
+    if (LANG === 'en') {
+      box.innerHTML = 'Recommended 3-Stage Curve: <b>Pre-Heat ' + rec.preC + '°C (' + rec.preMin + 'm)</b> → <b>Session ' + rec.sessionC + '°C</b> → <b>45m Guard ' + rec.guardC + '°C</b>';
+    } else if (LANG === 'ar') {
+      box.innerHTML = 'المنحنى الذكي المقترح: <b>تسخين ' + rec.preC + '°C</b> ← <b>جلسة ' + rec.sessionC + '°C</b> ← <b>حماية ' + rec.guardC + '°C</b>';
+    } else if (LANG === 'ru') {
+      box.innerHTML = 'Профиль 3 фазы: <b>Прогрев ' + rec.preC + '°C (' + rec.preMin + 'м)</b> → <b>Сессия ' + rec.sessionC + '°C</b> → <b>Защита ' + rec.guardC + '°C</b>';
+    } else {
+      box.innerHTML = 'Önerilen 3-Faz Eğrisi: <b>Ön Isıtma ' + rec.preC + '°C (' + rec.preMin + ' dk)</b> → <b>İdeal İçim ' + rec.sessionC + '°C</b> → <b>45.dk Koruma ' + rec.guardC + '°C</b>';
+    }
+  }
+
+  function initR22TobaccoAssistant() {
+    ['nc-tobacco-brand', 'nc-syrup-level', 'nc-pack-style'].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) el.addEventListener('change', refreshRecipeSummaryUI);
+    });
+    refreshRecipeSummaryUI();
+
+    onClick('nc-btn-apply-recipe', function () {
+      var rec = computeSelectedRecipe();
+      if (!rec) return;
+      twin.syrupGrams = rec.syrupG;
+      twin.autoSteep = true;
+      syncSwitches();
+      sendCommand(CMD.SET_TARGET_TEMP, rec.sessionC * 10, 0, 0);
+      var msg = LANG === 'tr'
+        ? ('🍂 ' + rec.name + ' reçetesi yüklendi: Ön ısıtma ' + rec.preC + '°C → İdeal içim ' + rec.sessionC + '°C (Auto-Steep aktif).')
+        : ('🍂 ' + rec.name + ' profile loaded: Pre-heat ' + rec.preC + '°C → Session ' + rec.sessionC + '°C.');
+      showToast(msg);
+    });
+
+    onClick('nc-btn-cooltouch', function () {
+      sendCommand(CMD.POWER_STANDBY, 0, 0, 0);
+      twin.purgeUntil = Date.now() + 90000;
+      var msg = LANG === 'tr'
+        ? '❄️ Cool-Touch™ Maglev Mikro-Fan %100 devirde: Dış kasa 90 saniyede el değecek sıcaklığa (<38°C) indiriliyor.'
+        : '❄️ Cool-Touch™ Maglev Micro-Blower active: Rapidly cooling outer shell below 38°C in 90 seconds.';
+      showToast(msg);
+    });
   }
 
   if (document.readyState === 'loading') {
