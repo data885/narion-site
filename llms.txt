@@ -1,11 +1,12 @@
 # NARION Smart Hookah Systems
 
-> Designer & 5-axis CNC manufacturer of AISI 316L stainless steel hookahs (17 architectural models) and the coal-free NARION Smart HMD electric heat management system (0 ppm CO combustion, ±1°C PID thermal control, 90-110 min per 74 Wh Samsung 50S cartridge, 45° Bayonet lock). Istanbul, Turkey.
+> Designer & 5-axis CNC manufacturer of AISI 316L stainless steel hookahs (17 architectural models) and the coal-free NARION Smart HMD electric heat management system (0.0 ppm CO combustion, ±1°C PID thermal control, ~35 min fast-charge cartridge for 90+ min sessions, Cool-Touch™ active exterior cooling <42°C, NARION Connect™ tobacco-matched temperature curves, and 45° Bayonet lock). Istanbul, Turkey.
 
 ## Key Pages (TR / EN)
 - English Hub: https://narionhookah.com/en/index.html
 - Turkish Hub: https://narionhookah.com/tr/index.html
 - Smart HMD Electric Head: https://narionhookah.com/en/smart-hmd.html
+- NARION Connect App Demo: https://narionhookah.com/en/connect.html
 - 17 Models Collection: https://narionhookah.com/en/modeller.html
 - Smart HMD vs Charcoal Guide (EN): https://narionhookah.com/en/smart-hmd-vs-charcoal.html
 - Smart HMD vs Kömür Kıyas (TR): https://narionhookah.com/tr/smart-hmd-vs-komur.html

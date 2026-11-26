@@ -233,6 +233,186 @@
       window.gtag('event', 'video_start', { video_title: v.id });
     }
   }, true);
+  // 6. Altın Okuma İlerleme Çubuğu & Kaydırma Duyarlı Üst Menü (scroll-progress-indicator)
+  if (!document.getElementById('narion-scroll-progress')) {
+    var prog = document.createElement('div');
+    prog.id = 'narion-scroll-progress';
+    prog.setAttribute('aria-hidden', 'true');
+    document.body.insertBefore(prog, document.body.firstChild);
+
+    var needsProgFallback =
+      (!window.CSS || !CSS.supports('animation-timeline', 'scroll()')) &&
+      window.matchMedia('(prefers-reduced-motion: no-preference)').matches;
+
+    function syncScrollUI() {
+      var y = window.scrollY || document.documentElement.scrollTop || 0;
+      if (siteHead) siteHead.classList.toggle('is-scrolled', y > 24);
+      if (needsProgFallback) {
+        var maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+        var ratio = maxScroll > 0 ? Math.min(1, Math.max(0, y / maxScroll)) : 0;
+        prog.style.transform = 'scaleX(' + ratio.toFixed(4) + ')';
+      }
+    }
+    window.addEventListener('scroll', syncScrollUI, { passive: true });
+    syncScrollUI();
+  }
+
+  // 7. İnteraktif 3 Filmli Sinema Seçici ([data-narion-cinema])
+  var cinemaRoots = document.querySelectorAll('[data-narion-cinema]');
+  for (var cIdx = 0; cIdx < cinemaRoots.length; cIdx++) {
+    (function (root) {
+      var tabs = root.querySelectorAll('.cinema-tab[data-film-src]');
+      var video = root.querySelector('video[data-cinema-video]');
+      var cap = root.querySelector('[data-cinema-caption]');
+      if (!video || !tabs.length) return;
+
+      for (var t = 0; t < tabs.length; t++) {
+        tabs[t].addEventListener('click', function () {
+          var btn = this;
+          var src = btn.getAttribute('data-film-src');
+          var poster = btn.getAttribute('data-film-poster') || '';
+          var caption = btn.getAttribute('data-film-caption') || '';
+          var title = btn.getAttribute('data-film-id') || btn.textContent.trim();
+
+          for (var j = 0; j < tabs.length; j++) {
+            var active = tabs[j] === btn;
+            tabs[j].classList.toggle('is-active', active);
+            tabs[j].setAttribute('aria-selected', active ? 'true' : 'false');
+          }
+
+          if (cap && caption) cap.textContent = caption;
+          if (poster) video.setAttribute('poster', poster);
+
+          var srcEl = video.querySelector('source');
+          if (srcEl) {
+            srcEl.setAttribute('src', src);
+            video.removeAttribute('src');
+          } else {
+            video.setAttribute('src', src);
+          }
+          video.muted = false;
+          video.controls = true;
+          video.load();
+          var playPromise = video.play();
+          if (playPromise && playPromise.catch) playPromise.catch(function () {});
+
+          if (typeof window.gtag === 'function') {
+            window.gtag('event', 'film_switch', { film_title: title });
+          }
+        });
+      }
+    })(cinemaRoots[cIdx]);
+  }
+
+  // 8. Canlı Stüdyo: Tütün Isı Asistanı & Anlık Tasarruf Hesaplayıcı ([data-narion-studio])
+  var studioRoots = document.querySelectorAll('[data-narion-studio]');
+  for (var stIdx = 0; stIdx < studioRoots.length; stIdx++) {
+    (function (root) {
+      var locale = (root.getAttribute('data-locale') || 'tr').toLowerCase();
+      var pills = root.querySelectorAll('.tobacco-pill[data-temp]');
+      var tempEl = root.querySelector('[data-heat-temp]');
+      var preEl = root.querySelector('[data-heat-preheat]');
+      var densEl = root.querySelector('[data-heat-density]');
+      var noteEl = root.querySelector('[data-heat-note]');
+      var meterEl = root.querySelector('[data-heat-meter]');
+
+      for (var p = 0; p < pills.length; p++) {
+        pills[p].addEventListener('click', function () {
+          var btn = this;
+          for (var j = 0; j < pills.length; j++) {
+            var active = pills[j] === btn;
+            pills[j].classList.toggle('is-active', active);
+            pills[j].setAttribute('aria-pressed', active ? 'true' : 'false');
+          }
+          var temp = Number(btn.getAttribute('data-temp')) || 210;
+          if (tempEl) tempEl.textContent = temp + ' °C';
+          if (preEl) preEl.textContent = btn.getAttribute('data-preheat') || '';
+          if (densEl) densEl.textContent = btn.getAttribute('data-density') || '';
+          if (noteEl) noteEl.textContent = btn.getAttribute('data-note') || '';
+          if (meterEl) {
+            var scale = Math.min(1, Math.max(0.2, (temp - 150) / 140));
+            meterEl.style.transform = 'scaleX(' + scale.toFixed(2) + ')';
+          }
+          if (typeof window.gtag === 'function') {
+            window.gtag('event', 'tobacco_profile_select', {
+              profile: btn.textContent.trim(),
+              target_temp: temp
+            });
+          }
+        });
+      }
+
+      var modeBtns = root.querySelectorAll('.mini-roi-tab[data-roi-mode]');
+      var slider = root.querySelector('[data-roi-range]');
+      var countEl = root.querySelector('[data-roi-count]');
+      var monthlyEl = root.querySelector('[data-roi-monthly]');
+      var yearlyEl = root.querySelector('[data-roi-yearly]');
+      var coalEl = root.querySelector('[data-roi-coal]');
+      var waEl = root.querySelector('[data-roi-wa]');
+      var currentMode = 'cafe';
+
+      function formatMoney(val) {
+        var rounded = Math.round(val);
+        if (locale === 'en') {
+          return '$' + rounded.toLocaleString('en-US');
+        }
+        return '+' + rounded.toLocaleString('tr-TR') + ' ₺';
+      }
+
+      function renderRoi() {
+        if (!slider) return;
+        var daily = Number(slider.value) || 1;
+        var isEn = locale === 'en';
+        var perSession = currentMode === 'cafe' ? (isEn ? 3.2 : 63.74) : (isEn ? 2.8 : 61.86);
+        var monthly = daily * 30 * perSession;
+        var yearly = daily * 365 * perSession;
+        var coalKg = Math.round(daily * 365 * 0.14);
+
+        if (countEl) {
+          countEl.textContent = daily + (isEn ? ' sessions/day' : ' nargile/gün');
+        }
+        if (monthlyEl) monthlyEl.textContent = formatMoney(monthly) + (isEn ? ' / mo' : ' / ay');
+        if (yearlyEl) yearlyEl.textContent = formatMoney(yearly) + (isEn ? ' / yr' : ' / yıl');
+        if (coalEl) {
+          coalEl.textContent =
+            coalKg.toLocaleString(isEn ? 'en-US' : 'tr-TR') + (isEn ? ' kg / yr' : ' kg / yıl');
+        }
+        if (waEl) {
+          var txt = isEn
+            ? 'Hello NARION, for ' + daily + ' daily ' + currentMode + ' sessions I calculated ~' + formatMoney(monthly) + '/mo savings and would like a Smart HMD quote.'
+            : 'Merhaba NARION, günde ' + daily + ' nargile (' + (currentMode === 'cafe' ? 'Kafe & Lounge' : 'Ev') + ') için aylık ' + formatMoney(monthly) + ' tasarruf hesapladım; detaylı bilgi ve demo almak istiyorum.';
+          waEl.href = 'https://wa.me/905467331184?text=' + encodeURIComponent(txt);
+        }
+      }
+
+      for (var m = 0; m < modeBtns.length; m++) {
+        modeBtns[m].addEventListener('click', function () {
+          var b = this;
+          currentMode = b.getAttribute('data-roi-mode') || 'cafe';
+          for (var j = 0; j < modeBtns.length; j++) {
+            var on = modeBtns[j] === b;
+            modeBtns[j].classList.toggle('is-active', on);
+            modeBtns[j].setAttribute('aria-pressed', on ? 'true' : 'false');
+          }
+          if (slider) {
+            if (currentMode === 'home' && Number(slider.value) > 5) slider.value = '2';
+            if (currentMode === 'cafe' && Number(slider.value) < 10) slider.value = '50';
+          }
+          renderRoi();
+        });
+      }
+
+      if (slider) {
+        slider.addEventListener('input', renderRoi);
+        slider.addEventListener('change', function () {
+          if (typeof window.gtag === 'function') {
+            window.gtag('event', 'mini_roi_interact', { mode: currentMode, daily_sessions: Number(slider.value) });
+          }
+        });
+        renderRoi();
+      }
+    })(studioRoots[stIdx]);
+  }
 })();
 
-(function(){var s=document.createElement('script');s.src='../assets/ga4-events.js?v=1';s.defer=true;document.head.appendChild(s);})();
+(function(){var s=document.createElement('script');s.src='/assets/ga4-events.js?v=1';s.defer=true;document.head.appendChild(s);})();

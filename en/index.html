@@ -10,7 +10,7 @@
 <meta name="description" content="Handcrafted thick crystal glass, solid walnut wood, and 316L stainless steel luxury hookah pipes paired with the patent-protected 0.0 ppm carbon monoxide NARION Smart HMD electric hookah bowl.">
 <link rel="icon" type="image/svg+xml" href="../logo/favicon.svg">
 <link rel="apple-touch-icon" href="../logo/apple-touch-icon-180.png">
-<link rel="stylesheet" href="../assets/style.css?v=24">
+<link rel="stylesheet" href="../assets/style.css?v=25">
 <link rel="canonical" href="https://narionhookah.com/en/index.html">
 <link rel="alternate" hreflang="tr" href="https://narionhookah.com/tr/index.html">
 <link rel="alternate" hreflang="en" href="https://narionhookah.com/en/index.html">
@@ -118,6 +118,7 @@
         <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:36px">
           <a class="btn gold" href="modeller.html">Explore the Collection →</a>
           <a class="btn glass" href="smart-hmd.html">Smart HMD Technology</a>
+          <a class="btn brass-outline" href="connect.html">📱 Live App Demo</a>
           <a class="btn glass" href="smart-hmd.html#maliyet-raporu" style="border-color:rgba(201,169,110,0.5);color:var(--gold-light)">📊 Lounge Cost &amp; ROI Report →</a>
         </div>
 
@@ -128,7 +129,7 @@
           </div>
           <div>
             <div class="hero-stat-val">90 <span style="font-size:18px">min</span></div>
-            <div class="hero-stat-lbl">Uninterrupted Sessions on 14.8V Lithium Power</div>
+            <div class="hero-stat-lbl">Uninterrupted Sessions on Fast-Charge Cartridge</div>
           </div>
           <div>
             <div class="hero-stat-val">±1°C</div>
@@ -157,41 +158,149 @@
 
 
 
-  <!-- MARKA FİLMİ -->
-  <section class="sec sec-border-bottom" id="film">
+  <!-- INTERACTIVE 3-FILM CINEMA SHOWCASE -->
+  <section class="sec sec-border-bottom" id="film" data-narion-cinema>
     <div class="wrap">
-      <div style="text-align:center;max-width:720px;margin:0 auto 40px">
-        <span class="eyebrow" style="justify-content:center">The NARION Film</span>
-        <h2>Series 01,<br><em>In Motion.</em></h2>
-        <p class="lead">The silhouette of Series 01, the bayonet mechanism and the Smart HMD head — twenty silent seconds.</p>
+      <div style="text-align:center;max-width:760px;margin:0 auto 30px">
+        <span class="eyebrow" style="justify-content:center">NARION Cinema &amp; Live Showcase</span>
+        <h2>Smart HMD &amp; Series 01,<br><em>In Live Action.</em></h2>
+        <p class="lead">Switch between our latest narrated Smart HMD showcase, busy Istanbul lounge field test, and Series 01 architectural brand film.</p>
       </div>
-      <div class="film-kare">
-        <video id="marka-filmi" poster="../film/narion-poster.jpg" muted loop playsinline autoplay preload="metadata" aria-label="NARION brand film">
-          <source src="../film/narion.webm?v=2" type="video/webm">
-          <source src="../film/narion.mp4?v=2" type="video/mp4">
+
+      <div class="cinema-tabs" role="tablist" aria-label="NARION Films">
+        <button type="button" class="cinema-tab is-active" role="tab" aria-selected="true"
+          data-film-id="smart-hmd-r2-2"
+          data-film-src="../film/narion-smart-hmd-r2-2-tanitim-v2.mp4"
+          data-film-poster="../film/narion-smart-hmd-tanitim-poster.jpg"
+          data-film-caption="Latest Smart HMD showcase: Cool-Touch™ active exterior cooling (<42°C), ~35 min fast-charge swap cartridge, and tobacco-matched NARION Connect™ app presets.">
+          🎙️ Smart HMD Feature Film (New)
+        </button>
+        <button type="button" class="cinema-tab" role="tab" aria-selected="false"
+          data-film-id="kafe-lounge"
+          data-film-src="../film/narion-kafe-lounge-filmi.mp4"
+          data-film-poster="../film/narion-kafe-lounge-filmi-poster.jpg"
+          data-film-caption="Inside a packed lounge: 5-second battery swap without tongs or charcoal braziers, mobile temperature tuning, and 94% heating energy cost reduction.">
+          🏢 Lounge Experience Film
+        </button>
+        <button type="button" class="cinema-tab" role="tab" aria-selected="false"
+          data-film-id="marka-seri-01"
+          data-film-src="../film/narion.mp4"
+          data-film-poster="../film/narion-poster.jpg"
+          data-film-caption="Twenty seconds of Series 01 silhouette, 45° medical bayonet coupling, and Smart HMD integration machined in Istanbul.">
+          ✨ Series 01 Brand Film (20s)
+        </button>
+      </div>
+
+      <div class="cinema-stage">
+        <video data-cinema-video controls playsinline preload="metadata" poster="../film/narion-smart-hmd-tanitim-poster.jpg" aria-label="NARION product film">
+          <source src="../film/narion-smart-hmd-r2-2-tanitim-v2.mp4" type="video/mp4">
         </video>
+        <div class="cinema-meta">
+          <p class="cinema-caption" data-cinema-caption>Latest Smart HMD showcase: Cool-Touch™ active exterior cooling (&lt;42°C), ~35 min fast-charge swap cartridge, and tobacco-matched NARION Connect™ app presets.</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <a class="btn glass sm" href="smart-hmd.html">Smart HMD Details →</a>
+            <a class="btn gold sm" href="connect.html">Open Live App Demo →</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
-<script>
-(function () {
-  var v = document.getElementById('marka-filmi');
-  if (!v) return;
-  // Hareketi azalt tercihi aciksa film kendiliginden oynamaz;
-  // bunun yerine kontrolleri acip kullaniciya birakiyoruz.
-  var az = window.matchMedia('(prefers-reduced-motion: reduce)');
-  function uygula() {
-    if (az.matches) { v.removeAttribute('autoplay'); v.pause(); v.controls = true; }
-    else {
-      v.controls = false;
-      var p = v.play();
-      if (p && p.catch) p.catch(function () { v.controls = true; });
-    }
-  }
-  uygula();
-  if (az.addEventListener) az.addEventListener('change', uygula); else az.addListener(uygula);
-})();
-</script>
+
+  <!-- LIVE STUDIO: TOBACCO HEAT ASSISTANT & INSTANT ROI -->
+  <section class="sec sec-border-bottom" id="canli-studyo" data-narion-studio data-locale="en">
+    <div class="wrap">
+      <div class="shead" style="text-align:center;max-width:760px;margin:0 auto 38px">
+        <span class="eyebrow" style="justify-content:center">Interactive Experience Studio</span>
+        <h2>Pick Your Tobacco, <em>Preview Instant ROI.</em></h2>
+        <p>Test how NARION Connect™ tailors ceramic curve precision for any shisha molasses level and estimate monthly charcoal + labor savings live.</p>
+      </div>
+
+      <div class="live-studio-grid">
+        <div class="live-studio-card is-gold">
+          <div>
+            <span class="eyebrow" style="margin-bottom:6px">NARION Connect™ Preview</span>
+            <h3 style="margin:0 0 8px;font-size:23px">Tobacco-Matched Heat Assistant</h3>
+            <p style="font-size:13.5px;color:var(--text-muted);margin:0 0 16px">Select a leaf &amp; molasses profile to lock peak vaporisation without scorching:</p>
+
+            <div class="tobacco-pills">
+              <button type="button" class="tobacco-pill is-active" aria-pressed="true"
+                data-temp="205" data-preheat="3.4 min" data-density="94% Pure Aroma"
+                data-note="Balanced curve for blonde leaf blends: smooth dense clouds for 90+ minutes with zero harshness.">Adalya / Blonde</button>
+              <button type="button" class="tobacco-pill" aria-pressed="false"
+                data-temp="198" data-preheat="3.2 min" data-density="92% Classic Smoke"
+                data-note="Gentle ramp protecting traditional syrupy cuts while preserving crisp top notes.">Al Fakher / Classic</button>
+              <button type="button" class="tobacco-pill" aria-pressed="false"
+                data-temp="232" data-preheat="3.8 min" data-density="98% Heavy Cloud"
+                data-note="High-heat precision lock engineered for heat-tolerant dark leaf tobacco.">Darkside / Dark Leaf</button>
+              <button type="button" class="tobacco-pill" aria-pressed="false"
+                data-temp="218" data-preheat="3.5 min" data-density="96% Rich Molasses"
+                data-note="Closed-loop PID hold maintaining flavor clarity across heavy molasses mixes.">Musthave / Heavy Molasses</button>
+              <button type="button" class="tobacco-pill" aria-pressed="false"
+                data-temp="188" data-preheat="3.0 min" data-density="90% Scorch-Free"
+                data-note="Low-molasses &amp; dry-cut protection curve preventing premature dryness.">Dry Cut / Herbal</button>
+            </div>
+          </div>
+
+          <div class="heat-readout">
+            <div class="heat-readout-top">
+              <div>
+                <small style="font-family:var(--f-mono);font-size:10.5px;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase">Recommended Target Heat</small>
+                <div class="heat-temp-val" data-heat-temp>205 °C</div>
+              </div>
+              <span class="cool-badge">Cool-Touch™ Shell &lt;42 °C</span>
+            </div>
+            <div class="heat-meter-bar" aria-hidden="true"><div class="heat-meter-fill" data-heat-meter></div></div>
+            <p style="font-size:13px;color:#cbd5e1;margin:0" data-heat-note>Balanced curve for blonde leaf blends: smooth dense clouds for 90+ minutes with zero harshness.</p>
+            <div class="heat-stats-row">
+              <div class="heat-stat-box"><small>Preheat</small><b data-heat-preheat>3.4 min</b></div>
+              <div class="heat-stat-box"><small>Flavor Yield</small><b data-heat-density>94% Pure Aroma</b></div>
+              <div class="heat-stat-box"><small>Fast Charge</small><b>~35 Min Dock</b></div>
+            </div>
+          </div>
+
+          <a class="btn gold" style="width:100%" href="connect.html">📱 Launch Full NARION Connect™ App Demo →</a>
+        </div>
+
+        <div class="live-studio-card">
+          <div>
+            <span class="eyebrow" style="margin-bottom:6px">Live Economics Simulator</span>
+            <h3 style="margin:0 0 8px;font-size:23px">How Many Daily Sessions?</h3>
+            <p style="font-size:13.5px;color:var(--text-muted);margin:0 0 14px">Estimate your net coal, labor, and 41% tobacco savings in seconds:</p>
+
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:14px">
+              <div class="mini-roi-tabs" role="group" aria-label="Usage Type">
+                <button type="button" class="mini-roi-tab is-active" data-roi-mode="cafe" aria-pressed="true">🏢 Lounge &amp; Cafe</button>
+                <button type="button" class="mini-roi-tab" data-roi-mode="home" aria-pressed="false">🏠 Home Setup</button>
+              </div>
+              <b style="font-family:var(--f-mono);font-size:15px;color:var(--gold-light)" data-roi-count>50 sessions/day</b>
+            </div>
+
+            <input type="range" class="mini-roi-range" min="1" max="150" value="50" data-roi-range aria-label="Daily hookah sessions">
+          </div>
+
+          <div class="mini-roi-outputs">
+            <div class="mini-roi-metric">
+              <small>Monthly Net Saving</small>
+              <b data-roi-monthly>$4,800 / mo</b>
+            </div>
+            <div class="mini-roi-metric">
+              <small>Annual Net Gain</small>
+              <b data-roi-yearly style="color:var(--gold-light)">$58,400 / yr</b>
+            </div>
+            <div class="mini-roi-metric">
+              <small>Charcoal Eliminated</small>
+              <b data-roi-coal style="color:#38bdf8">2,555 kg / yr</b>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <a class="btn glass" style="flex:1 1 180px" href="b2b-kurumsal.html#roi-hesaplayici">Full Fleet Calculator →</a>
+            <a class="btn gold" style="flex:1 1 200px" data-roi-wa href="https://wa.me/905467331184" target="_blank" rel="noopener">💬 Request Quote via WhatsApp →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- 3 AYIRICI İMZA ÖZELLİK -->
   <section class="sec sec-border-bottom">
@@ -207,14 +316,14 @@
         <div class="card card-gold">
           <div style="font-size:2rem;margin-bottom:1.2rem;color:var(--gold)">⚡</div>
           <h3>0 ppm Carbon Monoxide</h3>
-          <p>A smart MCH ceramic element holds the tobacco at its ideal vaporisation temperature without burning it. No headache, no burnt taste, no smell of ash — only the aroma itself.</p>
+          <p>A pure ceramic heating core holds the tobacco at its ideal vaporisation temperature without burning it. No headache, no burnt taste, no smell of ash — only the aroma itself.</p>
           <a href="smart-hmd.html" style="font-family:var(--f-mono);font-size:12px;color:var(--gold);text-transform:uppercase;letter-spacing:0.08em;font-weight:600">Scientific Report →</a>
         </div>
 
         <div class="card">
           <div style="font-size:2rem;margin-bottom:1.2rem;color:var(--gold)">💎</div>
           <h3>Eastman Tritan™ Crystal</h3>
-          <p>Impact-resistant Eastman Tritan™ TX1001, used in aerospace, in place of fragile glass. Crystal clear, dishwasher safe, and far more resistant to breakage than glass.</p>
+          <p>Impact-resistant Eastman Tritan™ used in aerospace, in place of fragile glass. Crystal clear, dishwasher safe, and far more resistant to breakage than glass.</p>
           <a href="teknoloji.html#tritan" style="font-family:var(--f-mono);font-size:12px;color:var(--gold);text-transform:uppercase;letter-spacing:0.08em;font-weight:600">Material Analysis →</a>
         </div>
 
@@ -312,8 +421,8 @@
             <div style="display:flex;gap:16px;align-items:flex-start">
               <div style="width:36px;height:36px;border-radius:8px;background:rgba(212,175,55,0.12);color:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:700;flex:none">2</div>
               <div>
-                <b style="color:var(--text-main);font-size:15px">14.8V High-Current Battery Architecture</b>
-                <p style="font-size:13.5px;color:var(--text-muted);margin:4px 0 0">It passes freely around the table with no cable to manage. Ninety uninterrupted minutes, and a magnetic fast-charging dock.</p>
+                <b style="color:var(--text-main);font-size:15px">Fast-Charge Cartridge Architecture (~35 Min)</b>
+                <p style="font-size:13.5px;color:var(--text-muted);margin:4px 0 0">It passes freely around the table with no cable to manage. Ninety uninterrupted minutes, Cool-Touch™ active exterior cooling (&lt;42°C), and a magnetic fast-charging dock.</p>
               </div>
             </div>
 
@@ -337,7 +446,7 @@
             <div style="padding:24px;background:#0d0d12">
               <div style="display:flex;justify-content:space-between;align-items:center">
                 <div>
-                  <b style="font-family:var(--f-mono);font-size:12px;color:var(--gold);letter-spacing:0.1em;text-transform:uppercase">MCH CERAMIC CORE</b>
+                  <b style="font-family:var(--f-mono);font-size:12px;color:var(--gold);letter-spacing:0.1em;text-transform:uppercase">PURE CERAMIC CORE</b>
                   <div style="font-size:13px;color:var(--text-muted);margin-top:2px">A precision PID sensor locks the aroma at a steady 210°C</div>
                 </div>
                 <a href="teknoloji.html" class="btn glass sm">Engineering →</a>
@@ -457,6 +566,7 @@
           <li><a href="modeller.html">All Models (17 Sets)</a></li>
           <li><a href="narion-koza.html">NARION KOZA (Flagship)</a></li>
           <li><a href="smart-hmd.html">Smart HMD Electric Heat Head</a></li>
+          <li><a href="connect.html">NARION Connect™ Live App</a></li>
           <li><a href="karsilastirma.html">Model Comparison</a></li>
           <li><a href="parcalar.html">Hookah Spare Parts &amp; Bases</a></li>
         </ul>
@@ -494,6 +604,6 @@
 
 
 
-<script src="../assets/menu.js?v=7" defer></script>
+<script src="../assets/menu.js?v=8" defer></script>
 </body>
 </html>

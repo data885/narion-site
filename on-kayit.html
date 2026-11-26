@@ -9,7 +9,7 @@
 <meta name="description" content="NARION lüks nargile takımı ve kömürsüz Smart HMD elektrikli akıllı nargile lülesi için ön ödemesiz Seri 01 rezervasyon ve sipariş kaydı. Kişiye özel seri numarası ve 2 yıl garanti.">
 <link rel="icon" type="image/svg+xml" href="logo/favicon.svg">
 <link rel="apple-touch-icon" href="logo/apple-touch-icon-180.png">
-<link rel="stylesheet" href="assets/style.css?v=24">
+<link rel="stylesheet" href="assets/style.css?v=25">
 <link rel="canonical" href="https://narionhookah.com/tr/on-kayit.html">
 <link rel="alternate" hreflang="tr" href="https://narionhookah.com/tr/on-kayit.html">
 <link rel="alternate" hreflang="en" href="https://narionhookah.com/en/on-kayit.html">
@@ -188,7 +188,7 @@
                 <input type="radio" name="f_paket" data-etiket="Paket" data-metin="Tam Paket (Smart HMD dahil)" value="full" checked onchange="updateSummary()" style="margin-top:3px;width:auto">
                 <div>
                   <strong>Tam Paket: Kablosuz Smart HMD Dahil (+2. Batarya Hediyeli)</strong>
-                  <div style="font-size:12.5px;color:var(--text-muted)">0 ppm Karbonmonoksit, 14.8V batarya, PID ısı kilitli seramik rezistans.</div>
+                  <div style="font-size:12.5px;color:var(--text-muted)">0 ppm Karbonmonoksit, batarya, PID ısı kilitli seramik rezistans.</div>
                 </div>
               </label>
               <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:14px;color:var(--text-main)">
@@ -259,7 +259,7 @@
               </div>
               <div style="display:flex;justify-content:space-between;margin-bottom:8px">
                 <span style="color:var(--text-muted)">Isı Teknolojisi:</span>
-                <b id="sum-hmd-status" style="color:var(--gold-light)">Kablosuz Smart HMD (+14.8V)</b>
+                <b id="sum-hmd-status" style="color:var(--gold-light)">Kablosuz Smart HMD (+)</b>
               </div>
               <div style="display:flex;justify-content:space-between;margin-bottom:8px">
                 <span style="color:var(--text-muted)">Üretim Partisi:</span>
@@ -393,7 +393,7 @@ function updateSummary() {
     (ad ? 'model-narion-' + MODEL_GORSEL[ad] + '.webp' : 'smart-hmd-tek.webp');
 
   if (isFullHmd) {
-    document.getElementById('sum-hmd-status').innerText = 'Kablosuz Smart HMD (+14.8V)';
+    document.getElementById('sum-hmd-status').innerText = 'Kablosuz Smart HMD (+)';
     document.getElementById('sum-hmd-status').style.color = 'var(--gold-light)';
   } else {
     document.getElementById('sum-hmd-status').innerText = 'Geleneksel Lüle / Kömürlü';
@@ -442,7 +442,7 @@ window.narionBasariOncesi = function (form, yanit) {
 </script>
 
 
-<script src="assets/menu.js?v=7" defer></script>
+<script src="assets/menu.js?v=8" defer></script>
 <script src="assets/form.js?v=2" defer></script>
 </body>
 </html>

@@ -53,7 +53,7 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; background: var(--bg); color: var(--text-main); }
+html { scroll-behavior: smooth; scroll-padding-top: 84px; background: var(--bg); color: var(--text-main); }
 body {
   margin: 0;
   background: var(--bg);
@@ -118,6 +118,12 @@ a { color: inherit; text-decoration: none; }
   backdrop-filter: blur(24px) saturate(180%);
   -webkit-backdrop-filter: blur(24px) saturate(180%);
   border-bottom: 1px solid var(--line);
+  transition: background-color 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.site-head.is-scrolled {
+  background: rgba(9, 9, 11, 0.95);
+  border-bottom-color: rgba(212, 175, 55, 0.28);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55);
 }
 .site-head.is-measuring,
 .site-head.is-measuring * {
@@ -2502,5 +2508,344 @@ h1 .h1-sub {
   .rehber-cmp-table tbody td:nth-child(5)::before {
     content: var(--col-5) ": ";
   }
+}
+
+/* === ACTIVE MOTION & INTERACTIVE STUDIO (v25) === */
+
+/* 1. Cross-Document View Transitions (MPA) */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+  ::view-transition-old(root) {
+    animation: 0.22s ease-in both narion-vt-out;
+  }
+  ::view-transition-new(root) {
+    animation: 0.26s ease-out both narion-vt-in;
+  }
+  @keyframes narion-vt-out {
+    to { opacity: 0; }
+  }
+  @keyframes narion-vt-in {
+    from { opacity: 0; transform: translateY(6px); }
+  }
+}
+
+/* 2. Top Gold Scroll Progress Indicator */
+#narion-scroll-progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 3px;
+  z-index: 250;
+  pointer-events: none;
+  background: var(--gold-gradient);
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  opacity: 0.92;
+}
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: scroll()) {
+    @keyframes narion-grow-progress {
+      from { transform: scaleX(0); }
+      to { transform: scaleX(1); }
+    }
+    #narion-scroll-progress {
+      animation: narion-grow-progress auto linear;
+      animation-timeline: scroll(block root);
+    }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #narion-scroll-progress {
+    display: none;
+  }
+}
+
+/* 3. Scroll-Driven Card & Section Entry Reveals */
+@media (prefers-reduced-motion: no-preference) {
+  @supports ((animation-timeline: view()) and (animation-range: entry)) {
+    @keyframes narion-reveal-up {
+      from { opacity: 0.25; transform: translateY(22px) scale(0.985); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .sec .card,
+    .mcard,
+    .rehber-block,
+    .hmd-studio-shot,
+    .live-studio-card {
+      animation: narion-reveal-up auto linear backwards;
+      animation-timeline: view(block);
+      animation-range: entry 0% entry 32%;
+    }
+  }
+}
+
+/* Subtle interactive elevation on cards */
+.sec .card,
+.live-studio-card {
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.sec .card:hover,
+.live-studio-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(212, 175, 55, 0.35);
+}
+@media (prefers-reduced-motion: reduce) {
+  .sec .card,
+  .live-studio-card {
+    transition: border-color 0.25s ease;
+  }
+  .sec .card:hover,
+  .live-studio-card:hover {
+    transform: none;
+  }
+}
+
+/* 4. Interactive 3-Film Cinema Switcher */
+.cinema-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.cinema-tab {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--card-border);
+  color: var(--text-muted);
+  padding: 10px 16px;
+  min-height: 42px;
+  border-radius: 999px;
+  font-family: var(--f-sans);
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+.cinema-tab:hover {
+  color: var(--text-main);
+  border-color: rgba(212, 175, 55, 0.45);
+}
+.cinema-tab.is-active {
+  background: var(--gold-gradient);
+  color: #0b0b0f;
+  border-color: transparent;
+  font-weight: 700;
+}
+.cinema-stage {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--card-border-gold);
+  background: #0a0b10;
+  box-shadow: 0 26px 70px rgba(0, 0, 0, 0.78), 0 0 36px rgba(212, 175, 55, 0.1);
+}
+.cinema-stage video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: #07090e;
+}
+.cinema-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding: 16px 22px;
+  border-top: 1px solid var(--line);
+  background: linear-gradient(180deg, #0d0f16 0%, #0a0b10 100%);
+}
+.cinema-caption {
+  margin: 0;
+  font-size: 13.5px;
+  color: #cbd5e1;
+  max-width: 680px;
+}
+
+/* 5. Live Studio: Tobacco Heat Assistant & Mini ROI */
+.live-studio-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+@media (max-width: 900px) {
+  .live-studio-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+.live-studio-card {
+  background: linear-gradient(155deg, rgba(255, 255, 255, 0.035) 0%, rgba(11, 13, 19, 0.96) 100%);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: clamp(22px, 3vw, 32px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
+  min-inline-size: 0;
+}
+.live-studio-card.is-gold {
+  border-color: var(--card-border-gold);
+}
+.tobacco-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.tobacco-pill {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--card-border);
+  color: #cbd5e1;
+  padding: 8px 13px;
+  min-height: 40px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+.tobacco-pill:hover {
+  border-color: rgba(212, 175, 55, 0.5);
+  color: #fff;
+}
+.tobacco-pill.is-active {
+  background: var(--gold-gradient);
+  color: #0b0b0f;
+  border-color: transparent;
+  font-weight: 700;
+}
+.heat-readout {
+  background: rgba(0, 0, 0, 0.48);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 18px;
+}
+.heat-readout-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.heat-temp-val {
+  font-family: var(--f-serif);
+  font-size: clamp(32px, 4vw, 42px);
+  font-weight: 700;
+  color: var(--gold-light);
+  line-height: 1;
+}
+.cool-badge {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent-ok);
+  background: rgba(47, 212, 122, 0.12);
+  border: 1px solid rgba(47, 212, 122, 0.35);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+.heat-meter-bar {
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  margin: 14px 0 12px;
+}
+.heat-meter-fill {
+  height: 100%;
+  width: 100%;
+  transform-origin: 0 50%;
+  transform: scaleX(0.68);
+  background: linear-gradient(90deg, #2fd47a 0%, #d4af37 60%, #f59e0b 100%);
+  transition: transform 0.3s ease;
+}
+.heat-stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+.heat-stat-box {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  padding: 10px;
+}
+.heat-stat-box small {
+  display: block;
+  font-family: var(--f-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.heat-stat-box b {
+  display: block;
+  margin-top: 3px;
+  font-size: 14px;
+  color: #fff;
+}
+.mini-roi-tabs {
+  display: inline-grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 4px;
+  border-radius: 10px;
+  border: 1px solid var(--card-border);
+  align-self: flex-start;
+}
+.mini-roi-tab {
+  background: transparent;
+  border: 0;
+  color: var(--text-muted);
+  padding: 8px 14px;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.mini-roi-tab.is-active {
+  background: var(--gold-gradient);
+  color: #0b0b0f;
+  font-weight: 700;
+}
+.mini-roi-range {
+  width: 100%;
+  accent-color: var(--gold);
+  cursor: pointer;
+}
+.mini-roi-outputs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+@media (max-width: 520px) {
+  .heat-stats-row,
+  .mini-roi-outputs {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+.mini-roi-metric {
+  background: rgba(0, 0, 0, 0.48);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 12px;
+}
+.mini-roi-metric small {
+  display: block;
+  font-family: var(--f-mono);
+  font-size: 10px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+.mini-roi-metric b {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--f-serif);
+  font-size: clamp(16px, 1.7vw, 20px);
+  line-height: 1.25;
+  color: var(--accent-ok);
 }
 

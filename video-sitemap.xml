@@ -1,11 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
+    <loc>https://narionhookah.com/tr/index.html</loc>
+    <video:video>
+      <video:thumbnail_loc>https://narionhookah.com/film/narion-smart-hmd-tanitim-poster.jpg</video:thumbnail_loc>
+      <video:title>NARION Smart HMD — Doğal İnsan Seslendirmeli Tanıtım Filmi</video:title>
+      <video:description>Cool-Touch™ aktif soğutma (&lt;42°C), ~35 dakikada hızlı şarj kartuşu, 0.0 ppm karbonmonoksit ve tütün markasına özel NARION Connect™ mobil kontrolünü anlatan Türkçe tanıtım filmi.</video:description>
+      <video:content_loc>https://narionhookah.com/film/narion-smart-hmd-r2-2-tanitim-v2.mp4</video:content_loc>
+      <video:duration>48</video:duration>
+      <video:publication_date>2026-11-27T02:00:00+03:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://narionhookah.com/en/index.html</loc>
+    <video:video>
+      <video:thumbnail_loc>https://narionhookah.com/film/narion-smart-hmd-tanitim-poster.jpg</video:thumbnail_loc>
+      <video:title>NARION Smart HMD — Narrated Feature Showcase Film</video:title>
+      <video:description>Discover NARION Smart HMD with Cool-Touch™ active exterior cooling (&lt;42°C), ~35-minute fast-charge swap cartridge, 0.0 ppm carbon monoxide, and NARION Connect™ tobacco heat curves.</video:description>
+      <video:content_loc>https://narionhookah.com/film/narion-smart-hmd-r2-2-tanitim-v2.mp4</video:content_loc>
+      <video:duration>48</video:duration>
+      <video:publication_date>2026-11-27T02:00:00+03:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+  <url>
     <loc>https://narionhookah.com/tr/smart-hmd.html</loc>
     <video:video>
       <video:thumbnail_loc>https://narionhookah.com/film/narion-smart-hmd-tanitim-poster.jpg</video:thumbnail_loc>
       <video:title>NARION Smart HMD — Sesli Özellik ve Mühendislik Tanıtım Filmi</video:title>
-      <video:description>0.0 ppm karbonmonoksit, 8 katmanlı termal mimari, Al₂O₃ seramik ısıtıcı, &lt;42°C aerogel zırh ve 65W hızlı şarj istasyonu özelliklerini anlatan Türkçe sesli tanıtım filmi.</video:description>
+      <video:description>0.0 ppm karbonmonoksit, 8 katmanlı termal mimari, Saf Seramik ısıtıcı, &lt;42°C Cool-Touch™ zırh ve hızlı şarj istasyonu özelliklerini anlatan Türkçe sesli tanıtım filmi.</video:description>
       <video:content_loc>https://narionhookah.com/film/narion-smart-hmd-tanitim.mp4</video:content_loc>
       <video:duration>84</video:duration>
       <video:publication_date>2026-11-13T10:30:00+03:00</video:publication_date>
@@ -38,7 +62,7 @@
     <video:video>
       <video:thumbnail_loc>https://narionhookah.com/film/narion-smart-hmd-tanitim-poster.jpg</video:thumbnail_loc>
       <video:title>NARION Smart HMD — Official Narrated Feature &amp; Engineering Film</video:title>
-      <video:description>Narrated overview of NARION Smart HMD: 0.0 ppm carbon monoxide, 8-layer thermal architecture, Al₂O₃ ceramic heater, &lt;42°C aerogel shell, and 65W Pogo-Pin fast dock.</video:description>
+      <video:description>Narrated overview of NARION Smart HMD: 0.0 ppm carbon monoxide, 8-layer thermal architecture, Pure Ceramic heater, &lt;42°C Cool-Touch™ shell, and fast-charge dock.</video:description>
       <video:content_loc>https://narionhookah.com/film/narion-smart-hmd-tanitim.mp4</video:content_loc>
       <video:duration>84</video:duration>
       <video:publication_date>2026-11-13T10:30:00+03:00</video:publication_date>
@@ -71,7 +95,7 @@
     <video:video>
       <video:thumbnail_loc>https://narionhookah.com/film/narion-smart-hmd-tanitim-poster.jpg</video:thumbnail_loc>
       <video:title>فيلم مواصفات وهندسة رأس النرجيلة الذكي NARION Smart HMD</video:title>
-      <video:description>عرض صوتي لمواصفات رأس NARION Smart HMD: صفر أول أكسيد الكربون، هيكل حراري من 8 طبقات، سيراميك Al₂O₃ وشحن سريع 65W.</video:description>
+      <video:description>عرض صوتي لمواصفات رأس NARION Smart HMD: صفر أول أكسيد الكربون، هيكل حراري من 8 طبقات، سيراميك نقي وشحن سريع 35 دقيقة.</video:description>
       <video:content_loc>https://narionhookah.com/film/narion-smart-hmd-tanitim.mp4</video:content_loc>
       <video:duration>84</video:duration>
       <video:publication_date>2026-11-13T10:30:00+03:00</video:publication_date>
@@ -104,7 +128,7 @@
     <video:video>
       <video:thumbnail_loc>https://narionhookah.com/film/narion-smart-hmd-tanitim-poster.jpg</video:thumbnail_loc>
       <video:title>NARION Smart HMD — Официальный фильм о технологиях и характеристиках</video:title>
-      <video:description>Озвученный обзор NARION Smart HMD: 0.0 ppm угарного газа, 8-слойная термоархитектура, керамический нагреватель Al₂O₃ и док-станция 65 Вт.</video:description>
+      <video:description>Озвученный обзор NARION Smart HMD: 0.0 ppm угарного газа, 8-слойная термоархитектура, чистый керамический нагреватель и быстрая зарядка за 35 минут.</video:description>
       <video:content_loc>https://narionhookah.com/film/narion-smart-hmd-tanitim.mp4</video:content_loc>
       <video:duration>84</video:duration>
       <video:publication_date>2026-11-13T10:30:00+03:00</video:publication_date>
