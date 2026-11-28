@@ -644,7 +644,7 @@
     <div class="wrap">
       <div class="shead" style="text-align:center;max-width:780px;margin:0 auto 40px">
         <span class="eyebrow" style="justify-content:center">Financial Audit &amp; Operational Efficiency Report</span>
-        <h2>How Does Smart HMD Cut Costs by 91%–96%?</h2>
+        <h2>How Does Smart HMD Cut Heating Energy Costs by 98%?</h2>
         <p>Whether you enjoy hookah every evening at home or run a 30-table lounge, Smart HMD eliminates coconut coal boxes, coil burner electricity, burnt tobacco waste, and scorched carpets/furniture. Below is the financial breakdown for both <b>Home Users</b> and <b>Commercial Lounges</b>.</p>
         <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:20px">
           <a class="btn gold sm" href="#ev-maliyet-raporu">🏠 Individual Home User Savings</a>
@@ -659,7 +659,7 @@
           <div>
             <span class="eyebrow" style="margin-bottom:6px">🏠 Individual Home User Report (B2C)</span>
             <h3 style="margin:0;font-size:25px">Home Hookah Cost &amp; Comfort Breakdown</h3>
-            <p style="font-size:14px;color:var(--text-muted);margin:6px 0 0">At home, a 90-minute session on grid electricity costs just <b>0.21 ₺ (~$0.005)</b> instead of <b>32.00 ₺</b> in retail coal, electric coil stove power, and scorched tobacco.</p>
+            <p style="font-size:14px;color:var(--text-muted);margin:6px 0 0">At home, a full session uses just <b>0,26 ₺</b> of residential electricity (2.90 ₺/kWh × 0.09 kWh) instead of <b>28,50 ₺</b> for retail charcoal plus the coil stove. With 9 g less tobacco (22 g → 13 g) and carpet-burn protection, a daily home user saves <b>+26.724 ₺ per year</b>.</p>
           </div>
         </div>
 
@@ -669,27 +669,27 @@
             <h4 style="margin:0 0 16px;font-size:20px">Calculate Your Personal Home Savings</h4>
 
             <div class="field">
-              <label for="homeWeeklySlider"><span>How Many Hookah Bowls Do You Smoke Per Week at Home?</span> <b id="homeWeeklyLbl">7 / Week (1 / Day)</b></label>
+              <label for="homeWeeklySlider"><span>How Many Hookah Bowls Do You Smoke Per Week at Home?</span> <b id="homeWeeklyLbl">7 / Week (1 / Day) (30 Bowls/Mo)</b></label>
               <input type="range" id="homeWeeklySlider" min="1" max="21" step="1" value="7" oninput="calcHomeRoiEn()">
             </div>
 
             <div class="field">
-              <label for="homeDamageSlider"><span>Include Carpet/Sofa Burn &amp; Winter Heating Loss Protection?</span> <b id="homeDamageLbl">Yes (Included)</b></label>
+              <label for="homeDamageSlider"><span>Include Carpet/Sofa Burn &amp; Winter Heating Loss Protection?</span> <b id="homeDamageLbl">Yes (Carpet burn + heating loss included)</b></label>
               <input type="range" id="homeDamageSlider" min="0" max="1" step="1" value="1" oninput="calcHomeRoiEn()">
             </div>
 
             <div style="font-size:13.5px;color:var(--text-muted);line-height:1.75;border-top:1px solid var(--line);padding-top:14px">
               <div style="display:flex;justify-content:space-between;margin-bottom:5px">
-                <span>Monthly Retail Coal + Burner + Tobacco Waste Saved:</span>
-                <strong id="homeDirectSave" style="color:var(--gold-light)">924 ₺ / Mo</strong>
+                <span>Monthly Charcoal + Stove + 9 g Tobacco Saved:</span>
+                <strong id="homeDirectSave" style="color:var(--gold-light)">1.627 ₺ / Mo</strong>
               </div>
               <div style="display:flex;justify-content:space-between;margin-bottom:5px">
                 <span>Monthly Carpet/Sofa Burn &amp; Heating Loss Saved:</span>
-                <strong id="homeExtraSave" style="color:var(--accent-ok)">750 ₺ / Mo</strong>
+                <strong id="homeExtraSave" style="color:var(--accent-ok)">600 ₺ / Mo</strong>
               </div>
               <div style="display:flex;justify-content:space-between;padding-top:6px;border-top:1px dashed var(--line)">
                 <span>Kitchen Coal-Waiting Time Saved Per Year:</span>
-                <strong id="homeTimeSave" style="color:#fff">120 Hours / Yr</strong>
+                <strong id="homeTimeSave" style="color:#fff">182 Hours / Yr (8 Full Days)</strong>
               </div>
             </div>
           </div>
@@ -697,11 +697,11 @@
           <div class="out">
             <div>
               <small>Monthly Net Home Savings</small>
-              <b id="homeMonthlyNet">1.674 ₺ / Mo</b>
+              <b id="homeMonthlyNet">2.227 ₺ / Mo</b>
             </div>
             <div class="line">
               <small>Annual Net Home Savings</small>
-              <b id="homeYearlyNet" style="font-size:36px;color:var(--accent-ok)">20.084 ₺ / Yr</b>
+              <b id="homeYearlyNet" style="font-size:36px;color:var(--accent-ok)">26.724 ₺ / Yr</b>
             </div>
             <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">
               <a class="btn gold sm" style="flex:1" href="on-kayit.html">Pre-order Home Edition →</a>
@@ -1188,17 +1188,20 @@ function calcHomeRoiEn() {
   const monthlySessions = Math.round(weekly * 4.33);
   const yearlySessions = weekly * 52;
 
-  const directMonthlySave = Math.round(monthlySessions * 30.79);
-  const extraMonthlySave = includeDmg ? Math.round(250 + monthlySessions * 16.5) : 0;
+  // Same home model as TR calcHomeRoi:
+  // Coal 24 + stove 4.50 + 9 g tobacco 27 = 55.50 vs electricity 0.26 + battery 1.00 = 1.26 → 54.24 ₺/session
+  // Carpet/heating: 200 + 13.33 ₺/session (600 ₺ at 30 sessions). Daily use → +2.227 ₺/mo, +26.724 ₺/yr.
+  const directMonthlySave = Math.round(monthlySessions * 54.24);
+  const extraMonthlySave = includeDmg ? Math.round(200 + monthlySessions * 13.33) : 0;
   const monthlyNet = directMonthlySave + extraMonthlySave;
   const yearlyNet = monthlyNet * 12;
-  const hoursSavedYear = Math.round((yearlySessions * 20) / 60);
+  const hoursSavedYear = Math.round((yearlySessions * 30) / 60);
 
   document.getElementById('homeWeeklyLbl').innerText = weekly + ' / Week (' + monthlySessions + ' Bowls/Mo)';
-  document.getElementById('homeDamageLbl').innerText = includeDmg ? 'Yes (Included)' : 'No (Coal + Tobacco Only)';
+  document.getElementById('homeDamageLbl').innerText = includeDmg ? 'Yes (Carpet burn + heating loss included)' : 'No (Charcoal + stove + 9 g tobacco only)';
   document.getElementById('homeDirectSave').innerText = directMonthlySave.toLocaleString('tr-TR') + ' ₺ / Mo';
   document.getElementById('homeExtraSave').innerText = extraMonthlySave.toLocaleString('tr-TR') + ' ₺ / Mo';
-  document.getElementById('homeTimeSave').innerText = hoursSavedYear + ' Hours / Yr';
+  document.getElementById('homeTimeSave').innerText = hoursSavedYear + ' Hours / Yr (' + Math.max(1, Math.round(hoursSavedYear / 24)) + ' Full Days)';
   document.getElementById('homeMonthlyNet').innerText = monthlyNet.toLocaleString('tr-TR') + ' ₺ / Mo';
   document.getElementById('homeYearlyNet').innerText = yearlyNet.toLocaleString('tr-TR') + ' ₺ / Yr';
 }
@@ -1329,7 +1332,7 @@ calcHomeRoiEn();
 </script>
 
 
-<script src="../assets/menu.js?v=8" defer></script>
+<script src="../assets/menu.js?v=10" defer></script>
 <script src="../assets/prices.js?v=1" defer></script>
 </body>
 </html>
