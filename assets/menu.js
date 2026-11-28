@@ -376,10 +376,27 @@
         if (!slider) return;
         var daily = Number(slider.value) || 1;
         var isEn = locale === 'en';
-        var perSession = currentMode === 'cafe' ? (isEn ? 3.2 : 63.74) : (isEn ? 2.8 : 61.86);
-        var monthly = daily * 30 * perSession;
-        var yearly = daily * 365 * perSession;
-        var coalKg = Math.round(daily * 365 * 0.14);
+        var monthly, yearly, coalKg;
+        if (currentMode === 'cafe') {
+          var cafePer = isEn ? 3.2 : 63.74;
+          monthly = daily * 30 * cafePer;
+          yearly = daily * 365 * cafePer;
+          coalKg = Math.round(daily * 365 * 0.14);
+        } else if (isEn) {
+          monthly = daily * 30 * 2.8;
+          yearly = daily * 365 * 2.8;
+          coalKg = Math.round(daily * 365 * 0.14);
+        } else {
+          // Ev modeli (smart-hmd calcHomeRoi): 30 seans/ay.
+          // Köz 24 + cezve 4,50 + 9g tütün 27 = 55,50 vs elektrik 0,26 + pil 1,00 = 1,26 → 54,24 ₺/seans
+          // Halı/kombi: 200 + 13,33 ₺/seans (30 seansda 600 ₺). Günde 1 → +2.227 ₺/ay, +26.724 ₺/yıl.
+          var sessions = daily * 30;
+          var direct = Math.round(sessions * 54.24);
+          var extra = Math.round(200 + sessions * 13.33);
+          monthly = direct + extra;
+          yearly = monthly * 12;
+          coalKg = Math.round(daily * 365 * 0.12);
+        }
 
         if (countEl) {
           countEl.textContent = daily + (isEn ? ' sessions/day' : ' nargile/gün');
