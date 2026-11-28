@@ -1,6 +1,6 @@
 /**
  * NARION CONNECT — Mobile Companion Web App & BLE 5.0 / Local HTTP-WS Client
- * Hardware Contract: NRN-HMD-TF-002 (Rev R2.2) • Patent-Pending TR 2026/017041
+ * Hardware Contract: NRN-HMD-TF-002 (Rev R2.2)
  *
  * Implements:
  *  1. Bit-exact 20-byte Telemetry (v0x03) & 12-byte Command codec + keyed authTag + CRC-8 (0x07)

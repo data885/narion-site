@@ -1,7 +1,7 @@
 {
   "name": "NARION Connect — Smart HMD Kontrol",
   "short_name": "NARION Connect",
-  "description": "NARION Smart HMD (TÜRKPATENT 2026/017041) Bluetooth BLE 5.0 & iOS Kablosuz Akıllı Nargile Lülesi Kontrol Uygulaması",
+  "description": "NARION Smart HMD Bluetooth BLE 5.0 & iOS Kablosuz Akıllı Nargile Lülesi Kontrol Uygulaması",
   "start_url": "/tr/connect.html",
   "display": "standalone",
   "background_color": "#090a0f",
