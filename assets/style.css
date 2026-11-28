@@ -2865,3 +2865,48 @@ h1 .h1-sub {
 .card .n-price--card{padding:0 0 12px}
 html[dir="rtl"] .n-price,html[dir="rtl"] .n-price-note{align-items:flex-end;text-align:right}
 html[dir="rtl"] .n-price-row{flex-direction:row}
+
+/* B2B: tek birincil hero CTA, lansman fiyat bloğu, pilot kartı, sabit WhatsApp (hero sonrası) */
+.hero-cta{display:flex;flex-direction:column;align-items:flex-start;gap:14px;margin-top:24px}
+.hero-cta .btn.hero-cta-primary{padding:15px 28px;font-size:16px;text-align:center;justify-content:center}
+.hero-cta-sec{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13.5px;line-height:1.5}
+.hero-cta-sec a{color:var(--text-muted,#9a9aa3);text-decoration:underline;text-underline-offset:3px}
+.hero-cta-sec a:hover{color:var(--gold-light,#e8cf7a)}
+.n-price-label{font-family:var(--f-mono),ui-monospace,monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted,#9a9aa3);margin-bottom:6px}
+.n-price--hero{margin:18px 0 0;gap:6px}
+.n-price--hero .n-price-row{align-items:center}
+.n-price--hero .n-price-launch{font-size:28px}
+.b2b-launch{border:1px solid var(--gold,#d4af37);border-radius:14px;padding:22px 26px;margin:0 auto 34px;max-width:780px;background:rgba(212,175,55,.06)}
+.b2b-launch .n-price--detail{margin:0 0 12px}
+.b2b-launch .n-price-note{margin:0 0 10px}
+.b2b-launch .n-price-note:last-child{margin-bottom:0}
+.pilot-card{margin-top:28px;padding:28px 36px;border-color:var(--gold,#d4af37)}
+.pilot-tag{font-family:var(--f-mono),ui-monospace,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold,#d4af37);margin-bottom:8px}
+.pilot-card h3{margin-bottom:10px}
+.pilot-card p{font-size:14px;color:var(--text-muted,#9a9aa3);margin:0 0 14px;max-width:70ch}
+.pilot-steps{margin:0 0 14px;padding-left:1.3rem;line-height:1.8;font-size:14px;color:var(--text-muted,#9a9aa3)}
+.pilot-card .pilot-note{font-size:12.5px;margin-bottom:18px}
+.form-note{font-size:12.5px;line-height:1.55;color:var(--text-muted,#9a9aa3);margin:12px 0 0;text-align:center}
+html[dir="rtl"] .hero-cta{align-items:flex-end}
+html[dir="rtl"] .pilot-steps{padding-left:0;padding-right:1.3rem}
+@media (max-width:640px){
+  .hero-cta{align-items:stretch}
+  .hero-cta .btn.hero-cta-primary{width:100%}
+  .b2b-launch{padding:18px 16px}
+  .pilot-card{padding:22px 18px}
+}
+@media (max-width:768px){
+  .wa-float{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease,opacity .25s ease,visibility .25s}
+  .wa-float.wa-late{opacity:0;visibility:hidden;pointer-events:none;transform:translateY(14px)}
+  .wa-float.wa-late.is-on{opacity:1;visibility:visible;pointer-events:auto;transform:none}
+}
+
+/* B2B hero: ilk ekranda birincil CTA görünsün */
+body[data-wa-after-hero] .page-hero{padding-block:clamp(28px,4vw,56px)}
+body[data-wa-after-hero] .page-hero .crumbs{margin-bottom:14px}
+.n-price--hero{margin:0;gap:4px}
+@media (max-width:640px){
+  body[data-wa-after-hero] .page-hero .crumbs{display:none}
+  body[data-wa-after-hero] .page-hero .lead{font-size:15.5px;line-height:1.55}
+  body[data-wa-after-hero] .page-hero{padding-block:22px}
+}

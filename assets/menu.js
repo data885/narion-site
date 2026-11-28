@@ -60,6 +60,19 @@
 
     document.body.appendChild(waBtn);
 
+    // data-wa-after-hero: mobilde WhatsApp balonu hero bölümü geçilene kadar gizli kalır (hero CTA'larıyla çakışmasın)
+    if (document.body.hasAttribute('data-wa-after-hero') && 'IntersectionObserver' in window) {
+      var heroEl = document.querySelector('.page-hero');
+      if (heroEl) {
+        waBtn.classList.add('wa-late');
+        new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            waBtn.classList.toggle('is-on', !e.isIntersecting && e.boundingClientRect.bottom <= 0);
+          });
+        }).observe(heroEl);
+      }
+    }
+
     // Mobil menü çekmecesine de doğrudan WhatsApp butonu ekle
     var headCta = document.querySelector('.head-cta');
     if (headCta && !headCta.querySelector('.wa-menu-btn')) {
