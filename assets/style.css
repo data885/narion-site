@@ -2849,3 +2849,19 @@ h1 .h1-sub {
   color: var(--accent-ok);
 }
 
+/* Launch / lansman prices */
+.n-price{margin:10px 0 4px;display:flex;flex-direction:column;align-items:flex-start;gap:4px;line-height:1.2}
+.n-price-badge{display:inline-block;font-family:var(--f-mono),ui-monospace,monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold,#d4af37);border:1px solid var(--gold,#d4af37);padding:2px 7px;border-radius:2px}
+.n-price-row{display:flex;align-items:baseline;flex-wrap:wrap;gap:8px 12px}
+.n-price-launch{font-family:var(--f-serif),Georgia,serif;font-size:26px;color:var(--gold-light,#e8cf7a);font-weight:500}
+.n-price-list{font-family:var(--f-mono),ui-monospace,monospace;font-size:14px;color:var(--text-muted,#9a9aa3);text-decoration:line-through;text-decoration-thickness:1px}
+.n-price-vat{font-family:var(--f-mono),ui-monospace,monospace;font-size:11px;letter-spacing:.06em;color:var(--text-muted,#9a9aa3)}
+.n-price-period{font-size:12px;color:var(--text-muted,#9a9aa3);line-height:1.45;max-width:46ch;margin:2px 0 0}
+.n-price--card .n-price-launch{font-size:20px}
+.n-price--card{padding:0 22px 8px}
+.n-price--detail{margin:0 0 20px}
+.n-price--detail .n-price-launch{font-size:34px}
+.n-price-note{margin:0 0 22px;font-size:13.5px;color:var(--text-muted,#9a9aa3);line-height:1.55;max-width:70ch}
+.card .n-price--card{padding:0 0 12px}
+html[dir="rtl"] .n-price,html[dir="rtl"] .n-price-note{align-items:flex-end;text-align:right}
+html[dir="rtl"] .n-price-row{flex-direction:row}
